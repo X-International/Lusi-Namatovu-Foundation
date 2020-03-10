@@ -29,3 +29,9 @@
     font-family: Inter-Extra-Bold;
     src: url(../fonts/inter/Inter-ExtraBold-slnt=0.ttf);
 }
+
+/* MAIN STYLES */
+
+body {
+    font-family: Inter-Regular, sans-serif;
+}
