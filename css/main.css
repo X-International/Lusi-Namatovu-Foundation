@@ -30,8 +30,18 @@
     src: url(../fonts/inter/Inter-ExtraBold-slnt=0.ttf);
 }
 
+@font-face {
+    font-family: Abril;
+    src: url(../fonts/inter/abril.woff2);
+}
+
 /* MAIN STYLES */
 
 body {
     font-family: Inter-Regular, sans-serif;
+}
+
+.heading {
+    font-family: Abril, sans-serif;
+    color: #2f2c52;
 }
