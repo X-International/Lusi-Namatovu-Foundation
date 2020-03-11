@@ -31,9 +31,22 @@
 }
 
 @font-face {
-    font-family: Abril;
-    src: url(../fonts/inter/abril.woff2);
-}
+    font-family: "Abril Fatface";
+    src: local("Abril Fatface"), local("AbrilFatface-Regular"), url("https://fonts.gstatic.com/s/abrilfatface/v11/zOL64pLDlL1D99S8g8PtiKchq-dmjQ.woff2") format("woff2");
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    unicode-range: U+0-FF, U+131, U+152-153, U+2BB-2BC, U+2C6, U+2DA, U+2DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+
+@font-face {
+    font-family: "Muli";
+    src: url("https://fonts.gstatic.com/s/muli/v20/7Aulp_0qiz-aVz7u3PJLcUMYOFnOkEk30eg.woff2") format("woff2");
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    unicode-range: U+0-FF, U+131, U+152-153, U+2BB-2BC, U+2C6, U+2DA, U+2DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
 
 /* MAIN STYLES */
 
@@ -42,6 +55,28 @@ body {
 }
 
 .heading {
-    font-family: Abril, sans-serif;
+    font-family: "Abril Fatface", sans-serif;
     color: #2f2c52;
+    font-size: 4rem;
+    line-height: 1.2;
+    font-weight: 400;
 }
+
+.tagline {
+    color: #7a7e9a;
+    font-size: 1.2rem;
+    margin-top: 1.3rem;
+    font-family: Muli, sans-serif;
+
+
+}
+
+.slider-section {
+    background: url(../images/Lusi-Namatovu-Foundation-Header.jpg);
+}
+
+.feature-container{
+    margin-left: 1.2rem;
+    margin-right: 1rem;
+}
+
