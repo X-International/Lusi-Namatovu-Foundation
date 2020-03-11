@@ -2509,8 +2509,16 @@ textarea.form-control {
   }
 }
 
+@font-face {
+  font-family: "Flaticon";
+  src: url("https://templates.envytheme.com/huruma/default/assets/fonts/Flaticon.woff2https://templates.envytheme.com/huruma/default/assets/fonts/Flaticon.woff2");
+  font-style: normal;
+  font-weight: normal;
+}
+
 .btn {
   display: inline-block;
+  font-family: Flaticon, sans-serif;
   font-weight: 400;
   color: #212529;
   text-align: center;
@@ -2593,20 +2601,20 @@ fieldset:disabled a.btn {
 
 .btn-secondary {
   color: #fff;
-  background-color: #6c757d;
-  border-color: #6c757d;
+  background-color: #302c51;
+  border-color: #302c51;
 }
 
 .btn-secondary:hover {
   color: #fff;
-  background-color: #5a6268;
-  border-color: #545b62;
+  background-color: #007bff;
+  border-color: #007bff;
 }
 
 .btn-secondary:focus, .btn-secondary.focus {
   color: #fff;
-  background-color: #5a6268;
-  border-color: #545b62;
+  background-color: #007bff;
+  border-color: #007bff;
   box-shadow: 0 0 0 0.2rem rgba(130, 138, 145, 0.5);
 }
 

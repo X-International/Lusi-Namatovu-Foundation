@@ -48,6 +48,7 @@
     unicode-range: U+0-FF, U+131, U+152-153, U+2BB-2BC, U+2C6, U+2DA, U+2DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
   }
 
+
 /* MAIN STYLES */
 
 body {
@@ -57,7 +58,7 @@ body {
 .heading {
     font-family: "Abril Fatface", sans-serif;
     color: #2f2c52;
-    font-size: 4rem;
+    font-size: 3.5rem;
     line-height: 1.2;
     font-weight: 400;
 }
@@ -65,7 +66,7 @@ body {
 .tagline {
     color: #7a7e9a;
     font-size: 1.2rem;
-    margin-top: 1.3rem;
+    margin-top: 1rem;
     font-family: Muli, sans-serif;
 
 
@@ -79,4 +80,13 @@ body {
     margin-left: 1.2rem;
     margin-right: 1rem;
 }
+
+a.btn:nth-child(3) {
+    font-size: 1rem;
+}
+
+a.btn:nth-child(4) {
+    font-size: 1rem;
+}
+
 
