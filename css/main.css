@@ -1856,6 +1856,10 @@ body.mobile-nav-active #mobile-nav-toggle {
     box-shadow: 0px 10px 30px 0 rgba(153, 153, 153, 0.2);
     color: #007bff; }
 
+    .footer-text {
+      font-size: 11px;
+     }
+     
 @media (max-width: 767px) {
   .fullscreen {
     height: 100% !important; } }
