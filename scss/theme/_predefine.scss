@@ -1,0 +1,101 @@
+.section-gap {
+    padding: 150px 0;
+    @media(max-width: 991px) {
+        padding: 60px 0;
+    }
+}
+.section-gap-top {
+    padding-top: 150px;
+    @media(max-width: 991px) {
+        padding-top: 60px;
+    }
+}
+
+.section-gap-bottom {
+    padding-bottom: 150px;
+    @media(max-width: 991px) {
+        padding-bottom: 60px;
+    }
+}
+
+.section-title {
+    padding-bottom: 95px;
+    text-align: center;
+    @media(max-width: 991px) {
+        padding-bottom: 40px;
+    }
+    h2 {
+        font-size: 36px;
+        margin-bottom: 20px;
+    }
+    p {
+        font-size: 16px;
+        margin-bottom: 0;
+        @include media-breakpoint-down (md) {
+            br {
+                display: none;
+            }
+        }
+    }
+}
+
+.primary-btn {
+    background-color: $primary-color;
+    line-height: 47px;
+    padding: 0 35px;
+    border: none;
+    color: $white;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 500;
+    position: relative;
+    border: 1px solid transparent;
+    @include transition();
+    cursor: pointer;
+    text-transform: capitalize;
+    position: relative;
+    &:focus {
+        outline: none;
+    }
+    span {
+        color: $white;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-60%);
+        right: 30px;
+        @include transition();
+    }
+    &:hover {
+        color: $primary-color;
+        background-color: transparent;
+        border-color: $primary-color;
+    }
+    &.white {
+        border: 1px solid $white;
+        color: $black;
+        background: $white;
+        span {
+            color: $white;
+        }
+        &:hover {
+            background: $primary-color;
+            color: $white;
+            border: 1px solid $primary-color;
+            span {
+                color: $primary-color;
+            }
+        }
+    }
+    &.offwhite {
+        background: $offwhite;
+        color: $black;
+    }
+}
+
+.overlay {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}

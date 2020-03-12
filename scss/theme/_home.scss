@@ -1,0 +1,720 @@
+//--------- Start Banner Area -------------//
+.home-banner-area {
+    background: $white;
+    @media(max-width: 1024px) {
+        margin-top: 66px;
+    }
+    &.banner-area {
+        .about-content {
+            padding: 150px 0px;
+            text-align: center;
+            background: transparent;
+            width: 100%;
+            left: 0;
+            .box {
+                background: $primary-color2;
+                padding: 10px 25px;
+            }
+            a {
+                color: $white;
+                font-weight: 600;
+                font-size: 14px;
+            }
+            .lnr {
+                margin: 0px 10px;
+                font-weight: 600;
+                position: relative;
+                top: 2px;
+            }
+        }
+    }
+    .header-right {
+        @media(max-width: 576px) {
+            margin-top: 0px;
+        }
+    }
+}
+
+.home-banner-area,
+.condition-area,
+.event-area {
+    .owl-nav {
+        right: 97.35%;
+        position: absolute;
+        bottom: -13px;
+        @include transform(rotate(90deg));
+        @media(max-width: 1024px) {
+            display: none;
+        }
+        .owl-prev {
+            margin-bottom: 34px;
+        }
+        .lnr-arrow-up,
+        .lnr-arrow-down {
+            padding: 22px;
+            @include transition();
+            background: $white;
+            color: $black;
+            &:hover {
+                background: $primary-color;
+                color: #ffffff;
+            }
+        }
+        .lnr-arrow-down {
+            box-shadow: 0px 10px 30px 0 rgba(153, 153, 153, 0.2);
+            color: $primary-color2;
+        }
+    }
+}
+
+@media(max-width:767px) {
+    .fullscreen {
+        height: 100% !important;
+    }
+}
+
+.header-right {
+    position: relative;
+    padding-right: 0px;
+    @media(max-width: 576px) {
+        margin-top: 30px;
+        padding-right: 15px;
+    }
+    img {
+        height: 100%;
+    }
+    .form-wrap {
+        width: 54%;
+        background: rgba(255, 255, 255, 0.30);
+        padding: 40px;
+        position: absolute;
+        top: 50%;
+        left: 100px;
+        @include transform(translateY(-50%));
+        z-index: 2;
+        @media(max-width: 1440px) {
+            width: 74%;
+        }
+        @media(max-width: 1170px) {
+            left: 5%;
+            width: 93%;
+        }
+        .primary-btn {
+            @media(max-width: 991px) {
+                padding: 0 12px;
+                font-size: 13px;
+            }
+            @media(max-width: 767px) {
+                margin-top: 10px;
+            }
+        }
+    }
+    .form-control {
+        font-size: 14px;
+        padding: 0.575rem 0.75rem;
+    }
+}
+
+.donation-input {
+    .form-group {
+        position: relative;
+        margin-bottom: 0;
+        ::-webkit-input-placeholder {
+            /* WebKit, Blink, Edge */
+            color: $black;
+            font-size: 18px;
+            font-weight: 500;
+        }
+        :-moz-placeholder {
+            /* Mozilla Firefox 4 to 18 */
+            color: $black;
+            opacity: 1;
+            font-size: 18px;
+            font-weight: 500;
+        }
+        ::-moz-placeholder {
+            /* Mozilla Firefox 19+ */
+            color: $black;
+            opacity: 1;
+            font-size: 18px;
+            font-weight: 500;
+        }
+        :-ms-input-placeholder {
+            /* Internet Explorer 10-11 */
+            color: $black;
+            font-size: 18px;
+            font-weight: 500;
+        }
+        ::-ms-input-placeholder {
+            /* Microsoft Edge */
+            color: $black;
+            font-size: 18px;
+            font-weight: 500;
+        }
+        ::placeholder {
+            /* Most modern browsers support this now. */
+            color: $black;
+            font-size: 18px;
+            font-weight: 500;
+        }
+        .form-control {
+            height: 50px;
+            line-height: 50px;
+            color: $black;
+            font-size: 18px;
+            font-weight: 400;
+            padding-right: 70px;
+            border-radius: 0px;
+            border: 1px solid transparent;
+            &:focus {
+                box-shadow: none;
+                outline: none;
+                border: 1px solid $primary-color;
+            }
+        }
+        span {
+            color: $black;
+            font-size: 12px;
+            font-weight: 500;
+            position: absolute;
+            top: 13px;
+            right: 20px;
+        }
+    }
+}
+
+.header-left {
+    padding-left: 21%;
+    padding-right: 48px;
+    @media (max-width: 1440px) {
+        padding-left: 11%;
+    }
+    @media (max-width: 1300px) {
+        padding-left: 5%;
+    }
+    @media(max-width: 767px) {
+        margin-bottom: 10px;
+    }
+    h1 {
+        font-size: 60px;
+        line-height: 1;
+        @media(max-width: 991px) {
+            font-size: 35px;
+        }
+    }
+    .vdo-section {
+        img {
+            cursor: pointer;
+        }
+        span {
+            padding-left: 20px;
+            font-size: 14px;
+            font-weight: 500;
+            a {
+                color: $black;
+            }
+        }
+    }
+}
+
+
+.nice-select::after {
+    border-bottom: 1px solid #999;
+    border-right: 1px solid #999;
+    content: '';
+    display: block;
+    height: 8px;
+    margin-top: -6px;
+    pointer-events: none;
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    -webkit-transform-origin: 66% 66%;
+    -ms-transform-origin: 66% 66%;
+    transform-origin: 66% 66%;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+    -webkit-transition: all 0.15s ease-in-out;
+    transition: all 0.15s ease-in-out;
+    width: 8px;
+}
+
+//--------- End Banner Area -------------//
+//--------- Start Causes Area -------------//
+.causes-area {}
+
+.single-cause {
+    border: solid 1px #eeeeee;
+    @include transition();
+    .top {
+        padding: 30px;
+        @media(max-width: 576px) {
+            padding: 15px;
+        }
+    }
+    .thumb {
+        overflow: hidden;
+        margin-bottom: 30px;
+        img {
+            width: 100%;
+        }
+    }
+    h3 {
+        font-size: 21px;
+        line-height: 1.43;
+        @include transition();
+    }
+    .text {
+        text-align: left;
+        margin-top: 15px;
+        margin-bottom: 0;
+    }
+    .middle {
+        padding: 30px;
+        background: $offwhite;
+        margin-top: 30px;
+        border-bottom: 1px solid #eee;
+        border-top: 1px solid #eee;
+        @media(max-width: 576px) {
+            padding: 15px;
+        }
+        h5 {
+            margin-bottom: 10px;
+        }
+        p {
+            font-size: 12px;
+            line-height: 12px;
+            margin-bottom: 0;
+        }
+        .skill_main {
+            .skill_item {
+                margin-bottom: 17px;
+                .progress {
+                    height: 10px;
+                    background: $white;
+                    border-radius: 0;
+                    .progress-bar {
+                        width: 0%;
+                        @include transition(width .6s ease);
+                        height: 10px;
+                        vertical-align: middle;
+                        align-self: center;
+                        &.progress-bar1 {
+                            background: #f9a22b;
+                        }
+                        &.progress-bar2 {
+                            background: $primary-color;
+                        }
+                        &.progress-bar3 {
+                            background: #a978e0;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .bottom {
+        padding: 30px;
+        @media(max-width: 576px) {
+            padding: 15px;
+        }
+        .primary-btn {
+            font-size: 13px;
+            padding: 0 30px;
+            @media(max-width: 576px) {
+                padding: 0 20px;
+            }
+            &.primary-btn1 {
+                background: #f9a22b;
+                &:hover {
+                    background: transparent;
+                    color: $black;
+                }
+            }
+            &.primary-btn3 {
+                background: #a978e0;
+                &:hover {
+                    background: transparent;
+                    color: $black;
+                }
+            }
+        }
+    }
+    @media(max-width:991px) {
+        margin-bottom: 30px;
+    }
+    .c-img {
+        @include transition();
+    }
+    &:hover {
+        cursor: pointer;
+        box-shadow: 0px 20px 50px 0 rgba(153, 153, 153, 0.2);
+        border: 1px solid transparent;
+        h3 {
+            color: $primary-color;
+        }
+        .c-img {
+            cursor: pointer;
+            @include transform(scale(1.25) rotate(-10deg));
+        }
+    }
+}
+
+//--------- End Causes Area -------------//
+//--------- Start ollection Area -------------//
+.collection-area {
+    background: $offwhite;
+    .text {
+        @media(max-width: 767px) {
+            margin-bottom: 30px;
+        }
+        h2 {
+            font-size: 36px;
+            line-height: 1.25;
+            margin-bottom: 35px;
+            @media(max-width: 576px) {
+                font-size: 30px;
+                line-height: 1.15;
+                margin-bottom: 15px;
+            }
+            br {
+                @include media-breakpoint-down (md) {
+                    display: none;
+                }
+            }
+            p {
+                margin-bottom: 0;
+            }
+        }
+    }
+}
+
+.collection-box {
+    background: $white;
+    padding: 20px;
+    margin-bottom: 30px;
+    border: 1px solid transparent;
+    text-align: center;
+    position: relative;
+    @include transition();
+    h3 {
+        margin-top: 5px;
+        margin-bottom: 35px;
+        font-size: 36px;
+        line-height: 38px;
+        &.color1 {
+            color: #f9a22b;
+        }
+        &.color3 {
+            color: $primary-color;
+        }
+        &.color4 {
+            color: #a978e0;
+        }
+    }
+    i {
+        display: block;
+        font-size: 24px;
+        margin-bottom: 30px;
+    }
+    p {
+        margin-bottom: 0;
+    }
+    &:hover {
+        cursor: pointer;
+        border: 1px solid $primary-color2;
+        margin-top: -30px;
+    }
+}
+
+//--------- End ollection Area -------------//
+//--------- Start Conditions Area -------------//
+.condition-area {
+    .owl-carousel {
+        .owl-nav {
+            right: -28px;
+            .lnr-arrow-down {
+                box-shadow: none;
+                color: $black;
+                &:hover {
+                    color: $white;
+                }
+            }
+            .lnr-arrow-up {
+                box-shadow: 0px 10px 30px 0 rgba(153, 153, 153, 0.2);
+                color: $primary-color2;
+                &:hover {
+                    color: $white;
+                }
+            }
+        }
+    }
+}
+
+.condition-right {
+    @media(max-width: 991px) {
+        margin-top: 40px;
+    }
+    h2 {
+        font-size: 36px;
+        line-height: 1.25;
+        margin-bottom: 35px;
+        @media(max-width: 576px) {
+            font-size: 30px;
+            line-height: 1.15;
+            margin-bottom: 20px;
+        }
+    }
+    ul {
+        list-style: none;
+        padding: 0;
+        margin-top: 35px;
+        @media(max-width: 767px) {
+            margin-bottom: 0;
+        }
+    }
+    li {
+        padding-left: 21px;
+    }
+    li:before {
+        content: "\e87a";
+        font-family: 'Linearicons-Free';
+        display: inline-block;
+        margin-left: -22px;
+        width: 28px;
+        font-weight: 600;
+        color: $primary-color2;
+    }
+}
+
+//--------- End Conditions Area -------------//
+//--------- Start Donation area -------------//
+.donation-area {
+    background: url(../img/donation-bg.jpg) center;
+    background-size: cover;
+    .text-wrap {
+        margin-bottom: 250px;
+        @media(max-width: 991px) {
+            margin-bottom: 60px;
+        }
+    }
+    h1 {
+        line-height: 1.25;
+        color: $white;
+        @media(max-width: 576px) {
+            font-size: 30px;
+            line-height: 1.15;
+        }
+    }
+    p {
+        color: $white;
+        margin-bottom: 0;
+    }
+}
+
+.donation-form-area {
+    margin-top: -170px;
+    @media(max-width: 991px) {
+        margin-top: 60px;
+    }
+}
+
+.donation-box {
+    padding: 50px;
+    background: $white;
+    box-shadow: 0px 20px 50px 0 rgba(153, 153, 153, 0.2);
+    @media(max-width: 480px) {
+        padding: 50px 20px;
+    }
+    .donation-input {
+        margin-bottom: 15px;
+        .form-group {
+            .form-control {
+                background: $offwhite;
+                border: solid 1px #dddddd;
+            }
+        }
+    }
+}
+
+.donation-type {
+    margin-bottom: 20px;
+    padding: 20px;
+    border: solid 1px #dddddd;
+    .form-check-label {
+        font-family: $title-font;
+        color: $black;
+        font-size: 14px;
+        font-weight: bold;
+        line-height: 1.51;
+    }
+    p {
+        margin-left: 20px;
+        margin-bottom: 0;
+        margin-top: 2px;
+        font-size: 12px;
+        line-height: 1.5;
+    }
+}
+
+//--------- End Donation Area -------------//
+//--------- Start Client Logo Area -------------//
+.brand-area {
+    .owl-brand {
+        .item {
+            text-align: center;
+            img {
+                width: auto;
+                text-align: center;
+                display: block;
+                margin: auto;
+                line-height: 70px;
+                @include filter(grayscale, 100%);
+                opacity: .3;
+                @include transition;
+                cursor: pointer;
+            }
+            &:hover {
+                img {
+                    opacity: 1;
+                    @include filter(grayscale, 0%);
+                }
+            }
+        }
+    }
+}
+
+//--------- End Client Logo Area -------------//
+//--------- Start Event Area -------------//
+.event-area {
+    h1 {
+        margin-bottom: 20px;
+    }
+    p {
+        margin-bottom: 0;
+    }
+    .owl-nav {
+        right: 95%;
+    }
+}
+
+.single-event {
+    background: $offwhite;
+    padding: 30px 40px;
+    @include transition();
+    margin-top: 45px;
+    margin-bottom: 30px;
+    @media(max-width: 767px) {
+        padding: 20px;
+    }
+    p {
+        font-size: 12px;
+        text-transform: uppercase;
+    }
+    h4 {
+        font-size: 21px;
+        margin-top: 5px;
+    }
+    a {
+        color: $black;
+    }
+    &:hover {
+        background: $white;
+        box-shadow: 0px 20px 50px 0 rgba(153, 153, 153, 0.2);
+        a {
+            color: #a978e0;
+        }
+    }
+}
+
+.event-details-area {
+    .condition-right {
+        li {
+            &:nth-child(1) {
+                &::before {
+                    content: "\e836";
+                }
+            }
+            &:nth-child(2) {
+                &::before {
+                    content: "\e801";
+                }
+            }
+            &:nth-child(3) {
+                &::before {
+                    content: "\e835";
+                }
+            }
+        }
+    }
+}
+
+//--------- End Event Area -------------//
+//----------- Start Generic Page -------------//
+.whole-wrap {
+    background-color: $white;
+}
+
+.generic-banner {
+    background-color: $primary-color;
+    text-align: center;
+    .height {
+        height: 600px;
+        @include media-breakpoint-down (sm) {
+            height: 400px;
+        }
+    }
+    .generic-banner-content {
+        h2 {
+            line-height: 1.2em;
+            margin-bottom: 20px;
+            br {
+                @include media-breakpoint-down (md) {
+                    display: none;
+                }
+            }
+        }
+        p {
+            text-align: center;
+            font-size: 16px;
+            br {
+                @include media-breakpoint-down (md) {
+                    display: none;
+                }
+            }
+        }
+    }
+}
+
+.generic-content {
+    h1 {
+        font-weight: 600;
+    }
+}
+
+.about-generic-area {
+    background: $offwhite;
+    .border-top-generic {}
+    p {
+        margin-bottom: 20px;
+    }
+}
+
+.white-bg {
+    background: $white;
+}
+
+.section-top-border {
+    padding: 70px 0;
+    border-top: 1px dotted #eee;
+}
+
+.switch-wrap {
+    margin-bottom: 10px;
+    p {
+        margin: 0;
+    }
+}
+
+//----------- End Generic Page -------------//

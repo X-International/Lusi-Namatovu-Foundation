@@ -1,0 +1,147 @@
+//--------- Footer Area -------------//
+.footer-area {
+    background-color: #04091e;
+}
+
+h6 {
+    color: #fff;
+    margin-bottom: 25px;
+    font-size: 18px;
+    font-weight: 600;
+    @media(max-width: 991px) {
+        margin-bottom: 15px;
+    }
+}
+
+.copy-right-text {
+    i,
+    a {
+        color: $primary-color;
+    }
+}
+
+.footer-social {
+    a {
+        padding-right: 25px;
+        @include transition();
+        &:hover {
+            i {
+                color: $primary-color2;
+            }
+        }
+    }
+    i {
+        color: #cccccc;
+        @include transition();
+    }
+    @include media-breakpoint-down(md) {
+        text-align: left;
+    }
+}
+
+.single-footer-widget {
+    input {
+        border: none;
+        width: 80% !important;
+        font-weight: 300;
+        background: #14192c;
+        color: #ffffff!important;
+        padding-left: 20px;
+        border-radius: 0;
+        font-size: 14px;
+        padding: 10px 18px;
+        &:focus {
+            background-color: #14192c;
+            box-shadow: none;
+        }
+    }
+    .bb-btn {
+        background: $primary-color2;
+        color: #fff;
+        font-weight: 300;
+        border-radius: 0;
+        z-index: 9999;
+        cursor: pointer;
+    }
+    .info {
+        position: absolute;
+        margin-top: 10%;
+        color: #fff;
+        font-size: 12px;
+        &.valid {
+            color: green;
+        }
+        &.error {
+            color: red;
+        }
+    }
+    .click-btn {
+        background: $primary-color2;
+        color: #fff;
+        border-radius: 0;
+        border-top-left-radius: 0px;
+        border-bottom-left-radius: 0px;
+        padding: 8px 12px;
+        border: 0;
+    }
+    ::-moz-selection {
+        /* Code for Firefox */
+        background-color: #14192c !important;
+        color: #999999;
+    }
+    ::selection {
+        background-color: #14192c !important;
+        color: #999999;
+    }
+    ::-webkit-input-placeholder {
+        /* WebKit, Blink, Edge */
+        color: #999999;
+        font-weight: 300;
+    }
+    :-moz-placeholder {
+        /* Mozilla Firefox 4 to 18 */
+        color: #999999;
+        opacity: 1;
+        font-weight: 300;
+    }
+    ::-moz-placeholder {
+        /* Mozilla Firefox 19+ */
+        color: #999999;
+        opacity: 1;
+        font-weight: 300;
+    }
+    :-ms-input-placeholder {
+        /* Internet Explorer 10-11 */
+        color: #999999;
+        font-weight: 300;
+    }
+    ::-ms-input-placeholder {
+        /* Microsoft Edge */
+        color: #999999;
+        font-weight: 300;
+    }
+    @include media-breakpoint-down(md) {
+        margin-bottom: 30px;
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+}
+
+@media(max-width:800px) {
+    .social-widget {
+        margin-top: 30px;
+    }
+}
+
+.footer-text {
+    padding-top: 20px;
+    margin-bottom: 0;
+    a,
+    i {
+        color: $primary-color2;
+        &:hover {
+            color: $primary-color;
+        }
+    }
+}
