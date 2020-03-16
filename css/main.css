@@ -1581,7 +1581,7 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 28px; }
 
     .header-left > h1:nth-child(1) {
-      margin-top: 60px;
+      margin-top: 0px;
      }
       }
 /*--------------------------------------------------------------
@@ -1788,7 +1788,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   background: #fff; }
   @media (max-width: 1024px) {
     .home-banner-area {
-      margin-top: 66px; } }
+      margin-top: 170px; } }
   .home-banner-area.banner-area .about-content {
     padding: 150px 0px;
     text-align: center;
@@ -1982,7 +1982,13 @@ body.mobile-nav-active #mobile-nav-toggle {
     line-height: 1; }
     @media (max-width: 991px) {
       .header-left h1 {
-        font-size: 35px; } }
+        font-size: 35px; }
+      
+        .home-banner-area {
+          margin-top: 130px;
+         }
+         
+      }
   .header-left .vdo-section img {
     cursor: pointer; }
   .header-left .vdo-section span {
