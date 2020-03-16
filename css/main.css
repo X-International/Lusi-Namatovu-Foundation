@@ -1580,8 +1580,10 @@ h1, h2, h3, h4, h5, h6 {
   #header #logo h1 {
     font-size: 28px; }
 
-  #header #logo img {
-    max-height: 40px; } }
+    .header-left > h1:nth-child(1) {
+      margin-top: 60px;
+     }
+      }
 /*--------------------------------------------------------------
 # Navigation Menu
 --------------------------------------------------------------*/
