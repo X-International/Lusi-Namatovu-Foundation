@@ -604,6 +604,12 @@ td, th {
   background: #f9fafc; }
 
 @media (max-width: 767px) {
+  a.genric-btn:nth-child(2) {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    
+}
+
   .no-flex-xs {
     display: block !important; } }
 
@@ -770,7 +776,7 @@ h1, h2, h3, h4, h5, h6 {
   .genric-btn:focus {
     outline: none; }
   .genric-btn.e-large {
-    padding: 0 40px;
+    padding: 0 20px;
     line-height: 50px; }
   .genric-btn.large {
     line-height: 45px; }
@@ -1683,6 +1689,14 @@ h1, h2, h3, h4, h5, h6 {
 .nav-menu ul ul {
   margin: 0; }
 
+.pt-20 {
+    font-size: 20px;
+    line-height: 30px;
+    font-weight: 100;
+    padding-top: 30px;
+}
+
+
 /* Mobile Nav Toggle */
 #mobile-nav-toggle {
   position: fixed;
@@ -1899,6 +1913,19 @@ body.mobile-nav-active #mobile-nav-toggle {
         padding: 0 12px;
         font-size: 13px; } }
     @media (max-width: 767px) {
+      
+/* Element | file:///C:/Users/STUART%20MUYAMBI/Downloads/Work/Lusi/site/index.html# */
+
+.pt-20 {
+    font-size: 16px;
+}
+
+/* Element | file:///C:/Users/STUART%20MUYAMBI/Downloads/Work/Lusi/site/index.html# */
+
+.header-left > h1:nth-child(1) {
+    font-size: 40px;
+}
+
       .header-right .form-wrap .primary-btn {
         margin-top: 10px; } }
   .header-right .form-control {
