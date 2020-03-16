@@ -154,6 +154,36 @@ td, th {
 .clear::after {
   clear: both; }
 
+  .underline{
+    width: 50px;
+    border: 3px solid #2f2c52;
+    margin-top: 10px;
+    margin-bottom: 10px;
+     
+  }
+
+  .condition-right > h2:nth-child(1) {
+    margin-bottom: 0px;
+   }
+
+.donation-area {
+  padding-top: 0px;
+}
+
+.donation-area {
+  padding-top: 0px;
+}
+
+.donation-area > div:nth-child(1) {
+  margin-left: auto;
+}
+
+.text-center {
+  margin-bottom: 167px;
+}
+
+   
+
 .fz-11 {
   font-size: 11px; }
 
@@ -1490,6 +1520,11 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: 300; }
   .default-select .nice-select::after {
     right: 20px; }
+
+div.container:nth-child(8) {
+ margin-left: auto;
+}
+
 
 .form-select {
   height: 40px;
