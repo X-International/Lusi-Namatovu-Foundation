@@ -1947,6 +1947,15 @@ body.mobile-nav-active #mobile-nav-toggle {
      p.footer-text:nth-child(2) {
       padding-top: 0px;
      }
+
+div.col-sm-3:nth-child(3) {
+  padding-left: 0px;
+}
+
+div.col-sm-3:nth-child(2) {
+  padding-left: 60px;
+}
+
      
      
 @media (max-width: 767px) {
@@ -3498,6 +3507,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 
   .footer-links {
     color: #777777;
+    text-decoration: none;
   }
 
 h6 {
