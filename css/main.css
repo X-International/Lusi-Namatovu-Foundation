@@ -1975,6 +1975,26 @@ div.col-sm-3:nth-child(2) {
   padding-left: 60px;
 }
 
+.mfp-title {
+    padding-right: 0px;
+    margin-bottom: 0px;
+    background-color: #2f2c52;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    height: 57px;
+}
+
+.gallery-item > div{
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.padding-gallery {
+  padding-right: 1rem;
+  padding-right: 1rem;
+}
+
+
      
      
 @media (max-width: 767px) {
