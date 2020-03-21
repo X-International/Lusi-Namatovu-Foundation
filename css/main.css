@@ -1783,7 +1783,12 @@ div.container:nth-child(8) {
     padding-top: 30px;
 }
 
-
+div.col-sm-6:nth-child(1) > p:nth-child(2) {
+  color: #fff;
+  font-size: 16px;
+  margin-right: 0px;
+ }
+ 
 /* Mobile Nav Toggle */
 #mobile-nav-toggle {
   position: fixed;
@@ -3561,16 +3566,18 @@ div.col-sm-3:nth-child(2) {
 
   .feature{
     background: url(../img/Lusi-Namatovu-Foundation-feature.jpg);
-    height: 35rem;
+    height: auto;
     background-size: cover;
     background-position: center;
+    padding-top: 30px;
+padding-bottom: 30px;
   }
 
   .feature-heading{
     font-weight: 900;
-    font-size: 3rem;
+    font-size: 2rem;
     line-height: 1.3em;
-    padding-top: 90px;
+    padding-top: 63px;
     color: #fff;
   }
 
