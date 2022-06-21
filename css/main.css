@@ -2118,7 +2118,7 @@ div.col-sm-3:nth-child(2) {
     right: 20px; }
 
 .header-left {
-  padding-left: 21%;
+  padding-left: 5%;
   padding-right: 48px; }
   @media (max-width: 1440px) {
     .header-left {
