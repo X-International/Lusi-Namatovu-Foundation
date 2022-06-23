@@ -691,8 +691,8 @@ div.col-sm-6:nth-child(1) > p:nth-child(2) {
 
 .section-title {
   padding-bottom: 95px;
-  padding-right: 10%;
-  padding-left: 10%;
+  padding-right: 15%;
+  padding-left: 15%;
   text-align: center; }
   @media (max-width: 991px) {
     .section-title {
