@@ -45,7 +45,7 @@
 body {
   color: #777777;
   font-family: "Roboto", sans-serif;
-  font-size: 16px;
+  font-size: 1.063rem;
   font-weight: 500;
   line-height: 1.625em;
   position: relative; }
@@ -702,7 +702,7 @@ div.col-sm-6:nth-child(1) > p:nth-child(2) {
     margin-bottom: 20px;
     color: #2f2c52;  }
   .section-title p {
-    font-size: 16px;
+    font-size: 1.1rem;
     margin-bottom: 0;
     }
     @media (max-width: 991.98px) {
