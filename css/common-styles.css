@@ -53,6 +53,7 @@ Table of Contents
   --hq-grey-color: #777777; /* Medium Gray */
   --hq-grey-bg-color: #f7f7f7; /* Light Gray */
   --hq-white-color: #ffffff; /* Keep White */
+  --hq-grey-color: #666; /* Medium Gray */
   --hq-white-bg-color: #ffffff; /* Keep White */
   --hq-light-grey-color: #e1e2e2; /* Keep Light Gray */
   --hq-light-grey-bd-color: #e1e2e2; /* Keep Light Gray */
@@ -66,11 +67,11 @@ Table of Contents
     /* Dark Gray */ rgba(51, 51, 51, 0) 78%,
     /* Dark Gray */ #333333 100% /* Dark Gray */
   );
-  --hq-hero-gradient: linear-gradient(
+  /* --hq-hero-gradient: linear-gradient(
     /* Adjust if needed */ 90deg,
-    rgba(51, 51, 51, 1) 0%,
-    /* Dark Gray */ rgba(51, 51, 51, 0.66) 53%,
-    /* Dark Gray */ rgba(51, 51, 51, 1) 100% /* Dark Gray */
+    rgb(0, 0, 0) 0%,
+    /* Dark Gray */ rgba(0, 0, 0, 0.8) 53%,
+    /* Dark Gray */ rgba(0, 0, 0, 0.95) 100% /* Dark Gray */
   );
   --hq-hero-2-gradient: linear-gradient(
     /* Adjust if needed */ 90deg,
@@ -78,7 +79,7 @@ Table of Contents
     /* Dark Gray */ rgba(51, 51, 51, 0.9) 48%,
     /* Dark Gray */ rgba(51, 51, 51, 0) 74%,
     /* Dark Gray */ rgba(51, 51, 51, 1) 100% /* Dark Gray */
-  );
+  ); */
 }
 
 /* ==== 3. Smooth Scroll ==== */
@@ -652,7 +653,7 @@ button:focus {
   font-size: 14px;
   line-height: 1;
   border-radius: 5px;
-  color: var(--hq-black-color);
+  color: var(--hq-white-color);
   font-weight: 700;
   letter-spacing: 0;
   text-transform: capitalize;
@@ -991,47 +992,7 @@ input[type="checkbox"]:checked:before {
   }
 }
 
-/* ==== 18. Custom Cursor ==== */
-.hq-cursor {
-  display: none;
-}
 
-@media (min-width: 992px) {
-  .hq-cursor {
-    display: block;
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    position: fixed;
-    left: 0;
-    top: 0;
-    user-select: none;
-    pointer-events: none;
-    transform: translate(50%, 50%);
-    visibility: hidden;
-    z-index: 10000;
-    -webkit-transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
-    transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
-  }
-
-  .hq-cursor:before {
-    background-color: var(--hq-secondary-dark-bg-color);
-    content: "";
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    position: absolute;
-    left: 0;
-    top: 0;
-    transition: all 0.3s ease;
-  }
-
-  .hq-cursor.cursor-grow:before {
-    opacity: 0.7;
-    transform: scale(2);
-    transition: all 0.3s ease;
-  }
-}
 
 /* ==== 19. Carousel Navigation === */
 .top-right-nav {
