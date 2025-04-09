@@ -42,42 +42,42 @@ Table of Contents
 :root {
   --hq-primary-font: "Mada", sans-serif;
   --hq-body-font: "Mada", sans-serif;
-  --hq-primary-color: #fec107;
-  --hq-secondary-color: #00715d;
-  --hq-primary-bg-color: #fec107;
-  --hq-secondary-bg-color: #00715d;
-  --hq-secondary-dark-bg-color: #122f2a;
-  --hq-heading-color: #234443;
-  --hq-black-color: #121212;
-  --hq-black-bg-color: #121212;
-  --hq-grey-color: #828989;
-  --hq-grey-bg-color: #fbf9f7;
-  --hq-white-color: #ffffff;
-  --hq-white-bg-color: #ffffff;
-  --hq-light-grey-color: #e1e2e2;
-  --hq-light-grey-bd-color: #e1e2e2;
-  --hq-bright-grey-bd-color: #eee;
-  --hq-box-shadow: 0 7px 10px rgba(196, 105, 107, 6%);
-  --hq-transition: all 0.3s cubic-bezier(0.5, 0.05, 1, 1);
+  --hq-primary-color: #0e98f1; /* Primary Blue */
+  --hq-secondary-color: #19647e; /* Secondary Blue */
+  --hq-primary-bg-color: #0e98f1; /* Primary Blue */
+  --hq-secondary-bg-color: #59a14f; /* Muted Green */
+  --hq-secondary-dark-bg-color: #333333; /* Dark Gray */
+  --hq-heading-color: #333333; /* Dark Gray */
+  --hq-black-color: #121212; /* Keep Black */
+  --hq-black-bg-color: #121212; /* Keep Black */
+  --hq-grey-color: #777777; /* Medium Gray */
+  --hq-grey-bg-color: #f7f7f7; /* Light Gray */
+  --hq-white-color: #ffffff; /* Keep White */
+  --hq-white-bg-color: #ffffff; /* Keep White */
+  --hq-light-grey-color: #e1e2e2; /* Keep Light Gray */
+  --hq-light-grey-bd-color: #e1e2e2; /* Keep Light Gray */
+  --hq-bright-grey-bd-color: #eee; /* Keep Bright Gray */
+  --hq-box-shadow: 0 7px 10px rgba(196, 105, 107, 6%); /* Keep or adjust slightly */
+  --hq-transition: all 0.3s cubic-bezier(0.5, 0.05, 1, 1); /* Keep */
   --hq-slider-gradient: linear-gradient(
-    90deg,
-    rgba(8, 31, 27, 1) 0%,
-    rgba(8, 31, 27, 0.83) 51%,
-    rgba(8, 31, 27, 0) 78%,
-    var(--hq-secondary-dark-bg-color) 100%
+    /* Adjust if needed */ 90deg,
+    rgba(51, 51, 51, 1) 0%,
+    /* Dark Gray */ rgba(51, 51, 51, 0.83) 51%,
+    /* Dark Gray */ rgba(51, 51, 51, 0) 78%,
+    /* Dark Gray */ #333333 100% /* Dark Gray */
   );
   --hq-hero-gradient: linear-gradient(
-    90deg,
-    rgba(10, 32, 28, 1) 0%,
-    rgba(10, 32, 28, 0.66) 53%,
-    rgba(10, 32, 28, 1) 100%
+    /* Adjust if needed */ 90deg,
+    rgba(51, 51, 51, 1) 0%,
+    /* Dark Gray */ rgba(51, 51, 51, 0.66) 53%,
+    /* Dark Gray */ rgba(51, 51, 51, 1) 100% /* Dark Gray */
   );
   --hq-hero-2-gradient: linear-gradient(
-    90deg,
-    rgba(11, 33, 29, 1) 0%,
-    rgba(11, 33, 29, 0.9) 48%,
-    rgba(11, 33, 29, 0) 74%,
-    rgba(11, 33, 29, 1) 100%
+    /* Adjust if needed */ 90deg,
+    rgba(51, 51, 51, 1) 0%,
+    /* Dark Gray */ rgba(51, 51, 51, 0.9) 48%,
+    /* Dark Gray */ rgba(51, 51, 51, 0) 74%,
+    /* Dark Gray */ rgba(51, 51, 51, 1) 100% /* Dark Gray */
   );
 }
 
