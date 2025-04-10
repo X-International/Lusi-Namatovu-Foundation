@@ -412,3 +412,233 @@
     opacity: 1;
   }
 }
+
+/* Modern Slider Styles */
+.modern-slider {
+  position: relative;
+  overflow: hidden;
+}
+
+.modern-slider .slider-img {
+  position: relative;
+  height: 85vh;
+  min-height: 580px;
+}
+
+.modern-slider .slider-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.modern-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, 
+    rgba(0, 0, 0, 0.85) 0%, 
+    rgba(0, 0, 0, 0.65) 50%, 
+    rgba(0, 0, 0, 0.4) 100%);
+  z-index: 2;
+}
+
+.modern-slider .slider-content-wrap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+}
+
+.modern-content {
+  max-width: 650px;
+  padding: 30px 0;
+}
+
+.modern-content .slider-badge {
+  display: inline-block;
+  background-color: rgba(14, 152, 241, 0.2);
+  border-radius: 30px;
+  padding: 10px 20px;
+  margin-bottom: 20px;
+}
+
+.modern-content .slider-badge span {
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.modern-content .slider-caption {
+  margin-bottom: 15px;
+}
+
+.modern-content .slider-caption h1 {
+  color: #ffffff;
+  font-size: 64px;
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 0;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.modern-content .slider-caption .accent-text {
+  color: var(--hq-primary-color);
+}
+
+.modern-content .slider-description p {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 18px;
+  line-height: 1.6;
+  margin-bottom: 30px;
+  max-width: 90%;
+}
+
+.modern-content .slider-actions {
+  display: flex;
+  gap: 20px;
+  margin-top: 10px;
+}
+
+.modern-btn {
+  background-color: var(--hq-primary-bg-color);
+  color: #fff;
+  border-radius: 30px;
+  padding: 16px 28px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border: none;
+}
+
+.modern-outline-btn {
+  background-color: transparent;
+  color: #fff;
+  border: 2px solid var(--hq-primary-color);
+  border-radius: 30px;
+  padding: 14px 26px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.modern-outline-btn:hover {
+  background-color: var(--hq-primary-color);
+  color: #fff;
+}
+
+/* Modern Navigation - Repositioned to stacked left alignment */
+.modern-nav {
+  position: absolute;
+  left: 30px;
+  bottom: 30px;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.modern-nav .slider-control {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #fff;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.modern-nav .slider-control:hover {
+  background-color: var(--hq-primary-color);
+  border-color: var(--hq-primary-color);
+  transform: translateX(3px);
+}
+
+/* Reposition pagination to the right side now that nav is on left */
+.modern-pagination {
+  position: absolute;
+  bottom: 30px;
+  right: 30px;
+  left: auto;
+  transform: none;
+  z-index: 10;
+}
+
+/* Responsive adjustments */
+@media (max-width: 767px) {
+  .modern-slider .slider-img {
+    height: 60vh;
+  }
+  
+  .modern-content .slider-caption h1 {
+    font-size: 36px;
+  }
+  
+  .modern-content .slider-description p {
+    font-size: 16px;
+  }
+  
+  .modern-content .slider-actions {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .modern-btn, .modern-outline-btn {
+    padding: 12px 20px;
+    font-size: 14px;
+  }
+  
+  .modern-nav {
+    left: 15px;
+    bottom: 15px;
+    gap: 10px;
+  }
+  
+  .modern-nav .slider-control {
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+  }
+  
+  .modern-pagination {
+    right: 15px;
+    bottom: 15px;
+  }
+}
+
+/* Split Slide Image Overlay */
+.split-slide-image .image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, 
+    rgba(0, 0, 0, 0.3) 0%, 
+    rgba(0, 0, 0, 0.1) 30%, 
+    rgba(0, 0, 0, 0) 100%);
+  z-index: 2;
+}
+
+/* Responsive styles for split slider */
+@media (max-width: 992px) {
+  .split-slide-image .image-overlay {
+    background: linear-gradient(0deg, 
+      rgba(0, 0, 0, 0.3) 0%, 
+      rgba(0, 0, 0, 0.1) 50%, 
+      rgba(0, 0, 0, 0) 100%);
+  }
+}
