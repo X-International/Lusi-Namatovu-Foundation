@@ -353,7 +353,7 @@ Table of Contents
 
 .header-right button:hover {
   background-color: var(--hq-primary-bg-color);
-  color: var(--hq-black-color);
+  color: var(--hq-white-color);
 }
 
 .header-sidemenu-btn {
@@ -556,7 +556,7 @@ body.open-popup-search {
 
 #offcanvas-sidebar {
   background-color: var(--hq-white-bg-color);
-  padding: 100px 40px;
+  padding: 40px 40px 100px 40px;
   position: fixed;
   right: -100%;
   top: 0;
