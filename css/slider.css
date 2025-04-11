@@ -142,6 +142,61 @@
   margin: 0 auto;
 }
 
+/* Highlight Class for Slider Text */
+.highlight {
+  position: relative;
+  color: #0e98f1;
+  font-weight: 700;
+  display: inline-block;
+  padding: 0 5px;
+  z-index: 1;
+}
+
+.highlight::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 40%;
+  width: 100%;
+  background: rgba(14, 152, 241, 0.15);
+  z-index: -1;
+  transform: skewX(-12deg);
+  transition: height 0.3s ease;
+}
+
+.swiper-slide-active .highlight::before {
+  animation: highlightAnimate 1s ease-in-out 0.7s forwards;
+}
+
+@keyframes highlightAnimate {
+  0% {
+    height: 0;
+    opacity: 0;
+  }
+  100% {
+    height: 40%;
+    opacity: 1;
+  }
+}
+
+@media (min-width: 768px) {
+  .highlight::before {
+    height: 30%;
+  }
+  
+  @keyframes highlightAnimate {
+    0% {
+      height: 0;
+      opacity: 0;
+    }
+    100% {
+      height: 30%;
+      opacity: 1;
+    }
+  }
+}
+
 /* Button Styles - Mobile First */
 .slide-actions {
   display: flex;
