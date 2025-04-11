@@ -140,7 +140,7 @@ Table of Contents
 
 .site-logo img {
   max-width: 150px;
-  height: auto;
+  height: 60px;
   transition: all 0.3s ease;
 }
 
@@ -274,7 +274,7 @@ body.open-offcanvas-sidemenu #offcanvas-sidebar {
 }
 
 .offcanvas-about a img {
-  max-width: 150px;
+  max-width: 116px;
   margin-bottom: 20px;
 }
 
@@ -412,7 +412,7 @@ body.open-offcanvas-sidemenu #offcanvas-sidebar {
   }
   
   .site-logo img {
-    max-width: 170px;
+    max-width: 75px;
   }
   
   .header-btn {
@@ -443,6 +443,7 @@ body.open-offcanvas-sidemenu #offcanvas-sidebar {
     padding: 0;
     list-style: none;
     display: flex;
+    justify-content: center;
   }
   
   .navigation-menu ul li {
@@ -462,7 +463,7 @@ body.open-offcanvas-sidemenu #offcanvas-sidebar {
   }
   
   .header-wrapper.sticky-header .navigation-menu ul li a {
-    color: var(--hq-white-color);
+    color: var(--hq-heading-color);
   }
   
   .header-wrapper.sticky-header.is-sticky .navigation-menu ul li a {
@@ -524,7 +525,7 @@ body.open-offcanvas-sidemenu #offcanvas-sidebar {
     display: block;
     color: var(--hq-heading-color);
     font-weight: 400;
-    font-size: 14px;
+    font-size: 15px;
     border-left: 2px solid transparent;
   }
   
