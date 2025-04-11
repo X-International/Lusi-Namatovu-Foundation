@@ -241,6 +241,13 @@
   background-color: transparent;
   color: #333;
   border: 2px solid #0e98f1;
+  transition: all 0.3s ease;
+}
+
+.btn-outline:hover {
+  background-color: #0e98f1;
+  color: white;
+  border-color: #0e98f1;
 }
 
 /* Slider Controls - Mobile First */
