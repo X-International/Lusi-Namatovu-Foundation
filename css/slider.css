@@ -315,6 +315,26 @@
   display: none;
 }
 
+/* Add styles for pause/play button */
+.pause-play-button {
+    transition: all 0.3s ease;
+}
+
+.pause-play-button:hover {
+    transform: scale(1.1);
+}
+
+.pause-play-button:focus {
+    outline: 2px solid rgba(255, 255, 255, 0.5);
+    outline-offset: 2px;
+}
+
+.pause-icon, .play-icon {
+    width: 24px;
+    height: 24px;
+    transition: opacity 0.3s ease;
+}
+
 /* Tablet Styles (576px and up) */
 @media (min-width: 576px) {
   .hero-slider {

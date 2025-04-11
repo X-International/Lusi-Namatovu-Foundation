@@ -24,6 +24,16 @@
                 nextEl: '.next-slide',
                 prevEl: '.prev-slide'
             },
+            keyboard: {
+                enabled: true,
+                onlyInViewport: true
+            },
+            a11y: {
+                prevSlideMessage: 'Previous slide',
+                nextSlideMessage: 'Next slide',
+                firstSlideMessage: 'This is the first slide',
+                lastSlideMessage: 'This is the last slide'
+            },
             on: {
                 init: function() {
                     startSlideAnimations(this);
@@ -64,6 +74,58 @@
                 });
             });
         }
+        
+        // Pause/Play Button Functionality
+        const pausePlayButton = $('.pause-play-button');
+        const pauseIcon = $('.pause-icon');
+        const playIcon = $('.play-icon');
+        
+        pausePlayButton.on('click', function() {
+            if (heroSlider.autoplay.running) {
+                // Pause the slider
+                heroSlider.autoplay.stop();
+                pauseIcon.hide();
+                playIcon.show();
+                $(this).attr('aria-label', 'Play slideshow');
+            } else {
+                // Resume the slider
+                heroSlider.autoplay.start();
+                playIcon.hide();
+                pauseIcon.show();
+                $(this).attr('aria-label', 'Pause slideshow');
+            }
+        });
+        
+        // Enhanced keyboard navigation
+        $(document).on('keydown', function(e) {
+            if (!$('.hero-slider').is(':visible')) return;
+            
+            // Ensure slider is in viewport for better user experience
+            const sliderElement = $('.hero-slider')[0];
+            const rect = sliderElement.getBoundingClientRect();
+            const isInViewport = (
+                rect.top >= 0 &&
+                rect.left >= 0 &&
+                rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+            );
+            
+            if (!isInViewport) return;
+            
+            // Handle keyboard navigation
+            switch(e.keyCode) {
+                case 37: // Left arrow key
+                    heroSlider.slidePrev();
+                    break;
+                case 39: // Right arrow key
+                    heroSlider.slideNext();
+                    break;
+                case 32: // Space bar for pause/play
+                    e.preventDefault();
+                    pausePlayButton.click();
+                    break;
+            }
+        });
         
         // Scroll Indicator Functionality
         $('.slider-scroll-indicator').on('click', function() {

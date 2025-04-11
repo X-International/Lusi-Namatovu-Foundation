@@ -266,12 +266,20 @@
             <div class="slider-controls">
                 <div class="slider-pagination"></div>
                 <div class="slider-navigation">
-                    <button class="nav-button prev-slide">
+                    <button class="nav-button prev-slide" aria-label="Previous slide">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
                             <path d="M7.828 11H20v2H7.828l5.364 5.364-1.414 1.414L4 12l7.778-7.778 1.414 1.414z"/>
                         </svg>
                     </button>
-                    <button class="nav-button next-slide">
+                    <button class="nav-button pause-play-button" aria-label="Pause slideshow">
+                        <svg class="pause-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                            <path d="M6 5h4v14H6V5zm8 0h4v14h-4V5z"/>
+                        </svg>
+                        <svg class="play-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" style="display: none;">
+                            <path d="M8 5v14l11-7z"/>
+                        </svg>
+                    </button>
+                    <button class="nav-button next-slide" aria-label="Next slide">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
                             <path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"/>
                         </svg>
