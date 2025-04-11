@@ -37,30 +37,30 @@
     <![endif]-->
 
     <!-- Header begin  -->
-    <header class="header-wrapper">
-        <nav class="main-header">
+    <header class="header-wrapper sticky-header">
+        <div class="main-header">
             <div class="container">
                 <div class="main-header-inner">
                     <div class="site-logo">
-                        <a href="index.html"><img src="images/lnf/logo/Lusi-Namatovu-Foundation_logo.png" alt="Lusi-Namatovu-Foundation" height="107px"></a>
+                        <a href="index.html"><img src="images/lnf/logo/Lusi-Namatovu-Foundation_logo.png" alt="Lusi-Namatovu-Foundation"></a>
                     </div>
                     <div class="navigation-menu">
-                        <ul class="menu-items">
+                        <ul>
                             <li><a href="index.html" class="active">Home</a></li>
-                            <li><a href="#">About Us</a>
-                                <ul>
+                            <li class="menu-item-has-children"><a href="#">About Us</a>
+                                <ul class="sub-menu">
                                     <li><a href="#">Our History</a></li>
                                     <li><a href="#">Mission & Vision</a></li>
                                 </ul>
                             </li>
-                            <li><a href="#">Our Work</a>
-                                <ul>
+                            <li class="menu-item-has-children"><a href="#">Our Work</a>
+                                <ul class="sub-menu">
                                     <li><a href="#">Elderly Support Programs</a></li>
                                     <li><a href="#">Disability Support Programs</a></li>
                                 </ul>
                             </li>
-                            <li><a href="#">Get Involved</a>
-                                <ul>
+                            <li class="menu-item-has-children"><a href="#">Get Involved</a>
+                                <ul class="sub-menu">
                                     <li><a href="#">Donate</a></li>
                                     <li><a href="#">Volunteer</a></li>
                                     <li><a href="#">Fundraise</a></li>
@@ -72,45 +72,59 @@
                         </ul>
                     </div>
                     <div class="header-right">
-                        <button class="header-sidemenu-btn"><svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 21 21"><line x1="19" y1="3" x2="2" y2="3"></line><line x1="19" y1="8" x2="2" y2="8"></line><line x1="19" y1="13" x2="2" y2="13"></line><line x1="19" y1="18" x2="2" y2="18"></line></svg></button>
-                        <a href="#" class="header-btn hq-btn hq-btn-effect"><span>Donate Now <i class="fa-light fa-arrow-up-right"></i></span></a>
+                        <button class="mobile-menu-toggle">
+                            <span class="menu-bar"></span>
+                            <span class="menu-bar"></span>
+                            <span class="menu-bar"></span>
+                        </button>
+                        <a href="donation.html" class="header-btn hq-btn hq-btn-effect"><span>Donate Now</span></a>
                     </div>
                 </div>
             </div>
-        </nav>
+        </div>
     </header><!-- /.header-wrapper -->
 
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay"></div>
+
+    <!-- Offcanvas Sidebar -->
     <div id="offcanvas-sidebar">
-        <button id="hide-offcanvas-sidemenu"><svg xmlns="http://www.w3.org/2000/svg" width="11.367" height="11.348" viewBox="0 0 12 12" xml:space="preserve"><path d="M11.036 9.668a.87.87 0 0 1 0 1.367.933.933 0 0 1-.664.313.971.971 0 0 1-.7-.312L5.684 7.09 1.7 11.035a.971.971 0 0 1-.7.313.933.933 0 0 1-.664-.312.87.87 0 0 1 0-1.367l3.942-3.985L.332 1.7a.87.87 0 0 1 0-1.367.87.87 0 0 1 1.367 0l3.985 3.945L9.668.333a.87.87 0 0 1 1.367 0 .87.87 0 0 1 0 1.367L7.09 5.684Z"></path></svg></button>
+        <button id="hide-offcanvas-sidemenu">
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12">
+                <path d="M11.036 9.668a.87.87 0 0 1 0 1.367.933.933 0 0 1-.664.313.971.971 0 0 1-.7-.312L5.684 7.09 1.7 11.035a.971.971 0 0 1-.7.313.933.933 0 0 1-.664-.312.87.87 0 0 1 0-1.367l3.942-3.985L.332 1.7a.87.87 0 0 1 0-1.367.87.87 0 0 1 1.367 0l3.985 3.945L9.668.333a.87.87 0 0 1 1.367 0 .87.87 0 0 1 0 1.367L7.09 5.684Z"></path>
+            </svg>
+        </button>
         <div data-lenis-prevent class="offcanvas-sidebar-inner">
             <div class="offcanvas-about">
-                <a href="index.html"><img src="images/lnf/logo/Lusi-Namatovu-Foundation_logo.png" alt="Lusi-Namatovu-Foundation" height="107px"></a>
-                <p>The Lusi Namatovu Foundation provides care, support, and opportunities for elderly individuals and people with disabilities in Rakai District, Uganda. Donate, volunteer and learn more.</p>
-            </div><!-- /.offcanvas-about -->
+                <a href="index.html"><img src="images/lnf/logo/Lusi-Namatovu-Foundation_logo.png" alt="Lusi-Namatovu-Foundation"></a>
+                <p>The Lusi Namatovu Foundation provides care, support, and opportunities for elderly individuals and people with disabilities in Rakai District, Uganda.</p>
+            </div>
+            
             <div class="mobile-menu-wrap"></div>
+            
             <ul class="offcanvas-contact">
                 <li>
                     <i class="fa-regular fa-phone-volume"></i>
                     <p><span>Call for Support:</span> <a href="tel:+256705864322">+256 705 864322</a> <br> <a href="tel:+256758055500">+256 758 055500</a></p>
                 </li>
-                <li style="--hq-primary-color: #00715D">
+                <li>
                     <i class="fa-regular fa-location-dot"></i>
                     <p><span>Our Location:</span> Rakai District, Uganda <br>P.O. Box 185 Kyotera</p>
                 </li>
-                <li style="--hq-primary-color: #FE744F">
+                <li>
                     <i class="fa-regular fa-envelope"></i>
                     <p><span>Email Now:</span> <a href="mailto:lusinamatovufoundation185@gmail.com">lusinamatovufoundation185@gmail.com</a></p>
                 </li>
-            </ul><!-- /.offcanvas-contact -->
+            </ul>
+            
             <div class="offcanvas-socials">
                 <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
                 <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
                 <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
                 <a href="#"><i class="fa-brands fa-tiktok"></i></a>
-            </div><!-- /.offcanvas-socials -->
+            </div>
         </div>
     </div><!-- /#offcanvas-sidebar -->
-    <div id="offcanvas-sidebar-overlay"></div>
 
     <div class="hero-slider">
         <div class="slider-container">
@@ -450,7 +464,7 @@
                             <div class="donation-status">
                                 <div class="donation-progress-bar">
                                     <div class="hq-progress" data-percent="85"><div class="hq-progress-line"></div></div>
-                                    <div class="hq-progress-text">0%</div>
+                                    <div class="hq-progress-text">0%</</div>
                                 </div>
                                 <ul>
                                     <li>
