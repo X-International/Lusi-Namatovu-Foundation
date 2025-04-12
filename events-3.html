@@ -22,10 +22,14 @@
     <link rel="stylesheet" href="lib/bootstrap/bootstrap.min.css">
     <link rel="stylesheet" href="lib/venobox/venobox.min.css">
     <link rel="stylesheet" href="lib/odometer/odometer.min.css">
+    <link rel="stylesheet" href="lib/swiper/css/swiper.min.css">
     <link rel="stylesheet" href="lib/slick/slick.css">
-    <link rel="stylesheet" href="lib/odometer/odometer.min.css">
-    <link rel="stylesheet" href="css/common-styles.css">
+    <link rel="stylesheet" href="lib/odometer/odometer.min.css">    <link rel="stylesheet" href="css/common-styles.css">
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/slider.css">
+    <link rel="stylesheet" href="css/mobile-menu.css">
+    <link rel="stylesheet" href="css/modern-footer.css">
+    <link rel="stylesheet" href="css/modern-footer.css">
 
 </head>
 
@@ -35,30 +39,30 @@
     <![endif]-->
 
     <!-- Header begin  -->
-    <header class="header-wrapper">
-        <nav class="main-header">
+    <header class="header-wrapper sticky-header">
+        <div class="main-header">
             <div class="container">
                 <div class="main-header-inner">
                     <div class="site-logo">
-                        <a href="index.html"><img src="images/lnf/logo/Lusi-Namatovu-Foundation_logo.png" alt="Lusi-Namatovu-Foundation" height="107px"></a>
+                        <a href="index.html"><img src="images/lnf/logo/Lusi-Namatovu-Foundation_logo_transparent.png" alt="Lusi Namatovu Foundation Logo"></a>
                     </div>
                     <div class="navigation-menu">
-                        <ul class="menu-items">
+                        <ul>
                             <li><a href="index.html" class="active">Home</a></li>
-                            <li><a href="#">About Us</a>
-                                <ul>
+                            <li class="menu-item-has-children"><a href="#">About Us</a>
+                                <ul class="sub-menu">
                                     <li><a href="#">Our History</a></li>
                                     <li><a href="#">Mission & Vision</a></li>
                                 </ul>
                             </li>
-                            <li><a href="#">Our Work</a>
-                                <ul>
+                            <li class="menu-item-has-children"><a href="#">Our Work</a>
+                                <ul class="sub-menu">
                                     <li><a href="#">Elderly Support Programs</a></li>
                                     <li><a href="#">Disability Support Programs</a></li>
                                 </ul>
                             </li>
-                            <li><a href="#">Get Involved</a>
-                                <ul>
+                            <li class="menu-item-has-children"><a href="#">Get Involved</a>
+                                <ul class="sub-menu">
                                     <li><a href="#">Donate</a></li>
                                     <li><a href="#">Volunteer</a></li>
                                     <li><a href="#">Fundraise</a></li>
@@ -70,45 +74,88 @@
                         </ul>
                     </div>
                     <div class="header-right">
-                        <button class="header-sidemenu-btn"><svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 21 21"><line x1="19" y1="3" x2="2" y2="3"></line><line x1="19" y1="8" x2="2" y2="8"></line><line x1="19" y1="13" x2="2" y2="13"></line><line x1="19" y1="18" x2="2" y2="18"></line></svg></button>
-                        <a href="#" class="header-btn hq-btn hq-btn-effect"><span>Donate Now <i class="fa-light fa-arrow-up-right"></i></span></a>
+                        <button class="mobile-menu-toggle">
+                            <span class="menu-bar"></span>
+                            <span class="menu-bar"></span>
+                            <span class="menu-bar"></span>
+                        </button>
+                        <a href="donation.html" class="header-btn hq-btn hq-btn-effect"><span>Donate Now</span></a>
                     </div>
                 </div>
             </div>
-        </nav>
+        </div>
     </header><!-- /.header-wrapper -->
 
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay"></div>
+
+    <!-- Offcanvas Sidebar -->
     <div id="offcanvas-sidebar">
-        <button id="hide-offcanvas-sidemenu"><svg xmlns="http://www.w3.org/2000/svg" width="11.367" height="11.348" viewBox="0 0 12 12" xml:space="preserve"><path d="M11.036 9.668a.87.87 0 0 1 0 1.367.933.933 0 0 1-.664.313.971.971 0 0 1-.7-.312L5.684 7.09 1.7 11.035a.971.971 0 0 1-.7.313.933.933 0 0 1-.664-.312.87.87 0 0 1 0-1.367l3.942-3.985L.332 1.7a.87.87 0 0 1 0-1.367.87.87 0 0 1 1.367 0l3.985 3.945L9.668.333a.87.87 0 0 1 1.367 0 .87.87 0 0 1 0 1.367L7.09 5.684Z"></path></svg></button>
+        <button id="hide-offcanvas-sidemenu">
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12">
+                <path d="M11.036 9.668a.87.87 0 0 1 0 1.367.933.933 0 0 1-.664.313.971.971 0 0 1-.7-.312L5.684 7.09 1.7 11.035a.971.971 0 0 1-.7.313.933.933 0 0 1-.664-.312.87.87 0 0 1 0-1.367l3.942-3.985L.332 1.7a.87.87 0 0 1 0-1.367.87.87 0 0 1 1.367 0l3.985 3.945L9.668.333a.87.87 0 0 1 1.367 0 .87.87 0 0 1 0 1.367L7.09 5.684Z"></path>
+            </svg>
+        </button>
         <div data-lenis-prevent class="offcanvas-sidebar-inner">
             <div class="offcanvas-about">
-                <a href="index.html"><img src="images/lnf/logo/Lusi-Namatovu-Foundation_logo.png" alt="Lusi-Namatovu-Foundation" height="107px"></a>
-                <p>The Lusi Namatovu Foundation provides care, support, and opportunities for elderly individuals and people with disabilities in Rakai District, Uganda. Donate, volunteer and learn more.</p>
-            </div><!-- /.offcanvas-about -->
-            <div class="mobile-menu-wrap"></div>
+                <a href="index.html"><img src="images/lnf/logo/Lusi-Namatovu-Foundation_logo.png" alt="Lusi-Namatovu-Foundation"></a>
+                <p>The Lusi Namatovu Foundation provides care, support, and opportunities for elderly individuals and people with disabilities in Rakai District, Uganda.</p>
+            </div>
+            
+            <div class="mobile-menu-wrap">
+                <ul class="mobile-nav">
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li class="menu-item-has-children">
+                        <a href="#">About Us</a>
+                        <ul class="sub-menu">
+                            <li><a href="#">Our History</a></li>
+                            <li><a href="#">Mission & Vision</a></li>
+                        </ul>
+                    </li>
+                    <li class="menu-item-has-children">
+                        <a href="#">Our Work</a>
+                        <ul class="sub-menu">
+                            <li><a href="#">Elderly Support Programs</a></li>
+                            <li><a href="#">Disability Support Programs</a></li>
+                        </ul>
+                    </li>
+                    <li class="menu-item-has-children">
+                        <a href="#">Get Involved</a>
+                        <ul class="sub-menu">
+                            <li><a href="#">Donate</a></li>
+                            <li><a href="#">Volunteer</a></li>
+                            <li><a href="#">Fundraise</a></li>
+                            <li><a href="#">Partner With Us</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Gallery</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div>
+            
             <ul class="offcanvas-contact">
                 <li>
                     <i class="fa-regular fa-phone-volume"></i>
                     <p><span>Call for Support:</span> <a href="tel:+256705864322">+256 705 864322</a> <br> <a href="tel:+256758055500">+256 758 055500</a></p>
                 </li>
-                <li style="--hq-primary-color: #00715D">
+                <li>
                     <i class="fa-regular fa-location-dot"></i>
                     <p><span>Our Location:</span> Rakai District, Uganda <br>P.O. Box 185 Kyotera</p>
                 </li>
-                <li style="--hq-primary-color: #FE744F">
+                <li>
                     <i class="fa-regular fa-envelope"></i>
                     <p><span>Email Now:</span> <a href="mailto:lusinamatovufoundation185@gmail.com">lusinamatovufoundation185@gmail.com</a></p>
                 </li>
-            </ul><!-- /.offcanvas-contact -->
+            </ul>
+            
             <div class="offcanvas-socials">
                 <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
                 <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
                 <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
                 <a href="#"><i class="fa-brands fa-tiktok"></i></a>
-            </div><!-- /.offcanvas-socials -->
+            </div>
         </div>
     </div><!-- /#offcanvas-sidebar -->
-    <div id="offcanvas-sidebar-overlay"></div>
 
     
 
@@ -354,114 +401,134 @@
         </div>
     </div><!-- /.page-wrapper -->
 
-    <footer class="footer-wrapper">
-        <div class="container">
-            <div class="footer-top">
-                <div class="footer-site-logo">
-                    <a href="#"><img src="images/logo-white.png" alt="Lusi-Namatovu-Foundation "></a>
-                </div>
-                <div class="footer-contact">
-                    <div class="f-contact-item counter-item">
-                        <div class="icon">
-                            <i class="hqc hqc-holding-heart"></i>
-                        </div>
-                        <div class="content">
-                            <h4><span class="odometer" data-count="30">00</span>M+</h4>
-                            <p>Number of supporters</p>
-                        </div>
-                    </div>
-                    <div class="f-contact-item counter-item">
-                        <div class="icon">
-                            <i class="hqc hqc-donation"></i>
-                        </div>
-                        <div class="content">
-                            <h4>$<span class="odometer" data-count="100">00</span>M+</h4>
-                            <p>Fund raised</p>
-                        </div>
-                    </div>
-                </div>
-            </div><!-- /.footer-top -->
-
-            <div class="footer-widget">
-                <div class="widget widget-item">
-                    <h3 class="widget-title">About Company</h3>
-                    <ul class="footer-links">
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Services</a></li>
-                        <li><a href="#">Faq's</a></li>
-                        <li><a href="#">Testimonials</a></li>
-                        <li><a href="#">Contact Us</a></li>
-                    </ul>
-                </div>
-                <div class="widget widget-item">
-                    <h3 class="widget-title">Services</h3>
-                    <ul class="footer-links">
-                        <li><a href="#">Business Planning</a></li>
-                        <li><a href="#">Human Resources</a></li>
-                        <li><a href="#">Growth Consultation</a></li>
-                        <li><a href="#">Strategy</a></li>
-                        <li><a href="#">Project Management</a></li>
-                    </ul>
-                </div>
-                <div class="widget widget-item">
-                    <h3 class="widget-title">Contact Us</h3>
-                    <ul class="widget-contact">
-                        <li>
-                            <div class="icon"><i class="fa-regular fa-location-dot"></i></div>
-                            <p>683 Walnut Drive Lehr <br>ND 58460</p>
-                        </li>
-                        <li>
-                            <div class="icon"><i class="fa-regular fa-phone-volume"></i></div>
-                            <p>
-                                <a href="tel:2445347894">244-534-7894</a>
-                                <a href="tel:2445347895">244-534-7895</a>
-                            </p>
-                        </li>
-                        <li>
-                            <div class="icon"><i class="fa-regular fa-envelopes"></i></div>
-                            <p>
-                                <a href="mailto:contact@Lusi-Namatovu-Foundation .com">contact@Lusi-Namatovu-Foundation .com</a>
-                                <a href="mailto:support@Lusi-Namatovu-Foundation .com">support@Lusi-Namatovu-Foundation .com</a>
-                            </p>
-                        </li>
-                    </ul>
-                </div>
-                <div class="widget widget-item">
-                    <h3 class="widget-title">Newsletter</h3>
-                    <div class="mc-subscribe">
-                        <form action="https://Lusi-Namatovu-Foundation .hexqode.com/php/mailchimp-subscribe.php" id="ajax_mc_form" class="subscribe-form">
-                            <div class="mc-fields">
-                                <input id="mc_email" class="form-control" type="email" name="mc_email" placeholder="Your Email" required>
-                                <button class="submit hq-btn-effect"><span><i class="fa-light fa-paper-plane"></i></span></button>
-                            </div>
-                            <div class="clearfix"></div>
-                            <div id="mc-form-messages" class="alert" role="alert"></div>
-                        </form>
-                        <p>Subscribe us and get all the benifits from today.</p>
-                        <div class="mc-socials">
-                            <a href="#"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path d="M80 299.3V512H196V299.3h86.5l18-97.8H196V166.9c0-51.7 20.3-71.5 72.7-71.5c16.3 0 29.4 .4 37 1.2V7.9C291.4 4 256.4 0 236.2 0C129.3 0 80 50.5 80 159.4v42.1H14v97.8H80z"/></svg></a>
-                            <a href="#"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"/></svg></a>
-                            <a href="#"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg></a>
-                            <a href="#"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M100.3 448H7.4V148.9h92.9zM53.8 108.1C24.1 108.1 0 83.5 0 53.8a53.8 53.8 0 0 1 107.6 0c0 29.7-24.1 54.3-53.8 54.3zM447.9 448h-92.7V302.4c0-34.7-.7-79.2-48.3-79.2-48.3 0-55.7 37.7-55.7 76.7V448h-92.8V148.9h89.1v40.8h1.3c12.4-23.5 42.7-48.3 87.9-48.3 94 0 111.3 61.9 111.3 142.3V448z"/></svg></a>
-                        </div>
-                    </div>
-                </div>
-            </div><!-- /.footer-widget -->
-
-            <div class="footer-copyright">
-                <div class="copyright-text">
-                    &copy; <span id="currentYear"></span> Lusi-Namatovu-Foundation . All Rights Reserved.
-                </div>
-                <div class="footer-menu">
-                    <ul>
-                        <li><a href="#">Terms & Condition</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Contact Us</a></li>
-                    </ul>
-                </div>
-            </div><!-- /.footer-copyright -->
+    <footer class="footer-wrapper modern-footer">
+        <!-- Wave Shape Top Decoration -->
+        <div class="footer-wave-shape">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" class="shape-fill"></path>
+                <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" class="shape-fill"></path>
+                <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" class="shape-fill"></path>
+            </svg>
         </div>
-        <div class="footer-overlay"></div>
+        
+        <div class="container">
+            <!-- Footer Main Content -->
+            <div class="footer-main">
+                <!-- About Section -->
+                <div class="footer-about">
+                    <a href="index.html" class="footer-logo">
+                        <img src="images/lnf/logo/Lusi-Namatovu-Foundation_logo.png" alt="Lusi Namatovu Foundation">
+                    </a>
+                    <p class="footer-about-text">
+                        The Lusi Namatovu Foundation provides care, support, and opportunities for elderly individuals and people with disabilities in Rakai District, Uganda.
+                    </p>
+                    <!-- <div class="footer-impact-numbers">
+                        <div class="impact-item counter-item">
+                            <div class="impact-icon">
+                                <i class="hqc hqc-holding-heart"></i>
+                            </div>
+                            <div class="impact-content">
+                                <h4><span class="odometer" data-count="30">00</span>M+</h4>
+                                <p>Supporters</p>
+                            </div>
+                        </div>
+                        <div class="impact-item counter-item">
+                            <div class="impact-icon">
+                                <i class="hqc hqc-donation"></i>
+                            </div>
+                            <div class="impact-content">
+                                <h4>$<span class="odometer" data-count="100">00</span>M+</h4>
+                                <p>Funds Raised</p>
+                            </div>
+                        </div>
+                    </div> -->
+                    <div class="footer-socials">
+                        <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="footer-quick-links">
+                    <h3 class="footer-heading">Quick Links</h3>
+                    <div class="footer-menu-columns">
+                        <ul class="footer-menu-col">
+                            <li><a href="about-us.html">About Us</a></li>
+                            <li><a href="#">Our Work</a></li>
+                            <li><a href="events.html">Events</a></li>
+                            <li><a href="gallery.html">Gallery</a></li>
+                            <li><a href="blog.html">Blog</a></li>
+                        </ul>
+                        <!-- <ul class="footer-menu-col">
+                            <li><a href="#">Elderly Support</a></li>
+                            <li><a href="#">Disability Programs</a></li>
+                            <li><a href="donation.html">Donate</a></li>
+                            <li><a href="#">Volunteer</a></li>
+                            <li><a href="contact-us.html">Contact Us</a></li>
+                        </ul> -->
+                    </div>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="footer-contact-info">
+                    <h3 class="footer-heading">Contact Information</h3>
+                    <ul class="footer-contact-list">
+                        <li>
+                            <div class="contact-icon"><i class="fa-regular fa-location-dot"></i></div>
+                            <div class="contact-text">
+                                <p>Rakai District, Uganda <br>P.O. Box 185 Kyotera</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="contact-icon"><i class="fa-regular fa-phone-volume"></i></div>
+                            <div class="contact-text">
+                                <p>
+                                    <a href="tel:+256705864322">+256 705 864322</a><br>
+                                    <a href="tel:+256758055500">+256 758 055500</a>
+                                </p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="contact-icon"><i class="fa-regular fa-envelope"></i></div>
+                            <div class="contact-text">
+                                <p>
+                                    <a href="mailto:lusinamatovufoundation185@gmail.com">lusinamatovufoundation185@gmail.com</a>
+                                </p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Newsletter -->
+                <div class="footer-newsletter">
+                    <h3 class="footer-heading">Newsletter</h3>
+                    <p>Subscribe to stay updated on our latest news and initiatives.</p>
+                    <form id="ajax_mc_form" class="newsletter-form">
+                        <div class="form-group">
+                            <input id="mc_email" type="email" name="mc_email" placeholder="Your Email" required>
+                            <button type="submit" class="submit-btn">
+                                <i class="fa-regular fa-paper-plane"></i>
+                            </button>
+                        </div>
+                        <div id="mc-form-messages" class="form-message"></div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Footer Bottom -->
+            <div class="footer-bottom">
+                <div class="copyright">
+                 Copyright &copy; <script>document.write(new Date().getFullYear());</script> All rights reserved <span class="org-name"> Lusi Namatovu Foundation</span>
+                </div>
+                <div class="footer-bottom-links">
+                    <a href="#">Terms & Conditions</a>
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
     </footer><!-- /.footer-wrapper -->
     
     <button id="hq-back-to-top" class="hq-btn-effect"><span><i class="fa-regular fa-arrow-up"></i></span></button><!-- /#hq-back-to-top-->
