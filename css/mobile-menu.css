@@ -1,0 +1,133 @@
+/* Mobile Menu Styles */
+
+.mobile-menu-wrap {
+  margin: 20px 0;
+}
+
+.mobile-menu-wrap .mobile-nav {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.mobile-menu-wrap .mobile-nav li {
+  position: relative;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.mobile-menu-wrap .mobile-nav li a {
+  display: block;
+  padding: 12px 0;
+  color: var(--hq-heading-color);
+  font-size: 16px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.mobile-menu-wrap .mobile-nav li a:hover,
+.mobile-menu-wrap .mobile-nav li a.active {
+  color: var(--hq-primary-color);
+}
+
+.mobile-menu-wrap .mobile-nav li.menu-item-has-children > a {
+  position: relative;
+}
+
+.mobile-menu-wrap .mobile-nav li.menu-item-has-children > a::after {
+  content: '\f107';
+  font-family: 'Font Awesome 6 Pro';
+  font-weight: 400;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: all 0.3s ease;
+}
+
+.mobile-menu-wrap .mobile-nav li.menu-open > a::after {
+  transform: translateY(-50%) rotate(180deg);
+}
+
+.mobile-menu-wrap .mobile-nav .sub-menu {
+  display: none;
+  list-style: none;
+  padding: 5px 0 5px 15px;
+  margin: 0;
+}
+
+.mobile-menu-wrap .mobile-nav .sub-menu li {
+  border-bottom: none;
+  padding: 0;
+}
+
+.mobile-menu-wrap .mobile-nav .sub-menu li a {
+  font-size: 15px;
+  padding: 8px 0;
+  color: var(--hq-grey-color);
+  font-weight: 400;
+}
+
+.mobile-menu-wrap .mobile-nav .sub-menu li a:hover {
+  color: var(--hq-primary-color);
+}
+
+/* Mobile Menu Overlay */
+.mobile-menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 998;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+body.open-offcanvas-sidemenu .mobile-menu-overlay {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Offcanvas animation */
+#offcanvas-sidebar {
+  transition: right 0.4s cubic-bezier(0.77, 0.2, 0.05, 1);
+}
+
+.offcanvas-sidebar-inner {
+  height: 100%;
+  overflow-y: auto;
+  padding-bottom: 40px;
+  scrollbar-width: none; /* For Firefox */
+  -ms-overflow-style: none; /* For Internet Explorer and Edge */
+}
+
+.offcanvas-sidebar-inner::-webkit-scrollbar {
+  display: none; /* For Chrome, Safari and Opera */
+}
+
+/* Remove border from last item */
+.mobile-menu-wrap .mobile-nav li:last-child {
+  border-bottom: none;
+}
+
+/* Fix alignment issues */
+.mobile-menu-wrap .mobile-nav {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.mobile-menu-wrap .mobile-nav .sub-menu {
+  margin-top: 0;
+  margin-bottom: 5px;
+}
+
+/* Important fix for dropdown menus */
+.mobile-menu-wrap .mobile-nav .sub-menu {
+  display: none;
+}
+
+.mobile-menu-wrap .mobile-nav li.menu-open > .sub-menu {
+  display: block;
+}

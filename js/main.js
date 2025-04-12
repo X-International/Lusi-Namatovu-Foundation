@@ -81,15 +81,51 @@
       .on("resize", function () {
         responsiveClasses();
       })
-      .resize();
-
-    // Mobile Menu
+      .resize();    // Mobile Menu
     $(".navigation-menu").meanmenu({
       meanMenuContainer: ".mobile-menu-wrap",
       meanScreenWidth: "992",
       meanMenuCloseSize: "22px",
       meanRemoveAttrs: true,
     });
+    
+    // Completely rewritten Mobile Menu Dropdown Toggle
+    // Ensure this runs after page is fully loaded
+    setTimeout(function() {
+      // First, disable any existing click handlers on these elements
+      $('.mobile-nav .menu-item-has-children > a').each(function() {
+        var $this = $(this);
+        $this.off('click');
+      });
+      
+      // Add our custom click handler
+      $('.mobile-nav .menu-item-has-children > a').on('click', function(event) {
+        // Stop all propagation and prevent default
+        event.preventDefault();
+        event.stopPropagation();
+        
+        var $this = $(this);
+        var $parent = $this.parent();
+        var $submenu = $this.siblings('.sub-menu');
+        
+        // Toggle the menu-open class
+        $parent.toggleClass('menu-open');
+        
+        // Show or hide submenu based on class
+        if($parent.hasClass('menu-open')) {
+          $submenu.stop(true, true).slideDown(300);
+        } else {
+          $submenu.stop(true, true).slideUp(300);
+        }
+        
+        return false;
+      });
+      
+      // Prevent clicks on submenu items from propagating to parent
+      $('.mobile-nav .sub-menu a').on('click', function(event) {
+        event.stopPropagation();
+      });
+    }, 500); // Delay to ensure everything else is loaded
 
     // Offcanvas Sidemenu
     function offcanvasSidemenu() {

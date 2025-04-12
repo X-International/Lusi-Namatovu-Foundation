@@ -1,0 +1,416 @@
+/* 
+ * Modern Footer CSS for Lusi Namatovu Foundation
+ * A clean, modern footer design with color gradients instead of background images
+ * Mobile-first responsive approach
+ */
+
+.modern-footer {
+    position: relative;
+    background: linear-gradient(135deg, #001a33 0%, #003366 100%);
+    color: #ffffff;
+    padding: 80px 0 20px;
+    margin-top: 70px;
+    overflow: hidden;
+}
+
+/* Wave shape at top of footer */
+.footer-wave-shape {
+    position: absolute;
+    top: -100px;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
+}
+
+.footer-wave-shape svg {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100px;
+}
+
+.footer-wave-shape .shape-fill {
+    fill: #0066A4;
+}
+
+/* Main footer layout - Mobile first approach */
+.footer-main {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 40px;
+    margin-bottom: 50px;
+}
+
+/* Each footer section is a column */
+.footer-column {
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+/* Tablet breakpoint */
+@media (min-width: 768px) {
+    .footer-main {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px 40px;
+    }
+}
+
+/* Desktop breakpoint */
+@media (min-width: 992px) {
+    .footer-main {
+        grid-template-columns: 2fr 1fr 1fr 1fr;
+        gap: 40px;
+    }
+    
+    .footer-column {
+        margin-bottom: 0;
+    }
+}
+
+/* Footer headings */
+.footer-heading {
+    position: relative;
+    font-size: 20px;
+    color: #ffffff;
+    margin-bottom: 25px;
+    font-weight: 600;
+    padding-bottom: 12px;
+}
+
+.footer-heading:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 50px;
+    height: 3px;
+    background: #FF9C00; /* Orange accent color */
+}
+
+@media (min-width: 768px) {
+    .footer-heading {
+        font-size: 22px;
+    }
+}
+
+/* About section */
+.footer-about {
+    padding-right: 20px;
+}
+
+.footer-logo {
+    display: block;
+    margin-bottom: 20px;
+}
+
+.footer-logo img {
+    max-width: 180px;
+    height: auto;
+    filter: brightness(1.1);
+}
+
+.footer-about-text {
+    margin-bottom: 25px;
+    line-height: 1.6;
+    font-size: 15px;
+    opacity: 0.9;
+}
+
+/* Impact numbers */
+.footer-impact-numbers {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 25px;
+}
+
+.impact-item {
+    display: flex;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 10px 15px;
+    transition: all 0.3s ease;
+}
+
+.impact-item:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-3px);
+}
+
+.impact-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #FF9C00;
+    margin-right: 12px;
+    font-size: 18px;
+}
+
+.impact-content h4 {
+    font-size: 18px;
+    margin-bottom: 0;
+    color: #ffffff;
+    font-weight: 700;
+}
+
+.impact-content p {
+    font-size: 13px;
+    margin-bottom: 0;
+    opacity: 0.8;
+}
+
+/* Social icons */
+.footer-socials {
+    display: flex;
+    gap: 12px;
+}
+
+.footer-socials a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.footer-socials a:hover {
+    background-color: #FF9C00;
+    transform: translateY(-3px);
+}
+
+/* Quick links */
+.footer-menu-columns {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+@media (min-width: 576px) {
+    .footer-menu-columns {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 30px;
+    }
+}
+
+.footer-menu-col {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    min-width: 120px;
+    width: 100%;
+}
+
+@media (min-width: 576px) {
+    .footer-menu-col {
+        width: calc(50% - 15px);
+    }
+}
+
+.footer-menu-col li {
+    margin-bottom: 10px;
+}
+
+.footer-menu-col a {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    font-size: 15px;
+    transition: all 0.3s ease;
+    display: inline-block;
+    position: relative;
+}
+
+.footer-menu-col a:hover {
+    color: #ffffff;
+    transform: translateX(5px);
+}
+
+.footer-menu-col a::before {
+    content: "›";
+    margin-right: 6px;
+    color: #FF9C00;
+    font-weight: bold;
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.footer-menu-col a:hover::before {
+    opacity: 1;
+}
+
+/* Contact info */
+.footer-contact-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-contact-list li {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+
+.contact-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.1);
+    margin-right: 15px;
+    color: #FF9C00;
+    font-size: 16px;
+}
+
+.contact-text {
+    flex: 1;
+}
+
+.contact-text p {
+    margin: 0;
+    line-height: 1.5;
+}
+
+.contact-text a {
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.contact-text a:hover {
+    color: #FF9C00;
+}
+
+/* Newsletter */
+.footer-newsletter p {
+    margin-bottom: 20px;
+    font-size: 15px;
+    opacity: 0.9;
+}
+
+.newsletter-form .form-group {
+    position: relative;
+}
+
+.newsletter-form input {
+    width: 100%;
+    height: 50px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50px;
+    padding: 0 20px;
+    padding-right: 50px;
+    color: #ffffff;
+    font-size: 14px;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.newsletter-form input:focus {
+    background-color: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.newsletter-form input::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.newsletter-form .submit-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #FF9C00;
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.newsletter-form .submit-btn:hover {
+    background-color: #ffaa2e;
+    transform: rotate(10deg);
+}
+
+/* Form message for newsletter */
+.form-message {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #ffffff;
+}
+
+/* Footer bottom */
+.footer-bottom {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: center;
+    font-size: 14px;
+}
+
+.footer-bottom .copyright {
+    margin-bottom: 15px;
+}
+
+.org-name {
+    color: #FF9C00;
+    font-weight: 600;
+}
+
+.footer-bottom-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.footer-bottom-links a {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-bottom-links a:hover {
+    color: #FF9C00;
+}
+
+@media (min-width: 768px) {
+    .footer-bottom {
+        flex-direction: row;
+        text-align: left;
+    }
+    
+    .footer-bottom .copyright {
+        margin-bottom: 0;
+    }
+}
+
+/* Animation for hover effects */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
