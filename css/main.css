@@ -4759,7 +4759,7 @@ li span .donation-card-2-content ul li span {
 }
 
 .impact-stat-card:hover .impact-stat-number h2 {
-    color: #fff;
+    color: var(--hq-black-color);
 }
 
 .impact-stat-number span {
@@ -4770,7 +4770,7 @@ li span .donation-card-2-content ul li span {
 }
 
 .impact-stat-card:hover .impact-stat-number span {
-    color: #fff;
+    color: var(--hq-black-color);
 }
 
 .impact-stat-title {
@@ -4782,7 +4782,7 @@ li span .donation-card-2-content ul li span {
 }
 
 .impact-stat-card:hover .impact-stat-title {
-    color: #fff;
+    color: var(--hq-black-color);
 }
 
 /* Impact Story */
