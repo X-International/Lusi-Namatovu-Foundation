@@ -1160,6 +1160,250 @@
     </section>
     <!-- End Disability Support Programs Section -->
 
+    <!-- How to Support Our Work Section -->
+    <section class="support-work-section ptb-110">
+        <div class="container">
+            <div class="section-heading text-center mb-5 hq-text-animation-wrap">
+                <h3 class="sub-heading hq-text-anim" data-effect="fade-in"><span class="hq-bd-anim sh-left-line"></span>Get Involved<span class="hq-bd-anim sh-right-line"></span></h3>
+                <h2 class="heading hq-text-anim" data-effect="fade-in-right" data-split="char">Join Our Mission in Rakai</h2>
+                <p class="section-desc mt-4 hq-fade-effect" data-delay="0.1" style="max-width: 700px; margin-left: auto; margin-right: auto;">You can help us achieve our goals for Rakai's elders and people with disabilities. Support our programs through donations, volunteering, or partnerships.</p>
+            </div>
+            
+            <div class="row g-4 justify-content-center">
+                <!-- Donate Card -->
+                <div class="col-md-4 col-sm-6 mb-4 hq-fade-effect" data-delay="0.1">
+                    <a href="#" class="support-option-card">
+                        <div class="support-card-icon">
+                            <i class="fa-solid fa-donate"></i>
+                        </div>
+                        <div class="support-card-content">
+                            <h3>Donate</h3>
+                            <p>Fund our programs to transform lives.</p>
+                        </div>
+                        <div class="card-arrow">
+                            <i class="fa-regular fa-arrow-up-right"></i>
+                        </div>
+                    </a>
+                </div>
+                
+                <!-- Volunteer Card -->
+                <div class="col-md-4 col-sm-6 mb-4 hq-fade-effect" data-delay="0.2">
+                    <a href="#" class="support-option-card">
+                        <div class="support-card-icon">
+                            <i class="fa-solid fa-hand-holding"></i>
+                        </div>
+                        <div class="support-card-content">
+                            <h3>Volunteer</h3>
+                            <p>Give your time to support Rakai.</p>
+                        </div>
+                        <div class="card-arrow">
+                            <i class="fa-regular fa-arrow-up-right"></i>
+                        </div>
+                    </a>
+                </div>
+                
+                <!-- Partner Card -->
+                <div class="col-md-4 col-sm-6 mb-4 hq-fade-effect" data-delay="0.3">
+                    <a href="#" class="support-option-card">
+                        <div class="support-card-icon">
+                            <i class="fa-solid fa-handshake"></i>
+                        </div>
+                        <div class="support-card-content">
+                            <h3>Partner With Us</h3>
+                            <p>Collaborate to expand our impact.</p>
+                        </div>
+                        <div class="card-arrow">
+                            <i class="fa-regular fa-arrow-up-right"></i>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="text-center mt-5 hq-fade-effect" data-delay="0.4">
+                <a href="#" class="hq-btn hq-btn-effect"><span>Learn More About Getting Involved <i class="fa-regular fa-arrow-up-right"></i></span></a>
+            </div>
+        </div>
+        
+        <!-- CSS for Support Our Work Section -->
+        <style>
+            .support-work-section {
+                position: relative;
+                background: linear-gradient(to bottom, #f0f8ff, #ffffff);
+                overflow: hidden;
+                margin-top: 20px;
+            }
+            
+            .support-option-card {
+                position: relative;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+                background-color: #f8f9fa;
+                border-radius: 8px;
+                padding: 30px 20px;
+                min-height: 180px;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+                transition: all 0.3s ease;
+                overflow: hidden;
+                text-decoration: none;
+                z-index: 1;
+            }
+            
+            .support-option-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            }
+            
+            .support-option-card:before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(135deg, #0e98f1 0%, #0276c2 100%);
+                opacity: 0;
+                transition: all 0.3s ease;
+                z-index: -1;
+            }
+            
+            .support-option-card:hover:before {
+                opacity: 1;
+            }
+            
+            .support-card-icon {
+                margin-bottom: 15px;
+                z-index: 2;
+            }
+            
+            .support-card-icon i {
+                font-size: 40px;
+                color: #0e98f1;
+                transition: all 0.3s ease;
+            }
+            
+            .support-option-card:hover .support-card-icon i {
+                color: #ffffff;
+            }
+            
+            .support-card-content {
+                z-index: 2;
+            }
+            
+            .support-card-content h3 {
+                font-size: 20px;
+                font-weight: 600;
+                color: #1a2526;
+                margin-bottom: 10px;
+                transition: all 0.3s ease;
+            }
+            
+            .support-card-content p {
+                font-size: 14px;
+                line-height: 1.5;
+                color: #666;
+                margin-bottom: 0;
+                transition: all 0.3s ease;
+            }
+            
+            .support-option-card:hover .support-card-content h3,
+            .support-option-card:hover .support-card-content p {
+                color: #ffffff;
+            }
+            
+            .card-arrow {
+                position: absolute;
+                bottom: 15px;
+                right: 15px;
+                width: 30px;
+                height: 30px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background-color: #0e98f1;
+                border-radius: 50%;
+                color: #ffffff;
+                opacity: 0;
+                transform: translateY(10px);
+                transition: all 0.3s ease;
+            }
+            
+            .support-option-card:hover .card-arrow {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            
+            @media (max-width: 991px) {
+                .support-option-card {
+                    min-height: 160px;
+                    padding: 25px 15px;
+                }
+                
+                .support-card-icon i {
+                    font-size: 36px;
+                }
+                
+                .support-card-content h3 {
+                    font-size: 18px;
+                }
+            }
+            
+            @media (max-width: 767px) {
+                .support-work-section.ptb-110 {
+                    padding: 60px 0;
+                }
+                
+                .support-option-card {
+                    min-height: 140px;
+                    padding: 20px 15px;
+                }
+                
+                .support-card-icon i {
+                    font-size: 32px;
+                }
+                
+                .support-card-content h3 {
+                    font-size: 16px;
+                    margin-bottom: 8px;
+                }
+                
+                .support-card-content p {
+                    font-size: 13px;
+                }
+                
+                .hq-btn {
+                    font-size: 14px;
+                    padding: 10px 20px;
+                }
+            }
+            
+            @media (max-width: 575px) {
+                .support-work-section.ptb-110 {
+                    padding: 50px 0;
+                }
+                
+                .support-option-card {
+                    min-height: 120px;
+                }
+                
+                .support-card-icon i {
+                    font-size: 28px;
+                    margin-bottom: 10px;
+                }
+                
+                .card-arrow {
+                    width: 25px;
+                    height: 25px;
+                    bottom: 10px;
+                    right: 10px;
+                }
+            }
+        </style>
+    </section>
+    <!-- End How to Support Our Work Section -->
+
 
     <footer class="footer-wrapper modern-footer">
         <!-- Wave Shape Top Decoration -->
