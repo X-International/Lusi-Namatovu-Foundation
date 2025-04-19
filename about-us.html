@@ -298,7 +298,7 @@
                             <div class="col-12 col-md-4">
                                 <div class="vision-icon-item text-center p-4" style="height: 200px; background: #f8f9fa; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); display: flex; flex-direction: column; justify-content: center;">
                                     <div class="icon-circle mb-3" style="display: inline-flex; align-items: center; justify-content: center; width: 80px; height: 80px; border-radius: 50%; background-color: rgba(14, 152, 241, 0.1); margin: 0 auto;">
-                                        <i class="fas fa-home" style="font-size: 24px; color: #0e98f1;"></i>
+                                        <i class="fa-regular fa-home" style="font-size: 24px; color: #0e98f1;"></i>
                                     </div>
                                     <h4 class="mb-2" style="font-size: 18px; color: #1a2526; font-weight: bold;">Safe Homes for Elders</h4>
                                     <p class="mb-0" style="font-size: 14px; color: #666; line-height: 1.5;">Building sturdy homes to ensure our elders live with dignity and security.</p>
@@ -307,7 +307,7 @@
                             <div class="col-12 col-md-4">
                                 <div class="vision-icon-item text-center p-4" style="height: 200px; background: #f8f9fa; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); display: flex; flex-direction: column; justify-content: center;">
                                     <div class="icon-circle mb-3" style="display: inline-flex; align-items: center; justify-content: center; width: 80px; height: 80px; border-radius: 50%; background-color: rgba(14, 152, 241, 0.1); margin: 0 auto;">
-                                        <i class="fas fa-wheelchair" style="font-size: 24px; color: #0e98f1;"></i>
+                                        <i class="fa-regular fa-wheelchair" style="font-size: 24px; color: #0e98f1;"></i>
                                     </div>
                                     <h4 class="mb-2" style="font-size: 18px; color: #1a2526; font-weight: bold;">Mobility for All</h4>
                                     <p class="mb-0" style="font-size: 14px; color: #666; line-height: 1.5;">Providing wheelchairs and crutches to empower people with disabilities.</p>
@@ -316,7 +316,7 @@
                             <div class="col-12 col-md-4">
                                 <div class="vision-icon-item text-center p-4" style="height: 200px; background: #f8f9fa; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); display: flex; flex-direction: column; justify-content: center;">
                                     <div class="icon-circle mb-3" style="display: inline-flex; align-items: center; justify-content: center; width: 80px; height: 80px; border-radius: 50%; background-color: rgba(14, 152, 241, 0.1); margin: 0 auto;">
-                                        <i class="fas fa-users" style="font-size: 24px; color: #0e98f1;"></i>
+                                        <i class="fa-regular fa-users" style="font-size: 24px; color: #0e98f1;"></i>
                                     </div>
                                     <h4 class="mb-2" style="font-size: 18px; color: #1a2526; font-weight: bold;">Community Connection</h4>
                                     <p class="mb-0" style="font-size: 14px; color: #666; line-height: 1.5;">Creating inclusive spaces for gatherings to strengthen Rakai’s community bonds.</p>
@@ -340,9 +340,7 @@
         </div>
         <div class="position-absolute end-0 top-50 translate-middle-y d-none d-lg-block">
             <i class="hqc hqc-shape-2" style="color: rgba(14, 152, 241, 0.1); font-size: 120px;"></i>
-        </div>
-
-        <!-- Mobile Responsiveness Styles -->
+        </div>        <!-- Mobile Responsiveness Styles -->
         <style>
             @media (max-width: 768px) {
                 .vision-section {
@@ -362,21 +360,26 @@
                     width: 80px !important;
                 }
                 .vision-icon-item {
-                    height: 150px !important;
+                    height: auto !important;
+                    min-height: 180px !important;
                     margin-bottom: 15px;
+                    padding: 20px !important;
                 }
                 .vision-icon-item .icon-circle {
-                    width: 60px !important;
-                    height: 60px !important;
+                    width: 80px !important;
+                    height: 80px !important;
+                    margin-bottom: 15px !important;
                 }
                 .vision-icon-item .icon-circle i {
-                    font-size: 20px !important;
+                    font-size: 24px !important;
                 }
                 .vision-icon-item h4 {
                     font-size: 16px !important;
+                    margin-bottom: 10px !important;
                 }
                 .vision-icon-item p {
-                    font-size: 13px !important;
+                    font-size: 14px !important;
+                    line-height: 1.5 !important;
                 }
                 .hq-btn {
                     width: 100%;
