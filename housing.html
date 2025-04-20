@@ -224,6 +224,175 @@
         </style>
     </section>
 
+    <!-- Program Goals Section -->
+    <section class="program-goals-section py-80" style="background-color: #ffffff;">
+        <div class="container">
+            <div class="section-heading text-center mb-5 hq-text-animation-wrap">
+                <h2 class="heading hq-fade-effect">Goals for Shelter & Housing in Rakai</h2>
+            </div>
+            
+            <ul class="goals-list mx-auto" style="max-width: 800px; list-style: none; padding: 0;">
+                <!-- Goal 1 -->
+                <li class="goal-card hq-fade-effect">
+                    <div class="goal-icon">
+                        <i class="fa-regular fa-home" aria-hidden="true"></i>
+                    </div>
+                    <div class="goal-text">
+                        Build or renovate <strong>25</strong> homes to provide elders with safe, stable living spaces.
+                    </div>
+                </li>
+                
+                <!-- Goal 2 -->
+                <li class="goal-card hq-fade-effect" data-delay="0.1">
+                    <div class="goal-icon">
+                        <i class="fa-regular fa-tools" aria-hidden="true"></i>
+                    </div>
+                    <div class="goal-text">
+                        Support <strong>50</strong> elder households with home repairs for lasting safety.
+                    </div>
+                </li>
+                
+                <!-- Goal 3 -->
+                <li class="goal-card hq-fade-effect" data-delay="0.2">
+                    <div class="goal-icon">
+                        <i class="fa-regular fa-bed" aria-hidden="true"></i>
+                    </div>
+                    <div class="goal-text">
+                        Supply <strong>100</strong> elders with essentials like bedding and furniture for comfort.
+                    </div>
+                </li>
+                
+                <!-- Goal 4 -->
+                <li class="goal-card hq-fade-effect" data-delay="0.3">
+                    <div class="goal-icon">
+                        <i class="fa-regular fa-shield" aria-hidden="true"></i>
+                    </div>
+                    <div class="goal-text">
+                        Educate <strong>75</strong> elders on home safety and sanitation for healthier lives.
+                    </div>
+                </li>
+                
+                <!-- Goal 5 -->
+                <li class="goal-card hq-fade-effect" data-delay="0.4">
+                    <div class="goal-icon">
+                        <i class="fa-regular fa-scale-balanced" aria-hidden="true"></i>
+                    </div>
+                    <div class="goal-text">
+                        Advocate for better housing policies to improve Rakai's elder communities.
+                    </div>
+                </li>
+            </ul>
+            
+            <div class="section-divider mt-5 hq-fade-effect" data-delay="0.5">
+                <span class="divider-line" style="width: 800px; height: 1px; background-color: #0e98f1; display: block; margin: 0 auto;"></span>
+            </div>
+        </div>
+        
+        <!-- Styles for Program Goals Section -->
+        <style>
+            .program-goals-section {
+                position: relative;
+            }
+            
+            .goals-list {
+                display: flex;
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .goal-card {
+                display: flex;
+                align-items: center;
+                background-color: #f8f9fa;
+                border-radius: 5px;
+                padding: 20px;
+                box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+                height: 80px;
+                transition: transform 0.3s ease, box-shadow 0.3s ease;
+            }
+            
+            .goal-card:hover {
+                transform: translateX(5px);
+                box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            }
+            
+            .goal-icon {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-shrink: 0;
+                width: 50px;
+                height: 50px;
+                margin-right: 20px;
+            }
+            
+            .goal-icon i {
+                font-size: 24px;
+                color: #0e98f1;
+            }
+            
+            .goal-text {
+                font-size: 16px;
+                color: #666;
+                line-height: 1.5;
+            }
+            
+            .goal-text strong {
+                color: #1a2526;
+                font-weight: 600;
+            }
+            
+            /* Mobile responsiveness */
+            @media (max-width: 991px) {
+                .divider-line {
+                    width: 600px !important;
+                    max-width: 90% !important;
+                }
+            }
+            
+            @media (max-width: 767px) {
+                .py-80 {
+                    padding-top: 60px;
+                    padding-bottom: 60px;
+                }
+                
+                .heading {
+                    font-size: 28px;
+                }
+                
+                .goal-card {
+                    height: auto;
+                    min-height: 100px;
+                    padding: 15px;
+                }
+                
+                .goal-icon {
+                    width: 40px;
+                    height: 40px;
+                    margin-right: 15px;
+                }
+                
+                .goal-icon i {
+                    font-size: 20px;
+                }
+                
+                .goal-text {
+                    font-size: 14px;
+                }
+                
+                .goals-list {
+                    gap: 10px;
+                }
+                
+                .divider-line {
+                    width: 100% !important;
+                    max-width: 600px !important;
+                }
+            }
+        </style>
+    </section>
+    <!-- End Program Goals Section -->
+    
     <!-- Call to Action Section -->
     <section class="cta-section ptb-110">
     <div class="container">
@@ -323,6 +492,8 @@
         }
     </style>
 </section><!-- /.cta-section -->
+
+
     
 
     <footer class="footer-wrapper modern-footer">
