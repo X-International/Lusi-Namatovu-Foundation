@@ -173,7 +173,7 @@
         <i class="hqc ph-shape right-shape hqc-shape-2"></i>
     </section><!-- /.page-header -->
 
-    <section class="intro-section ptb-110" style="background: linear-gradient(to bottom, #f0f8ff, #ffffff);">
+    <section class="intro-section py-80" style="background: linear-gradient(to bottom, #f0f8ff, #ffffff);">
         <div class="container">
             <div class="section-heading text-center mb-5 hq-text-animation-wrap">
                 <h2 class="heading hq-fade-effect">Our Commitment to Rakai's Elders</h2>
@@ -186,10 +186,9 @@
                 </div>
             </div>
         </div>
-    </section>
-    <!-- /.intro-section -->
+    </section><!-- /.intro-section -->
     
-    <section class="program-overview-section ptb-110" style="background-color: #ffffff;">
+    <section class="program-overview-section py-80" style="background-color: #ffffff;">
         <div class="container">
             <div class="section-heading text-center mb-5 hq-text-animation-wrap">
                 <h2 class="heading hq-fade-effect">Our Support for Rakai's Elders</h2>
@@ -201,7 +200,7 @@
                 </div>
             </div>
             
-            <div class="row g-4 justify-content-center">
+            <div class="row g-4 justify-content-center" style="max-width: 980px; margin: 0 auto;">
                 <!-- Shelter & Housing -->
                 <div class="col-md-6 col-lg-4 hq-fade-effect">
                     <div class="program-card h-100 p-4 text-center d-flex flex-column" style="background-color: #f8f9fa; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
@@ -290,11 +289,21 @@
         
         <!-- Mobile responsiveness styles -->
         <style>
+            .py-80 {
+                padding-top: 80px;
+                padding-bottom: 80px;
+            }
+            
             @media (max-width: 767px) {
+                .py-80 {
+                    padding-top: 60px;
+                    padding-bottom: 60px;
+                }
+                
                 .program-card {
-                    padding: 15px;
+                    padding: 20px 15px;
                     height: auto;
-                    min-height: 200px;
+                    min-height: 180px;
                 }
                 
                 .program-icon i {
@@ -313,6 +322,10 @@
                 .program-card .hq-btn {
                     font-size: 14px;
                     padding: 8px 15px;
+                }
+                
+                .section-divider .divider-line {
+                    width: 80px;
                 }
             }
             
