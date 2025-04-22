@@ -43,18 +43,23 @@
         <div class="main-header">
             <div class="container">
                 <div class="main-header-inner">
+
                     <div class="site-logo">
                         <a href="index.html"><img src="images/lnf/logo/Lusi-Namatovu-Foundation_logo_transparent.png" alt="Lusi Namatovu Foundation Logo"></a>
                     </div>
+
                     <div class="navigation-menu">
                         <ul>
-                            <li><a href="index.html">Home</a></li>
-                            <li class="menu-item-has-children"><a href="about-us.html">About Us</a>
-                                
-                            </li>
-                            <li class="menu-item-has-children"><a href="our-work.html" class="active">Our Work</a>
+                            <li><a href="index.html" class="active">Home</a></li>
+                            <li class="menu-item-has-children active"><a href="about-us.html">About Us</a>
                                 <ul class="sub-menu">
-                                    <li><a href="elderly-support-programs.html">Elderly Support Programs</a></li>
+                                    <li><li><a href="#">Our History</a></li></li>
+                                    <li><a href="#">Mission & Vision</a></li>
+                                </ul>
+                            </li>
+                            <li class="menu-item-has-children"><a href="our-work.html">Our Work</a>
+                                <ul class="sub-menu">
+                                    <li><li><a href="elderly-support-programs.html">Elderly Support Programs</a></li></li>
                                     <li><a href="#">Disability Support Programs</a></li>
                                 </ul>
                             </li>
@@ -70,13 +75,25 @@
                             <li><a href="#">Contact Us</a></li>
                         </ul>
                     </div>
+
                     <div class="header-right">
                         <button class="mobile-menu-toggle">
                             <span class="menu-bar"></span>
                             <span class="menu-bar"></span>
                             <span class="menu-bar"></span>
                         </button>
-                        <a href="donation.html" class="header-btn hq-btn hq-btn-effect"><span>Donate Now</span></a>
+
+                        <!-- donate button  -->
+                        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" style="display: inline;">
+                            <input type="hidden" name="cmd" value="_s-xclick" />
+                            <input type="hidden" name="hosted_button_id" value="S3QBTSF8C36VA" />
+                            <a href="javascript:void(0)" class="header-btn hq-btn hq-btn-effect" onclick="this.parentNode.submit();">
+                                <span>Donate Now</span>
+                            </a>
+                            <img alt="" border="0" src="https://www.paypal.com/en_GB/i/scr/pixel.gif" width="1" height="1" style="display: none;" />
+                        </form>
+                        <!-- donate button end  -->
+
                     </div>
                 </div>
             </div>
@@ -93,10 +110,11 @@
                 <path d="M11.036 9.668a.87.87 0 0 1 0 1.367.933.933 0 0 1-.664.313.971.971 0 0 1-.7-.312L5.684 7.09 1.7 11.035a.971.971 0 0 1-.7.313.933.933 0 0 1-.664-.312.87.87 0 0 1 0-1.367l3.942-3.985L.332 1.7a.87.87 0 0 1 0-1.367.87.87 0 0 1 1.367 0l3.985 3.945L9.668.333a.87.87 0 0 1 1.367 0 .87.87 0 0 1 0 1.367L7.09 5.684Z"></path>
             </svg>
         </button>
+
         <div data-lenis-prevent class="offcanvas-sidebar-inner">
             <div class="offcanvas-about">
-                <a href="index.html"><img src="images/lnf/logo/Lusi-Namatovu-Foundation_logo.png" alt="Lusi-Namatovu-Foundation"></a>
-                <p>The Lusi Namatovu Foundation provides care, support, and opportunities for elderly individuals and people with disabilities in Rakai District, Uganda.</p>
+                <a href="index.html"><img src="images/lnf/logo/Lusi-Namatovu-Foundation_logo.png" alt="Lusi Namatovu Foundation Logo"></a>
+                <p>The Lusi Namatovu Foundation uplifts elderly and disabled individuals in Rakai District, Uganda, with compassionate care and support.</p>
             </div>
             
             <div class="mobile-menu-wrap">
@@ -110,9 +128,9 @@
                         </ul>
                     </li>
                     <li class="menu-item-has-children">
-                        <a href="#">Our Work</a>
+                        <a href="our-work.html">Our Work</a>
                         <ul class="sub-menu">
-                            <li><li><a href="elderly-support-programs.html">Elderly Support Programs</a></li></li>
+                            <li><a href="elderly-support-programs.html">Elderly Support Programs</a></li>
                             <li><a href="#">Disability Support Programs</a></li>
                         </ul>
                     </li>
@@ -139,10 +157,6 @@
                     <i class="fa-regular fa-location-dot"></i>
                     <p><span>Our Location:</span> Rakai District, Uganda <br>P.O. Box 185 Kyotera</p>
                 </li>
-                <li>
-                    <i class="fa-regular fa-envelope"></i>
-                    <p><span>Email Now:</span> <a href="mailto:lusinamatovufoundation185@gmail.com">lusinamatovufoundation185@gmail.com</a></p>
-                </li>
             </ul>
             
             <div class="offcanvas-socials">
@@ -153,7 +167,6 @@
             </div>
         </div>
     </div><!-- /#offcanvas-sidebar -->
-
     
 
     <section class="page-header hq-img-parallax" data-scale-start="1.4" data-scale-end="1.2">
