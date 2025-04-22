@@ -29,30 +29,39 @@
   color: var(--hq-primary-color);
 }
 
+/* Dropdown toggle indicator - completely removing any ::after pseudo-element */
 .mobile-menu-wrap .mobile-nav li.menu-item-has-children > a {
   position: relative;
+  padding-right: 25px; /* Make room for the toggle icon */
 }
 
-.mobile-menu-wrap .mobile-nav li.menu-item-has-children > a::after {
-  content: '\f107';
-  font-family: 'Font Awesome 6 Pro';
-  font-weight: 400;
+/* This is the only icon we need for the dropdown - removing any other icon styles */
+.mobile-menu-wrap .mobile-nav li.menu-item-has-children > a .dropdown-toggle {
   position: absolute;
   right: 0;
   top: 50%;
   transform: translateY(-50%);
-  transition: all 0.3s ease;
+  transition: transform 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
 }
 
-.mobile-menu-wrap .mobile-nav li.menu-open > a::after {
+.mobile-menu-wrap .mobile-nav li.menu-open > a .dropdown-toggle {
   transform: translateY(-50%) rotate(180deg);
 }
 
+/* Submenu styling */
 .mobile-menu-wrap .mobile-nav .sub-menu {
-  display: none;
   list-style: none;
-  padding: 5px 0 5px 15px;
+  padding: 0 0 0 15px;
   margin: 0;
+}
+
+.mobile-menu-wrap .mobile-nav li.menu-open > .sub-menu {
+  display: block;
 }
 
 .mobile-menu-wrap .mobile-nav .sub-menu li {
@@ -85,20 +94,56 @@
   transition: all 0.3s ease;
 }
 
-body.open-offcanvas-sidemenu .mobile-menu-overlay {
+.mobile-menu-overlay.active {
   opacity: 1;
   visibility: visible;
 }
 
-/* Offcanvas animation */
+/* Offcanvas sidebar */
 #offcanvas-sidebar {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 300px;
+  max-width: 85%;
+  height: 100%;
+  background-color: #fff;
+  z-index: 999;
   transition: right 0.4s cubic-bezier(0.77, 0.2, 0.05, 1);
+  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+#offcanvas-sidebar.active {
+  right: 0;
+}
+
+#hide-offcanvas-sidemenu {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: transparent;
+  border: none;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 2;
+  padding: 0;
+}
+
+#hide-offcanvas-sidemenu svg {
+  width: 12px;
+  height: 12px;
+  fill: var(--hq-heading-color);
 }
 
 .offcanvas-sidebar-inner {
   height: 100%;
   overflow-y: auto;
-  padding-bottom: 40px;
+  padding: 50px 25px 40px;
   scrollbar-width: none; /* For Firefox */
   -ms-overflow-style: none; /* For Internet Explorer and Edge */
 }
@@ -107,27 +152,89 @@ body.open-offcanvas-sidemenu .mobile-menu-overlay {
   display: none; /* For Chrome, Safari and Opera */
 }
 
+.offcanvas-about {
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+.offcanvas-about img {
+  max-width: 160px;
+  margin-bottom: 15px;
+}
+
+.offcanvas-about p {
+  font-size: 14px;
+  color: var(--hq-grey-color);
+}
+
 /* Remove border from last item */
 .mobile-menu-wrap .mobile-nav li:last-child {
   border-bottom: none;
 }
 
-/* Fix alignment issues */
-.mobile-menu-wrap .mobile-nav {
-  padding-left: 0;
-  padding-right: 0;
+.offcanvas-contact {
+  margin: 30px 0;
+  padding: 0;
+  list-style: none;
 }
 
-.mobile-menu-wrap .mobile-nav .sub-menu {
-  margin-top: 0;
-  margin-bottom: 5px;
+.offcanvas-contact li {
+  display: flex;
+  margin-bottom: 15px;
 }
 
-/* Important fix for dropdown menus */
-.mobile-menu-wrap .mobile-nav .sub-menu {
-  display: none;
+.offcanvas-contact li i {
+  font-size: 16px;
+  margin-right: 12px;
+  color: var(--hq-primary-color);
 }
 
-.mobile-menu-wrap .mobile-nav li.menu-open > .sub-menu {
+.offcanvas-contact li p {
+  font-size: 14px;
+  margin: 0;
+  color: var(--hq-grey-color);
+}
+
+.offcanvas-contact li p span {
   display: block;
+  margin-bottom: 3px;
+  color: var(--hq-heading-color);
+  font-weight: 500;
+}
+
+.offcanvas-contact li a {
+  color: var(--hq-grey-color);
+  transition: all 0.3s ease;
+}
+
+.offcanvas-contact li a:hover {
+  color: var(--hq-primary-color);
+}
+
+.offcanvas-socials {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.offcanvas-socials a {
+  width: 35px;
+  height: 35px;
+  background-color: rgba(var(--hq-primary-rgb), 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: var(--hq-primary-color);
+  transition: all 0.3s ease;
+}
+
+.offcanvas-socials a:hover {
+  background-color: var(--hq-primary-color);
+  color: #fff;
+}
+
+/* Mobile menu active state */
+body.mobile-menu-active {
+  overflow: hidden;
 }

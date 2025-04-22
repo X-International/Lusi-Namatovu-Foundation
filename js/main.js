@@ -81,51 +81,18 @@
       .on("resize", function () {
         responsiveClasses();
       })
-      .resize();    // Mobile Menu
+      .resize();
+
+    // Mobile Menu
     $(".navigation-menu").meanmenu({
       meanMenuContainer: ".mobile-menu-wrap",
       meanScreenWidth: "992",
       meanMenuCloseSize: "22px",
       meanRemoveAttrs: true,
     });
-    
-    // Completely rewritten Mobile Menu Dropdown Toggle
-    // Ensure this runs after page is fully loaded
-    setTimeout(function() {
-      // First, disable any existing click handlers on these elements
-      $('.mobile-nav .menu-item-has-children > a').each(function() {
-        var $this = $(this);
-        $this.off('click');
-      });
-      
-      // Add our custom click handler
-      $('.mobile-nav .menu-item-has-children > a').on('click', function(event) {
-        // Stop all propagation and prevent default
-        event.preventDefault();
-        event.stopPropagation();
-        
-        var $this = $(this);
-        var $parent = $this.parent();
-        var $submenu = $this.siblings('.sub-menu');
-        
-        // Toggle the menu-open class
-        $parent.toggleClass('menu-open');
-        
-        // Show or hide submenu based on class
-        if($parent.hasClass('menu-open')) {
-          $submenu.stop(true, true).slideDown(300);
-        } else {
-          $submenu.stop(true, true).slideUp(300);
-        }
-        
-        return false;
-      });
-      
-      // Prevent clicks on submenu items from propagating to parent
-      $('.mobile-nav .sub-menu a').on('click', function(event) {
-        event.stopPropagation();
-      });
-    }, 500); // Delay to ensure everything else is loaded
+
+    // REMOVED: Conflicting mobile menu dropdown handlers
+    // The mobile-menu.js file now handles all mobile menu functionality
 
     // Offcanvas Sidemenu
     function offcanvasSidemenu() {
@@ -924,124 +891,6 @@
     window.addEventListener("resize", handleResize);
   });
 
-  document.addEventListener('DOMContentLoaded', function () {
-    'use strict';
-
-    // Mobile Menu Toggle
-    const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
-    const offcanvasSidebar = document.getElementById('offcanvas-sidebar');
-    const hideOffcanvasBtn = document.getElementById('hide-offcanvas-sidemenu');
-    const mobileMenuOverlay = document.querySelector('.mobile-menu-overlay');
-    
-    if (mobileMenuToggle) {
-      mobileMenuToggle.addEventListener('click', function() {
-        document.body.classList.toggle('open-offcanvas-sidemenu');
-      });
-    }
-
-    if (hideOffcanvasBtn) {
-      hideOffcanvasBtn.addEventListener('click', function() {
-        document.body.classList.remove('open-offcanvas-sidemenu');
-      });
-    }
-
-    if (mobileMenuOverlay) {
-      mobileMenuOverlay.addEventListener('click', function() {
-        document.body.classList.remove('open-offcanvas-sidemenu');
-      });
-    }
-
-    // Mobile Submenu Toggle
-    const menuItemsWithChildren = document.querySelectorAll('.menu-item-has-children > a');
-    
-    menuItemsWithChildren.forEach(function(item) {
-      item.addEventListener('click', function(e) {
-        if (window.innerWidth < 992) {
-          e.preventDefault();
-          const parent = this.parentNode;
-          parent.classList.toggle('menu-open');
-          const subMenu = parent.querySelector('.sub-menu');
-          if (subMenu) {
-            if (subMenu.style.display === 'block') {
-              subMenu.style.display = 'none';
-            } else {
-              subMenu.style.display = 'block';
-            }
-          }
-        }
-      });
-    });
-
-    // Sticky Header
-    const header = document.querySelector('.sticky-header');
-    
-    if (header) {
-      window.addEventListener('scroll', function() {
-        if (window.scrollY > 100) {
-          header.classList.add('is-sticky');
-        } else {
-          header.classList.remove('is-sticky');
-        }
-      });
-    }
-
-    // Popup Search
-    const searchToggle = document.querySelector('.search-toggle');
-    const closePopupSearch = document.getElementById('close-popup-search');
-
-    if (searchToggle) {
-      searchToggle.addEventListener('click', function(e) {
-        e.preventDefault();
-        document.body.classList.add('open-popup-search');
-        setTimeout(function() {
-          document.querySelector('.popup-search-box-inner input').focus();
-        }, 500);
-      });
-    }
-
-    if (closePopupSearch) {
-      closePopupSearch.addEventListener('click', function() {
-        document.body.classList.remove('open-popup-search');
-      });
-    }
-
-    // Close search on overlay click
-    const searchOverlay = document.getElementById('popup-search-overlay');
-    if (searchOverlay) {
-      searchOverlay.addEventListener('click', function() {
-        document.body.classList.remove('open-popup-search');
-      });
-    }
-
-    // Escape key closes search
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape') {
-        document.body.classList.remove('open-popup-search');
-        document.body.classList.remove('open-offcanvas-sidemenu');
-      }
-    });
-
-    // Back to top button
-    const backToTopButton = document.getElementById('hq-back-to-top');
-    
-    if (backToTopButton) {
-      window.addEventListener('scroll', function() {
-        if (window.scrollY > 300) {
-          backToTopButton.classList.add('active');
-        } else {
-          backToTopButton.classList.remove('active');
-        }
-      });
-
-      backToTopButton.addEventListener('click', function(e) {
-        e.preventDefault();
-        window.scrollTo({
-          top: 0,
-          behavior: 'smooth'
-        });
-      });
-    }
-
-    // Initialize other scripts and plugins
-  });
+  // REMOVED: Conflicting vanilla JavaScript mobile menu implementation
+  // This was duplicating functionality handled by mobile-menu.js
 })(jQuery);
