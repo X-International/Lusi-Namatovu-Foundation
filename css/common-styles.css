@@ -33,9 +33,9 @@ Table of Contents
         - Rotate
         - Bottom Center
     23. Who We Are Section
-        - Timeline Element Styles
-        - Mission Image Styles
-        - Responsive Adjustments
+        - Redesigned Image Cards
+    24. Mission Images
+        - Balanced dual mission layout
 
 ========================================== */
 
@@ -1220,102 +1220,67 @@ input[type="checkbox"]:checked:before {
 }
 
 /* ==== 23. Who We Are Section ==== */
-/* Timeline Element Styles */
-.timeline-element {
+/* Redesigned Image Cards */
+.about-image-container {
     position: relative;
-    margin: 20px 0;
-    display: flex;
-    justify-content: center;
+    margin-bottom: 30px;
 }
 
-.timeline-line {
-    position: relative;
-    width: 200px;
-    height: 3px;
-    background-color: rgba(14, 152, 241, 0.3);
-    border-radius: 3px;
-    margin: 10px 0;
-}
-
-.timeline-dot {
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background-color: var(--hq-primary-color);
-    animation: pulse 2s infinite;
-}
-
-.timeline-year {
-    position: absolute;
-    left: -10px;
-    bottom: 10px;
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--hq-primary-color);
-}
-
-.timeline-now {
-    position: absolute;
-    right: -10px;
-    bottom: 10px;
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--hq-primary-color);
-}
-
-@keyframes pulse {
-    0% {
-        box-shadow: 0 0 0 0 rgba(14, 152, 241, 0.4);
-    }
-    70% {
-        box-shadow: 0 0 0 10px rgba(14, 152, 241, 0);
-    }
-    100% {
-        box-shadow: 0 0 0 0 rgba(14, 152, 241, 0);
-    }
-}
-
-/* Mission Image Styles */
-.mission-image-wrap {
-    position: relative;
+/* Mobile-first approach for image cards */
+.image-card-wrapper {
     margin-bottom: 20px;
-    border-radius: 8px;
-    overflow: hidden;
+    position: relative;
+    width: 100%;
 }
 
-.mission-image {
+.image-card {
+    position: relative;
+    overflow: visible;
+    border-radius: 12px;
+}
+
+.image-card-inner {
     position: relative;
     overflow: hidden;
-    border-radius: 8px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
     transition: all 0.4s ease;
 }
 
-.mission-image img {
+.image-card-wrapper:hover .image-card-inner {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+}
+
+.image-card img {
     width: 100%;
-    height: 350px;
+    height: auto;
+    aspect-ratio: 16/9;
     object-fit: cover;
-    transition: all 0.4s ease;
+    display: block;
+    transition: all 0.5s ease;
 }
 
-.mission-image:hover img {
+.image-card-wrapper:hover .image-card img {
     transform: scale(1.05);
 }
 
-.mission-image-caption {
+.image-card-overlay {
     position: absolute;
     bottom: 0;
     left: 0;
     width: 100%;
-    padding: 15px;
-    background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
-    transition: all 0.3s ease;
+    padding: 20px 15px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+    opacity: 0;
+    transition: all 0.4s ease;
 }
 
-.mission-image-caption h5 {
+.image-card-wrapper:hover .image-card-overlay {
+    opacity: 1;
+}
+
+.overlay-content h5 {
     color: #fff;
     margin: 0;
     font-size: 16px;
@@ -1323,23 +1288,334 @@ input[type="checkbox"]:checked:before {
     text-align: center;
 }
 
-/* Responsive Adjustments */
-@media (max-width: 767px) {
-    .timeline-line {
-        width: 150px;
+/* Decorative accents for larger screens only */
+.card-accent {
+    display: none;
+}
+
+/* Button styling */
+.modern-button {
+    display: inline-flex;
+    align-items: center;
+    background-color: var(--hq-primary-color);
+    color: var(--hq-white-color);
+    padding: 14px 24px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 15px;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    transition: all 0.4s ease;
+}
+
+.modern-button:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background-color: var(--hq-secondary-color);
+    transition: all 0.4s ease;
+    z-index: -1;
+}
+
+.modern-button:hover:before {
+    width: 100%;
+}
+
+.modern-button:hover {
+    color: var(--hq-white-color);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(14, 152, 241, 0.2);
+}
+
+.button-text {
+    margin-right: 10px;
+}
+
+.button-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    transition: transform 0.3s ease;
+}
+
+.modern-button:hover .button-icon {
+    transform: translateX(3px) rotate(45deg);
+}
+
+/* Timeline element */
+.modern-timeline {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 30px 0 40px;
+}
+
+.timeline-progress {
+    position: relative;
+    width: 90%;
+    max-width: 300px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.timeline-line {
+    flex: 1;
+    height: 3px;
+    background: linear-gradient(to right, var(--hq-primary-color), rgba(14, 152, 241, 0.3));
+    border-radius: 3px;
+    position: relative;
+}
+
+.timeline-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: var(--hq-primary-color);
+    position: absolute;
+    box-shadow: 0 0 0 4px rgba(14, 152, 241, 0.15);
+}
+
+.start-dot {
+    left: 0;
+    transform: translateX(-50%);
+}
+
+.end-dot {
+    right: 0;
+    transform: translateX(50%);
+    background-color: rgba(14, 152, 241, 0.5);
+}
+
+.timeline-dates {
+    width: 95%;
+    max-width: 320px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.timeline-start-date {
+    color: var(--hq-primary-color);
+}
+
+.timeline-current-date {
+    color: var(--hq-primary-color);
+    opacity: 0.7;
+}
+
+.about-text-container {
+    position: relative;
+    padding: 15px;
+    border-radius: 10px;
+    background-color: rgba(14, 152, 241, 0.03);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.02);
+    margin-bottom: 25px;
+}
+
+/* Tablet styles */
+@media (min-width: 768px) {
+    .modern-timeline {
+        margin: 40px 0 50px;
     }
     
-    .mission-image img {
-        height: 250px;
+    .timeline-progress {
+        width: 80%;
+        max-width: 350px;
     }
     
-    .mission-image-caption h5 {
-        font-size: 14px;
+    .timeline-dates {
+        width: 85%;
+        max-width: 370px;
+        font-size: 17px;
+    }
+    
+    .about-text-container {
+        padding: 20px;
+        margin-bottom: 30px;
+    }
+    
+    .image-card img {
+        aspect-ratio: 4/3;
+    }
+    
+    .overlay-content h5 {
+        font-size: 17px;
+    }
+
+    /* Display decorative accents for tablets and up */
+    .card-accent {
+        display: block;
+        position: absolute;
+        border-radius: 12px;
+        z-index: -1;
+        transition: all 0.5s ease;
+    }
+    
+    .left-accent {
+        top: -10px;
+        right: -10px;
+        width: 60%;
+        height: 70%;
+        border-top: 3px solid var(--hq-primary-color);
+        border-right: 3px solid var(--hq-primary-color);
+    }
+    
+    .right-accent {
+        bottom: -10px;
+        left: -10px;
+        width: 60%;
+        height: 70%;
+        border-bottom: 3px solid var(--hq-primary-color);
+        border-left: 3px solid var(--hq-primary-color);
+    }
+    
+    .image-card-wrapper:hover .card-accent {
+        border-color: var(--hq-secondary-color);
+    }
+    
+    /* Always show overlay on tablet+ */
+    .image-card-overlay {
+        opacity: 1;
+        padding: 15px 20px;
+    }
+    
+    .modern-button {
+        padding: 16px 28px;
+        font-size: 16px;
     }
 }
 
-@media (max-width: 576px) {
-    .timeline-line {
-        width: 120px;
+/* Desktop styles */
+@media (min-width: 992px) {
+    .timeline-progress {
+        width: 70%;
+        max-width: 400px;
+        height: 4px;
+    }
+    
+    .timeline-dates {
+        width: 75%;
+        max-width: 420px;
+        font-size: 18px;
+    }
+    
+    .about-text-container {
+        padding: 25px;
+    }
+    
+    .image-card img {
+        aspect-ratio: 16/10;
+    }
+    
+    .image-card-overlay {
+        padding: 20px 25px;
+        opacity: 0;
+    }
+    
+    .overlay-content h5 {
+        font-size: 18px;
+    }
+    
+    .left-accent {
+        top: -15px;
+        right: -15px;
+        border-top: 4px solid var(--hq-primary-color);
+        border-right: 4px solid var(--hq-primary-color);
+    }
+    
+    .right-accent {
+        bottom: -15px;
+        left: -15px;
+        border-bottom: 4px solid var(--hq-primary-color);
+        border-left: 4px solid var(--hq-primary-color);
+    }
+}
+
+/* ==== 24. Mission Images ==== */
+/* Mission Images - Balanced dual mission layout */
+.mission-images-container {
+    margin-bottom: 40px;
+}
+
+.mission-image-wrap {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    height: 100%;
+}
+
+.mission-image {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    height: 100%;
+}
+
+.mission-image img {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    display: block;
+    transition: all 0.6s ease;
+    border-radius: 10px;
+}
+
+.mission-image-wrap:hover .mission-image img {
+    transform: scale(1.05);
+}
+
+.mission-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.85), transparent);
+    padding: 30px 20px 20px;
+    transition: all 0.4s ease;
+}
+
+.mission-caption h5 {
+    color: #fff;
+    margin: 0;
+    font-size: 18px;
+    font-weight: 500;
+    text-align: center;
+}
+
+/* Responsive styles */
+@media (max-width: 767px) {
+    .mission-image img {
+        height: 280px;
+    }
+    
+    .mission-caption {
+        padding: 20px 15px 15px;
+    }
+    
+    .mission-caption h5 {
+        font-size: 16px;
+    }
+}
+
+@media (min-width: 768px) {
+    .mission-images-container {
+        margin-bottom: 50px;
+    }
+    
+    .mission-image img {
+        height: 400px;
+    }
+    
+    .mission-caption h5 {
+        font-size: 20px;
     }
 }
