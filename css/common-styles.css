@@ -36,6 +36,7 @@ Table of Contents
         - Redesigned Image Cards
     24. Mission Images
         - Balanced dual mission layout
+    25. Flipped Timeline
 
 ========================================== */
 
@@ -1618,4 +1619,41 @@ input[type="checkbox"]:checked:before {
     .mission-caption h5 {
         font-size: 20px;
     }
+}
+
+/* ==== 25. Flipped Timeline ==== */
+/* Flipped timeline styles */
+.flipped-timeline {
+    direction: rtl;
+}
+
+.flipped-timeline .start-dot {
+    left: auto;
+    right: 0;
+    transform: translateX(50%);
+}
+
+.flipped-timeline .end-dot {
+    right: auto;
+    left: 0;
+    transform: translateX(-50%);
+    background-color: var(--hq-primary-color);
+}
+
+.flipped-timeline .timeline-line {
+    background: linear-gradient(to left, var(--hq-primary-color), rgba(14, 152, 241, 0.3));
+}
+
+.flipped-dates {
+    direction: rtl;
+}
+
+.flipped-dates .timeline-start-date {
+    color: var(--hq-primary-color);
+    opacity: 0.7;
+}
+
+.flipped-dates .timeline-current-date {
+    color: var(--hq-primary-color);
+    opacity: 1;
 }
