@@ -4721,6 +4721,182 @@ li span .donation-card-2-content ul li span {
 }
 
 /* ===================================================================
+    Timeline Animation
+====================================================================== */
+
+/* Timeline Animation */
+.timeline-animated {
+    opacity: 0;
+    transition: opacity 0.5s ease-out;
+}
+
+.timeline-animated.animate-timeline {
+    opacity: 1;
+}
+
+/* Timeline container */
+.modern-timeline {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px 0;
+    padding: 40px 0 20px;
+}
+
+/* Timeline structure */
+.timeline-progress {
+    position: relative;
+    width: 200px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.timeline-line {
+    flex: 1;
+    height: 2px;
+    background-color: #1E90FF;
+    border-radius: 2px;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 1.5s ease-out;
+}
+
+.timeline-animated.animate-timeline .timeline-line {
+    transform: scaleX(1);
+}
+
+/* Timeline dots */
+.timeline-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #1E90FF;
+    position: absolute;
+    opacity: 0;
+    transform: scale(0.8);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.start-dot {
+    left: 0;
+    transform: translateX(-50%) scale(0.8);
+    transition-delay: 0.3s;
+}
+
+.end-dot {
+    right: 0;
+    transform: translateX(50%) scale(0.8);
+    transition-delay: 1.2s;
+}
+
+.timeline-animated.animate-timeline .start-dot,
+.timeline-animated.animate-timeline .end-dot {
+    opacity: 1;
+    transform: translateX(-50%) scale(1);
+}
+
+.timeline-animated.animate-timeline .end-dot {
+    transform: translateX(50%) scale(1);
+}
+
+/* Timeline dates */
+.timeline-dates {
+    width: 240px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    font-weight: 600;
+    color: #1E90FF;
+}
+
+.timeline-start-date,
+.timeline-current-date {
+    opacity: 0;
+    transform: translateY(5px);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.timeline-start-date {
+    transition-delay: 0.5s;
+}
+
+.timeline-current-date {
+    transition-delay: 1.4s;
+}
+
+.timeline-animated.animate-timeline .timeline-start-date,
+.timeline-animated.animate-timeline .timeline-current-date {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Journey label */
+.timeline-journey-label {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%) translateY(-40px);
+    font-size: 12px;
+    font-weight: 600;
+    color: #1E90FF;
+    opacity: 0;
+    transition: opacity 1.5s ease-out;
+}
+
+.timeline-animated.animate-timeline .timeline-journey-label {
+    opacity: 1;
+}
+
+/* Pulse effect for dots after animation */
+.timeline-animated.animate-timeline .animated {
+    animation: dot-pulse 1.5s ease-in-out 2s;
+}
+
+@keyframes dot-pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(30, 144, 255, 0.4);
+    }
+    50% {
+        box-shadow: 0 0 0 5px rgba(30, 144, 255, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(30, 144, 255, 0);
+    }
+}
+
+/* Accessibility - respect user preferences for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .timeline-animated,
+    .timeline-line,
+    .timeline-dot,
+    .timeline-start-date,
+    .timeline-current-date,
+    .timeline-journey-label {
+        transition: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+    }
+    
+    .timeline-animated .timeline-line {
+        transform: scaleX(1) !important;
+    }
+    
+    .timeline-animated .start-dot {
+        transform: translateX(-50%) scale(1) !important;
+    }
+    
+    .timeline-animated .end-dot {
+        transform: translateX(50%) scale(1) !important;
+    }
+    
+    .animated {
+        animation: none !important;
+    }
+}
+
+/* ===================================================================
     Existing Styles (Keep below this line)
 ====================================================================== */
 

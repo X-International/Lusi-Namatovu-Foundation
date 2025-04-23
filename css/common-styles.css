@@ -37,6 +37,7 @@ Table of Contents
     24. Mission Images
         - Balanced dual mission layout
     25. Flipped Timeline
+    26. Timeline Animation
 
 ========================================== */
 
@@ -1656,4 +1657,102 @@ input[type="checkbox"]:checked:before {
 .flipped-dates .timeline-current-date {
     color: var(--hq-primary-color);
     opacity: 1;
+}
+
+/* ==== 26. Timeline Animation ==== */
+/* Timeline Animation */
+.timeline-animated {
+    opacity: 0;
+}
+
+.timeline-animated.animate-timeline {
+    opacity: 1;
+}
+
+.timeline-animated .timeline-line {
+    background: linear-gradient(to left, var(--hq-primary-color), rgba(14, 152, 241, 0.3));
+    width: 0;
+    transition: width 1.5s ease-out;
+    transform-origin: left;
+}
+
+.timeline-animated.animate-timeline .timeline-line {
+    width: 100%;
+}
+
+.timeline-animated .start-dot,
+.timeline-animated .end-dot,
+.timeline-animated .timeline-current-date,
+.timeline-animated .timeline-start-date {
+    opacity: 0;
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.timeline-animated .start-dot {
+    transform: scale(0.8);
+    transition-delay: 0.3s;
+}
+
+.timeline-animated .end-dot {
+    transform: scale(0.8);
+    transition-delay: 1.2s;
+}
+
+.timeline-animated .timeline-current-date {
+    transform: translateY(5px);
+    transition-delay: 0.5s;
+}
+
+.timeline-animated .timeline-start-date {
+    transform: translateY(5px);
+    transition-delay: 1.4s;
+}
+
+.timeline-animated.animate-timeline .start-dot,
+.timeline-animated.animate-timeline .end-dot,
+.timeline-animated.animate-timeline .timeline-current-date,
+.timeline-animated.animate-timeline .timeline-start-date {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+/* Add a subtle pulse animation to dots after they appear */
+.timeline-animated.animate-timeline .start-dot.animated,
+.timeline-animated.animate-timeline .end-dot.animated {
+    animation: dot-pulse 1s ease-in-out 2.2s;
+}
+
+@keyframes dot-pulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(14, 152, 241, 0.4);
+    }
+    50% {
+        transform: scale(1.2);
+        box-shadow: 0 0 0 5px rgba(14, 152, 241, 0);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(14, 152, 241, 0);
+    }
+}
+
+/* Accessibility - respect user preferences for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .timeline-animated,
+    .timeline-animated .timeline-line,
+    .timeline-animated .start-dot,
+    .timeline-animated .end-dot,
+    .timeline-animated .timeline-current-date,
+    .timeline-animated .timeline-start-date {
+        transition: none;
+        opacity: 1;
+        width: 100%;
+        transform: none;
+    }
+    
+    .timeline-animated.animate-timeline .start-dot.animated,
+    .timeline-animated.animate-timeline .end-dot.animated {
+        animation: none;
+    }
 }

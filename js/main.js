@@ -889,8 +889,54 @@
     }
     // Attach resize event listener
     window.addEventListener("resize", handleResize);
+
+    // Timeline Animation
+    const timelineElements = document.querySelectorAll('.timeline-animated');
+    
+    if (timelineElements.length > 0) {
+        const timelineObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-timeline');
+                    // Once animation played, no need to observe anymore
+                    timelineObserver.unobserve(entry.target);
+                }
+            });
+        }, {
+            rootMargin: '0px 0px -100px 0px',
+            threshold: 0.2
+        });
+        
+        timelineElements.forEach(element => {
+            timelineObserver.observe(element);
+        });
+    }
   });
 
   // REMOVED: Conflicting vanilla JavaScript mobile menu implementation
   // This was duplicating functionality handled by mobile-menu.js
+
+  // Timeline animation using Intersection Observer
+  document.addEventListener('DOMContentLoaded', function() {
+    const timelineElement = document.querySelector('.timeline-animated');
+    
+    if (timelineElement) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                // When timeline enters viewport
+                if (entry.isIntersecting) {
+                    // Add the animation trigger class
+                    timelineElement.classList.add('animate-timeline');
+                    // Once animated, no need to observe anymore
+                    observer.unobserve(timelineElement);
+                }
+            });
+        }, {
+            threshold: 0.2 // Trigger when 20% of the element is visible
+        });
+        
+        // Start observing the timeline element
+        observer.observe(timelineElement);
+    }
+  });
 })(jQuery);
