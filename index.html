@@ -33,6 +33,259 @@
     <link rel="stylesheet" href="css/back-to-top.css">
     <link rel="stylesheet" href="css/impact-section.css">
 
+    <style>
+        /* Photo Gallery Enhancements */
+        .gallery-intro {
+            max-width: 700px;
+            margin: 0 auto 20px;
+        }
+        
+        /* Filter Buttons */
+        .gallery-filter-container {
+            margin-bottom: 30px;
+        }
+        
+        .gallery-filter-buttons {
+            display: inline-flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .filter-btn {
+            background-color: transparent;
+            border: 1px solid var(--primary-color, #3498db);
+            color: var(--primary-color, #3498db);
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .filter-btn.active, .filter-btn:hover {
+            background-color: var(--primary-color, #3498db);
+            color: #fff;
+        }
+        
+        /* Mobile Carousel */
+        .mobile-gallery-carousel {
+            margin: 0 -15px;
+            padding: 0 15px 40px;
+        }
+        
+        .carousel-gallery-item {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .carousel-gallery-item img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+            border-radius: 15px;
+        }
+        
+        .carousel-gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+            color: white;
+            padding: 15px;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .carousel-gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0,0,0,0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .carousel-gallery-item:hover .carousel-gallery-overlay {
+            opacity: 1;
+        }
+        
+        .carousel-gallery-overlay a {
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary-color, #3498db);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transform: translateY(20px);
+            transition: transform 0.3s ease;
+        }
+        
+        .carousel-gallery-item:hover .carousel-gallery-overlay a {
+            transform: translateY(0);
+        }
+        
+        .mobile-gallery-pagination {
+            position: relative;
+            bottom: 0;
+            margin-top: 15px;
+        }
+        
+        /* Desktop Masonry Layout */
+        .photo-gallery-masonry {
+            overflow: hidden;
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 20px;
+        }
+        
+        @media (max-width: 992px) {
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            transform: translateY(0);
+            transition: transform 0.3s ease;
+            margin-bottom: 20px;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .gallery-item-inner {
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+            border-radius: 12px;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+        
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+            color: white;
+            padding: 20px 15px 15px;
+            font-size: 14px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+        }
+        
+        .gallery-item:hover .gallery-caption {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .photo-gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0,0,0,0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .gallery-item:hover .photo-gallery-overlay {
+            opacity: 1;
+        }
+        
+        .photo-gallery-overlay a {
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary-color, #3498db);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transform: translateY(20px);
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-item:hover .photo-gallery-overlay a {
+            transform: translateY(0);
+        }
+        
+        /* Video Item Styling */
+        .video-item .photo-gallery-overlay a {
+            background-color: var(--primary-color, #3498db);
+        }
+        
+        .video-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: var(--primary-color, #3498db);
+            color: white;
+            font-size: 12px;
+            padding: 5px 12px;
+            border-radius: 20px;
+            z-index: 1;
+        }
+        
+        /* Gallery Counter */
+        .gallery-counter {
+            font-size: 14px;
+            color: #777;
+            margin-top: 20px;
+        }
+        
+        .gallery-counter .shown-count,
+        .gallery-counter .total-count {
+            font-weight: 600;
+            color: var(--primary-color, #3498db);
+        }
+        
+        /* Lazy Loading Placeholder */
+        .lazy-load {
+            opacity: 0;
+            transition: opacity 0.3s ease-in;
+        }
+        
+        .lazy-load[src]:not([src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="]) {
+            opacity: 1;
+        }
+    </style>
 </head>
 
 <body>
@@ -616,52 +869,661 @@
             <div class="section-heading text-center mb-5 hq-text-animation-wrap">
                 <h3 class="sub-heading hq-text-anim" data-effect="fade-in-right"><span class="hq-bd-anim sh-left-line"></span>Photo Gallery</h3>
                 <h2 class="heading hq-fade-effect">Moments of Hope in Rakai</h2>
+                <p class="gallery-intro hq-fade-effect">Witness the impact of our work through these heartfelt moments captured across Rakai District.</p>
             </div><!-- /.section-heading -->
-            <div class="photo-gallery-items">
-                <div class="photo-gallery-item hq-img-hover-effect hq-fade-effect">
-                    <img class="hq-img-hover-element" src="images/lnf/events/Lusi-Namatovu-Foundation_01.jpg" alt="Image">
-                    <div class="photo-gallery-overlay">
-                        <a href="images/lnf/events/Lusi-Namatovu-Foundation_01.jpg" class="venobox" data-gall="photo-gallery"><i class="fa-regular fa-arrow-up-right"></i></a>
+            
+            <!-- Gallery Category Filter Buttons -->
+            <div class="gallery-filter-container text-center mb-4 hq-fade-effect">
+                <div class="btn-group gallery-filter-buttons" role="group" aria-label="Gallery filters">
+                    <button type="button" class="filter-btn active" data-filter="all">All</button>
+                    <button type="button" class="filter-btn" data-filter="elderly">Elderly Care</button>
+                    <button type="button" class="filter-btn" data-filter="disability">Disability Support</button>
+                    <button type="button" class="filter-btn" data-filter="events">Community Events</button>
+                </div>
+            </div>
+            
+            <!-- Mobile Gallery Carousel - Only shows on smaller screens -->
+            <div class="mobile-gallery-carousel swiper-container d-block d-md-none hq-fade-effect">
+                <div class="swiper-wrapper">
+                    <!-- Mobile Slide 1 -->
+                    <div class="swiper-slide" data-category="elderly">
+                        <div class="carousel-gallery-item">
+                            <img src="images/gallery/gallery-1.jpg" alt="Elderly care program by Lusi Namatovu Foundation">
+                            <div class="carousel-gallery-caption">
+                                <p>Providing essential care packages to elders in Rakai District</p>
+                            </div>
+                            <div class="carousel-gallery-overlay">
+                                <a href="images/gallery/gallery-1.jpg" class="venobox" data-gall="mobile-gallery" data-title="Providing essential care packages to elders in Rakai District">
+                                    <i class="fa-regular fa-magnifying-glass-plus"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Mobile Slide 2 -->
+                    <div class="swiper-slide" data-category="disability">
+                        <div class="carousel-gallery-item">
+                            <img src="images/gallery/gallery-2.jpg" alt="Disability support program by Lusi Namatovu Foundation">
+                            <div class="carousel-gallery-caption">
+                                <p>Empowering independence through assistive devices</p>
+                            </div>
+                            <div class="carousel-gallery-overlay">
+                                <a href="images/gallery/gallery-2.jpg" class="venobox" data-gall="mobile-gallery" data-title="Empowering independence through assistive devices">
+                                    <i class="fa-regular fa-magnifying-glass-plus"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Mobile Slide 3 -->
+                    <div class="swiper-slide" data-category="events">
+                        <div class="carousel-gallery-item">
+                            <img src="images/gallery/gallery-3.jpg" alt="Community gathering organized by Lusi Namatovu Foundation">
+                            <div class="carousel-gallery-caption">
+                                <p>Building community bonds through local gatherings</p>
+                            </div>
+                            <div class="carousel-gallery-overlay">
+                                <a href="images/gallery/gallery-3.jpg" class="venobox" data-gall="mobile-gallery" data-title="Building community bonds through local gatherings">
+                                    <i class="fa-regular fa-magnifying-glass-plus"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Mobile Slide 4 -->
+                    <div class="swiper-slide" data-category="elderly">
+                        <div class="carousel-gallery-item">
+                            <img src="images/gallery/gallery-4.jpg" alt="Elderly support program by Lusi Namatovu Foundation">
+                            <div class="carousel-gallery-caption">
+                                <p>Bringing joy and companionship to elders</p>
+                            </div>
+                            <div class="carousel-gallery-overlay">
+                                <a href="images/gallery/gallery-4.jpg" class="venobox" data-gall="mobile-gallery" data-title="Bringing joy and companionship to elders">
+                                    <i class="fa-regular fa-magnifying-glass-plus"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Mobile Slide 5 -->
+                    <div class="swiper-slide" data-category="disability">
+                        <div class="carousel-gallery-item">
+                            <img src="images/gallery/gallery-5.jpg" alt="Disability support services by Lusi Namatovu Foundation">
+                            <div class="carousel-gallery-caption">
+                                <p>Creating inclusive opportunities for all abilities</p>
+                            </div>
+                            <div class="carousel-gallery-overlay">
+                                <a href="images/gallery/gallery-5.jpg" class="venobox" data-gall="mobile-gallery" data-title="Creating inclusive opportunities for all abilities">
+                                    <i class="fa-regular fa-magnifying-glass-plus"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Mobile Slide 6 -->
+                    <div class="swiper-slide" data-category="events">
+                        <div class="carousel-gallery-item">
+                            <img src="images/gallery/gallery-6.jpg" alt="Community event by Lusi Namatovu Foundation">
+                            <div class="carousel-gallery-caption">
+                                <p>Celebrating together as a unified community</p>
+                            </div>
+                            <div class="carousel-gallery-overlay">
+                                <a href="images/gallery/gallery-6.jpg" class="venobox" data-gall="mobile-gallery" data-title="Celebrating together as a unified community">
+                                    <i class="fa-regular fa-magnifying-glass-plus"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Mobile Slide 7 - NEW -->
+                    <div class="swiper-slide" data-category="events">
+                        <div class="carousel-gallery-item">
+                            <img src="images/gallery/gallery-3.jpg" alt="Community outreach program by Lusi Namatovu Foundation">
+                            <div class="carousel-gallery-caption">
+                                <p>Community outreach programs in rural areas</p>
+                            </div>
+                            <div class="carousel-gallery-overlay">
+                                <a href="images/gallery/gallery-3.jpg" class="venobox" data-gall="mobile-gallery" data-title="Community outreach programs in rural areas">
+                                    <i class="fa-regular fa-magnifying-glass-plus"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Mobile Slide 8 - NEW -->
+                    <div class="swiper-slide" data-category="elderly">
+                        <div class="carousel-gallery-item">
+                            <img src="images/gallery/gallery-1.jpg" alt="Healthcare services for elderly by Lusi Namatovu Foundation">
+                            <div class="carousel-gallery-caption">
+                                <p>Healthcare support services for elderly residents</p>
+                            </div>
+                            <div class="carousel-gallery-overlay">
+                                <a href="images/gallery/gallery-1.jpg" class="venobox" data-gall="mobile-gallery" data-title="Healthcare support services for elderly residents">
+                                    <i class="fa-regular fa-magnifying-glass-plus"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Mobile Slide 9 - NEW -->
+                    <div class="swiper-slide" data-category="disability">
+                        <div class="carousel-gallery-item">
+                            <img src="images/gallery/gallery-5.jpg" alt="Education program for people with disabilities by Lusi Namatovu Foundation">
+                            <div class="carousel-gallery-caption">
+                                <p>Education and skills training initiatives</p>
+                            </div>
+                            <div class="carousel-gallery-overlay">
+                                <a href="images/gallery/gallery-5.jpg" class="venobox" data-gall="mobile-gallery" data-title="Education and skills training initiatives">
+                                    <i class="fa-regular fa-magnifying-glass-plus"></i>
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="photo-gallery-item hq-img-hover-effect hq-fade-effect" data-delay="0.25">
-                    <img class="hq-img-hover-element" src="images/lnf/events/Lusi-Namatovu-Foundation_10.jpg" alt="Image">
-                    <div class="photo-gallery-overlay">
-                        <a href="images/lnf/events/Lusi-Namatovu-Foundation_10.jpg" class="venobox" data-gall="photo-gallery"><i class="fa-regular fa-arrow-up-right"></i></a>
+                
+                <!-- Mobile Carousel Controls -->
+                <div class="swiper-pagination mobile-gallery-pagination"></div>
+            </div>
+            
+            <!-- Desktop Gallery - Hidden on mobile -->
+            <div class="gallery-wrapper d-none d-md-block hq-fade-effect">
+                <div class="row g-4">
+                    <!-- Gallery Item 1 -->
+                    <div class="col-md-6 col-lg-4 gallery-item" data-category="elderly">
+                        <div class="gallery-item-inner">
+                            <div class="gallery-image">
+                                <img src="images/gallery/gallery-1.jpg" alt="Elderly care program by Lusi Namatovu Foundation">
+                                <div class="gallery-caption">
+                                    <p>Providing essential care packages to elders in Rakai District</p>
+                                </div>
+                                <div class="gallery-overlay">
+                                    <a href="images/gallery/gallery-1.jpg" class="venobox" data-gall="photo-gallery" data-title="Providing essential care packages to elders in Rakai District">
+                                        <i class="fa-regular fa-magnifying-glass-plus"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Gallery Item 2 -->
+                    <div class="col-md-6 col-lg-4 gallery-item" data-category="disability">
+                        <div class="gallery-item-inner">
+                            <div class="gallery-image">
+                                <img src="images/gallery/gallery-2.jpg" alt="Disability support program by Lusi Namatovu Foundation">
+                                <div class="gallery-caption">
+                                    <p>Empowering independence through assistive devices</p>
+                                </div>
+                                <div class="gallery-overlay">
+                                    <a href="images/gallery/gallery-2.jpg" class="venobox" data-gall="photo-gallery" data-title="Empowering independence through assistive devices">
+                                        <i class="fa-regular fa-magnifying-glass-plus"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Gallery Item 3 -->
+                    <div class="col-md-6 col-lg-4 gallery-item" data-category="events">
+                        <div class="gallery-item-inner">
+                            <div class="gallery-image">
+                                <img src="images/gallery/gallery-3.jpg" alt="Community gathering organized by Lusi Namatovu Foundation">
+                                <div class="gallery-caption">
+                                    <p>Building community bonds through local gatherings</p>
+                                </div>
+                                <div class="gallery-overlay">
+                                    <a href="images/gallery/gallery-3.jpg" class="venobox" data-gall="photo-gallery" data-title="Building community bonds through local gatherings">
+                                        <i class="fa-regular fa-magnifying-glass-plus"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Gallery Item 4 -->
+                    <div class="col-md-6 col-lg-4 gallery-item" data-category="elderly">
+                        <div class="gallery-item-inner">
+                            <div class="gallery-image">
+                                <img src="images/gallery/gallery-4.jpg" alt="Elderly support program by Lusi Namatovu Foundation">
+                                <div class="gallery-caption">
+                                    <p>Bringing joy and companionship to elders</p>
+                                </div>
+                                <div class="gallery-overlay">
+                                    <a href="images/gallery/gallery-4.jpg" class="venobox" data-gall="photo-gallery" data-title="Bringing joy and companionship to elders">
+                                        <i class="fa-regular fa-magnifying-glass-plus"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Gallery Item 5 -->
+                    <div class="col-md-6 col-lg-4 gallery-item" data-category="disability">
+                        <div class="gallery-item-inner">
+                            <div class="gallery-image">
+                                <img src="images/gallery/gallery-5.jpg" alt="Disability support services by Lusi Namatovu Foundation">
+                                <div class="gallery-caption">
+                                    <p>Creating inclusive opportunities for all abilities</p>
+                                </div>
+                                <div class="gallery-overlay">
+                                    <a href="images/gallery/gallery-5.jpg" class="venobox" data-gall="photo-gallery" data-title="Creating inclusive opportunities for all abilities">
+                                        <i class="fa-regular fa-magnifying-glass-plus"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Gallery Item 6 -->
+                    <div class="col-md-6 col-lg-4 gallery-item" data-category="events">
+                        <div class="gallery-item-inner">
+                            <div class="gallery-image">
+                                <img src="images/gallery/gallery-6.jpg" alt="Community event by Lusi Namatovu Foundation">
+                                <div class="gallery-caption">
+                                    <p>Celebrating together as a unified community</p>
+                                </div>
+                                <div class="gallery-overlay">
+                                    <a href="images/gallery/gallery-6.jpg" class="venobox" data-gall="photo-gallery" data-title="Celebrating together as a unified community">
+                                        <i class="fa-regular fa-magnifying-glass-plus"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Gallery Item 7 - NEW (THIRD ROW) -->
+                    <div class="col-md-6 col-lg-4 gallery-item" data-category="events">
+                        <div class="gallery-item-inner">
+                            <div class="gallery-image">
+                                <img src="images/gallery/gallery-3.jpg" alt="Community outreach program by Lusi Namatovu Foundation">
+                                <div class="gallery-caption">
+                                    <p>Community outreach programs in rural areas</p>
+                                </div>
+                                <div class="gallery-overlay">
+                                    <a href="images/gallery/gallery-3.jpg" class="venobox" data-gall="photo-gallery" data-title="Community outreach programs in rural areas">
+                                        <i class="fa-regular fa-magnifying-glass-plus"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Gallery Item 8 - NEW (THIRD ROW) -->
+                    <div class="col-md-6 col-lg-4 gallery-item" data-category="elderly">
+                        <div class="gallery-item-inner">
+                            <div class="gallery-image">
+                                <img src="images/gallery/gallery-1.jpg" alt="Healthcare services for elderly by Lusi Namatovu Foundation">
+                                <div class="gallery-caption">
+                                    <p>Healthcare support services for elderly residents</p>
+                                </div>
+                                <div class="gallery-overlay">
+                                    <a href="images/gallery/gallery-1.jpg" class="venobox" data-gall="photo-gallery" data-title="Healthcare support services for elderly residents">
+                                        <i class="fa-regular fa-magnifying-glass-plus"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Gallery Item 9 - NEW (THIRD ROW) -->
+                    <div class="col-md-6 col-lg-4 gallery-item" data-category="disability">
+                        <div class="gallery-item-inner">
+                            <div class="gallery-image">
+                                <img src="images/gallery/gallery-5.jpg" alt="Education program for people with disabilities by Lusi Namatovu Foundation">
+                                <div class="gallery-caption">
+                                    <p>Education and skills training initiatives</p>
+                                </div>
+                                <div class="gallery-overlay">
+                                    <a href="images/gallery/gallery-5.jpg" class="venobox" data-gall="photo-gallery" data-title="Education and skills training initiatives">
+                                        <i class="fa-regular fa-magnifying-glass-plus"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="photo-gallery-item hq-img-hover-effect hq-fade-effect" data-delay="0.35">
-                    <img class="hq-img-hover-element" src="images/lnf/events/Lusi-Namatovu-Foundation_04.jpg" alt="Image">
-                    <div class="photo-gallery-overlay">
-                        <a href="images/lnf/events/Lusi-Namatovu-Foundation_04.jpg" class="venobox" data-gall="photo-gallery"><i class="fa-regular fa-arrow-up-right"></i></a>
-                    </div>
-                </div>
-                <div class="photo-gallery-item hq-img-hover-effect hq-fade-effect" data-delay="0.15">
-                    <img class="hq-img-hover-element" src="images/lnf/events/Lusi-Namatovu-Foundation_08.jpg" alt="Image">
-                    <div class="photo-gallery-overlay">
-                        <a href="images/lnf/events/Lusi-Namatovu-Foundation_08.jpg" class="venobox" data-gall="photo-gallery"><i class="fa-regular fa-arrow-up-right"></i></a>
-                    </div>
-                </div>
-                <div class="photo-gallery-item hq-img-hover-effect hq-fade-effect" data-delay="0.25">
-                    <img class="hq-img-hover-element" src="images/lnf/events/Lusi-Namatovu-Foundation_42.jpg" alt="Image">
-                    <div class="photo-gallery-overlay">
-                        <a href="images/lnf/events/Lusi-Namatovu-Foundation_42.jpg" class="venobox" data-gall="photo-gallery"><i class="fa-regular fa-arrow-up-right"></i></a>
-                    </div>
-                </div>
-                <div class="photo-gallery-item hq-img-hover-effect hq-fade-effect" data-delay="0.35">
-                    <img class="hq-img-hover-element" src="images/lnf/events/Lusi-Namatovu-Foundation_40.jpg" alt="Image">
-                    <div class="photo-gallery-overlay">
-                        <a href="images/lnf/events/Lusi-Namatovu-Foundation_40.jpg" class="venobox" data-gall="photo-gallery"><i class="fa-regular fa-arrow-up-right"></i></a>
-                    </div>
-                </div>
-            </div><!-- /.photo-gallery-items -->
+            </div>
+            
+            <!-- View More Button -->
             <div class="d-flex justify-content-center w-full mt-5 hq-fade-effect" data-delay="0.15">
                 <a href="gallery.html" class="hq-btn hq-btn-effect"><span>Explore More Moments <i class="fa-regular fa-arrow-up-right"></i></span></a>
             </div>
+            
+            <!-- Gallery Counter -->
+            <div class="gallery-counter text-center mt-3 hq-fade-effect" data-delay="0.25">
+                <p>Showing <span class="shown-count">9</span> of <span class="total-count">24+</span> gallery items</p>
+            </div>
         </div>
+        
+        <style>
+            /* Gallery Styles - Matching site aesthetics */
+            .gallery-intro {
+                max-width: 700px;
+                margin: 0 auto 20px;
+                color: var(--hq-grey-color);
+            }
+            
+            /* Filter Buttons */
+            .gallery-filter-container {
+                margin-bottom: 30px;
+            }
+            
+            .gallery-filter-buttons {
+                display: inline-flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 10px;
+            }
+            
+            .filter-btn {
+                background-color: transparent;
+                border: 1px solid var(--hq-primary-color);
+                color: var(--hq-primary-color);
+                padding: 8px 20px;
+                border-radius: 30px;
+                font-size: 14px;
+                font-weight: 500;
+                cursor: pointer;
+                transition: var(--hq-transition);
+            }
+            
+            .filter-btn.active, .filter-btn:hover {
+                background-color: var(--hq-primary-color);
+                color: #fff;
+            }
+            
+            /* Mobile Carousel */
+            .mobile-gallery-carousel {
+                margin: 0 -15px;
+                padding: 0 15px 40px;
+            }
+            
+            .carousel-gallery-item {
+                position: relative;
+                border-radius: 12px;
+                overflow: hidden;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            }
+            
+            .carousel-gallery-item img {
+                width: 100%;
+                height: 280px;
+                object-fit: cover;
+                transition: transform 0.5s ease;
+                border-radius: 12px;
+            }
+            
+            .carousel-gallery-caption {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+                color: white;
+                padding: 15px;
+                font-size: 14px;
+                text-align: center;
+            }
+            
+            .carousel-gallery-overlay {
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background-color: rgba(14, 152, 241, 0.2);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                opacity: 0;
+                transition: opacity 0.3s ease;
+            }
+            
+            .carousel-gallery-item:hover .carousel-gallery-overlay {
+                opacity: 1;
+            }
+            
+            .carousel-gallery-overlay a {
+                width: 50px;
+                height: 50px;
+                background-color: var(--hq-primary-color);
+                color: white;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                transform: translateY(20px);
+                transition: transform 0.3s ease;
+            }
+            
+            .carousel-gallery-item:hover .carousel-gallery-overlay a {
+                transform: translateY(0);
+            }
+            
+            .mobile-gallery-pagination {
+                position: relative;
+                bottom: 0;
+                margin-top: 15px;
+            }
+            
+            .swiper-pagination-bullet-active {
+                background-color: var(--hq-primary-color);
+            }
+            
+            /* Desktop Gallery */
+            .gallery-wrapper {
+                margin-bottom: 20px;
+            }
+            
+            .gallery-item {
+                margin-bottom: 30px;
+                transition: all 0.3s ease;
+            }
+            
+            .gallery-item-inner {
+                position: relative;
+                overflow: hidden;
+                border-radius: 12px;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+                transition: all 0.3s ease;
+            }
+            
+            .gallery-item-inner:hover {
+                box-shadow: 0 10px 25px rgba(14, 152, 241, 0.2);
+                transform: translateY(-5px);
+            }
+            
+            .gallery-image {
+                position: relative;
+                overflow: hidden;
+                border-radius: 12px;
+            }
+            
+            .gallery-image img {
+                width: 100%;
+                height: 280px;
+                object-fit: cover;
+                transition: transform 0.6s ease;
+                border-radius: 12px;
+            }
+            
+            .gallery-item-inner:hover .gallery-image img {
+                transform: scale(1.05);
+            }
+            
+            .gallery-caption {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+                color: white;
+                padding: 20px 15px 15px;
+                font-size: 14px;
+                opacity: 0;
+                transform: translateY(20px);
+                transition: all 0.3s ease;
+            }
+            
+            .gallery-item-inner:hover .gallery-caption {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            
+            .gallery-overlay {
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background-color: rgba(14, 152, 241, 0.2);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                opacity: 0;
+                transition: opacity 0.3s ease;
+            }
+            
+            .gallery-item-inner:hover .gallery-overlay {
+                opacity: 1;
+            }
+            
+            .gallery-overlay a {
+                width: 60px;
+                height: 60px;
+                background-color: var(--hq-primary-color);
+                color: white;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 20px;
+                transform: scale(0.8);
+                transition: all 0.3s ease;
+            }
+            
+            .gallery-item-inner:hover .gallery-overlay a {
+                transform: scale(1);
+            }
+            
+            .gallery-overlay a:hover {
+                background-color: var(--hq-secondary-color);
+                transform: scale(1.1);
+            }
+            
+            /* Gallery Counter */
+            .gallery-counter {
+                font-size: 14px;
+                color: var(--hq-grey-color);
+                margin-top: 20px;
+            }
+            
+            .gallery-counter .shown-count,
+            .gallery-counter .total-count {
+                font-weight: 600;
+                color: var(--hq-primary-color);
+            }
+            
+            /* Responsive Adjustments */
+            @media (min-width: 768px) and (max-width: 991px) {
+                .gallery-image img {
+                    height: 240px;
+                }
+            }
+            
+            @media (min-width: 992px) {
+                .gallery-image img {
+                    height: 260px;
+                }
+            }
+        </style>
+        
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                // Initialize mobile gallery carousel
+                var mobileGallerySwiper = new Swiper('.mobile-gallery-carousel', {
+                    slidesPerView: 1.2,
+                    spaceBetween: 15,
+                    centeredSlides: true,
+                    loop: true,
+                    pagination: {
+                        el: '.mobile-gallery-pagination',
+                        clickable: true
+                    },
+                    breakpoints: {
+                        480: {
+                            slidesPerView: 1.5,
+                            spaceBetween: 20
+                        }
+                    }
+                });
+                
+                // Initialize VenoBox
+                if (typeof VenoBox !== 'undefined') {
+                    new VenoBox({
+                        selector: '.venobox',
+                        numeration: true,
+                        infinigall: true,
+                        spinner: 'rotating-plane',
+                        spinColor: '#0e98f1'
+                    });
+                }
+                
+                // Category filtering functionality
+                var filterButtons = document.querySelectorAll('.filter-btn');
+                
+                filterButtons.forEach(function(button) {
+                    button.addEventListener('click', function() {
+                        // Remove active class from all buttons
+                        filterButtons.forEach(function(btn) {
+                            btn.classList.remove('active');
+                        });
+                        
+                        // Add active class to clicked button
+                        this.classList.add('active');
+                        
+                        var filterValue = this.getAttribute('data-filter');
+                        
+                        // Filter desktop gallery items
+                        var galleryItems = document.querySelectorAll('.gallery-item');
+                        var visibleCount = 0;
+                        
+                        galleryItems.forEach(function(item) {
+                            var itemCategory = item.getAttribute('data-category');
+                            
+                            if (filterValue === 'all' || filterValue === itemCategory) {
+                                item.style.display = 'block';
+                                visibleCount++;
+                            } else {
+                                item.style.display = 'none';
+                            }
+                        });
+                        
+                        // Update counter
+                        document.querySelector('.shown-count').textContent = visibleCount;
+                        
+                        // Filter mobile carousel slides
+                        var mobileSlides = document.querySelectorAll('.mobile-gallery-carousel .swiper-slide');
+                        mobileSlides.forEach(function(slide) {
+                            var slideCategory = slide.getAttribute('data-category');
+                            
+                            if (filterValue === 'all' || filterValue === slideCategory) {
+                                slide.classList.remove('swiper-slide-hidden');
+                            } else {
+                                slide.classList.add('swiper-slide-hidden');
+                            }
+                        });
+                        
+                        // Update mobile swiper
+                        if (mobileGallerySwiper) {
+                            mobileGallerySwiper.update();
+                            mobileGallerySwiper.slideTo(0);
+                        }
+                    });
+                });
+            });
+        </script>
     </section><!-- /.photo-gallery-section -->
-   
-    
+
     <footer class="footer-wrapper modern-footer">
         <!-- Wave Shape Top Decoration -->
         <div class="footer-wave-shape">
@@ -804,6 +1666,96 @@
     <script src="js/main.js"></script>
     <script src="js/mobile-menu.js"></script>
     <script src="js/support-animations.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize Masonry layout for desktop gallery
+            var masonryGrid = document.querySelector('.gallery-grid');
+            if (masonryGrid) {
+                var masonry = new Masonry(masonryGrid, {
+                    itemSelector: '.gallery-item',
+                    columnWidth: '.gallery-item',
+                    percentPosition: true,
+                    gutter: 20
+                });
+            }
+            
+            // Initialize mobile gallery carousel
+            var mobileGallerySwiper = new Swiper('.mobile-gallery-carousel', {
+                slidesPerView: 1.2,
+                spaceBetween: 15,
+                centeredSlides: true,
+                loop: true,
+                pagination: {
+                    el: '.mobile-gallery-pagination',
+                    clickable: true
+                },
+                breakpoints: {
+                    480: {
+                        slidesPerView: 1.5,
+                        spaceBetween: 20
+                    }
+                }
+            });
+            
+            // Category filtering functionality
+            var filterButtons = document.querySelectorAll('.filter-btn');
+            
+            filterButtons.forEach(function(button) {
+                button.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    filterButtons.forEach(function(btn) {
+                        btn.classList.remove('active');
+                    });
+                    
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    var filterValue = this.getAttribute('data-filter');
+                    
+                    // Filter desktop gallery items
+                    var galleryItems = document.querySelectorAll('.gallery-item');
+                    galleryItems.forEach(function(item) {
+                        var itemCategory = item.getAttribute('data-category');
+                        
+                        if (filterValue === 'all' || filterValue === itemCategory) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                    
+                    // Update counter
+                    var visibleItems = document.querySelectorAll('.gallery-item[style="display: block"]').length;
+                    document.querySelector('.shown-count').textContent = visibleItems;
+                    
+                    // Relayout masonry after filtering
+                    if (masonry) {
+                        setTimeout(function() {
+                            masonry.layout();
+                        }, 100);
+                    }
+                    
+                    // Filter mobile carousel slides
+                    var mobileSlides = document.querySelectorAll('.mobile-gallery-carousel .swiper-slide');
+                    mobileSlides.forEach(function(slide) {
+                        var slideCategory = slide.getAttribute('data-category');
+                        
+                        if (filterValue === 'all' || filterValue === slideCategory) {
+                            slide.classList.remove('swiper-slide-hidden');
+                        } else {
+                            slide.classList.add('swiper-slide-hidden');
+                        }
+                    });
+                    
+                    // Update mobile swiper
+                    if (mobileGallerySwiper) {
+                        mobileGallerySwiper.update();
+                        mobileGallerySwiper.slideTo(0);
+                    }
+                });
+            });
+        });
+    </script>
 
 </body>
 
