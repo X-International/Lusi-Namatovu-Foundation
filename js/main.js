@@ -939,4 +939,73 @@
         observer.observe(timelineElement);
     }
   });
+
+  // Impact Section Animations
+  document.addEventListener('DOMContentLoaded', function() {
+    // Intersection Observer for fade-in animations
+    const fadeElements = document.querySelectorAll('.hq-section-fade');
+    
+    const fadeObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('fade-in');
+                fadeObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.2 });
+    
+    fadeElements.forEach(el => {
+        fadeObserver.observe(el);
+    });
+    
+    // Timeline animation
+    const timelineElements = document.querySelectorAll('.timeline-animated');
+    
+    const timelineObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate-timeline');
+                
+                // Add the animated class to dots after timeline appears
+                setTimeout(() => {
+                    const dots = entry.target.querySelectorAll('.timeline-dot');
+                    dots.forEach(dot => {
+                        dot.classList.add('animated');
+                    });
+                }, 1500);
+                
+                timelineObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.5 });
+    
+    timelineElements.forEach(el => {
+        timelineObserver.observe(el);
+    });
+
+    // Number counter animation (works with odometer)
+    const counterElements = document.querySelectorAll('.counter-item');
+    
+    const counterObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const odometerElement = entry.target.querySelector('.odometer');
+                
+                if (odometerElement) {
+                    const finalValue = odometerElement.getAttribute('data-count');
+                    
+                    setTimeout(() => {
+                        odometerElement.innerHTML = finalValue;
+                    }, 500);
+                }
+                
+                counterObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.5 });
+    
+    counterElements.forEach(el => {
+        counterObserver.observe(el);
+    });
+  });
 })(jQuery);
