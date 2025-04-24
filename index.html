@@ -677,7 +677,7 @@
             <div class="footer-main">
                 <!-- About Section -->
                 <div class="footer-about">
-                    <a href="index.html" class="footer-logo">
+                    <a href="index.html" class="footer-logo" aria-label="Lusi Namatovu Foundation Home">
                         <img src="images/lnf/logo/Lusi-Namatovu-Foundation_logo.png" alt="Lusi Namatovu Foundation">
                     </a>
                     <p class="footer-about-text">
@@ -690,7 +690,7 @@
                                 <i class="fa-regular fa-hand-holding-heart"></i>
                             </div>
                             <div class="impact-content">
-                                <h4>9+</h4>
+                                <h4><span class="years-counter"><script>document.write(new Date().getFullYear() - 2016)</script></span>+</h4>
                                 <p>Years of Service</p>
                             </div>
                         </div>
@@ -699,7 +699,7 @@
                                 <i class="fa-regular fa-users"></i>
                             </div>
                             <div class="impact-content">
-                                <h4>200+</h4>
+                                <h4><span class="counter-wrapper">200</span>+</h4>
                                 <p>Lives Impacted</p>
                             </div>
                         </div>
@@ -718,11 +718,11 @@
                     <h3 class="footer-heading">Quick Links</h3>
                     <div class="footer-menu-columns">
                         <ul class="footer-menu-col">
-                            <li><a href="index.html">Home</a></li>
-                            <li><a href="about-us.html">About Us</a></li>
-                            <li><a href="our-work.html">Our Work</a></li>
-                            <li><a href="gallery.html">Gallery</a></li>
-                            <li><a href="contact-us.html">Contact Us</a></li>
+                            <li><a href="#">Home</a></li>
+                            <li><a href="#">About Us</a></li>
+                            <li><a href="#">Our Work</a></li>
+                            <li><a href="#">Gallery</a></li>
+                            <li><a href="#">Contact Us</a></li>
                         </ul>
                     </div>
                 </div>
@@ -761,18 +761,14 @@
                 <div class="footer-newsletter">
                     <h3 class="footer-heading">Stay Updated</h3>
                     <p>Subscribe to our newsletter for updates on our work in Rakai District and how you can help.</p>
-                    <form id="ajax_mc_form" class="newsletter-form">
+                    <form id="ajax_mc_form" class="newsletter-form" aria-label="Newsletter signup">
                         <div class="form-group">
-                            <input id="mc_email" type="email" name="mc_email" placeholder="Your email address" required>
+                            <input id="mc_email" type="email" name="mc_email" placeholder="Your email address" aria-label="Email address" required>
                         </div>
                         <button type="submit" class="subscribe-btn">
                             Subscribe <i class="fa-regular fa-paper-plane"></i>
                         </button>
-                        <div class="newsletter-consent">
-                            <input type="checkbox" id="consent" name="consent" required>
-                            <label for="consent">I agree to receive emails about the foundation's work and ways to support.</label>
-                        </div>
-                        <div id="mc-form-messages" class="form-message"></div>
+                        <div id="mc-form-messages" class="form-message" aria-live="polite"></div>
                     </form>
                 </div>
             </div>
@@ -789,7 +785,7 @@
                 <a href="#">Cookie Policy</a>
             </div>
         </div>
-    </footer><!-- /.footer-wrapper -->
+    </footer>
 
 
     <!-- JS Files -->
