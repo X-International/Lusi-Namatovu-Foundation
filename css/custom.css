@@ -1,0 +1,163 @@
+/* Make a Difference Today Section Styles */
+.get-involved-section {
+  background-color: #F5F5F5;
+  padding: 60px 0;
+  position: relative;
+}
+
+/* Section divider */
+.get-involved-section::before {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 1px;
+  background-color: #1E90FF;
+  margin: 40px 0;
+  position: absolute;
+  top: -40px;
+}
+
+/* Header and introduction styles */
+.get-involved-section .section-heading {
+  margin-bottom: 40px;
+}
+
+.get-involved-section .heading {
+  margin-bottom: 20px;
+}
+
+.get-involved-section .intro-text {
+  text-align: center;
+  font-size: 18px;
+  color: #666;
+  max-width: 800px;
+  margin: 0 auto 40px;
+}
+
+/* Support cards styles */
+.get-involved-section .row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+/* Card styling */
+.get-involved-card {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  padding: 20px;
+  height: 100%;
+  opacity: 0;
+}
+
+.get-involved-card.visible {
+  opacity: 1;
+}
+
+.get-involved-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Image styling */
+.get-involved-img {
+  margin-bottom: 20px;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.get-involved-img img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid #1E90FF;
+  transition: transform 0.5s ease;
+}
+
+.get-involved-card:hover .get-involved-img img {
+  transform: scale(1.1);
+}
+
+/* Icon styling */
+.get-involved-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  background-color: #E6F0FA;
+  border-radius: 50%;
+  margin-bottom: 15px;
+  color: #1E90FF;
+  font-size: 24px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Content styling */
+.get-involved-content {
+  text-align: center;
+}
+
+.get-involved-content h3 {
+  margin-bottom: 15px;
+  font-weight: 600;
+  color: #333;
+}
+
+.get-involved-content p {
+  margin-bottom: 20px;
+  color: #666;
+}
+
+/* Button styling */
+.get-involved-content .hq-btn {
+  background-color: #1E90FF;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 4px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.get-involved-content .hq-btn:hover {
+  background-color: #1565C0; /* Darker blue */
+}
+
+/* Responsive styles */
+@media (max-width: 767px) {
+  .get-involved-section .col-sm-6 {
+    width: 100%;
+    margin-bottom: 30px;
+  }
+  
+  .get-involved-section .col-sm-6:last-child {
+    margin-bottom: 0;
+  }
+}
+
+/* Accessibility - respect user preferences for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .get-involved-card {
+    opacity: 1;
+    transition: none;
+  }
+  
+  .get-involved-card:hover {
+    transform: none;
+  }
+  
+  .get-involved-img img {
+    transition: none;
+  }
+  
+  .get-involved-card:hover .get-involved-img img {
+    transform: none;
+  }
+}
