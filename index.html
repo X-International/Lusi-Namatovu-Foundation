@@ -1439,15 +1439,30 @@
         
         <script>
             document.addEventListener('DOMContentLoaded', function() {
-                // Initialize mobile gallery carousel
+                // Initialize mobile gallery carousel with keyboard navigation
                 var mobileGallerySwiper = new Swiper('.mobile-gallery-carousel', {
                     slidesPerView: 1.2,
                     spaceBetween: 15,
                     centeredSlides: true,
                     loop: true,
+                    a11y: {
+                        enabled: true,
+                        prevSlideMessage: 'Previous slide',
+                        nextSlideMessage: 'Next slide',
+                        firstSlideMessage: 'This is the first slide',
+                        lastSlideMessage: 'This is the last slide'
+                    },
+                    keyboard: {
+                        enabled: true,
+                        onlyInViewport: true
+                    },
                     pagination: {
                         el: '.mobile-gallery-pagination',
                         clickable: true
+                    },
+                    navigation: {
+                        nextEl: '.mobile-gallery-next',
+                        prevEl: '.mobile-gallery-prev',
                     },
                     breakpoints: {
                         480: {
@@ -1457,14 +1472,46 @@
                     }
                 });
                 
-                // Initialize VenoBox
+                // Add keyboard navigation event listener for mobile gallery
+                document.addEventListener('keydown', function(e) {
+                    // Only apply keyboard navigation when carousel is in viewport
+                    var carousel = document.querySelector('.mobile-gallery-carousel');
+                    if (!carousel) return;
+                    
+                    var rect = carousel.getBoundingClientRect();
+                    var isInViewport = (
+                        rect.top >= 0 &&
+                        rect.left >= 0 &&
+                        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                        rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+                    );
+                    
+                    if (isInViewport && mobileGallerySwiper) {
+                        if (e.key === 'ArrowLeft') {
+                            mobileGallerySwiper.slidePrev();
+                            e.preventDefault();
+                        } else if (e.key === 'ArrowRight') {
+                            mobileGallerySwiper.slideNext();
+                            e.preventDefault();
+                        }
+                    }
+                });
+                
+                // Initialize VenoBox with keyboard navigation
                 if (typeof VenoBox !== 'undefined') {
                     new VenoBox({
                         selector: '.venobox',
                         numeration: true,
                         infinigall: true,
                         spinner: 'rotating-plane',
-                        spinColor: '#0e98f1'
+                        spinColor: '#0e98f1',
+                        navigation: true,
+                        navKeyboard: true, // Enable keyboard navigation in lightbox
+                        navTouch: true,    // Enable touch navigation in lightbox
+                        share: false,      // Disable share buttons
+                        titlePosition: 'bottom', // Place titles at the bottom
+                        titleattr: 'data-title', // Use data-title for image titles
+                        focusable: true    // Improve keyboard focus support
                     });
                 }
                 
@@ -1518,6 +1565,25 @@
                             mobileGallerySwiper.update();
                             mobileGallerySwiper.slideTo(0);
                         }
+                    });
+                    
+                    // Add keyboard support for filter buttons
+                    button.addEventListener('keydown', function(e) {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                            e.preventDefault();
+                            button.click();
+                        }
+                    });
+                });
+                
+                // Add focus styles to enhance keyboard navigation
+                document.querySelectorAll('.venobox, .filter-btn').forEach(function(element) {
+                    element.addEventListener('focus', function() {
+                        this.classList.add('keyboard-focus');
+                    });
+                    
+                    element.addEventListener('blur', function() {
+                        this.classList.remove('keyboard-focus');
                     });
                 });
             });
@@ -1679,15 +1745,30 @@
                 });
             }
             
-            // Initialize mobile gallery carousel
+            // Initialize mobile gallery carousel with keyboard navigation
             var mobileGallerySwiper = new Swiper('.mobile-gallery-carousel', {
                 slidesPerView: 1.2,
                 spaceBetween: 15,
                 centeredSlides: true,
                 loop: true,
+                a11y: {
+                    enabled: true,
+                    prevSlideMessage: 'Previous slide',
+                    nextSlideMessage: 'Next slide',
+                    firstSlideMessage: 'This is the first slide',
+                    lastSlideMessage: 'This is the last slide'
+                },
+                keyboard: {
+                    enabled: true,
+                    onlyInViewport: true
+                },
                 pagination: {
                     el: '.mobile-gallery-pagination',
                     clickable: true
+                },
+                navigation: {
+                    nextEl: '.mobile-gallery-next',
+                    prevEl: '.mobile-gallery-prev',
                 },
                 breakpoints: {
                     480: {
@@ -1696,6 +1777,49 @@
                     }
                 }
             });
+            
+            // Add keyboard navigation event listener for mobile gallery
+            document.addEventListener('keydown', function(e) {
+                // Only apply keyboard navigation when carousel is in viewport
+                var carousel = document.querySelector('.mobile-gallery-carousel');
+                if (!carousel) return;
+                
+                var rect = carousel.getBoundingClientRect();
+                var isInViewport = (
+                    rect.top >= 0 &&
+                    rect.left >= 0 &&
+                    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                    rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+                );
+                
+                if (isInViewport && mobileGallerySwiper) {
+                    if (e.key === 'ArrowLeft') {
+                        mobileGallerySwiper.slidePrev();
+                        e.preventDefault();
+                    } else if (e.key === 'ArrowRight') {
+                        mobileGallerySwiper.slideNext();
+                        e.preventDefault();
+                    }
+                }
+            });
+            
+            // Initialize VenoBox with keyboard navigation
+            if (typeof VenoBox !== 'undefined') {
+                new VenoBox({
+                    selector: '.venobox',
+                    numeration: true,
+                    infinigall: true,
+                    spinner: 'rotating-plane',
+                    spinColor: '#0e98f1',
+                    navigation: true,
+                    navKeyboard: true, // Enable keyboard navigation in lightbox
+                    navTouch: true,    // Enable touch navigation in lightbox
+                    share: false,      // Disable share buttons
+                    titlePosition: 'bottom', // Place titles at the bottom
+                    titleattr: 'data-title', // Use data-title for image titles
+                    focusable: true    // Improve keyboard focus support
+                });
+            }
             
             // Category filtering functionality
             var filterButtons = document.querySelectorAll('.filter-btn');
@@ -1752,6 +1876,25 @@
                         mobileGallerySwiper.update();
                         mobileGallerySwiper.slideTo(0);
                     }
+                });
+                
+                // Add keyboard support for filter buttons
+                button.addEventListener('keydown', function(e) {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        button.click();
+                    }
+                });
+            });
+            
+            // Add focus styles to enhance keyboard navigation
+            document.querySelectorAll('.venobox, .filter-btn').forEach(function(element) {
+                element.addEventListener('focus', function() {
+                    this.classList.add('keyboard-focus');
+                });
+                
+                element.addEventListener('blur', function() {
+                    this.classList.remove('keyboard-focus');
                 });
             });
         });
