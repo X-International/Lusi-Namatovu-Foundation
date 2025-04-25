@@ -1011,156 +1011,6 @@
 })(jQuery);
 
 document.addEventListener('DOMContentLoaded', function() {
-  // Initialize mobile gallery carousel with keyboard navigation
-  var mobileGallerySwiper = new Swiper('.mobile-gallery-carousel', {
-      slidesPerView: 1.2,
-      spaceBetween: 15,
-      centeredSlides: true,
-      loop: true,
-      a11y: {
-          enabled: true,
-          prevSlideMessage: 'Previous slide',
-          nextSlideMessage: 'Next slide',
-          firstSlideMessage: 'This is the first slide',
-          lastSlideMessage: 'This is the last slide'
-      },
-      keyboard: {
-          enabled: true,
-          onlyInViewport: true
-      },
-      pagination: {
-          el: '.mobile-gallery-pagination',
-          clickable: true
-      },
-      navigation: {
-          nextEl: '.mobile-gallery-next',
-          prevEl: '.mobile-gallery-prev',
-      },
-      breakpoints: {
-          480: {
-              slidesPerView: 1.5,
-              spaceBetween: 20
-          }
-      }
-  });
-  
-  // Add keyboard navigation event listener for mobile gallery
-  document.addEventListener('keydown', function(e) {
-      // Only apply keyboard navigation when carousel is in viewport
-      var carousel = document.querySelector('.mobile-gallery-carousel');
-      if (!carousel) return;
-      
-      var rect = carousel.getBoundingClientRect();
-      var isInViewport = (
-          rect.top >= 0 &&
-          rect.left >= 0 &&
-          rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-          rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-      );
-      
-      if (isInViewport && mobileGallerySwiper) {
-          if (e.key === 'ArrowLeft') {
-              mobileGallerySwiper.slidePrev();
-              e.preventDefault();
-          } else if (e.key === 'ArrowRight') {
-              mobileGallerySwiper.slideNext();
-              e.preventDefault();
-          }
-      }
-  });
-  
-  // Initialize VenoBox with keyboard navigation
-  if (typeof VenoBox !== 'undefined') {
-      new VenoBox({
-          selector: '.venobox',
-          numeration: true,
-          infinigall: true,
-          spinner: 'rotating-plane',
-          spinColor: '#0e98f1',
-          navigation: true,
-          navKeyboard: true, // Enable keyboard navigation in lightbox
-          navTouch: true,    // Enable touch navigation in lightbox
-          share: false,      // Disable share buttons
-          titlePosition: 'bottom', // Place titles at the bottom
-          titleattr: 'data-title', // Use data-title for image titles
-          focusable: true    // Improve keyboard focus support
-      });
-  }
-  
-  // Category filtering functionality
-  var filterButtons = document.querySelectorAll('.filter-btn');
-  
-  filterButtons.forEach(function(button) {
-      button.addEventListener('click', function() {
-          // Remove active class from all buttons
-          filterButtons.forEach(function(btn) {
-              btn.classList.remove('active');
-          });
-          
-          // Add active class to clicked button
-          this.classList.add('active');
-          
-          var filterValue = this.getAttribute('data-filter');
-          
-          // Filter desktop gallery items
-          var galleryItems = document.querySelectorAll('.gallery-item');
-          var visibleCount = 0;
-          
-          galleryItems.forEach(function(item) {
-              var itemCategory = item.getAttribute('data-category');
-              
-              if (filterValue === 'all' || filterValue === itemCategory) {
-                  item.style.display = 'block';
-                  visibleCount++;
-              } else {
-                  item.style.display = 'none';
-              }
-          });
-          
-          // Update counter
-          document.querySelector('.shown-count').textContent = visibleCount;
-          
-          // Filter mobile carousel slides
-          var mobileSlides = document.querySelectorAll('.mobile-gallery-carousel .swiper-slide');
-          mobileSlides.forEach(function(slide) {
-              var slideCategory = slide.getAttribute('data-category');
-              
-              if (filterValue === 'all' || filterValue === slideCategory) {
-                  slide.classList.remove('swiper-slide-hidden');
-              } else {
-                  slide.classList.add('swiper-slide-hidden');
-              }
-          });
-          
-          // Update mobile swiper
-          if (mobileGallerySwiper) {
-              mobileGallerySwiper.update();
-              mobileGallerySwiper.slideTo(0);
-          }
-      });
-      
-      // Add keyboard support for filter buttons
-      button.addEventListener('keydown', function(e) {
-          if (e.key === 'Enter' || e.key === ' ') {
-              e.preventDefault();
-              button.click();
-          }
-      });
-  });
-  
-  // Add focus styles to enhance keyboard navigation
-  document.querySelectorAll('.venobox, .filter-btn').forEach(function(element) {
-      element.addEventListener('focus', function() {
-          this.classList.add('keyboard-focus');
-      });
-      
-      element.addEventListener('blur', function() {
-          this.classList.remove('keyboard-focus');
-      });
-  });
-});
-
-document.addEventListener('DOMContentLoaded', function() {
   // Initialize Masonry layout for desktop gallery
   var masonryGrid = document.querySelector('.gallery-grid');
   if (masonryGrid) {
@@ -1248,8 +1098,36 @@ document.addEventListener('DOMContentLoaded', function() {
       });
   }
   
-  // Category filtering functionality
+  // Category filtering functionality with dynamic counter update
   var filterButtons = document.querySelectorAll('.filter-btn');
+  
+  // Initial counter setup
+  function updateGalleryCounter() {
+      // Get total number of gallery items
+      var totalItems = document.querySelectorAll('.gallery-item').length;
+      var totalCountElement = document.querySelector('.total-count');
+      if (totalCountElement) {
+          // Update total count (keep the "+" if it exists)
+          var currentText = totalCountElement.textContent;
+          var hasPlus = currentText.includes('+');
+          totalCountElement.textContent = totalItems + (hasPlus ? '+' : '');
+      }
+      
+      // Count visible items and update shown count
+      var visibleItems = document.querySelectorAll('.gallery-item[style="display: block"]').length;
+      // If no items have style attribute yet, count all items
+      if (visibleItems === 0) {
+          visibleItems = totalItems;
+      }
+      
+      var shownCountElement = document.querySelector('.shown-count');
+      if (shownCountElement) {
+          shownCountElement.textContent = visibleItems;
+      }
+  }
+  
+  // Run counter update on page load
+  updateGalleryCounter();
   
   filterButtons.forEach(function(button) {
       button.addEventListener('click', function() {
@@ -1265,22 +1143,27 @@ document.addEventListener('DOMContentLoaded', function() {
           
           // Filter desktop gallery items
           var galleryItems = document.querySelectorAll('.gallery-item');
+          var visibleCount = 0;
+          
           galleryItems.forEach(function(item) {
               var itemCategory = item.getAttribute('data-category');
               
               if (filterValue === 'all' || filterValue === itemCategory) {
                   item.style.display = 'block';
+                  visibleCount++;
               } else {
                   item.style.display = 'none';
               }
           });
           
-          // Update counter
-          var visibleItems = document.querySelectorAll('.gallery-item[style="display: block"]').length;
-          document.querySelector('.shown-count').textContent = visibleItems;
+          // Update counter with new visible count
+          var shownCountElement = document.querySelector('.shown-count');
+          if (shownCountElement) {
+              shownCountElement.textContent = visibleCount;
+          }
           
           // Relayout masonry after filtering
-          if (masonry) {
+          if (typeof Masonry !== 'undefined' && masonry) {
               setTimeout(function() {
                   masonry.layout();
               }, 100);
@@ -1288,11 +1171,14 @@ document.addEventListener('DOMContentLoaded', function() {
           
           // Filter mobile carousel slides
           var mobileSlides = document.querySelectorAll('.mobile-gallery-carousel .swiper-slide');
+          var visibleMobileSlides = 0;
+          
           mobileSlides.forEach(function(slide) {
               var slideCategory = slide.getAttribute('data-category');
               
               if (filterValue === 'all' || filterValue === slideCategory) {
                   slide.classList.remove('swiper-slide-hidden');
+                  visibleMobileSlides++;
               } else {
                   slide.classList.add('swiper-slide-hidden');
               }
@@ -1323,5 +1209,10 @@ document.addEventListener('DOMContentLoaded', function() {
       element.addEventListener('blur', function() {
           this.classList.remove('keyboard-focus');
       });
+  });
+  
+  // Handle window resize events to update the counter
+  window.addEventListener('resize', function() {
+      setTimeout(updateGalleryCounter, 200);
   });
 });
