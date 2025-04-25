@@ -3,14 +3,16 @@
   position: relative;
   overflow: hidden;
   height: auto;
-  min-height: calc(100vh - 60px);
+  min-height: 100vh; /* Changed from calc(100vh - 60px) to ensure full cover */
   background-color: #f8f9fa;
+  width: 100%; /* Ensure full width to prevent misalignment */
 }
 
 .slider-container {
   position: relative;
   height: 100%;
   width: 100%;
+  overflow: hidden; /* Prevent overflow issues */
 }
 
 .swiper-wrapper,
@@ -33,7 +35,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 30px 20px 50px;
+  padding: 30px 20px 60px; /* Increased bottom padding for better spacing */
   background-color: #f8f9fa;
   position: relative;
   z-index: 5;
@@ -44,13 +46,13 @@
   width: 100%;
   max-width: 100%;
   text-align: center;
-  padding: 0;
+  padding: 0 15px; /* Added horizontal padding to avoid text touching edges */
 }
 
 /* Image Column */
 .image-column {
   width: 100%;
-  height: 250px;
+  height: 280px; /* Increased from 250px for better presentation */
   position: relative;
   overflow: hidden;
 }
@@ -73,6 +75,7 @@
   height: 100%;
   object-fit: cover;
   object-position: center;
+  transform: scale(1.05); /* Slight scale to avoid white edges on image */
 }
 
 .image-overlay {
@@ -82,9 +85,9 @@
   width: 100%;
   height: 100%;
   background: linear-gradient(0deg, 
-    rgba(0, 0, 0, 0.2) 0%, 
-    rgba(0, 0, 0, 0.1) 30%, 
-    rgba(0, 0, 0, 0) 100%);
+    rgba(0, 0, 0, 0.3) 0%, /* Increased opacity for better text visibility */
+    rgba(0, 0, 0, 0.2) 30%, 
+    rgba(0, 0, 0, 0.1) 100%);
   z-index: 2;
 }
 
@@ -140,6 +143,7 @@
   font-size: 16px;
   line-height: 1.5;
   margin: 0 auto;
+  max-width: 500px; /* Added max-width for readability */
 }
 
 /* Highlight Class for Slider Text */
@@ -206,7 +210,9 @@
   opacity: 0;
   transition: transform 0.8s ease, opacity 0.8s ease;
   width: 100%;
-  margin-top: 5px;
+  margin-top: 10px; /* Increased margin for better spacing */
+  justify-content: center; /* Center align buttons */
+  align-items: center; /* Center align buttons */
 }
 
 .btn {
@@ -214,8 +220,8 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
-  padding: 12px 18px;
-  font-size: 13px;
+  padding: 14px 24px; /* Increased padding for better touch targets */
+  font-size: 14px; /* Increased font size for better readability */
   font-weight: 600;
   border-radius: 50px;
   text-transform: uppercase;
@@ -224,17 +230,25 @@
   position: relative;
   overflow: hidden;
   width: 100%;
+  max-width: 280px; /* Added max-width to avoid overly wide buttons */
 }
 
 .btn svg {
   width: 16px;
   height: 16px;
+  flex-shrink: 0; /* Prevent icon from shrinking */
 }
 
 .btn-primary {
   background-color: #0e98f1;
   color: white;
   border: none;
+}
+
+.btn-primary:hover, .btn-primary:focus {
+  background-color: #0d8ad8;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(14, 152, 241, 0.3);
 }
 
 .btn-outline {
@@ -244,18 +258,20 @@
   transition: all 0.3s ease;
 }
 
-.btn-outline:hover {
+.btn-outline:hover, .btn-outline:focus {
   background-color: #0e98f1;
   color: white;
   border-color: #0e98f1;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(14, 152, 241, 0.2);
 }
 
 /* Slider Controls - Mobile First */
 .slider-controls {
   position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  bottom: 10px;
+  left: 0;
+  right: 0;
+  bottom: 15px; /* Increased from 10px for better visibility */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -272,8 +288,8 @@
 }
 
 .swiper-pagination-bullet {
-  width: 6px;
-  height: 6px;
+  width: 8px; /* Increased from 6px for better touch targets */
+  height: 8px; /* Increased from 6px for better touch targets */
   background-color: rgba(14, 152, 241, 0.3);
   border-radius: 50%;
   cursor: pointer;
@@ -287,12 +303,12 @@
 
 .slider-navigation {
   display: flex;
-  gap: 8px;
+  gap: 10px; /* Increased for better spacing */
 }
 
 .nav-button {
-  width: 32px;
-  height: 32px;
+  width: 36px; /* Increased from 32px for better touch targets */
+  height: 36px; /* Increased from 32px for better touch targets */
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -303,16 +319,47 @@
   transition: all 0.3s ease;
 }
 
+.nav-button:hover, .nav-button:focus {
+  background-color: rgba(14, 152, 241, 0.2);
+  transform: scale(1.05);
+}
+
 .nav-button svg {
-  width: 14px;
-  height: 14px;
+  width: 16px; /* Increased from 14px for better visibility */
+  height: 16px; /* Increased from 14px for better visibility */
   fill: #0e98f1;
   transition: all 0.3s ease;
 }
 
-/* Scroll Indicator - Hidden on Mobile */
+/* Scroll Indicator - Hidden on Mobile but visible for accessibility */
 .slider-scroll-indicator {
-  display: none;
+  display: flex;
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  left: auto;
+  align-items: center;
+  gap: 10px;
+  color: #fff;
+  z-index: 5;
+  cursor: pointer;
+  opacity: 0; /* Hidden by default on mobile */
+  transition: opacity 0.3s ease;
+}
+
+.scroll-icon {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: bounce 1.5s infinite;
+}
+
+.scroll-icon svg {
+  width: 18px;
+  height: 18px;
+  fill: #fff;
 }
 
 /* Add styles for pause/play button */
@@ -325,28 +372,28 @@
 }
 
 .pause-play-button:focus {
-    outline: 2px solid rgba(255, 255, 255, 0.5);
+    outline: 2px solid rgba(14, 152, 241, 0.5);
     outline-offset: 2px;
 }
 
 .pause-icon, .play-icon {
-    width: 24px;
-    height: 24px;
+    width: 16px;
+    height: 16px;
     transition: opacity 0.3s ease;
 }
 
 /* Tablet Styles (576px and up) */
 @media (min-width: 576px) {
   .hero-slider {
-    min-height: calc(100vh - 70px);
+    min-height: 100vh;
   }
   
   .image-column {
-    height: 320px;
+    height: 340px; /* Increased from 320px */
   }
   
   .slide-title h1 {
-    font-size: 34px;
+    font-size: 36px; /* Increased from 34px */
   }
   
   .content-column {
@@ -354,7 +401,7 @@
   }
   
   .content-wrapper {
-    max-width: 500px;
+    max-width: 520px;
   }
   
   .tag-line {
@@ -367,7 +414,7 @@
   }
   
   .btn {
-    padding: 14px 25px;
+    padding: 14px 28px;
     font-size: 15px;
   }
   
@@ -376,8 +423,8 @@
   }
   
   .nav-button {
-    width: 38px;
-    height: 38px;
+    width: 40px; /* Increased from 38px */
+    height: 40px; /* Increased from 38px */
   }
   
   .nav-button svg {
@@ -393,11 +440,12 @@
   }
   
   .image-column {
-    height: 380px;
+    height: 400px; /* Increased from 380px */
   }
   
   .slide-title h1 {
-    font-size: 40px;
+    font-size: 42px; /* Increased from 40px */
+    line-height: 1.1;
   }
   
   .slide-text p {
@@ -408,11 +456,17 @@
   .slide-actions {
     flex-direction: row;
     justify-content: center;
+    gap: 16px; /* Increased for better button spacing */
   }
   
   .btn {
     width: auto;
-    padding: 14px 26px;
+    padding: 14px 28px;
+    min-width: 160px; /* Added min-width for consistency */
+  }
+  
+  .slider-scroll-indicator {
+    opacity: 0.8; /* Make visible on tablet */
   }
 }
 
@@ -437,7 +491,7 @@
   }
   
   .content-wrapper {
-    max-width: 520px;
+    max-width: 540px; /* Increased from 520px */
     margin-right: 0;
     margin-left: auto;
     text-align: left;
@@ -461,6 +515,7 @@
     transform: none;
     width: auto;
     justify-content: flex-start;
+    padding: 0;
   }
   
   .slide-text p {
@@ -470,13 +525,46 @@
   
   .image-overlay {
     background: linear-gradient(90deg, 
-      rgba(0, 0, 0, 0.3) 0%, 
-      rgba(0, 0, 0, 0.1) 30%, 
-      rgba(0, 0, 0, 0) 100%);
+      rgba(0, 0, 0, 0.4) 0%, /* Increased opacity for better text visibility */
+      rgba(0, 0, 0, 0.2) 30%, 
+      rgba(0, 0, 0, 0.1) 100%);
   }
   
+  /* Show decorative shapes on larger screens */
   .decorative-shape {
     display: block;
+    position: absolute;
+  }
+  
+  .shape-1 {
+    width: 150px;
+    height: 150px;
+    background-color: rgba(14, 152, 241, 0.1);
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+    top: 10%;
+    right: 10%;
+    z-index: 1;
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  .shape-2 {
+    width: 80px;
+    height: 80px;
+    background-color: rgba(255, 108, 0, 0.1);
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+    bottom: 15%;
+    left: 15%;
+    z-index: 1;
+    animation: float 8s ease-in-out infinite reverse;
+  }
+  
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0) rotate(0deg);
+    }
+    50% {
+      transform: translateY(-20px) rotate(5deg);
+    }
   }
   
   .slider-scroll-indicator {
@@ -487,9 +575,10 @@
     left: auto;
     align-items: center;
     gap: 10px;
-    color: #333;
+    color: #fff;
     z-index: 10;
     cursor: pointer;
+    opacity: 1;
   }
   
   .scroll-icon {
@@ -515,18 +604,43 @@
   }
   
   .slide-title h1 {
-    font-size: 48px;
+    font-size: 52px; /* Adjusted from 48px */
+  }
+  
+  .content-column {
+    width: 50%;
+    padding: 0 5%; /* Increased padding for better balance */
+  }
+  
+  /* Enhanced decorative shapes */
+  .shape-1 {
+    width: 180px;
+    height: 180px;
+  }
+  
+  .shape-2 {
+    width: 100px;
+    height: 100px;
   }
 }
 
 /* XX-Large devices (1400px and up) */
 @media (min-width: 1400px) {
   .slide-title h1 {
-    font-size: 56px;
+    font-size: 58px; /* Adjusted from 56px */
   }
   
   .slide-text p {
     font-size: 18px;
+  }
+  
+  .content-wrapper {
+    max-width: 650px; /* Increased for larger screens */
+  }
+  
+  .btn {
+    padding: 16px 32px; /* Larger buttons for larger screens */
+    font-size: 16px;
   }
 }
 
@@ -563,4 +677,11 @@
   50% {
     transform: translateY(5px);
   }
+}
+
+/* Accessibility improvements */
+.slider-controls button:focus-visible,
+.slide-actions a:focus-visible {
+  outline: 2px solid #0e98f1;
+  outline-offset: 2px;
 }
