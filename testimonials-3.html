@@ -327,32 +327,34 @@
             <div class="footer-main">
                 <!-- About Section -->
                 <div class="footer-about">
-                    <a href="index.html" class="footer-logo">
+                    <a href="index.html" class="footer-logo" aria-label="Lusi Namatovu Foundation Home">
                         <img src="images/lnf/logo/Lusi-Namatovu-Foundation_logo.png" alt="Lusi Namatovu Foundation">
                     </a>
                     <p class="footer-about-text">
-                        The Lusi Namatovu Foundation provides care, support, and opportunities for elderly individuals and people with disabilities in Rakai District, Uganda.
+                        Empowering Elders and People with Disabilities to Bring Lasting Hope and Dignity in Rakai District.
                     </p>
-                    <!-- <div class="footer-impact-numbers">
-                        <div class="impact-item counter-item">
+                    
+                    <div class="footer-impact-numbers">
+                        <div class="impact-item">
                             <div class="impact-icon">
-                                <i class="hqc hqc-holding-heart"></i>
+                                <i class="fa-regular fa-hand-holding-heart"></i>
                             </div>
                             <div class="impact-content">
-                                <h4><span class="odometer" data-count="30">00</span>M+</h4>
-                                <p>Supporters</p>
+                                <h4><span class="years-counter"><script>document.write(new Date().getFullYear() - 2016)</script></span>+</h4>
+                                <p>Years of Service</p>
                             </div>
                         </div>
-                        <div class="impact-item counter-item">
+                        <div class="impact-item">
                             <div class="impact-icon">
-                                <i class="hqc hqc-donation"></i>
+                                <i class="fa-regular fa-users"></i>
                             </div>
                             <div class="impact-content">
-                                <h4>$<span class="odometer" data-count="100">00</span>M+</h4>
-                                <p>Funds Raised</p>
+                                <h4><span class="counter-wrapper">200</span>+</h4>
+                                <p>Lives Impacted</p>
                             </div>
                         </div>
-                    </div> -->
+                    </div>
+                    
                     <div class="footer-socials">
                         <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
                         <a href="#" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
@@ -361,30 +363,23 @@
                     </div>
                 </div>
 
-                <!-- Quick Links -->
+                <!-- Quick Links - Improved Structure -->
                 <div class="footer-quick-links">
                     <h3 class="footer-heading">Quick Links</h3>
                     <div class="footer-menu-columns">
                         <ul class="footer-menu-col">
-                            <li><a href="about-us.html">About Us</a></li>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="#">About Us</a></li>
                             <li><a href="#">Our Work</a></li>
-                            <li><a href="#">Gallery</a></li>
+                            <li><a href="#">Donate Now</a></li>
                             <li><a href="#">Get Involved</a></li>
-                            <li><a href="#">Donate</a></li>
                         </ul>
-                        <!-- <ul class="footer-menu-col">
-                            <li><a href="#">Elderly Support</a></li>
-                            <li><a href="#">Disability Programs</a></li>
-                            <li><a href="donation.html">Donate</a></li>
-                            <li><a href="#">Volunteer</a></li>
-                            <li><a href="contact-us.html">Contact Us</a></li>
-                        </ul> -->
                     </div>
                 </div>
 
                 <!-- Contact Info -->
                 <div class="footer-contact-info">
-                    <h3 class="footer-heading">Contact Information</h3>
+                    <h3 class="footer-heading">Contact Us</h3>
                     <ul class="footer-contact-list">
                         <li>
                             <div class="contact-icon"><i class="fa-regular fa-location-dot"></i></div>
@@ -412,35 +407,33 @@
                     </ul>
                 </div>
 
-                <!-- Newsletter -->
+                <!-- Newsletter - Reimagined -->
                 <div class="footer-newsletter">
-                    <h3 class="footer-heading">Newsletter</h3>
-                    <p>Subscribe to stay updated on our latest news and initiatives.</p>
-                    <form id="ajax_mc_form" class="newsletter-form">
+                    <h3 class="footer-heading">Stay Updated</h3>
+                    <p>Subscribe to our newsletter for updates on our work in Rakai District.</p>
+                    <form id="ajax_mc_form" class="newsletter-form" aria-label="Newsletter signup">
                         <div class="form-group">
-                            <input id="mc_email" type="email" name="mc_email" placeholder="Your Email" required>
-                            <button type="submit" class="submit-btn">
-                                <i class="fa-regular fa-paper-plane"></i>
-                            </button>
+                            <input id="mc_email" type="email" name="mc_email" placeholder="Your email address" aria-label="Email address" required>
                         </div>
-                        <div id="mc-form-messages" class="form-message"></div>
+                        <button type="submit" class=" subscribe-btn hq-btn hq-btn-effect">
+                            <span>Subscribe <i class="fa-regular fa-arrow-up-right"></i></span>
+                        </button>
+                        <div id="mc-form-messages" class="form-message" aria-live="polite"></div>
                     </form>
                 </div>
             </div>
-
-            <!-- Footer Bottom -->
-            <div class="footer-bottom">
-                <div class="copyright">
-                 Copyright &copy; <script>document.write(new Date().getFullYear());</script> All rights reserved <span class="org-name"> Lusi Namatovu Foundation</span>
-                </div>
-                <div class="footer-bottom-links">
-                    <a href="#">Terms & Conditions</a>
-                    <a href="#">Privacy Policy</a>
-                    <a href="#">Cookie Policy</a>
-                </div>
+        </div>
+        
+        <!-- Copyright Section -->
+        <div class="footer-bottom">
+            <div class="copyright">
+                &copy; <script>document.write(new Date().getFullYear());</script> <span class="org-name">Lusi Namatovu Foundation</span>. All rights reserved.
+            </div>
+            <div class="footer-bottom-links">
+                <a href="#">Terms & Conditions</a> | <a href="#">Privacy Policy</a> | <a href="#">Cookie Policy</a>
             </div>
         </div>
-    </footer><!-- /.footer-wrapper -->
+    </footer>
     
 
     <!-- JS Files -->
