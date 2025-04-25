@@ -1169,26 +1169,112 @@ document.addEventListener('DOMContentLoaded', function() {
               }, 100);
           }
           
-          // Filter mobile carousel slides
-          var mobileSlides = document.querySelectorAll('.mobile-gallery-carousel .swiper-slide');
-          var visibleMobileSlides = 0;
+          // MOBILE CAROUSEL FILTERING - IMPROVED VERSION
+          // First, get the swiper container and all slides
+          var swiperContainer = document.querySelector('.mobile-gallery-carousel');
+          if (!swiperContainer) return;
           
-          mobileSlides.forEach(function(slide) {
+          var allSlides = swiperContainer.querySelectorAll('.swiper-slide:not(.swiper-slide-duplicate)');
+          
+          // Step 1: Hide/show slides based on filter and track which ones are visible
+          var visibleSlides = [];
+          allSlides.forEach(function(slide) {
               var slideCategory = slide.getAttribute('data-category');
               
               if (filterValue === 'all' || filterValue === slideCategory) {
-                  slide.classList.remove('swiper-slide-hidden');
-                  visibleMobileSlides++;
+                  // Make the slide visible
+                  slide.classList.remove('filtered-out');
+                  visibleSlides.push(slide);
               } else {
-                  slide.classList.add('swiper-slide-hidden');
+                  // Hide the slide
+                  slide.classList.add('filtered-out');
               }
           });
           
-          // Update mobile swiper
+          // Count visible slides - used to create exact number of pagination dots
+          var visibleSlideCount = visibleSlides.length;
+          
+          // Step 2: Destroy the current Swiper instance
           if (mobileGallerySwiper) {
-              mobileGallerySwiper.update();
-              mobileGallerySwiper.slideTo(0);
+              mobileGallerySwiper.destroy(true, true);
           }
+          
+          // Step 3: Re-initialize the Swiper instance with custom pagination
+          setTimeout(function() {
+              // Remove Swiper's own duplicate slides if they exist
+              document.querySelectorAll('.swiper-wrapper .swiper-slide-duplicate').forEach(function(el) {
+                  el.remove();
+              });
+              
+              // Hide filtered slides completely
+              document.querySelectorAll('.filtered-out').forEach(function(slide) {
+                  slide.style.display = 'none';
+              });
+              
+              // Re-initialize Swiper with exact pagination bullet count
+              mobileGallerySwiper = new Swiper('.mobile-gallery-carousel', {
+                  slidesPerView: 1.2,
+                  spaceBetween: 15,
+                  centeredSlides: true,
+                  loop: visibleSlideCount > 1, // Only enable loop if more than one slide
+                  a11y: {
+                      enabled: true,
+                      prevSlideMessage: 'Previous slide',
+                      nextSlideMessage: 'Next slide',
+                      firstSlideMessage: 'This is the first slide',
+                      lastSlideMessage: 'This is the last slide'
+                  },
+                  keyboard: {
+                      enabled: true,
+                      onlyInViewport: true
+                  },
+                  pagination: {
+                      el: '.mobile-gallery-pagination',
+                      clickable: true,
+                      // Set exact number of bullets based on visible slides
+                      dynamicBullets: false,
+                      renderBullet: function (index, className) {
+                          // Only render bullets for visible slides
+                          if (index < visibleSlideCount) {
+                              return '<span class="' + className + '"></span>';
+                          }
+                          return '';
+                      }
+                  },
+                  navigation: {
+                      nextEl: '.mobile-gallery-next',
+                      prevEl: '.mobile-gallery-prev',
+                  },
+                  breakpoints: {
+                      480: {
+                          slidesPerView: 1.5,
+                          spaceBetween: 20
+                      }
+                  },
+                  on: {
+                      init: function() {
+                          // Update the pagination to show only bullets for visible slides
+                          var paginationEl = document.querySelector('.mobile-gallery-pagination');
+                          if (paginationEl) {
+                              // Ensure we only have the exact number of bullets
+                              var bullets = paginationEl.querySelectorAll('.swiper-pagination-bullet');
+                              
+                              // Hide any extra bullets
+                              for (var i = visibleSlideCount; i < bullets.length; i++) {
+                                  bullets[i].style.display = 'none';
+                              }
+                          }
+                          
+                          // Update Swiper to reflect new state
+                          this.update();
+                      }
+                  }
+              });
+              
+              // Go to first slide and update
+              mobileGallerySwiper.slideTo(0, 0);
+              mobileGallerySwiper.update();
+          }, 50);
       });
       
       // Add keyboard support for filter buttons

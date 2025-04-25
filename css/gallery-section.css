@@ -112,6 +112,29 @@
     background-color: var(--hq-primary-color);
 }
 
+/* Mobile Gallery Carousel Filtering */
+.mobile-gallery-carousel .swiper-slide.filtered-out {
+    display: none !important;
+    opacity: 0;
+    pointer-events: none;
+    height: 0;
+    width: 0;
+    margin: 0;
+    padding: 0;
+    transform: scale(0);
+}
+
+/* Ensure pagination reflects filtered slides */
+.mobile-gallery-pagination .swiper-pagination-bullet {
+    transition: all 0.3s ease;
+}
+
+.mobile-gallery-carousel .swiper-wrapper:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
 /* Desktop Gallery */
 .gallery-wrapper {
     margin-bottom: 20px;
