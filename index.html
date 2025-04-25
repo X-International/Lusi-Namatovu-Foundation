@@ -33,260 +33,6 @@
     <link rel="stylesheet" href="css/back-to-top.css">
     <link rel="stylesheet" href="css/impact-section.css">
     <link rel="stylesheet" href="css/gallery-section.css">
-
-    <style>
-        /* Photo Gallery Enhancements */
-        .gallery-intro {
-            max-width: 700px;
-            margin: 0 auto 20px;
-        }
-        
-        /* Filter Buttons */
-        .gallery-filter-container {
-            margin-bottom: 30px;
-        }
-        
-        .gallery-filter-buttons {
-            display: inline-flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 10px;
-        }
-        
-        .filter-btn {
-            background-color: transparent;
-            border: 1px solid var(--primary-color, #3498db);
-            color: var(--primary-color, #3498db);
-            padding: 8px 20px;
-            border-radius: 30px;
-            font-size: 14px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .filter-btn.active, .filter-btn:hover {
-            background-color: var(--primary-color, #3498db);
-            color: #fff;
-        }
-        
-        /* Mobile Carousel */
-        .mobile-gallery-carousel {
-            margin: 0 -15px;
-            padding: 0 15px 40px;
-        }
-        
-        .carousel-gallery-item {
-            position: relative;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-        
-        .carousel-gallery-item img {
-            width: 100%;
-            height: 280px;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-            border-radius: 15px;
-        }
-        
-        .carousel-gallery-caption {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
-            color: white;
-            padding: 15px;
-            font-size: 14px;
-            text-align: center;
-        }
-        
-        .carousel-gallery-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: rgba(0,0,0,0.4);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        
-        .carousel-gallery-item:hover .carousel-gallery-overlay {
-            opacity: 1;
-        }
-        
-        .carousel-gallery-overlay a {
-            width: 50px;
-            height: 50px;
-            background-color: var(--primary-color, #3498db);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transform: translateY(20px);
-            transition: transform 0.3s ease;
-        }
-        
-        .carousel-gallery-item:hover .carousel-gallery-overlay a {
-            transform: translateY(0);
-        }
-        
-        .mobile-gallery-pagination {
-            position: relative;
-            bottom: 0;
-            margin-top: 15px;
-        }
-        
-        /* Desktop Masonry Layout */
-        .photo-gallery-masonry {
-            overflow: hidden;
-        }
-        
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            grid-gap: 20px;
-        }
-        
-        @media (max-width: 992px) {
-            .gallery-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-        
-        .gallery-item {
-            position: relative;
-            overflow: hidden;
-            border-radius: 12px;
-            transform: translateY(0);
-            transition: transform 0.3s ease;
-            margin-bottom: 20px;
-        }
-        
-        .gallery-item:hover {
-            transform: translateY(-5px);
-        }
-        
-        .gallery-item-inner {
-            position: relative;
-            overflow: hidden;
-            border-radius: 12px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-        
-        .gallery-item img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-            border-radius: 12px;
-        }
-        
-        .gallery-item:hover img {
-            transform: scale(1.05);
-        }
-        
-        .gallery-caption {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
-            color: white;
-            padding: 20px 15px 15px;
-            font-size: 14px;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.3s ease;
-        }
-        
-        .gallery-item:hover .gallery-caption {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        .photo-gallery-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: rgba(0,0,0,0.4);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        
-        .gallery-item:hover .photo-gallery-overlay {
-            opacity: 1;
-        }
-        
-        .photo-gallery-overlay a {
-            width: 50px;
-            height: 50px;
-            background-color: var(--primary-color, #3498db);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transform: translateY(20px);
-            transition: transform 0.3s ease;
-        }
-        
-        .gallery-item:hover .photo-gallery-overlay a {
-            transform: translateY(0);
-        }
-        
-        /* Video Item Styling */
-        .video-item .photo-gallery-overlay a {
-            background-color: var(--primary-color, #3498db);
-        }
-        
-        .video-badge {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background-color: var(--primary-color, #3498db);
-            color: white;
-            font-size: 12px;
-            padding: 5px 12px;
-            border-radius: 20px;
-            z-index: 1;
-        }
-        
-        /* Gallery Counter */
-        .gallery-counter {
-            font-size: 14px;
-            color: #777;
-            margin-top: 20px;
-        }
-        
-        .gallery-counter .shown-count,
-        .gallery-counter .total-count {
-            font-weight: 600;
-            color: var(--primary-color, #3498db);
-        }
-        
-        /* Lazy Loading Placeholder */
-        .lazy-load {
-            opacity: 0;
-            transition: opacity 0.3s ease-in;
-        }
-        
-        .lazy-load[src]:not([src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="]) {
-            opacity: 1;
-        }
-    </style>
 </head>
 
 <body>
@@ -889,12 +635,12 @@
                     <!-- Mobile Slide 1 -->
                     <div class="swiper-slide" data-category="elderly">
                         <div class="carousel-gallery-item">
-                            <img src="images/gallery/gallery-1.jpg" alt="Elderly care program by Lusi Namatovu Foundation">
+                            <img src="images/lnf/events/Lusi-Namatovu-Foundation_01.jpg" alt="Elderly care program by Lusi Namatovu Foundation">
                             <div class="carousel-gallery-caption">
                                 <p>Providing essential care packages to elders in Rakai District</p>
                             </div>
                             <div class="carousel-gallery-overlay">
-                                <a href="images/gallery/gallery-1.jpg" class="venobox" data-gall="mobile-gallery" data-title="Providing essential care packages to elders in Rakai District">
+                                <a href="images/lnf/events/Lusi-Namatovu-Foundation_01.jpg" class="venobox" data-gall="mobile-gallery" data-title="Providing essential care packages to elders in Rakai District">
                                     <i class="fa-regular fa-magnifying-glass-plus"></i>
                                 </a>
                             </div>
@@ -904,12 +650,12 @@
                     <!-- Mobile Slide 2 -->
                     <div class="swiper-slide" data-category="disability">
                         <div class="carousel-gallery-item">
-                            <img src="images/gallery/gallery-2.jpg" alt="Disability support program by Lusi Namatovu Foundation">
+                            <img src="images/lnf/events/Lusi-Namatovu-Foundation_02.jpg" alt="Disability support program by Lusi Namatovu Foundation">
                             <div class="carousel-gallery-caption">
                                 <p>Empowering independence through assistive devices</p>
                             </div>
                             <div class="carousel-gallery-overlay">
-                                <a href="images/gallery/gallery-2.jpg" class="venobox" data-gall="mobile-gallery" data-title="Empowering independence through assistive devices">
+                                <a href="images/lnf/events/Lusi-Namatovu-Foundation_02.jpg" class="venobox" data-gall="mobile-gallery" data-title="Empowering independence through assistive devices">
                                     <i class="fa-regular fa-magnifying-glass-plus"></i>
                                 </a>
                             </div>
@@ -919,12 +665,12 @@
                     <!-- Mobile Slide 3 -->
                     <div class="swiper-slide" data-category="events">
                         <div class="carousel-gallery-item">
-                            <img src="images/gallery/gallery-3.jpg" alt="Community gathering organized by Lusi Namatovu Foundation">
+                            <img src="images/lnf/events/Lusi-Namatovu-Foundation_03.jpg" alt="Community gathering organized by Lusi Namatovu Foundation">
                             <div class="carousel-gallery-caption">
                                 <p>Building community bonds through local gatherings</p>
                             </div>
                             <div class="carousel-gallery-overlay">
-                                <a href="images/gallery/gallery-3.jpg" class="venobox" data-gall="mobile-gallery" data-title="Building community bonds through local gatherings">
+                                <a href="images/lnf/events/Lusi-Namatovu-Foundation_03.jpg" class="venobox" data-gall="mobile-gallery" data-title="Building community bonds through local gatherings">
                                     <i class="fa-regular fa-magnifying-glass-plus"></i>
                                 </a>
                             </div>
@@ -934,12 +680,12 @@
                     <!-- Mobile Slide 4 -->
                     <div class="swiper-slide" data-category="elderly">
                         <div class="carousel-gallery-item">
-                            <img src="images/gallery/gallery-4.jpg" alt="Elderly support program by Lusi Namatovu Foundation">
+                            <img src="images/lnf/events/Lusi-Namatovu-Foundation_04.jpg" alt="Elderly support program by Lusi Namatovu Foundation">
                             <div class="carousel-gallery-caption">
                                 <p>Bringing joy and companionship to elders</p>
                             </div>
                             <div class="carousel-gallery-overlay">
-                                <a href="images/gallery/gallery-4.jpg" class="venobox" data-gall="mobile-gallery" data-title="Bringing joy and companionship to elders">
+                                <a href="images/lnf/events/Lusi-Namatovu-Foundation_04.jpg" class="venobox" data-gall="mobile-gallery" data-title="Bringing joy and companionship to elders">
                                     <i class="fa-regular fa-magnifying-glass-plus"></i>
                                 </a>
                             </div>
@@ -949,12 +695,12 @@
                     <!-- Mobile Slide 5 -->
                     <div class="swiper-slide" data-category="disability">
                         <div class="carousel-gallery-item">
-                            <img src="images/gallery/gallery-5.jpg" alt="Disability support services by Lusi Namatovu Foundation">
+                            <img src="images/lnf/events/Lusi-Namatovu-Foundation_05.jpg" alt="Disability support services by Lusi Namatovu Foundation">
                             <div class="carousel-gallery-caption">
                                 <p>Creating inclusive opportunities for all abilities</p>
                             </div>
                             <div class="carousel-gallery-overlay">
-                                <a href="images/gallery/gallery-5.jpg" class="venobox" data-gall="mobile-gallery" data-title="Creating inclusive opportunities for all abilities">
+                                <a href="images/lnf/events/Lusi-Namatovu-Foundation_05.jpg" class="venobox" data-gall="mobile-gallery" data-title="Creating inclusive opportunities for all abilities">
                                     <i class="fa-regular fa-magnifying-glass-plus"></i>
                                 </a>
                             </div>
@@ -964,12 +710,12 @@
                     <!-- Mobile Slide 6 -->
                     <div class="swiper-slide" data-category="events">
                         <div class="carousel-gallery-item">
-                            <img src="images/gallery/gallery-6.jpg" alt="Community event by Lusi Namatovu Foundation">
+                            <img src="images/lnf/events/Lusi-Namatovu-Foundation_06.jpg" alt="Community event by Lusi Namatovu Foundation">
                             <div class="carousel-gallery-caption">
                                 <p>Celebrating together as a unified community</p>
                             </div>
                             <div class="carousel-gallery-overlay">
-                                <a href="images/gallery/gallery-6.jpg" class="venobox" data-gall="mobile-gallery" data-title="Celebrating together as a unified community">
+                                <a href="images/lnf/events/Lusi-Namatovu-Foundation_06.jpg" class="venobox" data-gall="mobile-gallery" data-title="Celebrating together as a unified community">
                                     <i class="fa-regular fa-magnifying-glass-plus"></i>
                                 </a>
                             </div>
@@ -979,12 +725,12 @@
                     <!-- Mobile Slide 7 - NEW -->
                     <div class="swiper-slide" data-category="events">
                         <div class="carousel-gallery-item">
-                            <img src="images/gallery/gallery-3.jpg" alt="Community outreach program by Lusi Namatovu Foundation">
+                            <img src="images/lnf/events/Lusi-Namatovu-Foundation_07.jpg" alt="Community outreach program by Lusi Namatovu Foundation">
                             <div class="carousel-gallery-caption">
                                 <p>Community outreach programs in rural areas</p>
                             </div>
                             <div class="carousel-gallery-overlay">
-                                <a href="images/gallery/gallery-3.jpg" class="venobox" data-gall="mobile-gallery" data-title="Community outreach programs in rural areas">
+                                <a href="images/lnf/events/Lusi-Namatovu-Foundation_07.jpg" class="venobox" data-gall="mobile-gallery" data-title="Community outreach programs in rural areas">
                                     <i class="fa-regular fa-magnifying-glass-plus"></i>
                                 </a>
                             </div>
@@ -994,12 +740,12 @@
                     <!-- Mobile Slide 8 - NEW -->
                     <div class="swiper-slide" data-category="elderly">
                         <div class="carousel-gallery-item">
-                            <img src="images/gallery/gallery-1.jpg" alt="Healthcare services for elderly by Lusi Namatovu Foundation">
+                            <img src="images/lnf/events/Lusi-Namatovu-Foundation_08.jpg" alt="Healthcare services for elderly by Lusi Namatovu Foundation">
                             <div class="carousel-gallery-caption">
                                 <p>Healthcare support services for elderly residents</p>
                             </div>
                             <div class="carousel-gallery-overlay">
-                                <a href="images/gallery/gallery-1.jpg" class="venobox" data-gall="mobile-gallery" data-title="Healthcare support services for elderly residents">
+                                <a href="images/lnf/events/Lusi-Namatovu-Foundation_08.jpg" class="venobox" data-gall="mobile-gallery" data-title="Healthcare support services for elderly residents">
                                     <i class="fa-regular fa-magnifying-glass-plus"></i>
                                 </a>
                             </div>
@@ -1009,12 +755,12 @@
                     <!-- Mobile Slide 9 - NEW -->
                     <div class="swiper-slide" data-category="disability">
                         <div class="carousel-gallery-item">
-                            <img src="images/gallery/gallery-5.jpg" alt="Education program for people with disabilities by Lusi Namatovu Foundation">
+                            <img src="images/lnf/events/Lusi-Namatovu-Foundation_09.jpg" alt="Education program for people with disabilities by Lusi Namatovu Foundation">
                             <div class="carousel-gallery-caption">
                                 <p>Education and skills training initiatives</p>
                             </div>
                             <div class="carousel-gallery-overlay">
-                                <a href="images/gallery/gallery-5.jpg" class="venobox" data-gall="mobile-gallery" data-title="Education and skills training initiatives">
+                                <a href="images/lnf/events/Lusi-Namatovu-Foundation_09.jpg" class="venobox" data-gall="mobile-gallery" data-title="Education and skills training initiatives">
                                     <i class="fa-regular fa-magnifying-glass-plus"></i>
                                 </a>
                             </div>
@@ -1033,12 +779,12 @@
                     <div class="col-md-6 col-lg-4 gallery-item" data-category="elderly">
                         <div class="gallery-item-inner">
                             <div class="gallery-image">
-                                <img src="images/gallery/gallery-1.jpg" alt="Elderly care program by Lusi Namatovu Foundation">
+                                <img src="images/lnf/events/Lusi-Namatovu-Foundation_01.jpg" alt="Elderly care program by Lusi Namatovu Foundation">
                                 <div class="gallery-caption">
                                     <p>Providing essential care packages to elders in Rakai District</p>
                                 </div>
                                 <div class="gallery-overlay">
-                                    <a href="images/gallery/gallery-1.jpg" class="venobox" data-gall="photo-gallery" data-title="Providing essential care packages to elders in Rakai District">
+                                    <a href="images/lnf/events/Lusi-Namatovu-Foundation_01.jpg" class="venobox" data-gall="photo-gallery" data-title="Providing essential care packages to elders in Rakai District">
                                         <i class="fa-regular fa-magnifying-glass-plus"></i>
                                     </a>
                                 </div>
@@ -1050,12 +796,12 @@
                     <div class="col-md-6 col-lg-4 gallery-item" data-category="disability">
                         <div class="gallery-item-inner">
                             <div class="gallery-image">
-                                <img src="images/gallery/gallery-2.jpg" alt="Disability support program by Lusi Namatovu Foundation">
+                                <img src="images/lnf/events/Lusi-Namatovu-Foundation_02.jpg" alt="Disability support program by Lusi Namatovu Foundation">
                                 <div class="gallery-caption">
                                     <p>Empowering independence through assistive devices</p>
                                 </div>
                                 <div class="gallery-overlay">
-                                    <a href="images/gallery/gallery-2.jpg" class="venobox" data-gall="photo-gallery" data-title="Empowering independence through assistive devices">
+                                    <a href="images/lnf/events/Lusi-Namatovu-Foundation_02.jpg" class="venobox" data-gall="photo-gallery" data-title="Empowering independence through assistive devices">
                                         <i class="fa-regular fa-magnifying-glass-plus"></i>
                                     </a>
                                 </div>
@@ -1067,12 +813,12 @@
                     <div class="col-md-6 col-lg-4 gallery-item" data-category="events">
                         <div class="gallery-item-inner">
                             <div class="gallery-image">
-                                <img src="images/gallery/gallery-3.jpg" alt="Community gathering organized by Lusi Namatovu Foundation">
+                                <img src="images/lnf/events/Lusi-Namatovu-Foundation_03.jpg" alt="Community gathering organized by Lusi Namatovu Foundation">
                                 <div class="gallery-caption">
                                     <p>Building community bonds through local gatherings</p>
                                 </div>
                                 <div class="gallery-overlay">
-                                    <a href="images/gallery/gallery-3.jpg" class="venobox" data-gall="photo-gallery" data-title="Building community bonds through local gatherings">
+                                    <a href="images/lnf/events/Lusi-Namatovu-Foundation_03.jpg" class="venobox" data-gall="photo-gallery" data-title="Building community bonds through local gatherings">
                                         <i class="fa-regular fa-magnifying-glass-plus"></i>
                                     </a>
                                 </div>
@@ -1084,12 +830,12 @@
                     <div class="col-md-6 col-lg-4 gallery-item" data-category="elderly">
                         <div class="gallery-item-inner">
                             <div class="gallery-image">
-                                <img src="images/gallery/gallery-4.jpg" alt="Elderly support program by Lusi Namatovu Foundation">
+                                <img src="images/lnf/events/Lusi-Namatovu-Foundation_04.jpg" alt="Elderly support program by Lusi Namatovu Foundation">
                                 <div class="gallery-caption">
                                     <p>Bringing joy and companionship to elders</p>
                                 </div>
                                 <div class="gallery-overlay">
-                                    <a href="images/gallery/gallery-4.jpg" class="venobox" data-gall="photo-gallery" data-title="Bringing joy and companionship to elders">
+                                    <a href="images/lnf/events/Lusi-Namatovu-Foundation_04.jpg" class="venobox" data-gall="photo-gallery" data-title="Bringing joy and companionship to elders">
                                         <i class="fa-regular fa-magnifying-glass-plus"></i>
                                     </a>
                                 </div>
@@ -1101,12 +847,12 @@
                     <div class="col-md-6 col-lg-4 gallery-item" data-category="disability">
                         <div class="gallery-item-inner">
                             <div class="gallery-image">
-                                <img src="images/gallery/gallery-5.jpg" alt="Disability support services by Lusi Namatovu Foundation">
+                                <img src="images/lnf/events/Lusi-Namatovu-Foundation_05.jpg" alt="Disability support services by Lusi Namatovu Foundation">
                                 <div class="gallery-caption">
                                     <p>Creating inclusive opportunities for all abilities</p>
                                 </div>
                                 <div class="gallery-overlay">
-                                    <a href="images/gallery/gallery-5.jpg" class="venobox" data-gall="photo-gallery" data-title="Creating inclusive opportunities for all abilities">
+                                    <a href="images/lnf/events/Lusi-Namatovu-Foundation_05.jpg" class="venobox" data-gall="photo-gallery" data-title="Creating inclusive opportunities for all abilities">
                                         <i class="fa-regular fa-magnifying-glass-plus"></i>
                                     </a>
                                 </div>
@@ -1118,12 +864,12 @@
                     <div class="col-md-6 col-lg-4 gallery-item" data-category="events">
                         <div class="gallery-item-inner">
                             <div class="gallery-image">
-                                <img src="images/gallery/gallery-6.jpg" alt="Community event by Lusi Namatovu Foundation">
+                                <img src="images/lnf/events/Lusi-Namatovu-Foundation_06.jpg" alt="Community event by Lusi Namatovu Foundation">
                                 <div class="gallery-caption">
                                     <p>Celebrating together as a unified community</p>
                                 </div>
                                 <div class="gallery-overlay">
-                                    <a href="images/gallery/gallery-6.jpg" class="venobox" data-gall="photo-gallery" data-title="Celebrating together as a unified community">
+                                    <a href="images/lnf/events/Lusi-Namatovu-Foundation_06.jpg" class="venobox" data-gall="photo-gallery" data-title="Celebrating together as a unified community">
                                         <i class="fa-regular fa-magnifying-glass-plus"></i>
                                     </a>
                                 </div>
@@ -1135,12 +881,12 @@
                     <div class="col-md-6 col-lg-4 gallery-item" data-category="events">
                         <div class="gallery-item-inner">
                             <div class="gallery-image">
-                                <img src="images/gallery/gallery-3.jpg" alt="Community outreach program by Lusi Namatovu Foundation">
+                                <img src="images/lnf/events/Lusi-Namatovu-Foundation_07.jpg" alt="Community outreach program by Lusi Namatovu Foundation">
                                 <div class="gallery-caption">
                                     <p>Community outreach programs in rural areas</p>
                                 </div>
                                 <div class="gallery-overlay">
-                                    <a href="images/gallery/gallery-3.jpg" class="venobox" data-gall="photo-gallery" data-title="Community outreach programs in rural areas">
+                                    <a href="images/lnf/events/Lusi-Namatovu-Foundation_07.jpg" class="venobox" data-gall="photo-gallery" data-title="Community outreach programs in rural areas">
                                         <i class="fa-regular fa-magnifying-glass-plus"></i>
                                     </a>
                                 </div>
@@ -1152,12 +898,12 @@
                     <div class="col-md-6 col-lg-4 gallery-item" data-category="elderly">
                         <div class="gallery-item-inner">
                             <div class="gallery-image">
-                                <img src="images/gallery/gallery-1.jpg" alt="Healthcare services for elderly by Lusi Namatovu Foundation">
+                                <img src="images/lnf/events/Lusi-Namatovu-Foundation_08.jpg" alt="Healthcare services for elderly by Lusi Namatovu Foundation">
                                 <div class="gallery-caption">
                                     <p>Healthcare support services for elderly residents</p>
                                 </div>
                                 <div class="gallery-overlay">
-                                    <a href="images/gallery/gallery-1.jpg" class="venobox" data-gall="photo-gallery" data-title="Healthcare support services for elderly residents">
+                                    <a href="images/lnf/events/Lusi-Namatovu-Foundation_08.jpg" class="venobox" data-gall="photo-gallery" data-title="Healthcare support services for elderly residents">
                                         <i class="fa-regular fa-magnifying-glass-plus"></i>
                                     </a>
                                 </div>
@@ -1169,12 +915,12 @@
                     <div class="col-md-6 col-lg-4 gallery-item" data-category="disability">
                         <div class="gallery-item-inner">
                             <div class="gallery-image">
-                                <img src="images/gallery/gallery-5.jpg" alt="Education program for people with disabilities by Lusi Namatovu Foundation">
+                                <img src="images/lnf/events/Lusi-Namatovu-Foundation_09.jpg" alt="Education program for people with disabilities by Lusi Namatovu Foundation">
                                 <div class="gallery-caption">
                                     <p>Education and skills training initiatives</p>
                                 </div>
                                 <div class="gallery-overlay">
-                                    <a href="images/gallery/gallery-5.jpg" class="venobox" data-gall="photo-gallery" data-title="Education and skills training initiatives">
+                                    <a href="images/lnf/events/Lusi-Namatovu-Foundation_09.jpg" class="venobox" data-gall="photo-gallery" data-title="Education and skills training initiatives">
                                         <i class="fa-regular fa-magnifying-glass-plus"></i>
                                     </a>
                                 </div>
@@ -1338,174 +1084,6 @@
     <script src="js/main.js"></script>
     <script src="js/mobile-menu.js"></script>
     <script src="js/support-animations.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Initialize Masonry layout for desktop gallery
-            var masonryGrid = document.querySelector('.gallery-grid');
-            if (masonryGrid) {
-                var masonry = new Masonry(masonryGrid, {
-                    itemSelector: '.gallery-item',
-                    columnWidth: '.gallery-item',
-                    percentPosition: true,
-                    gutter: 20
-                });
-            }
-            
-            // Initialize mobile gallery carousel with keyboard navigation
-            var mobileGallerySwiper = new Swiper('.mobile-gallery-carousel', {
-                slidesPerView: 1.2,
-                spaceBetween: 15,
-                centeredSlides: true,
-                loop: true,
-                a11y: {
-                    enabled: true,
-                    prevSlideMessage: 'Previous slide',
-                    nextSlideMessage: 'Next slide',
-                    firstSlideMessage: 'This is the first slide',
-                    lastSlideMessage: 'This is the last slide'
-                },
-                keyboard: {
-                    enabled: true,
-                    onlyInViewport: true
-                },
-                pagination: {
-                    el: '.mobile-gallery-pagination',
-                    clickable: true
-                },
-                navigation: {
-                    nextEl: '.mobile-gallery-next',
-                    prevEl: '.mobile-gallery-prev',
-                },
-                breakpoints: {
-                    480: {
-                        slidesPerView: 1.5,
-                        spaceBetween: 20
-                    }
-                }
-            });
-            
-            // Add keyboard navigation event listener for mobile gallery
-            document.addEventListener('keydown', function(e) {
-                // Only apply keyboard navigation when carousel is in viewport
-                var carousel = document.querySelector('.mobile-gallery-carousel');
-                if (!carousel) return;
-                
-                var rect = carousel.getBoundingClientRect();
-                var isInViewport = (
-                    rect.top >= 0 &&
-                    rect.left >= 0 &&
-                    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-                    rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-                );
-                
-                if (isInViewport && mobileGallerySwiper) {
-                    if (e.key === 'ArrowLeft') {
-                        mobileGallerySwiper.slidePrev();
-                        e.preventDefault();
-                    } else if (e.key === 'ArrowRight') {
-                        mobileGallerySwiper.slideNext();
-                        e.preventDefault();
-                    }
-                }
-            });
-            
-            // Initialize VenoBox with keyboard navigation
-            if (typeof VenoBox !== 'undefined') {
-                new VenoBox({
-                    selector: '.venobox',
-                    numeration: true,
-                    infinigall: true,
-                    spinner: 'rotating-plane',
-                    spinColor: '#0e98f1',
-                    navigation: true,
-                    navKeyboard: true, // Enable keyboard navigation in lightbox
-                    navTouch: true,    // Enable touch navigation in lightbox
-                    share: false,      // Disable share buttons
-                    titlePosition: 'bottom', // Place titles at the bottom
-                    titleattr: 'data-title', // Use data-title for image titles
-                    focusable: true    // Improve keyboard focus support
-                });
-            }
-            
-            // Category filtering functionality
-            var filterButtons = document.querySelectorAll('.filter-btn');
-            
-            filterButtons.forEach(function(button) {
-                button.addEventListener('click', function() {
-                    // Remove active class from all buttons
-                    filterButtons.forEach(function(btn) {
-                        btn.classList.remove('active');
-                    });
-                    
-                    // Add active class to clicked button
-                    this.classList.add('active');
-                    
-                    var filterValue = this.getAttribute('data-filter');
-                    
-                    // Filter desktop gallery items
-                    var galleryItems = document.querySelectorAll('.gallery-item');
-                    galleryItems.forEach(function(item) {
-                        var itemCategory = item.getAttribute('data-category');
-                        
-                        if (filterValue === 'all' || filterValue === itemCategory) {
-                            item.style.display = 'block';
-                        } else {
-                            item.style.display = 'none';
-                        }
-                    });
-                    
-                    // Update counter
-                    var visibleItems = document.querySelectorAll('.gallery-item[style="display: block"]').length;
-                    document.querySelector('.shown-count').textContent = visibleItems;
-                    
-                    // Relayout masonry after filtering
-                    if (masonry) {
-                        setTimeout(function() {
-                            masonry.layout();
-                        }, 100);
-                    }
-                    
-                    // Filter mobile carousel slides
-                    var mobileSlides = document.querySelectorAll('.mobile-gallery-carousel .swiper-slide');
-                    mobileSlides.forEach(function(slide) {
-                        var slideCategory = slide.getAttribute('data-category');
-                        
-                        if (filterValue === 'all' || filterValue === slideCategory) {
-                            slide.classList.remove('swiper-slide-hidden');
-                        } else {
-                            slide.classList.add('swiper-slide-hidden');
-                        }
-                    });
-                    
-                    // Update mobile swiper
-                    if (mobileGallerySwiper) {
-                        mobileGallerySwiper.update();
-                        mobileGallerySwiper.slideTo(0);
-                    }
-                });
-                
-                // Add keyboard support for filter buttons
-                button.addEventListener('keydown', function(e) {
-                    if (e.key === 'Enter' || e.key === ' ') {
-                        e.preventDefault();
-                        button.click();
-                    }
-                });
-            });
-            
-            // Add focus styles to enhance keyboard navigation
-            document.querySelectorAll('.venobox, .filter-btn').forEach(function(element) {
-                element.addEventListener('focus', function() {
-                    this.classList.add('keyboard-focus');
-                });
-                
-                element.addEventListener('blur', function() {
-                    this.classList.remove('keyboard-focus');
-                });
-            });
-        });
-    </script>
-
 </body>
 
 </html>

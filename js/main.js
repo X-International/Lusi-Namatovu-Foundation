@@ -1159,3 +1159,169 @@ document.addEventListener('DOMContentLoaded', function() {
       });
   });
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+  // Initialize Masonry layout for desktop gallery
+  var masonryGrid = document.querySelector('.gallery-grid');
+  if (masonryGrid) {
+      var masonry = new Masonry(masonryGrid, {
+          itemSelector: '.gallery-item',
+          columnWidth: '.gallery-item',
+          percentPosition: true,
+          gutter: 20
+      });
+  }
+  
+  // Initialize mobile gallery carousel with keyboard navigation
+  var mobileGallerySwiper = new Swiper('.mobile-gallery-carousel', {
+      slidesPerView: 1.2,
+      spaceBetween: 15,
+      centeredSlides: true,
+      loop: true,
+      a11y: {
+          enabled: true,
+          prevSlideMessage: 'Previous slide',
+          nextSlideMessage: 'Next slide',
+          firstSlideMessage: 'This is the first slide',
+          lastSlideMessage: 'This is the last slide'
+      },
+      keyboard: {
+          enabled: true,
+          onlyInViewport: true
+      },
+      pagination: {
+          el: '.mobile-gallery-pagination',
+          clickable: true
+      },
+      navigation: {
+          nextEl: '.mobile-gallery-next',
+          prevEl: '.mobile-gallery-prev',
+      },
+      breakpoints: {
+          480: {
+              slidesPerView: 1.5,
+              spaceBetween: 20
+          }
+      }
+  });
+  
+  // Add keyboard navigation event listener for mobile gallery
+  document.addEventListener('keydown', function(e) {
+      // Only apply keyboard navigation when carousel is in viewport
+      var carousel = document.querySelector('.mobile-gallery-carousel');
+      if (!carousel) return;
+      
+      var rect = carousel.getBoundingClientRect();
+      var isInViewport = (
+          rect.top >= 0 &&
+          rect.left >= 0 &&
+          rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+          rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+      );
+      
+      if (isInViewport && mobileGallerySwiper) {
+          if (e.key === 'ArrowLeft') {
+              mobileGallerySwiper.slidePrev();
+              e.preventDefault();
+          } else if (e.key === 'ArrowRight') {
+              mobileGallerySwiper.slideNext();
+              e.preventDefault();
+          }
+      }
+  });
+  
+  // Initialize VenoBox with keyboard navigation
+  if (typeof VenoBox !== 'undefined') {
+      new VenoBox({
+          selector: '.venobox',
+          numeration: true,
+          infinigall: true,
+          spinner: 'rotating-plane',
+          spinColor: '#0e98f1',
+          navigation: true,
+          navKeyboard: true, // Enable keyboard navigation in lightbox
+          navTouch: true,    // Enable touch navigation in lightbox
+          share: false,      // Disable share buttons
+          titlePosition: 'bottom', // Place titles at the bottom
+          titleattr: 'data-title', // Use data-title for image titles
+          focusable: true    // Improve keyboard focus support
+      });
+  }
+  
+  // Category filtering functionality
+  var filterButtons = document.querySelectorAll('.filter-btn');
+  
+  filterButtons.forEach(function(button) {
+      button.addEventListener('click', function() {
+          // Remove active class from all buttons
+          filterButtons.forEach(function(btn) {
+              btn.classList.remove('active');
+          });
+          
+          // Add active class to clicked button
+          this.classList.add('active');
+          
+          var filterValue = this.getAttribute('data-filter');
+          
+          // Filter desktop gallery items
+          var galleryItems = document.querySelectorAll('.gallery-item');
+          galleryItems.forEach(function(item) {
+              var itemCategory = item.getAttribute('data-category');
+              
+              if (filterValue === 'all' || filterValue === itemCategory) {
+                  item.style.display = 'block';
+              } else {
+                  item.style.display = 'none';
+              }
+          });
+          
+          // Update counter
+          var visibleItems = document.querySelectorAll('.gallery-item[style="display: block"]').length;
+          document.querySelector('.shown-count').textContent = visibleItems;
+          
+          // Relayout masonry after filtering
+          if (masonry) {
+              setTimeout(function() {
+                  masonry.layout();
+              }, 100);
+          }
+          
+          // Filter mobile carousel slides
+          var mobileSlides = document.querySelectorAll('.mobile-gallery-carousel .swiper-slide');
+          mobileSlides.forEach(function(slide) {
+              var slideCategory = slide.getAttribute('data-category');
+              
+              if (filterValue === 'all' || filterValue === slideCategory) {
+                  slide.classList.remove('swiper-slide-hidden');
+              } else {
+                  slide.classList.add('swiper-slide-hidden');
+              }
+          });
+          
+          // Update mobile swiper
+          if (mobileGallerySwiper) {
+              mobileGallerySwiper.update();
+              mobileGallerySwiper.slideTo(0);
+          }
+      });
+      
+      // Add keyboard support for filter buttons
+      button.addEventListener('keydown', function(e) {
+          if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              button.click();
+          }
+      });
+  });
+  
+  // Add focus styles to enhance keyboard navigation
+  document.querySelectorAll('.venobox, .filter-btn').forEach(function(element) {
+      element.addEventListener('focus', function() {
+          this.classList.add('keyboard-focus');
+      });
+      
+      element.addEventListener('blur', function() {
+          this.classList.remove('keyboard-focus');
+      });
+  });
+});
