@@ -7,8 +7,14 @@
     position: relative;
     background: linear-gradient(135deg, #10365a 0%, #071d33 100%);
     color: #ffffff;
-    padding: 80px 0 0;
+    padding: 60px 0 0; /* Reduced top padding for mobile */
     overflow: hidden;
+}
+
+@media (min-width: 768px) {
+    .modern-footer {
+        padding: 80px 0 0;
+    }
 }
 
 /* Wave shape at top of footer */
@@ -37,7 +43,7 @@
 .footer-main {
     display: grid;
     grid-template-columns: repeat(1, 1fr);
-    gap: 40px;
+    gap: 30px; /* Smaller gap for mobile */
     margin-bottom: 50px;
     max-width: 1200px;
     margin-left: auto;
@@ -45,11 +51,10 @@
     padding: 0 15px;
 }
 
-/* Tablet breakpoint */
 @media (min-width: 768px) {
     .footer-main {
         grid-template-columns: repeat(2, 1fr);
-        gap: 30px 40px;
+        gap: 40px;
         padding: 0 20px;
     }
 }
@@ -249,11 +254,10 @@
     color: rgba(255, 255, 255, 0.85);
     text-decoration: none;
     font-size: 15px;
-    transition: all 0.3s ease;
+    line-height: 1.7;
     display: inline-flex;
     align-items: center;
-    position: relative;
-    padding-left: 0;
+    transition: all 0.3s ease;
 }
 
 .footer-menu-col a:before {
@@ -288,13 +292,19 @@
     list-style: none;
     padding: 0;
     margin: 0;
+    max-width: 400px; /* Prevent contact info from stretching too wide */
 }
 
 .footer-contact-list li {
     display: flex;
     align-items: flex-start;
     margin-bottom: 20px;
+    padding: 0;
     transition: transform 0.3s ease;
+}
+
+.footer-contact-list li:last-child {
+    margin-bottom: 0;
 }
 
 .footer-contact-list li:hover {
@@ -326,15 +336,18 @@
 
 .contact-text p {
     margin: 0;
-    line-height: 1.5;
+    font-size: 15px;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.85);
 }
 
 .contact-text a {
     color: rgba(255, 255, 255, 0.85);
     text-decoration: none;
+    font-size: 15px;
+    line-height: 1.7;
     transition: all 0.3s ease;
     display: inline-block;
-    line-height: 1.7;
 }
 
 .contact-text a:hover {
@@ -352,6 +365,10 @@
     font-size: 15px;
     line-height: 1.5;
     opacity: 0.9;
+}
+
+.newsletter-form {
+    max-width: 450px;
 }
 
 .newsletter-form .form-group {
@@ -529,6 +546,129 @@
     
     .footer-bottom-links {
         gap: 15px;
+    }
+}
+
+/* Improved responsive layout */
+@media (max-width: 991px) {
+    .footer-main {
+        grid-template-columns: repeat(1, 1fr);
+    }
+    
+    .footer-about {
+        grid-column: span 2;
+    }
+    
+    .footer-quick-links,
+    .footer-contact-info,
+    .footer-newsletter {
+        grid-column: span 1;
+    }
+}
+
+@media (max-width: 767px) {
+    .footer-main {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .footer-about {
+        grid-column: span 1;
+    }
+    
+    .footer-quick-links {
+        order: 2;
+    }
+    
+    .footer-contact-info {
+        order: 3;
+    }
+    
+    .footer-newsletter {
+        order: 4;
+    }
+    
+    .footer-menu-col a,
+    .contact-text p,
+    .contact-text a {
+        font-size: 14px;
+    }
+    
+    .footer-impact-numbers {
+        justify-content: center;
+    }
+}
+
+/* Better mobile newsletter layout */
+@media (max-width: 575px) {
+    .footer-main {
+        padding: 0 20px;
+    }
+
+    .footer-contact-list {
+        margin: 0 auto;
+        text-align: center;
+    }
+    
+    .footer-contact-list li {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .contact-icon {
+        margin: 0 0 10px 0;
+    }
+    
+    .contact-text {
+        text-align: center;
+    }
+    
+    .footer-heading {
+        text-align: center;
+    }
+    
+    .footer-heading:after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    
+    .footer-about-text {
+        text-align: center;
+    }
+    
+    .footer-socials {
+        justify-content: center;
+    }
+    
+    .footer-contact-list {
+        margin: 0 auto; /* Center on mobile */
+    }
+    
+    .newsletter-form {
+        margin: 0 auto; /* Center on mobile */
+    }
+    
+    .footer-menu-columns {
+        text-align: center;
+    }
+    
+    .footer-menu-col {
+        margin: 0 auto;
+        max-width: 200px;
+    }
+    
+    .newsletter-form {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .newsletter-form .form-group {
+        margin-bottom: 0;
+    }
+    
+    .newsletter-form input {
+        text-align: center;
     }
 }
 
