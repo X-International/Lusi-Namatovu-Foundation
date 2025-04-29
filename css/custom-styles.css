@@ -341,3 +341,306 @@
     font-size: calc(24px + 0.5vw);
     line-height: 1.3;
 }
+
+/* Vision Section Styles
+-------------------------------------------------- */
+.vision-section {
+    position: relative;
+    background: linear-gradient(to bottom, #f0f8ff, #ffffff);
+}
+
+.vision-bg-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.vision-bg-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.15;
+}
+
+.vision-section .container {
+    position: relative;
+    z-index: 1;
+    max-width: 1000px;
+}
+
+.vision-text {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.vision-text .lead {
+    font-size: 24px;
+    line-height: 1.6;
+    color: #333;
+}
+
+.vision-quote {
+    font-style: italic;
+    font-size: 18px;
+    color: #666;
+}
+
+.separator {
+    width: 100px;
+    height: 1px;
+    background: #ddd;
+    margin: 20px auto 30px;
+}
+
+.vision-icons {
+    max-width: 900px;
+}
+
+.vision-icon-item {
+    height: 200px;
+    background: #f8f9fa;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.icon-circle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: rgba(14, 152, 241, 0.1);
+    margin: 0 auto;
+}
+
+.icon-circle i {
+    font-size: 24px;
+    color: #0e98f1;
+}
+
+.vision-icon-item h4 {
+    font-size: 18px;
+    color: #1a2526;
+    font-weight: bold;
+}
+
+.vision-icon-item p {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.5;
+}
+
+.vision-section .hq-btn {
+    min-width: 200px;
+    height: 40px;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.vision-section .hqc-shape-1,
+.vision-section .hqc-shape-2 {
+    color: rgba(14, 152, 241, 0.1);
+    font-size: 120px;
+}
+
+/* Values Section Styles
+-------------------------------------------------- */
+.values-section {
+    background-color: #f9f9f9;
+    position: relative;
+    overflow: hidden;
+}
+
+.value-card {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    border-bottom: 3px solid transparent;
+}
+
+.value-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    border-bottom: 3px solid #0e98f1;
+}
+
+.value-icon {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(14, 152, 241, 0.1);
+    border-radius: 50%;
+    margin-bottom: 20px;
+}
+
+.value-icon i {
+    font-size: 32px;
+    color: #0e98f1;
+}
+
+.value-content h3 {
+    font-size: 22px;
+    margin-bottom: 15px;
+    color: #1a2526;
+    font-weight: 600;
+}
+
+.value-content p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #666;
+    margin-bottom: 0;
+}
+
+/* Mission Section Styles
+-------------------------------------------------- */
+.impact-stat {
+    font-size: 16px;
+    color: #666;
+}
+
+.info-card[data-primary-color="#0e98f1"] {
+    --hq-primary-color: #0e98f1;
+}
+
+/* Additional styles for form elements */
+.donate-form {
+    display: inline;
+}
+
+.donation-pixel {
+    display: none;
+}
+
+/* Mobile Responsiveness for Vision & Values sections */
+@media (max-width: 992px) {
+    .value-card {
+        padding: 25px;
+    }
+
+    .value-icon {
+        width: 70px;
+        height: 70px;
+    }
+
+    .value-icon i {
+        font-size: 28px;
+    }
+
+    .value-content h3 {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .vision-section {
+        padding: 40px 0;
+    }
+    
+    .vision-section .container {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    
+    .vision-text .lead {
+        font-size: 20px !important;
+    }
+    
+    .vision-quote {
+        font-size: 16px !important;
+    }
+    
+    .separator {
+        width: 80px !important;
+    }
+    
+    .vision-icon-item {
+        height: auto !important;
+        min-height: 180px !important;
+        margin-bottom: 15px;
+        padding: 20px !important;
+    }
+    
+    .vision-icon-item .icon-circle {
+        width: 80px !important;
+        height: 80px !important;
+        margin-bottom: 15px !important;
+    }
+    
+    .vision-icon-item .icon-circle i {
+        font-size: 24px !important;
+    }
+    
+    .vision-icon-item h4 {
+        font-size: 16px !important;
+        margin-bottom: 10px !important;
+    }
+    
+    .vision-icon-item p {
+        font-size: 14px !important;
+        line-height: 1.5 !important;
+    }
+    
+    .hq-btn {
+        width: 100%;
+        height: 36px !important;
+        font-size: 14px !important;
+    }
+
+    .values-section {
+        padding: 60px 0;
+    }
+
+    .section-heading .heading {
+        font-size: 28px;
+    }
+
+    .section-heading .section-desc {
+        font-size: 16px;
+    }
+
+    .value-card {
+        margin-bottom: 20px;
+    }
+
+    .value-content h3 {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+
+    .value-content p {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 576px) {
+    .values-section {
+        padding: 40px 0;
+    }
+
+    .value-icon {
+        width: 60px;
+        height: 60px;
+        margin-bottom: 15px;
+    }
+
+    .value-icon i {
+        font-size: 24px;
+    }
+}
