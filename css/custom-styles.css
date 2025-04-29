@@ -682,6 +682,19 @@
     padding-top: 20px;
 }
 
+/* CTA button - removing custom overrides for consistency */
+.mission-cta-btn {
+    /* Remove custom colors to use site-wide button styling */
+    background-color: transparent;
+    border-color: transparent;
+}
+
+.mission-cta-btn:hover {
+    background-color: transparent;
+    border-color: transparent;
+    box-shadow: none;
+}
+
 .impact-stat {
     font-size: 14px;
     color: #6c757d;
