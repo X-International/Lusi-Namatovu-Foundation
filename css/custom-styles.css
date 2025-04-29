@@ -459,6 +459,21 @@
     border-radius: 3px;
 }
 
+/* Vision metrics cards */
+.vision-metric-card {
+    transition: all 0.3s ease;
+}
+
+.vision-metric-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.08) !important;
+}
+
+.vision-metric-icon i {
+    font-size: 24px;
+    color: #0e98f1;
+}
+
 /* Vision pillars */
 .vision-pillars-header {
     margin-bottom: 30px;
@@ -511,6 +526,11 @@
     color: #0e98f1;
 }
 
+.vision-pillar-content {
+    width: 100%;
+    text-align: center;
+}
+
 .vision-pillar-content h4 {
     font-size: 18px;
     font-weight: 600;
@@ -523,6 +543,117 @@
     line-height: 1.6;
     color: #666;
     margin-bottom: 0;
+}
+
+/* Progress bar styling */
+.pillar-progress {
+    width: 100%;
+}
+
+.progress {
+    background-color: rgba(14, 152, 241, 0.1);
+    overflow: hidden;
+}
+
+.progress-bar {
+    transition: width 1.5s ease-in-out;
+}
+
+/* Vision Timeline styling */
+.vision-timeline {
+    position: relative;
+}
+
+.timeline-header h3 {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.timeline-container {
+    position: relative;
+    padding: 30px 0;
+}
+
+.timeline-line {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: rgba(14, 152, 241, 0.2);
+    transform: translateY(-50%);
+    z-index: 1;
+}
+
+.timeline-items {
+    position: relative;
+    z-index: 2;
+}
+
+.timeline-item {
+    position: relative;
+    padding: 0 10px;
+}
+
+.timeline-dot {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 16px;
+    height: 16px;
+    background-color: #fff;
+    border: 3px solid #0e98f1;
+    border-radius: 50%;
+    transform: translate(-50%, -8px);
+    z-index: 3;
+}
+
+.timeline-content {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    margin-top: 20px;
+    transition: all 0.3s ease;
+}
+
+.timeline-content:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.timeline-year {
+    display: inline-block;
+    background-color: #0e98f1;
+    color: #fff;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+.timeline-content h4 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.timeline-content p {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 0;
+    line-height: 1.5;
+}
+
+/* Vision CTA */
+.vision-cta-wrapper {
+    transition: all 0.3s ease;
+}
+
+.vision-cta-wrapper:hover {
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
 }
 
 /* Responsive styles */
@@ -541,6 +672,18 @@
     
     .vision-text .lead {
         font-size: 17px;
+    }
+    
+    .timeline-content {
+        padding: 25px 20px;
+    }
+    
+    .timeline-content h4 {
+        font-size: 18px;
+    }
+    
+    .timeline-content p {
+        font-size: 15px;
     }
 }
 
@@ -564,6 +707,24 @@
     .vision-pillars-header h3 {
         font-size: 26px;
     }
+    
+    .timeline-header h3 {
+        font-size: 26px;
+    }
+    
+    .timeline-line {
+        height: 3px;
+    }
+    
+    .timeline-dot {
+        width: 20px;
+        height: 20px;
+        transform: translate(-50%, -10px);
+    }
+    
+    .timeline-year {
+        font-size: 15px;
+    }
 }
 
 @media (min-width: 992px) {
@@ -582,6 +743,10 @@
     .vision-pillar-card {
         padding: 30px 25px;
     }
+    
+    .timeline-content {
+        padding: 30px 25px;
+    }
 }
 
 @media (min-width: 1200px) {
@@ -591,6 +756,27 @@
     
     .vision-text .lead {
         font-size: 20px;
+    }
+}
+
+/* Mobile-specific adjustments */
+@media (max-width: 767px) {
+    .timeline-line {
+        display: none;
+    }
+    
+    .timeline-item {
+        margin-bottom: 20px;
+    }
+    
+    .timeline-dot {
+        left: 20px;
+        top: 20px;
+    }
+    
+    .timeline-content {
+        padding-left: 40px;
+        text-align: left;
     }
 }
 
