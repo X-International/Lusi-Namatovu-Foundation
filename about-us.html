@@ -180,11 +180,12 @@
     
 
     <!-- Modern Page Header Section -->
-    <section class="modern-page-header">
+    <section class="modern-page-header" role="banner" aria-labelledby="page-title">
         <!-- Parallax Background Container -->
         <div class="mph-background-container">
-            <div class="mph-background-image" data-img="images/lnf/Gallery/Lusi-Namatovu-Foundation_24.jpg"></div>
-            <div class="mph-overlay"></div>
+            <!-- Using a single background image with fallback background color -->
+            <img class="mph-background-image" src="images/lnf/Gallery/Lusi-Namatovu-Foundation_24.jpg" alt="Lusi Namatovu Foundation community work in Rakai District" loading="eager">
+            <div class="mph-overlay" aria-hidden="true"></div>
         </div>
         
         <!-- Content Container -->
@@ -196,7 +197,7 @@
                 </div>
                 
                 <!-- Main Heading with Animation -->
-                <h1 class="mph-title" data-animation="fade-up" data-delay="0.2s">
+                <h1 id="page-title" class="mph-title" data-animation="fade-up" data-delay="0.2s">
                     About <span class="mph-highlight">Lusi Namatovu</span> <span class="foundation-text">Foundation</span>
                 </h1>
                 
@@ -206,31 +207,21 @@
                 </p>
                 
                 <!-- Breadcrumb Navigation -->
-                <div class="mph-breadcrumb-container" data-animation="fade-up" data-delay="0.4s">
-                    <ul class="mph-breadcrumb">
+                <nav aria-label="Breadcrumb" class="mph-breadcrumb-container" data-animation="fade-up" data-delay="0.4s">
+                    <ol class="mph-breadcrumb">
                         <li><a href="index.html">Home</a></li>
-                        <li><i class="fa-regular fa-arrow-right"></i></li>
-                        <li class="current">About Us</li>
-                    </ul>
-                </div>
+                        <li aria-hidden="true"><i class="fa-regular fa-arrow-right"></i></li>
+                        <li aria-current="page" class="current">About Us</li>
+                    </ol>
+                </nav>
             </div>
         </div>
         
         <!-- Decorative Elements -->
-        <div class="mph-shapes">
+        <div class="mph-shapes" aria-hidden="true">
             <div class="mph-shape mph-shape-1"></div>
             <div class="mph-shape mph-shape-2"></div>
             <div class="mph-shape mph-shape-3"></div>
-        </div>
-        
-        <!-- Scroll Indicator -->
-        <div class="mph-scroll-indicator">
-            <div class="scroll-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
-                    <path d="M12 13.172l4.95-4.95 1.414 1.414L12 16 5.636 9.636 7.05 8.222z" />
-                </svg>
-            </div>
-            <span>Explore Our Story</span>
         </div>
     </section>
     <!-- End Modern Page Header Section -->

@@ -18,18 +18,21 @@
     width: 100%;
     height: 100%;
     z-index: -1;
+    background-color: #1a2526; /* Fallback background color */
 }
 
+/* Simplified background image handling */
 .mph-background-image {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-position: center;
-    background-size: cover;
-    transform: scale(1.02);
-    transition: transform 1.5s ease;
+    object-fit: cover;
+    object-position: center;
+    opacity: 1; /* Ensure full visibility */
+    display: block; /* Explicitly set to block */
+    z-index: 0; /* Ensure it's above the background color */
 }
 
 .mph-overlay {
@@ -38,8 +41,9 @@
     left: 0;
     width: 100%;
     height: 100%;
-    /* Lighter overlay to improve visibility */
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.7));
+    /* Improved overlay with better text contrast and smooth transition */
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.75));
+    transition: background-color 0.4s ease, opacity 0.4s ease;
 }
 
 /* Content */
@@ -54,7 +58,7 @@
 
 .mph-badge {
     display: inline-block;
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.15);
     padding: 8px 16px;
     border-radius: 30px;
     margin-bottom: 20px;
@@ -70,7 +74,8 @@
     letter-spacing: 2px;
     text-transform: uppercase;
     color: #fff;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    /* Improved text shadow for better readability */
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
 }
 
 .mph-title {
@@ -80,16 +85,16 @@
     line-height: 1.2;
     transform: translateY(20px);
     opacity: 0;
-    /* Improved text shadow for better readability */
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+    /* Enhanced text shadow for vastly improved contrast */
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
 }
 
 .mph-highlight {
     color: #0e98f1;
     position: relative;
     display: inline-block;
-    /* Text stroke to improve visibility */
-    -webkit-text-stroke: 0.5px rgba(255, 255, 255, 0.3);
+    /* Better text stroke for improved visibility */
+    -webkit-text-stroke: 0.5px rgba(0, 0, 0, 0.3);
 }
 
 /* Improved highlight effect with better contrast */
@@ -100,17 +105,17 @@
     bottom: 5px;
     width: 100%;
     height: 12px;
-    background-color: rgba(14, 152, 241, 0.3);
+    background-color: rgba(14, 152, 241, 0.4);
     z-index: -1;
     transform: skewX(-10deg);
 }
 
-/* Style for the Foundation text to ensure visibility */
+/* Enhanced style for the Foundation text to ensure visibility */
 .foundation-text {
     color: #ffffff;
     font-weight: 600;
-    /* Adding a slight shadow to ensure readability */
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+    /* Enhanced shadow to ensure readability */
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.7);
 }
 
 .mph-subtitle {
@@ -123,11 +128,11 @@
     line-height: 1.6;
     transform: translateY(20px);
     opacity: 0;
-    /* Adding shadow for better readability */
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+    /* Enhanced shadow for better readability */
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
 }
 
-/* Breadcrumb Navigation */
+/* Breadcrumb Navigation with improved accessibility */
 .mph-breadcrumb-container {
     transform: translateY(20px);
     opacity: 0;
@@ -145,9 +150,9 @@
 
 .mph-breadcrumb li {
     font-size: 15px;
-    color: rgba(255, 255, 255, 0.8);
+    color: rgba(255, 255, 255, 0.9);
     /* Better visibility */
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
 }
 
 .mph-breadcrumb li a {
@@ -155,11 +160,18 @@
     text-decoration: none;
     transition: color 0.3s ease;
     /* Better visibility */
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+    /* Improved hover target */
+    padding: 2px 4px;
 }
 
 .mph-breadcrumb li a:hover {
     color: #0e98f1;
+}
+
+.mph-breadcrumb li a:focus {
+    outline: 2px solid rgba(255, 255, 255, 0.5);
+    border-radius: 3px;
 }
 
 .mph-breadcrumb li.current {
@@ -172,7 +184,7 @@
     color: rgba(255, 255, 255, 0.7);
 }
 
-/* Decorative Elements */
+/* Decorative Elements - simplified for better performance */
 .mph-shapes {
     position: absolute;
     width: 100%;
@@ -181,6 +193,14 @@
     left: 0;
     pointer-events: none;
     z-index: -1;
+    /* Only show on desktop for better mobile performance */
+    display: none;
+}
+
+@media (min-width: 992px) {
+    .mph-shapes {
+        display: block;
+    }
 }
 
 .mph-shape {
@@ -241,7 +261,7 @@
     }
 }
 
-/* Scroll Indicator */
+/* Scroll Indicator with improved accessibility */
 .mph-scroll-indicator {
     position: absolute;
     bottom: 30px;
@@ -256,11 +276,21 @@
     cursor: pointer;
     transition: opacity 0.3s ease;
     /* Better visibility */
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+    /* Improved accessibility */
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .mph-scroll-indicator:hover {
     opacity: 1;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.mph-scroll-indicator:focus {
+    outline: 2px solid rgba(255, 255, 255, 0.5);
 }
 
 .mph-scroll-indicator .scroll-icon {
@@ -298,23 +328,87 @@
     transition: transform 0.8s ease, opacity 0.8s ease;
 }
 
-/* Responsive Styles for Modern Page Header */
-@media (max-width: 992px) {
-    .modern-page-header {
-        min-height: 400px;
-        padding: 80px 0 40px;
+/* Reduced motion preference support */
+@media (prefers-reduced-motion: reduce) {
+    .mph-background-image {
+        transition: none;
     }
     
-    .mph-title {
-        font-size: 38px;
+    .mph-scroll-indicator {
+        animation: none;
     }
     
-    .mph-subtitle {
-        font-size: 16px;
+    .mph-shape-1,
+    .mph-shape-2,
+    .mph-shape-3 {
+        animation: none;
+    }
+    
+    .mph-badge.animated,
+    .mph-title.animated,
+    .mph-subtitle.animated,
+    .mph-breadcrumb-container.animated {
+        transition: opacity 0.3s;
     }
 }
 
-@media (max-width: 768px) {
+/* Responsive Styles for Modern Page Header - Mobile First approach */
+@media (max-width: 576px) {
+    .modern-page-header {
+        min-height: 300px;
+        padding: 60px 0 20px;
+    }
+    
+    .mph-title {
+        font-size: 28px;
+        /* Ensure proper spacing between Foundation and other text on small screens */
+        word-spacing: 1px;
+        line-height: 1.3;
+    }
+    
+    /* Making sure foundation text remains visible on mobile */
+    .mph-highlight, 
+    .foundation-text {
+        display: inline-block;
+        margin-bottom: 5px;
+    }
+    
+    .mph-subtitle {
+        font-size: 14px;
+        margin-bottom: 15px;
+    }
+
+    .mph-badge {
+        padding: 6px 14px;
+        margin-bottom: 15px;
+    }
+    
+    .mph-badge span {
+        font-size: 12px;
+        letter-spacing: 1.5px;
+    }
+
+    .mph-breadcrumb {
+        margin-top: 20px;
+    }
+    
+    .mph-breadcrumb li {
+        font-size: 13px;
+    }
+    
+    .mph-scroll-indicator {
+        bottom: 15px;
+        font-size: 12px;
+        padding: 8px;
+    }
+    
+    .mph-scroll-indicator .scroll-icon svg {
+        width: 14px;
+        height: 14px;
+    }
+}
+
+@media (min-width: 577px) and (max-width: 768px) {
     .modern-page-header {
         min-height: 350px;
         padding: 70px 0 30px;
@@ -322,7 +416,7 @@
     
     .mph-title {
         font-size: 32px;
-        /* Adjusting line height for mobile to ensure text doesn't get cut off */
+        /* Adjusting line height for tablets to ensure text doesn't get cut off */
         line-height: 1.3;
     }
     
@@ -357,39 +451,38 @@
     }
 }
 
-@media (max-width: 576px) {
+@media (min-width: 769px) and (max-width: 992px) {
     .modern-page-header {
-        min-height: 300px;
-        padding: 60px 0 20px;
+        min-height: 400px;
+        padding: 80px 0 40px;
     }
     
     .mph-title {
-        font-size: 28px;
-        /* Ensure proper spacing between Foundation and other text on small screens */
-        word-spacing: 1px;
-    }
-    
-    /* Making sure foundation text remains visible on mobile */
-    .mph-highlight, 
-    .foundation-text {
-        display: inline-block;
-        margin-bottom: 5px;
+        font-size: 38px;
     }
     
     .mph-subtitle {
-        font-size: 14px;
+        font-size: 16px;
     }
+}
 
-    .mph-breadcrumb {
-        margin-top: 20px;
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    .mph-highlight::after {
+        background-color: rgba(14, 152, 241, 0.5);
     }
     
-    .mph-breadcrumb li {
-        font-size: 13px;
+    .mph-badge {
+        background-color: rgba(0, 0, 0, 0.3);
     }
     
-    .mph-scroll-indicator {
-        bottom: 15px;
-        font-size: 12px;
+    .mph-overlay {
+        background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8));
     }
+}
+
+/* Title wrapped class for handling long titles on mobile */
+.mph-title-wrapped {
+    font-size: calc(24px + 0.5vw);
+    line-height: 1.3;
 }
