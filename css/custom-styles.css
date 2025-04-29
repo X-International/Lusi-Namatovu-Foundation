@@ -1,13 +1,13 @@
-/* Modern Page Header Styles
+/* Modern Page Header Styles - Mobile First Approach
 -------------------------------------------------- */
 .modern-page-header {
     position: relative;
-    min-height: 480px;
+    min-height: 300px; /* Mobile size first */
     display: flex;
     align-items: center;
     overflow: hidden;
     z-index: 1;
-    padding: 100px 0 50px;
+    padding: 60px 0 30px;
 }
 
 /* Background Container */
@@ -49,29 +49,30 @@
 /* Content */
 .mph-content {
     position: relative;
-    text-align: center;
+    text-align: left;
     color: #fff;
-    padding: 30px 15px;
-    max-width: 800px;
-    margin: 0 auto;
+    padding: 20px 15px; /* Smaller padding on mobile */
+    max-width: 100%;
+    margin: 0;
 }
 
 .mph-badge {
     display: inline-block;
     background-color: rgba(255, 255, 255, 0.15);
-    padding: 8px 16px;
+    padding: 6px 14px; /* Smaller padding on mobile */
     border-radius: 30px;
-    margin-bottom: 20px;
+    margin-bottom: 15px; /* Smaller margin on mobile */
     backdrop-filter: blur(5px);
     border: 1px solid rgba(255, 255, 255, 0.15);
     transform: translateY(20px);
     opacity: 0;
+    text-align: left;
 }
 
 .mph-badge span {
-    font-size: 14px;
+    font-size: 12px; /* Smaller font on mobile */
     font-weight: 600;
-    letter-spacing: 2px;
+    letter-spacing: 1.5px;
     text-transform: uppercase;
     color: #fff;
     /* Improved text shadow for better readability */
@@ -79,15 +80,17 @@
 }
 
 .mph-title {
-    font-size: 48px; /* Increased size */
+    font-size: 28px; /* Smaller size for mobile */
     font-weight: 700;
-    line-height: 1.2;
+    line-height: 1.3;
     transform: translateY(20px);
     opacity: 0;
     /* Enhanced text shadow for vastly improved contrast */
     text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
     display: inline-block;
     color: #ffffff; /* Consistent white color for the entire heading */
+    word-spacing: 1px;
+    margin-bottom: 15px;
 }
 
 .mph-highlight {
@@ -103,30 +106,22 @@
     content: '';
     position: absolute;
     left: 0;
-    bottom: 5px;
+    bottom: 3px; /* Smaller size for mobile */
     width: 100%;
-    height: 12px;
+    height: 8px; /* Smaller size for mobile */
     background-color: rgba(30, 144, 255, 0.4);
     z-index: -1;
     transform: skewX(-10deg);
 }
 
-/* Enhanced style for the Foundation text to ensure visibility */
-.foundation-text {
-    color: #ffffff;
-    font-weight: 600;
-    /* Enhanced shadow to ensure readability */
-    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.7);
-}
-
 .mph-subtitle {
-    font-size: 18px;
-    margin-bottom: 30px;
+    font-size: 14px; /* Smaller for mobile */
+    margin-bottom: 15px;
     font-weight: 400;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-    line-height: 1.6;
+    max-width: 100%;
+    margin-left: 0; /* Ensure left alignment */
+    margin-right: 0; /* Ensure left alignment */
+    line-height: 1.5;
     transform: translateY(20px);
     opacity: 0;
     /* Enhanced shadow for better readability */
@@ -143,14 +138,14 @@
     list-style: none;
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 10px;
+    justify-content: flex-start;
+    gap: 8px; /* Smaller gap on mobile */
     padding: 0;
-    margin: 30px 0 0;
+    margin: 15px 0 0;
 }
 
 .mph-breadcrumb li {
-    font-size: 15px;
+    font-size: 13px; /* Smaller on mobile */
     color: rgba(255, 255, 255, 0.9);
     /* Better visibility */
     text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
@@ -166,160 +161,24 @@
     padding: 2px 4px;
 }
 
-.mph-breadcrumb li a:hover {
-    color: #0e98f1;
-}
-
-.mph-breadcrumb li a:focus {
-    outline: 2px solid rgba(255, 255, 255, 0.5);
-    border-radius: 3px;
-}
-
 .mph-breadcrumb li.current {
     color: #0e98f1;
     font-weight: 500;
 }
 
 .mph-breadcrumb li i {
-    font-size: 12px;
+    font-size: 10px; /* Smaller on mobile */
     color: rgba(255, 255, 255, 0.7);
 }
 
-/* Decorative Elements - simplified for better performance */
-.mph-shapes {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    pointer-events: none;
-    z-index: -1;
-    /* Only show on desktop for better mobile performance */
-    display: none;
-}
-
-@media (min-width: 992px) {
-    .mph-shapes {
-        display: block;
-    }
-}
-
-.mph-shape {
-    position: absolute;
-    border-radius: 50%;
-    background-color: rgba(255, 255, 255, 0.05);
-}
-
-.mph-shape-1 {
-    width: 300px;
-    height: 300px;
-    top: -100px;
-    right: -100px;
-    animation: float-1 10s infinite ease-in-out;
-}
-
-.mph-shape-2 {
-    width: 200px;
-    height: 200px;
-    bottom: -50px;
-    left: -50px;
-    animation: float-2 15s infinite ease-in-out;
-}
-
-.mph-shape-3 {
-    width: 150px;
-    height: 150px;
-    top: 50%;
-    right: 15%;
-    background-color: rgba(14, 152, 241, 0.1);
-    animation: float-3 12s infinite ease-in-out;
-}
-
-@keyframes float-1 {
-    0%, 100% {
-        transform: translate(0, 0) rotate(0deg);
-    }
-    50% {
-        transform: translate(30px, 20px) rotate(5deg);
-    }
-}
-
-@keyframes float-2 {
-    0%, 100% {
-        transform: translate(0, 0) rotate(0deg);
-    }
-    50% {
-        transform: translate(-20px, 30px) rotate(-5deg);
-    }
-}
-
-@keyframes float-3 {
-    0%, 100% {
-        transform: translate(0, 0) rotate(0deg);
-    }
-    50% {
-        transform: translate(15px, -20px) rotate(3deg);
-    }
-}
-
-/* Scroll Indicator with improved accessibility */
-.mph-scroll-indicator {
-    position: absolute;
-    bottom: 30px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    color: rgba(255, 255, 255, 0.9);
-    font-size: 14px;
-    animation: bounce 2s infinite;
-    cursor: pointer;
-    transition: opacity 0.3s ease;
-    /* Better visibility */
-    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
-    /* Improved accessibility */
-    padding: 10px;
-    background-color: rgba(0, 0, 0, 0.2);
-    border-radius: 30px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.mph-scroll-indicator:hover {
-    opacity: 1;
-    background-color: rgba(0, 0, 0, 0.3);
-}
-
-.mph-scroll-indicator:focus {
-    outline: 2px solid rgba(255, 255, 255, 0.5);
-}
-
-.mph-scroll-indicator .scroll-icon {
+/* Making sure foundation text remains visible on mobile */
+.mph-highlight, 
+.foundation-text {
+    display: inline-block;
     margin-bottom: 5px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
-.mph-scroll-indicator .scroll-icon svg {
-    fill: currentColor;
-    width: 16px;
-    height: 16px;
-}
-
-@keyframes bounce {
-    0%, 20%, 50%, 80%, 100% {
-        transform: translateX(-50%) translateY(0);
-    }
-    40% {
-        transform: translateX(-50%) translateY(-10px);
-    }
-    60% {
-        transform: translateX(-50%) translateY(-5px);
-    }
-}
-
-/* Animation Classes (added via JS) */
+/* Animation Classes */
 .mph-badge.animated,
 .mph-title.animated,
 .mph-subtitle.animated,
@@ -329,141 +188,136 @@
     transition: transform 0.8s ease, opacity 0.8s ease;
 }
 
-/* Reduced motion preference support */
-@media (prefers-reduced-motion: reduce) {
-    .mph-background-image {
-        transition: none;
-    }
-    
-    .mph-scroll-indicator {
-        animation: none;
-    }
-    
-    .mph-shape-1,
-    .mph-shape-2,
-    .mph-shape-3 {
-        animation: none;
-    }
-    
-    .mph-badge.animated,
-    .mph-title.animated,
-    .mph-subtitle.animated,
-    .mph-breadcrumb-container.animated {
-        transition: opacity 0.3s;
-    }
-}
-
 /* Responsive Styles for Modern Page Header - Mobile First approach */
-@media (max-width: 576px) {
-    .modern-page-header {
-        min-height: 300px;
-        padding: 60px 0 20px;
-    }
-    
-    .mph-title {
-        font-size: 28px;
-        /* Ensure proper spacing between Foundation and other text on small screens */
-        word-spacing: 1px;
-        line-height: 1.3;
-    }
-    
-    /* Making sure foundation text remains visible on mobile */
-    .mph-highlight, 
-    .foundation-text {
-        display: inline-block;
-        margin-bottom: 5px;
-    }
-    
-    .mph-subtitle {
-        font-size: 14px;
-        margin-bottom: 15px;
-    }
-
-    .mph-badge {
-        padding: 6px 14px;
-        margin-bottom: 15px;
-    }
-    
-    .mph-badge span {
-        font-size: 12px;
-        letter-spacing: 1.5px;
-    }
-
-    .mph-breadcrumb {
-        margin-top: 20px;
-    }
-    
-    .mph-breadcrumb li {
-        font-size: 13px;
-    }
-    
-    .mph-scroll-indicator {
-        bottom: 15px;
-        font-size: 12px;
-        padding: 8px;
-    }
-    
-    .mph-scroll-indicator .scroll-icon svg {
-        width: 14px;
-        height: 14px;
-    }
-}
-
-@media (min-width: 577px) and (max-width: 768px) {
+@media (min-width: 576px) {
     .modern-page-header {
         min-height: 350px;
         padding: 70px 0 30px;
     }
     
+    .mph-content {
+        padding: 25px 15px;
+    }
+    
     .mph-title {
         font-size: 32px;
-        /* Adjusting line height for tablets to ensure text doesn't get cut off */
         line-height: 1.3;
+        margin-bottom: 20px;
     }
     
     .mph-badge {
         padding: 6px 14px;
-        margin-bottom: 15px;
+        margin-bottom: 20px;
     }
     
     .mph-badge span {
-        font-size: 12px;
-        letter-spacing: 1.5px;
+        font-size: 14px;
+        letter-spacing: 1.8px;
     }
     
     .mph-subtitle {
         font-size: 15px;
         margin-bottom: 20px;
-    }
-
-    .mph-shape-1 {
-        width: 200px;
-        height: 200px;
+        line-height: 1.5;
     }
     
-    .mph-shape-2 {
-        width: 150px;
-        height: 150px;
+    .mph-highlight::after {
+        bottom: 4px;
+        height: 10px;
     }
     
-    .mph-shape-3 {
-        width: 100px;
-        height: 100px;
+    .mph-breadcrumb {
+        margin-top: 20px;
+        gap: 10px;
+    }
+    
+    .mph-breadcrumb li {
+        font-size: 14px;
+    }
+    
+    .mph-breadcrumb li i {
+        font-size: 11px;
     }
 }
 
-@media (min-width: 769px) and (max-width: 992px) {
+@media (min-width: 768px) {
     .modern-page-header {
         min-height: 400px;
         padding: 80px 0 40px;
     }
     
+    .mph-content {
+        padding: 25px 20px;
+        max-width: 720px;
+    }
+    
     .mph-title {
         font-size: 38px;
+        line-height: 1.2;
     }
     
     .mph-subtitle {
         font-size: 16px;
+        margin-bottom: 25px;
+        line-height: 1.6;
+    }
+    
+    .mph-badge {
+        padding: 8px 16px;
+        margin-bottom: 25px;
+    }
+    
+    .mph-badge span {
+        font-size: 14px;
+        letter-spacing: 2px;
+    }
+    
+    .mph-highlight::after {
+        bottom: 5px;
+        height: 10px;
+    }
+    
+    .mph-breadcrumb li {
+        font-size: 14px;
+    }
+    
+    .mph-breadcrumb li i {
+        font-size: 12px;
+    }
+}
+
+@media (min-width: 992px) {
+    .modern-page-header {
+        min-height: 480px;
+        padding: 100px 0 50px;
+    }
+    
+    .mph-content {
+        padding: 30px 15px;
+        max-width: 960px;
+    }
+    
+    .mph-title {
+        font-size: 48px;
+    }
+    
+    .mph-subtitle {
+        font-size: 18px;
+        margin-bottom: 30px;
+    }
+    
+    .mph-highlight::after {
+        bottom: 5px;
+        height: 12px;
+    }
+
+    .mph-breadcrumb li {
+        font-size: 15px;
+    }
+    
+    /* Decorative Elements - only show on desktop */
+    .mph-shapes {
+        display: block;
     }
 }
 
