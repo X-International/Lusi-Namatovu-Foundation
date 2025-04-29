@@ -342,114 +342,256 @@
     line-height: 1.25; /* Slightly tighter */
 }
 
-/* Vision Section Styles
+/* Vision Section Styles - Mobile First Approach
 -------------------------------------------------- */
 .vision-section {
     position: relative;
-    background: linear-gradient(to bottom, #f0f8ff, #ffffff);
+    padding: 60px 0;
+    background: linear-gradient(to bottom, #f8f9fa, #ffffff);
+    overflow: hidden;
 }
 
-.vision-bg-container {
+/* Background elements */
+.vision-shape {
+    position: absolute;
+    z-index: 0;
+    opacity: 0.05;
+}
+
+.vision-shape.shape-1 {
+    top: -50px;
+    right: -50px;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background-color: var(--bs-primary, #0e98f1);
+}
+
+.vision-shape.shape-2 {
+    bottom: -30px;
+    left: -30px;
+    width: 150px;
+    height: 150px;
+    transform: rotate(45deg);
+    background-color: var(--bs-secondary, #6c757d);
+}
+
+/* Vision image styles */
+.vision-image-wrap {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: all 0.4s ease;
+}
+
+.vision-image-wrap:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+}
+
+.vision-image-wrap img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.vision-image-wrap:hover img {
+    transform: scale(1.05);
+}
+
+.vision-image-overlay {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    overflow: hidden;
-    z-index: 0;
-}
-
-.vision-bg-container img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    opacity: 0.15;
-}
-
-.vision-section .container {
-    position: relative;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.6));
     z-index: 1;
-    max-width: 1000px;
+}
+
+.vision-image-caption {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+    color: #fff;
+    z-index: 2;
+    font-style: italic;
+    font-weight: 500;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+    font-size: 16px;
+}
+
+/* Vision content */
+.vision-content-wrap {
+    padding: 0 15px;
 }
 
 .vision-text {
-    max-width: 800px;
-    margin: 0 auto;
+    margin-bottom: 20px;
 }
 
 .vision-text .lead {
-    font-size: 24px;
+    font-size: 16px;
     line-height: 1.6;
     color: #333;
+    margin-bottom: 15px;
 }
 
 .vision-quote {
     font-style: italic;
-    font-size: 18px;
-    color: #666;
+    font-size: 16px;
+    color: #0e98f1;
+    font-weight: 500;
+    text-align: center;
+    margin: 20px 0;
+    padding: 0 15px;
 }
 
 .separator {
-    width: 100px;
-    height: 1px;
-    background: #ddd;
-    margin: 20px auto 30px;
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(to right, #0e98f1, rgba(14, 152, 241, 0.3));
+    margin: 15px auto 25px;
+    border-radius: 3px;
 }
 
-.vision-icons {
-    max-width: 900px;
+/* Vision pillars */
+.vision-pillars-header {
+    margin-bottom: 30px;
 }
 
-.vision-icon-item {
-    height: 200px;
-    background: #f8f9fa;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+.vision-pillars-header h3 {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.vision-pillar-card {
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 25px 20px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-top: 4px solid transparent;
 }
 
-.icon-circle {
-    display: inline-flex;
+.vision-pillar-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    border-top-color: #0e98f1;
+}
+
+.vision-pillar-icon {
+    width: 70px;
+    height: 70px;
+    display: flex;
     align-items: center;
     justify-content: center;
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
     background-color: rgba(14, 152, 241, 0.1);
-    margin: 0 auto;
+    border-radius: 50%;
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
 }
 
-.icon-circle i {
-    font-size: 24px;
+.vision-pillar-card:hover .vision-pillar-icon {
+    transform: scale(1.1);
+    background-color: rgba(14, 152, 241, 0.2);
+}
+
+.vision-pillar-icon i {
+    font-size: 30px;
     color: #0e98f1;
 }
 
-.vision-icon-item h4 {
+.vision-pillar-content h4 {
     font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 12px;
     color: #1a2526;
-    font-weight: bold;
 }
 
-.vision-icon-item p {
+.vision-pillar-content p {
     font-size: 14px;
+    line-height: 1.6;
     color: #666;
-    line-height: 1.5;
+    margin-bottom: 0;
 }
 
-.vision-section .hq-btn {
-    min-width: 200px;
-    height: 40px;
-    font-size: 16px;
-    font-weight: bold;
-    transition: background-color 0.3s;
+/* Responsive styles */
+@media (min-width: 576px) {
+    .vision-section {
+        padding: 70px 0;
+    }
+    
+    .vision-pillar-content h4 {
+        font-size: 20px;
+    }
+    
+    .vision-pillar-content p {
+        font-size: 15px;
+    }
+    
+    .vision-text .lead {
+        font-size: 17px;
+    }
 }
 
-.vision-section .hqc-shape-1,
-.vision-section .hqc-shape-2 {
-    color: rgba(14, 152, 241, 0.1);
-    font-size: 120px;
+@media (min-width: 768px) {
+    .vision-section {
+        padding: 80px 0;
+    }
+    
+    .vision-quote {
+        font-size: 18px;
+    }
+    
+    .vision-text .lead {
+        font-size: 18px;
+    }
+    
+    .vision-image-caption {
+        font-size: 18px;
+    }
+    
+    .vision-pillars-header h3 {
+        font-size: 26px;
+    }
+}
+
+@media (min-width: 992px) {
+    .vision-section {
+        padding: 100px 0;
+    }
+    
+    .vision-content-wrap {
+        padding: 0 30px;
+    }
+    
+    .vision-text .lead {
+        font-size: 19px;
+    }
+    
+    .vision-pillar-card {
+        padding: 30px 25px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .vision-section {
+        padding: 110px 0;
+    }
+    
+    .vision-text .lead {
+        font-size: 20px;
+    }
 }
 
 /* Values Section Styles
