@@ -374,21 +374,28 @@
     <!-- End Our Mission Section -->    
      
     <!-- Our Vision Section -->
-    <section class="vision-section py-md-110 py-5">
+    <section class="vision-section py-md-110 py-5" aria-labelledby="vision-heading">
         <div class="container">
             <!-- Section heading with animations matching home page style -->
             <div class="section-heading text-center mb-5 hq-text-animation-wrap">
                 <h3 class="sub-heading hq-text-anim" data-effect="fade-in"><span class="hq-bd-anim sh-left-line"></span>Our Future in Rakai District</h3>
-                <h2 class="heading hq-fade-effect">A Rakai Where All Belong</h2>
+                <h2 id="vision-heading" class="heading hq-fade-effect">A Rakai Where All Belong</h2>
                 <p class="section-desc mt-4 hq-fade-effect" data-delay="0.1">Our vision is to create a Rakai District where elderly individuals and people with disabilities live with dignity, independence, and full participation in community life.</p>
             </div><!-- /.section-heading -->
             
-            <!-- Vision content area -->
+            <!-- Vision content area with improved image loading strategy -->
             <div class="row align-items-center mb-5">
                 <!-- Main vision image with animation - Mobile (full width) & Desktop (left side) -->
                 <div class="col-lg-6 mb-5 mb-lg-0 hq-fade-effect" data-fade-from="left">
                     <div class="vision-image-wrap position-relative">
-                        <img src="images/lnf/gallery/Lusi-Namatovu-Foundation_26.jpg" alt="Community gathering in Rakai District, Uganda, where elders and people with disabilities are celebrated and included" class="img-fluid rounded-lg shadow-lg" loading="lazy" />
+                        <img src="images/lnf/gallery/Lusi-Namatovu-Foundation_26.jpg" 
+                             srcset="images/lnf/gallery/Lusi-Namatovu-Foundation_26.jpg 1200w,
+                                     images/lnf/gallery/Lusi-Namatovu-Foundation_26-768.jpg 768w,
+                                     images/lnf/gallery/Lusi-Namatovu-Foundation_26-480.jpg 480w"
+                             sizes="(max-width: 576px) 100vw, (max-width: 992px) 80vw, 45vw"
+                             alt="Community gathering in Rakai District, Uganda, where elders and people with disabilities are celebrated and included" 
+                             class="img-fluid rounded-lg shadow-lg" 
+                             loading="lazy" />
                         <div class="vision-image-overlay"></div>
                         <div class="vision-image-caption d-none d-md-block">
                             <span>"A community where everyone belongs, regardless of age or ability."</span>
@@ -409,27 +416,38 @@
                             "A community where everyone belongs, regardless of age or ability."
                         </p>
                         
-                        <!-- Key impact metrics - Adding measurable goals -->
+                        <!-- Enhanced Key impact metrics with improved visual presentation -->
                         <div class="vision-metrics d-flex flex-wrap mt-4 gap-3">
-                            <div class="vision-metric-card p-3 rounded-3 bg-white shadow-sm flex-grow-1">
+                            <div class="vision-metric-card p-3 rounded-3 bg-white shadow-sm flex-grow-1" tabindex="0" aria-label="Goal: 50+ homes built by 2028">
                                 <div class="d-flex align-items-center">
                                     <div class="vision-metric-icon me-3">
-                                        <i class="fa-regular fa-home text-primary"></i>
+                                        <i class="fa-regular fa-home text-primary" aria-hidden="true"></i>
                                     </div>
                                     <div class="vision-metric-content">
-                                        <h4 class="h5 mb-1">50+</h4>
+                                        <h4 class="h5 mb-1 counter-wrapper vision-counter" data-count="50">0<span>+</span></h4>
                                         <p class="mb-0 text-muted small">Homes built by 2028</p>
                                     </div>
                                 </div>
                             </div>
-                            <div class="vision-metric-card p-3 rounded-3 bg-white shadow-sm flex-grow-1">
+                            <div class="vision-metric-card p-3 rounded-3 bg-white shadow-sm flex-grow-1" tabindex="0" aria-label="Goal: 100+ mobility aids provided by 2028">
                                 <div class="d-flex align-items-center">
                                     <div class="vision-metric-icon me-3">
-                                        <i class="fa-regular fa-wheelchair text-primary"></i>
+                                        <i class="fa-regular fa-wheelchair text-primary" aria-hidden="true"></i>
                                     </div>
                                     <div class="vision-metric-content">
-                                        <h4 class="h5 mb-1">100+</h4>
+                                        <h4 class="h5 mb-1 counter-wrapper vision-counter" data-count="100">0<span>+</span></h4>
                                         <p class="mb-0 text-muted small">Mobility aids provided</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="vision-metric-card p-3 rounded-3 bg-white shadow-sm flex-grow-1" tabindex="0" aria-label="Goal: 8+ communities transformed by 2028">
+                                <div class="d-flex align-items-center">
+                                    <div class="vision-metric-icon me-3">
+                                        <i class="fa-regular fa-people-group text-primary" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="vision-metric-content">
+                                        <h4 class="h5 mb-1 counter-wrapper vision-counter" data-count="8">0<span>+</span></h4>
+                                        <p class="mb-0 text-muted small">Communities transformed</p>
                                     </div>
                                 </div>
                             </div>
@@ -438,7 +456,7 @@
                 </div>
             </div>
             
-            <!-- Vision pillars (icon cards) -->
+            <!-- Vision pillars (icon cards) with enhanced accessibility and animation -->
             <div class="row mt-5 g-4">
                 <div class="col-12">
                     <div class="vision-pillars-header text-center mb-4 hq-fade-effect">
@@ -450,20 +468,20 @@
                 
                 <!-- Pillar 1 -->
                 <div class="col-md-4 mb-4 mb-md-0 hq-fade-effect" data-delay="0.1">
-                    <div class="vision-pillar-card h-100">
+                    <div class="vision-pillar-card h-100" tabindex="0">
                         <div class="vision-pillar-icon">
-                            <i class="fa-regular fa-house-heart"></i>
+                            <i class="fa-regular fa-house-heart" aria-hidden="true"></i>
                         </div>
                         <div class="vision-pillar-content">
                             <h4>Safe Homes for Elders</h4>
                             <p>Building sturdy homes with appropriate amenities to ensure our elders live with dignity, comfort and security in their later years.</p>
-                            <div class="pillar-progress mt-3">
+                            <div class="pillar-progress mt-3" aria-label="25% progress towards goal">
                                 <div class="d-flex justify-content-between align-items-center mb-1">
                                     <span class="small">Progress</span>
-                                    <span class="small text-primary">25%</span>
+                                    <span class="small text-primary progress-percentage" data-value="25">0%</span>
                                 </div>
                                 <div class="progress rounded-pill" style="height: 6px;">
-                                    <div class="progress-bar bg-primary" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                    <div class="progress-bar bg-primary animate-progress" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" data-target="25"></div>
                                 </div>
                             </div>
                         </div>
@@ -472,20 +490,20 @@
                 
                 <!-- Pillar 2 -->
                 <div class="col-md-4 mb-4 mb-md-0 hq-fade-effect" data-delay="0.2">
-                    <div class="vision-pillar-card h-100">
+                    <div class="vision-pillar-card h-100" tabindex="0">
                         <div class="vision-pillar-icon">
-                            <i class="fa-regular fa-wheelchair-move"></i>
+                            <i class="fa-regular fa-wheelchair-move" aria-hidden="true"></i>
                         </div>
                         <div class="vision-pillar-content">
                             <h4>Mobility for All</h4>
                             <p>Providing wheelchairs, crutches, and other assistive devices to empower people with disabilities to move freely and live independently.</p>
-                            <div class="pillar-progress mt-3">
+                            <div class="pillar-progress mt-3" aria-label="40% progress towards goal">
                                 <div class="d-flex justify-content-between align-items-center mb-1">
                                     <span class="small">Progress</span>
-                                    <span class="small text-primary">40%</span>
+                                    <span class="small text-primary progress-percentage" data-value="40">0%</span>
                                 </div>
                                 <div class="progress rounded-pill" style="height: 6px;">
-                                    <div class="progress-bar bg-primary" role="progressbar" style="width: 40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+                                    <div class="progress-bar bg-primary animate-progress" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" data-target="40"></div>
                                 </div>
                             </div>
                         </div>
@@ -494,20 +512,20 @@
                 
                 <!-- Pillar 3 -->
                 <div class="col-md-4 hq-fade-effect" data-delay="0.3">
-                    <div class="vision-pillar-card h-100">
+                    <div class="vision-pillar-card h-100" tabindex="0">
                         <div class="vision-pillar-icon">
-                            <i class="fa-regular fa-people-roof"></i>
+                            <i class="fa-regular fa-people-roof" aria-hidden="true"></i>
                         </div>
                         <div class="vision-pillar-content">
                             <h4>Inclusive Communities</h4>
                             <p>Creating accessible gathering spaces and programs that foster connection between all community members, regardless of age or ability.</p>
-                            <div class="pillar-progress mt-3">
+                            <div class="pillar-progress mt-3" aria-label="15% progress towards goal">
                                 <div class="d-flex justify-content-between align-items-center mb-1">
                                     <span class="small">Progress</span>
-                                    <span class="small text-primary">15%</span>
+                                    <span class="small text-primary progress-percentage" data-value="15">0%</span>
                                 </div>
                                 <div class="progress rounded-pill" style="height: 6px;">
-                                    <div class="progress-bar bg-primary" role="progressbar" style="width: 15%" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
+                                    <div class="progress-bar bg-primary animate-progress" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" data-target="15"></div>
                                 </div>
                             </div>
                         </div>
@@ -515,7 +533,7 @@
                 </div>
             </div>
             
-            <!-- Vision timeline - NEW ELEMENT -->
+            <!-- Vision timeline - Improved for better mobile experience and accessibility -->
             <div class="vision-timeline mt-5 pt-4">
                 <div class="row">
                     <div class="col-12">
@@ -526,50 +544,167 @@
                     </div>
                 </div>
                 
-                <div class="row g-0 timeline-container hq-fade-effect" data-delay="0.2">
-                    <div class="col-12 position-relative">
+                <div class="timeline-container hq-fade-effect" data-delay="0.2">
+                    <div class="timeline-scroll-container" tabindex="0" aria-label="Timeline of our vision from 2024 to 2028">
                         <!-- Timeline line -->
-                        <div class="timeline-line"></div>
+                        <div class="timeline-line">
+                            <div class="timeline-line-progress"></div>
+                        </div>
                         
-                        <!-- Timeline items -->
-                        <div class="row timeline-items">
+                        <!-- Timeline items with enhanced structure and semantic meaning -->
+                        <div class="timeline-items">
                             <!-- Timeline item 1 -->
-                            <div class="col-md-3 timeline-item">
-                                <div class="timeline-dot"></div>
-                                <div class="timeline-content text-center">
+                            <div class="timeline-item" data-year="2024">
+                                <div class="timeline-dot" aria-hidden="true"></div>
+                                <div class="timeline-content">
                                     <div class="timeline-year">2024</div>
                                     <h4>Initial Assessment</h4>
                                     <p>Comprehensive needs evaluation and pilot projects in two Rakai communities</p>
+                                    <ul class="timeline-details mt-3 list-unstyled">
+                                        <li><i class="fa-regular fa-check text-primary me-2" aria-hidden="true"></i> Complete community mapping of elder needs</li>
+                                        <li><i class="fa-regular fa-check text-primary me-2" aria-hidden="true"></i> Conduct disability accessibility assessment</li>
+                                    </ul>
                                 </div>
                             </div>
                             
                             <!-- Timeline item 2 -->
-                            <div class="col-md-3 timeline-item">
-                                <div class="timeline-dot"></div>
-                                <div class="timeline-content text-center">
+                            <div class="timeline-item" data-year="2025">
+                                <div class="timeline-dot" aria-hidden="true"></div>
+                                <div class="timeline-content">
                                     <div class="timeline-year">2025</div>
                                     <h4>Foundation Building</h4>
                                     <p>Training local builders and healthcare workers while securing resources</p>
+                                    <ul class="timeline-details mt-3 list-unstyled">
+                                        <li><i class="fa-regular fa-check text-primary me-2" aria-hidden="true"></i> Train 15+ local builders in accessible construction</li>
+                                        <li><i class="fa-regular fa-check text-primary me-2" aria-hidden="true"></i> Establish elder and disability resource center</li>
+                                    </ul>
                                 </div>
                             </div>
                             
                             <!-- Timeline item 3 -->
-                            <div class="col-md-3 timeline-item">
-                                <div class="timeline-dot"></div>
-                                <div class="timeline-content text-center">
+                            <div class="timeline-item" data-year="2026">
+                                <div class="timeline-dot" aria-hidden="true"></div>
+                                <div class="timeline-content">
                                     <div class="timeline-year">2026</div>
                                     <h4>Scaling Impact</h4>
                                     <p>Expanding to 5+ communities with sustainable support systems</p>
+                                    <ul class="timeline-details mt-3 list-unstyled">
+                                        <li><i class="fa-regular fa-check text-primary me-2" aria-hidden="true"></i> Complete 25+ elder homes and 50+ mobility aids</li>
+                                        <li><i class="fa-regular fa-check text-primary me-2" aria-hidden="true"></i> Launch community-managed support network</li>
+                                    </ul>
                                 </div>
                             </div>
                             
                             <!-- Timeline item 4 -->
-                            <div class="col-md-3 timeline-item">
-                                <div class="timeline-dot"></div>
-                                <div class="timeline-content text-center">
+                            <div class="timeline-item" data-year="2028">
+                                <div class="timeline-dot" aria-hidden="true"></div>
+                                <div class="timeline-content">
                                     <div class="timeline-year">2028</div>
                                     <h4>Full Implementation</h4>
                                     <p>Vision achieved across Rakai with long-term sustainability plan</p>
+                                    <ul class="timeline-details mt-3 list-unstyled">
+                                        <li><i class="fa-regular fa-check text-primary me-2" aria-hidden="true"></i> Reach 50+ homes and 100+ mobility aids goal</li>
+                                        <li><i class="fa-regular fa-check text-primary me-2" aria-hidden="true"></i> Establish self-sustaining community support model</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Mobile timeline navigation - only appears on small screens -->
+                    <div class="timeline-nav d-md-none text-center mt-4">
+                        <button class="btn btn-sm btn-outline-primary me-2 timeline-nav-btn" data-direction="prev" aria-label="Previous timeline item">
+                            <i class="fa-regular fa-arrow-left" aria-hidden="true"></i>
+                        </button>
+                        <span class="timeline-indicator">1 of 4</span>
+                        <button class="btn btn-sm btn-outline-primary ms-2 timeline-nav-btn" data-direction="next" aria-label="Next timeline item">
+                            <i class="fa-regular fa-arrow-right" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Vision Impact - NEW SECTION -->
+            <div class="vision-impact mt-5 pt-4">
+                <div class="row align-items-center">
+                    <div class="col-lg-5 mb-4 mb-lg-0 hq-fade-effect">
+                        <div class="vision-impact-content">
+                            <h3 class="mb-4">The Impact of Our Vision</h3>
+                            <p class="mb-4">When fully realized, our vision will transform Rakai District into a place where:</p>
+                            <ul class="vision-impact-list">
+                                <li>
+                                    <div class="impact-icon-wrap">
+                                        <i class="fa-regular fa-circle-check text-primary" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="impact-text">Elders live in safety and comfort, surrounded by a caring community</div>
+                                </li>
+                                <li>
+                                    <div class="impact-icon-wrap">
+                                        <i class="fa-regular fa-circle-check text-primary" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="impact-text">People with disabilities participate fully in education, work, and community life</div>
+                                </li>
+                                <li>
+                                    <div class="impact-icon-wrap">
+                                        <i class="fa-regular fa-circle-check text-primary" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="impact-text">Community gathering spaces are designed for access by everyone, regardless of age or ability</div>
+                                </li>
+                                <li>
+                                    <div class="impact-icon-wrap">
+                                        <i class="fa-regular fa-circle-check text-primary" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="impact-text">Sustainable local systems ensure ongoing support for vulnerable community members</div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-7 hq-fade-effect" data-delay="0.25">
+                        <div class="vision-testimonial-wrap">
+                            <div class="row">
+                                <div class="col-md-6 mb-4">
+                                    <div class="vision-testimonial-card h-100">
+                                        <div class="testimonial-quote-icon">
+                                            <i class="fa-solid fa-quote-left text-primary opacity-25" aria-hidden="true"></i>
+                                        </div>
+                                        <blockquote class="testimonial-text">
+                                            <p>I dream of a day when my wheelchair doesn't limit where I can go in my village. The foundation's vision gives me hope this will happen.</p>
+                                            <footer class="testimonial-author mt-3">
+                                                <div class="d-flex align-items-center">
+                                                    <div class="author-image">
+                                                        <img src="images/avatar.png" alt="" aria-hidden="true" width="40" height="40" class="rounded-circle">
+                                                    </div>
+                                                    <div class="author-info ms-2">
+                                                        <cite class="mb-0">Sarah Namukasa</cite>
+                                                        <small class="text-muted d-block">Community Member</small>
+                                                    </div>
+                                                </div>
+                                            </footer>
+                                        </blockquote>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-6">
+                                    <div class="vision-testimonial-card h-100">
+                                        <div class="testimonial-quote-icon">
+                                            <i class="fa-solid fa-quote-left text-primary opacity-25" aria-hidden="true"></i>
+                                        </div>
+                                        <blockquote class="testimonial-text">
+                                            <p>At my age, having a sturdy home and knowing the community cares makes all the difference. This is what dignity looks like.</p>
+                                            <footer class="testimonial-author mt-3">
+                                                <div class="d-flex align-items-center">
+                                                    <div class="author-image">
+                                                        <img src="images/avatar.png" alt="" aria-hidden="true" width="40" height="40" class="rounded-circle">
+                                                    </div>
+                                                    <div class="author-info ms-2">
+                                                        <cite class="mb-0">John Mukasa</cite>
+                                                        <small class="text-muted d-block">Elder, 78</small>
+                                                    </div>
+                                                </div>
+                                            </footer>
+                                        </blockquote>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -577,18 +712,18 @@
                 </div>
             </div>
             
-            <!-- Call to Action -->
+            <!-- Enhanced Call to Action with better contrast and clearer actions -->
             <div class="row mt-5 pt-4">
                 <div class="col-12 text-center">
-                    <div class="vision-cta-wrapper p-4 p-md-5 rounded-4 bg-light bg-opacity-70 hq-fade-effect" data-delay="0.4">
+                    <div class="vision-cta-wrapper p-4 p-md-5 rounded-4 bg-primary bg-opacity-10 hq-fade-effect" data-delay="0.4">
                         <h3 class="mb-3">Be Part of Our Vision for Rakai</h3>
                         <p class="lead mb-4">Together, we can create a Rakai District where elders and people with disabilities thrive with dignity and purpose.</p>
                         <div class="d-flex flex-column flex-md-row justify-content-center gap-3">
-                            <a href="#" class="hq-btn hq-btn-effect">
-                                <span>Donate to Our Vision <i class="fa-regular fa-arrow-up-right"></i></span>
+                            <a href="#" class="hq-btn hq-btn-effect" aria-label="Donate to support our vision">
+                                <span>Donate to Our Vision <i class="fa-regular fa-arrow-up-right" aria-hidden="true"></i></span>
                             </a>
-                            <a href="#" class="hq-btn hq-btn-outline-effect">
-                                <span>Volunteer With Us <i class="fa-regular fa-arrow-up-right"></i></span>
+                            <a href="#" class="hq-btn hq-btn-outline-effect" aria-label="Learn about volunteer opportunities">
+                                <span>Volunteer With Us <i class="fa-regular fa-arrow-up-right" aria-hidden="true"></i></span>
                             </a>
                         </div>
                     </div>
@@ -597,8 +732,8 @@
         </div>
         
         <!-- Decorative elements -->
-        <div class="vision-shape shape-1 d-none d-lg-block"></div>
-        <div class="vision-shape shape-2 d-none d-lg-block"></div>
+        <div class="vision-shape shape-1 d-none d-lg-block" aria-hidden="true"></div>
+        <div class="vision-shape shape-2 d-none d-lg-block" aria-hidden="true"></div>
     </section>
     <!-- End Our Vision Section -->
 

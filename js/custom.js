@@ -9,6 +9,12 @@ document.addEventListener('DOMContentLoaded', function() {
     if (pageHeader) {
         initModernPageHeader();
     }
+    
+    // Initialize vision section animations and interactions if it exists
+    const visionSection = document.querySelector('.vision-section');
+    if (visionSection) {
+        initVisionSection();
+    }
 });
 
 function initModernPageHeader() {
@@ -83,4 +89,213 @@ function initModernPageHeader() {
             document.fonts.ready.then(checkOverflow);
         }
     }
+}
+
+/**
+ * Vision Section animations and interactions
+ * Handles animated progress bars, counter animations, timeline navigation
+ * and scroll-based animations in the vision section
+ */
+function initVisionSection() {
+    // Initialize progress bars
+    initProgressBars();
+    
+    // Initialize vision counters
+    initVisionCounters();
+    
+    // Initialize timeline functionality
+    initTimeline();
+    
+    // Setup scroll triggered animations
+    setupScrollAnimations();
+}
+
+// Initialize progress bar animations
+function initProgressBars() {
+    const progressBars = document.querySelectorAll('.animate-progress');
+    
+    if (progressBars.length === 0) return;
+    
+    // Create intersection observer to trigger progress animation when in view
+    const progressObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const targetValue = entry.target.getAttribute('data-target');
+                const percentageDisplay = entry.target.closest('.pillar-progress').querySelector('.progress-percentage');
+                
+                // Animate the progress bar
+                entry.target.style.width = `${targetValue}%`;
+                entry.target.setAttribute('aria-valuenow', targetValue);
+                
+                // Animate the percentage text
+                if (percentageDisplay) {
+                    animateCounter(percentageDisplay, 0, targetValue, 1500, value => `${value}%`);
+                }
+                
+                // Unobserve after triggering
+                progressObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1 });
+    
+    // Observe each progress bar
+    progressBars.forEach(bar => {
+        progressObserver.observe(bar);
+    });
+}
+
+// Initialize vision counter animations
+function initVisionCounters() {
+    const counters = document.querySelectorAll('.vision-counter');
+    
+    if (counters.length === 0) return;
+    
+    // Create intersection observer to trigger counter animation when in view
+    const counterObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const targetValue = parseInt(entry.target.getAttribute('data-count'), 10);
+                
+                // Animate the counter
+                animateCounter(entry.target, 0, targetValue, 2000, value => `${value}<span>+</span>`);
+                
+                // Unobserve after triggering
+                counterObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1 });
+    
+    // Observe each counter
+    counters.forEach(counter => {
+        counterObserver.observe(counter);
+    });
+}
+
+// Timeline functionality
+function initTimeline() {
+    const timelineContainer = document.querySelector('.timeline-container');
+    if (!timelineContainer) return;
+    
+    // Timeline progress animation
+    const timelineProgress = document.querySelector('.timeline-line-progress');
+    if (timelineProgress) {
+        const progressObserver = new IntersectionObserver((entries) => {
+            if (entries[0].isIntersecting) {
+                setTimeout(() => {
+                    timelineProgress.style.width = '100%';
+                }, 500);
+                progressObserver.unobserve(entries[0].target);
+            }
+        }, { threshold: 0.2 });
+        
+        progressObserver.observe(timelineContainer);
+    }
+    
+    // Mobile timeline navigation
+    const timelineNav = document.querySelector('.timeline-nav');
+    if (!timelineNav) return;
+    
+    const timelineItems = document.querySelectorAll('.timeline-item');
+    if (timelineItems.length === 0) return;
+    
+    let currentIndex = 0;
+    const totalItems = timelineItems.length;
+    
+    // Update timeline indicator
+    function updateIndicator() {
+        const indicator = timelineNav.querySelector('.timeline-indicator');
+        if (indicator) {
+            indicator.textContent = `${currentIndex + 1} of ${totalItems}`;
+        }
+    }
+    
+    // Scroll to specific timeline item
+    function scrollToItem(index) {
+        if (index < 0) index = 0;
+        if (index >= totalItems) index = totalItems - 1;
+        
+        currentIndex = index;
+        updateIndicator();
+        
+        timelineItems[index].scrollIntoView({
+            behavior: 'smooth',
+            block: 'nearest',
+            inline: 'center'
+        });
+    }
+    
+    // Set up navigation buttons
+    const prevButton = timelineNav.querySelector('[data-direction="prev"]');
+    const nextButton = timelineNav.querySelector('[data-direction="next"]');
+    
+    if (prevButton) {
+        prevButton.addEventListener('click', () => {
+            scrollToItem(currentIndex - 1);
+        });
+    }
+    
+    if (nextButton) {
+        nextButton.addEventListener('click', () => {
+            scrollToItem(currentIndex + 1);
+        });
+    }
+    
+    // Initialize indicator
+    updateIndicator();
+    
+    // Make timeline items keyboard navigable
+    timelineItems.forEach((item, index) => {
+        item.setAttribute('tabindex', '0');
+        item.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+                e.preventDefault();
+                scrollToItem(index + 1);
+            } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+                e.preventDefault();
+                scrollToItem(index - 1);
+            }
+        });
+    });
+}
+
+// Setup scroll-triggered animations
+function setupScrollAnimations() {
+    const elementsToAnimate = document.querySelectorAll('.vision-section .hq-fade-effect');
+    
+    if (elementsToAnimate.length === 0) return;
+    
+    const animationObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const delay = parseFloat(entry.target.getAttribute('data-delay') || 0);
+                
+                setTimeout(() => {
+                    entry.target.classList.add('animated');
+                }, delay * 1000);
+                
+                animationObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+    
+    elementsToAnimate.forEach(element => {
+        animationObserver.observe(element);
+    });
+}
+
+// Utility function for animating counters with custom formatting
+function animateCounter(element, start, end, duration, formatter) {
+    let startTimestamp = null;
+    const step = (timestamp) => {
+        if (!startTimestamp) startTimestamp = timestamp;
+        const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+        const value = Math.floor(progress * (end - start) + start);
+        
+        element.innerHTML = formatter ? formatter(value) : value;
+        
+        if (progress < 1) {
+            window.requestAnimationFrame(step);
+        }
+    };
+    window.requestAnimationFrame(step);
 }
