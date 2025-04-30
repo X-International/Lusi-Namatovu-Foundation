@@ -1030,3 +1030,531 @@
         margin-bottom: 20px;
     }
 }
+
+/* Enhanced Story Timeline Styling for About Section
+-------------------------------------------------- */
+.about-story-container {
+    position: relative;
+    padding: 20px 15px;
+    overflow: hidden;
+}
+
+/* Timeline connector styling with animation */
+.story-timeline-connector {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    height: 100%;
+    width: 2px;
+    transform: translateX(-50%);
+    z-index: 0;
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+
+.story-timeline-connector.animated {
+    opacity: 1;
+}
+
+.story-timeline-connector .timeline-line {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(14, 152, 241, 0.1), rgba(14, 152, 241, 0.6), rgba(14, 152, 241, 0.1));
+    animation: pulse-line 2s infinite ease-in-out;
+}
+
+/* Story card styling with enhanced animation states */
+.about-story-card {
+    position: relative;
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 30px 25px;
+    margin-bottom: 30px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 1;
+    text-align: left;
+}
+
+.about-story-card.animated {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+}
+
+.about-story-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Focus states for improved accessibility */
+.about-story-card:focus {
+    outline: 2px solid rgba(14, 152, 241, 0.6);
+    outline-offset: 3px;
+    transform: translateY(-3px);
+}
+
+.about-story-card:focus:not(:focus-visible) {
+    outline: none;
+}
+
+.about-story-card:last-child {
+    margin-bottom: 0;
+}
+
+/* Date badge styling with animation */
+.story-badge {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #0e98f1;
+    color: #fff;
+    border-radius: 20px;
+    padding: 6px 20px;
+    font-weight: 600;
+    font-size: 14px;
+    box-shadow: 0 4px 10px rgba(14, 152, 241, 0.3);
+    z-index: 2;
+    transition: all 0.3s ease;
+}
+
+.story-badge.badge-animate {
+    animation: badge-appear 0.5s forwards;
+}
+
+.story-badge.badge-pulse {
+    animation: badge-pulse 1.5s ease-in-out;
+}
+
+/* Icon styling with enhanced hover effects */
+.story-icon {
+    position: absolute;
+    top: 30px;
+    left: 25px;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(14, 152, 241, 0.1);
+    border-radius: 50%;
+    color: #0e98f1;
+    font-size: 20px;
+    transition: all 0.3s ease;
+}
+
+.about-story-card:hover .story-icon {
+    transform: rotate(10deg) scale(1.1);
+    background-color: rgba(14, 152, 241, 0.2);
+}
+
+.about-story-card:focus .story-icon {
+    transform: rotate(5deg) scale(1.05);
+    background-color: rgba(14, 152, 241, 0.15);
+}
+
+/* Text content styling */
+.story-text {
+    padding-left: 65px; /* Space for the icon */
+}
+
+.story-title {
+    margin-bottom: 15px;
+    font-size: 20px;
+    font-weight: 600;
+    color: #1a2526;
+    position: relative;
+    display: inline-block;
+}
+
+/* Add underline effect on hover */
+.story-title:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    width: 0;
+    height: 2px;
+    background-color: #0e98f1;
+    transition: width 0.3s ease;
+}
+
+.about-story-card:hover .story-title:after {
+    width: 100%;
+}
+
+/* Quote styling with enhanced highlight state */
+.story-highlight {
+    margin-top: 15px;
+}
+
+.story-highlight blockquote {
+    position: relative;
+    padding: 0 0 0 20px;
+    border-left: 3px solid #0e98f1;
+    margin: 15px 0;
+    font-style: italic;
+    color: #0e98f1;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.story-highlight blockquote.highlight-quote {
+    border-left-width: 4px;
+    background-color: rgba(14, 152, 241, 0.05);
+    padding: 10px 15px 10px 20px;
+    border-radius: 0 8px 8px 0;
+}
+
+.story-highlight blockquote p {
+    margin-bottom: 0;
+}
+
+/* Read more link styling with enhanced interactions */
+.story-read-more {
+    margin-top: 30px;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.story-read-more.animated {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.btn-story-more {
+    display: inline-flex;
+    align-items: center;
+    color: #0e98f1;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    position: relative;
+    padding: 8px 25px;
+    border-radius: 30px;
+    background-color: rgba(14, 152, 241, 0.08);
+}
+
+.btn-story-more:hover {
+    color: #0e98f1;
+    background-color: rgba(14, 152, 241, 0.15);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 10px rgba(14, 152, 241, 0.15);
+}
+
+.btn-story-more:focus {
+    outline: 2px solid rgba(14, 152, 241, 0.6);
+    outline-offset: 3px;
+}
+
+.btn-story-more:focus:not(:focus-visible) {
+    outline: none;
+}
+
+.btn-story-more i {
+    transition: transform 0.3s ease;
+    margin-left: 5px;
+}
+
+.btn-story-more:hover i {
+    transform: translateX(5px);
+}
+
+/* Flipped timeline styling with pulsing animation */
+.modern-timeline {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 30px 0;
+    position: relative;
+}
+
+.timeline-progress {
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 180px;
+    margin-bottom: 15px;
+}
+
+.timeline-line {
+    height: 3px;
+    background-color: rgba(14, 152, 241, 0.3);
+    flex-grow: 1;
+    position: relative;
+    overflow: hidden;
+}
+
+.timeline-line.line-animation:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(to right, transparent, #0e98f1, transparent);
+    animation: timeline-pulse 3s infinite ease-in-out;
+}
+
+.timeline-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: #0e98f1;
+    z-index: 1;
+    transition: all 0.3s ease;
+}
+
+.timeline-dot.start-dot {
+    box-shadow: 0 0 0 3px rgba(14, 152, 241, 0.2);
+}
+
+.timeline-dot.end-dot {
+    box-shadow: 0 0 0 3px rgba(14, 152, 241, 0.2);
+}
+
+.timeline-dot.pulse-animation {
+    animation: pulse-dot 2s infinite ease-in-out;
+}
+
+.timeline-dates {
+    display: flex;
+    justify-content: space-between;
+    width: 180px;
+    font-weight: 500;
+}
+
+.flipped-timeline {
+    flex-direction: row-reverse;
+}
+
+.flipped-dates {
+    flex-direction: row-reverse;
+}
+
+.timeline-start-date {
+    color: #0e98f1;
+    font-weight: 600;
+}
+
+.timeline-current-date {
+    color: #1a2526;
+    font-weight: 600;
+}
+
+/* Animation keyframes */
+@keyframes pulse-dot {
+    0% {
+        box-shadow: 0 0 0 0 rgba(14, 152, 241, 0.6);
+    }
+    70% {
+        box-shadow: 0 0 0 8px rgba(14, 152, 241, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(14, 152, 241, 0);
+    }
+}
+
+@keyframes pulse-line {
+    0% {
+        opacity: 0.4;
+    }
+    50% {
+        opacity: 0.8;
+    }
+    100% {
+        opacity: 0.4;
+    }
+}
+
+@keyframes pulse-icon {
+    0% {
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(3px);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+@keyframes badge-appear {
+    0% {
+        transform: translate(-50%, -50%) scale(0.8);
+        opacity: 0;
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(1.1);
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes badge-pulse {
+    0% {
+        transform: translate(-50%, -50%) scale(1);
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(1.1);
+        box-shadow: 0 5px 15px rgba(14, 152, 241, 0.5);
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+@keyframes timeline-pulse {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+/* Responsive adjustments */
+@media (min-width: 576px) {
+    .about-story-container {
+        padding: 30px;
+    }
+    
+    .story-title {
+        font-size: 22px;
+    }
+    
+    .story-badge {
+        font-size: 15px;
+        padding: 7px 22px;
+    }
+}
+
+@media (min-width: 768px) {
+    .about-story-card {
+        padding: 35px 30px;
+    }
+    
+    .story-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 24px;
+    }
+    
+    .story-text {
+        padding-left: 80px;
+    }
+    
+    .story-title {
+        font-size: 24px;
+    }
+    
+    .story-badge {
+        font-size: 16px;
+        padding: 8px 25px;
+    }
+    
+    .timeline-progress {
+        width: 220px;
+    }
+    
+    .timeline-dates {
+        width: 220px;
+    }
+}
+
+@media (min-width: 992px) {
+    .story-icon {
+        width: 70px;
+        height: 70px;
+        font-size: 28px;
+    }
+    
+    .story-text {
+        padding-left: 95px;
+    }
+    
+    .about-story-card {
+        padding: 40px 35px;
+    }
+    
+    .story-title {
+        font-size: 26px;
+    }
+    
+    .timeline-progress {
+        width: 280px;
+    }
+    
+    .timeline-dates {
+        width: 280px;
+    }
+}
+
+/* High contrast mode and dark mode support */
+@media (prefers-contrast: high) {
+    .story-badge {
+        box-shadow: 0 0 0 1px #fff;
+        border: 1px solid #000;
+    }
+    
+    .story-highlight blockquote {
+        border-left: 4px solid #0e98f1;
+    }
+    
+    .btn-story-more {
+        border: 1px solid #0e98f1;
+    }
+    
+    .story-icon {
+        border: 1px solid #0e98f1;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    .about-story-card {
+        background-color: #2a2a2a;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    }
+    
+    .story-title {
+        color: #f5f5f5;
+    }
+    
+    .story-text p {
+        color: #e0e0e0;
+    }
+    
+    .story-highlight blockquote {
+        color: #4da8ff;
+        border-left-color: #4da8ff;
+    }
+    
+    .story-icon {
+        background-color: rgba(77, 168, 255, 0.1);
+        color: #4da8ff;
+    }
+    
+    .btn-story-more {
+        background-color: rgba(77, 168, 255, 0.1);
+        color: #4da8ff;
+    }
+    
+    .btn-story-more:hover {
+        background-color: rgba(77, 168, 255, 0.2);
+    }
+    
+    .timeline-current-date {
+        color: #e0e0e0;
+    }
+    
+    .timeline-start-date {
+        color: #4da8ff;
+    }
+}

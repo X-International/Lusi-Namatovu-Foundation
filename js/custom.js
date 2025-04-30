@@ -15,6 +15,18 @@ document.addEventListener('DOMContentLoaded', function() {
     if (visionSection) {
         initVisionSection();
     }
+    
+    // Initialize About story section if it exists
+    const aboutStorySection = document.querySelector('.about-story-container');
+    if (aboutStorySection) {
+        initAboutStorySection();
+    }
+
+    // Initialize modern timeline if it exists
+    const modernTimeline = document.querySelector('.modern-timeline');
+    if (modernTimeline) {
+        initModernTimeline();
+    }
 });
 
 function initModernPageHeader() {
@@ -281,6 +293,231 @@ function setupScrollAnimations() {
     elementsToAnimate.forEach(element => {
         animationObserver.observe(element);
     });
+}
+
+/**
+ * About Story Section animations and interactions
+ * Handles story card animations, quote highlighting, and 
+ * scroll-based sequential animations for the "Who We Are" section
+ */
+function initAboutStorySection() {
+    // Animate story cards and their elements with a staggered effect
+    animateStoryCards();
+    
+    // Add click interactions on story cards for engagement
+    setupStoryCardInteractions();
+    
+    // Setup badge animations to pulse on hover/focus
+    setupBadgeAnimations();
+    
+    // Set up automatic date updates for the timeline
+    setupAutomaticDateUpdates();
+}
+
+// Animate story cards and their elements with a staggered effect
+function animateStoryCards() {
+    const storyCards = document.querySelectorAll('.about-story-card');
+    
+    if (storyCards.length === 0) return;
+    
+    // Create intersection observer for story cards to trigger animations when visible
+    const storyObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry, index) => {
+            if (entry.isIntersecting) {
+                // Apply staggered animations to the story card and its elements
+                entry.target.classList.add('animated');
+                
+                // Animate each element within the story card sequentially
+                const elementsToAnimate = entry.target.querySelectorAll('.hq-text-anim, .hq-fade-effect');
+                elementsToAnimate.forEach((element, i) => {
+                    const baseDelay = index * 0.2; // Delay based on card order
+                    const elementDelay = parseFloat(element.getAttribute('data-delay') || 0);
+                    const totalDelay = baseDelay + (i * 0.1) + elementDelay;
+                    
+                    setTimeout(() => {
+                        if (element.getAttribute('data-effect') === 'fade-in') {
+                            element.style.opacity = '1';
+                            element.style.transform = 'translateY(0)';
+                        } else if (element.getAttribute('data-effect') === 'fade-in-bottom') {
+                            element.style.opacity = '1';
+                            element.style.transform = 'translateY(0)';
+                        } else {
+                            element.classList.add('animated');
+                        }
+                    }, totalDelay * 1000);
+                });
+                
+                // Unobserve after triggering
+                storyObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.2 });
+    
+    // Observe each story card
+    storyCards.forEach(card => {
+        // Set initial state
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(30px)';
+        card.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+        
+        // Start observing
+        storyObserver.observe(card);
+    });
+    
+    // Animate the timeline connector with a delayed start
+    const timelineConnector = document.querySelector('.story-timeline-connector');
+    if (timelineConnector) {
+        setTimeout(() => {
+            timelineConnector.classList.add('animated');
+        }, 800);
+    }
+}
+
+// Add interactive features to story cards to enhance engagement
+function setupStoryCardInteractions() {
+    const storyCards = document.querySelectorAll('.about-story-card');
+    
+    storyCards.forEach(card => {
+        // Add focus state management for accessibility
+        card.setAttribute('tabindex', '0');
+        
+        // Add event listeners for highlighting quotes when card is interacted with
+        const quoteBlock = card.querySelector('.story-highlight blockquote');
+        
+        if (quoteBlock) {
+            // Create animation for quotes on interaction
+            const highlightQuote = () => {
+                quoteBlock.classList.add('highlight-quote');
+                quoteBlock.style.transform = 'scale(1.05)';
+                quoteBlock.style.color = '#0c7bc9';
+            };
+            
+            const unhighlightQuote = () => {
+                quoteBlock.classList.remove('highlight-quote');
+                quoteBlock.style.transform = '';
+                quoteBlock.style.color = '';
+            };
+            
+            // Add transitions for smooth animations
+            quoteBlock.style.transition = 'transform 0.3s ease, color 0.3s ease';
+            
+            // Apply event listeners
+            card.addEventListener('mouseenter', highlightQuote);
+            card.addEventListener('focus', highlightQuote);
+            card.addEventListener('mouseleave', unhighlightQuote);
+            card.addEventListener('blur', unhighlightQuote);
+        }
+        
+        // Add ARIA roles for better screen reader interaction
+        card.setAttribute('role', 'article');
+        card.setAttribute('aria-roledescription', 'Story card');
+    });
+    
+    // Make the read more link act as a proper call-to-action
+    const readMoreBtn = document.querySelector('.btn-story-more');
+    
+    if (readMoreBtn) {
+        readMoreBtn.setAttribute('role', 'button');
+        
+        readMoreBtn.addEventListener('mouseenter', () => {
+            // Create a pulsing effect on the button icon
+            const icon = readMoreBtn.querySelector('i');
+            if (icon) {
+                icon.style.animation = 'pulse-icon 1s infinite';
+            }
+        });
+        
+        readMoreBtn.addEventListener('mouseleave', () => {
+            const icon = readMoreBtn.querySelector('i');
+            if (icon) {
+                icon.style.animation = '';
+            }
+        });
+    }
+}
+
+// Setup badge animations to pulse on hover/focus
+function setupBadgeAnimations() {
+    const storyBadges = document.querySelectorAll('.story-badge');
+    
+    storyBadges.forEach(badge => {
+        // Initial animation
+        setTimeout(() => {
+            badge.classList.add('badge-animate');
+        }, 1500);
+        
+        // Add pulse effect on parent card hover
+        const parentCard = badge.closest('.about-story-card');
+        
+        if (parentCard) {
+            parentCard.addEventListener('mouseenter', () => {
+                badge.classList.add('badge-pulse');
+            });
+            
+            parentCard.addEventListener('mouseleave', () => {
+                badge.classList.remove('badge-pulse');
+            });
+        }
+    });
+}
+
+// Set up automatic date updates for the timeline
+function setupAutomaticDateUpdates() {
+    // Update the current year in the timeline
+    const currentYearElements = document.querySelectorAll('.timeline-current-date');
+    const currentYear = new Date().getFullYear();
+    
+    currentYearElements.forEach(element => {
+        element.textContent = currentYear;
+    });
+    
+    // Calculate years of service dynamically
+    const yearsCounter = document.querySelector('.years-counter');
+    if (yearsCounter) {
+        const foundingYear = 2016; // The year the foundation was established
+        const yearsOfService = currentYear - foundingYear;
+        yearsCounter.textContent = yearsOfService;
+    }
+}
+
+// Initialize modern timeline visualization
+function initModernTimeline() {
+    const timelineElem = document.querySelector('.modern-timeline');
+    if (!timelineElem) return;
+    
+    // Animate timeline dots
+    const timelineDots = timelineElem.querySelectorAll('.timeline-dot');
+    
+    if (timelineDots.length > 0) {
+        // Create intersection observer to trigger dot animations
+        const dotObserver = new IntersectionObserver((entries) => {
+            if (entries[0].isIntersecting) {
+                timelineDots.forEach((dot, index) => {
+                    setTimeout(() => {
+                        dot.classList.add('pulse-animation');
+                    }, index * 500);
+                });
+                
+                // Animate the timeline line after dots start pulsing
+                const timelineLine = timelineElem.querySelector('.timeline-line');
+                if (timelineLine) {
+                    setTimeout(() => {
+                        timelineLine.classList.add('line-animation');
+                    }, 500);
+                }
+                
+                dotObserver.unobserve(entries[0].target);
+            }
+        }, { threshold: 0.5 });
+        
+        dotObserver.observe(timelineElem);
+    }
+    
+    // Update the timeline dates with the current year
+    const currentDateElement = timelineElem.querySelector('.timeline-current-date');
+    if (currentDateElement) {
+        currentDateElement.textContent = new Date().getFullYear();
+    }
 }
 
 // Utility function for animating counters with custom formatting
