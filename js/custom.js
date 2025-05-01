@@ -33,6 +33,12 @@ document.addEventListener('DOMContentLoaded', function() {
     if (valuesSection) {
         initValuesSection();
     }
+    
+    // Initialize founding story section if it exists
+    const foundingStorySection = document.querySelector('.founding-story-section');
+    if (foundingStorySection) {
+        initFoundingStorySection();
+    }
 });
 
 function initModernPageHeader() {
@@ -702,8 +708,8 @@ function animateStoryCards() {
     if (storyCards.length === 0) return;
     
     // Create intersection observer for story cards to trigger animations when visible
-    const storyObserver = new IntersectionObserver((entries) => {
-        entries.forEach((entry, index) => {
+    const storyObserver = new IntersectionObserver((entries, index) => {
+        entries.forEach((entry) => {
             if (entry.isIntersecting) {
                 // Apply staggered animations to the story card and its elements
                 entry.target.classList.add('animated');
@@ -1232,5 +1238,436 @@ function enhanceValuesAccessibility() {
             }
         `;
         document.head.appendChild(styleEl);
+    }
+}
+
+/**
+ * Founding Story Section Initialization
+ * Handles animations and interactions for the Founding Story timeline, cards, and images
+ */
+function initFoundingStorySection() {
+    // Setup timeline animation
+    animateFoundingTimeline();
+    
+    // Initialize story cards with animations and interactions
+    initFoundingStoryCards();
+    
+    // Initialize the founding story connectors
+    initFoundingConnectors();
+    
+    // Initialize year badges
+    initYearBadges();
+    
+    // Setup scroll triggered animations for all animated elements
+    setupFoundingScrollAnimations();
+}
+
+/**
+ * Animate the founding story timeline when it becomes visible
+ */
+function animateFoundingTimeline() {
+    const timeline = document.querySelector('.founding-timeline');
+    if (!timeline) return;
+    
+    const timelineProgress = timeline.querySelector('.timeline-progress');
+    
+    // Create intersection observer for timeline to animate progress bar
+    const timelineObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                if (timelineProgress) {
+                    // Animate the progress bar width
+                    setTimeout(() => {
+                        timelineProgress.style.width = '66%'; // Set to the appropriate progress value
+                    }, 300);
+                }
+                timelineObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.5 });
+    
+    timelineObserver.observe(timeline);
+    
+    // Add click interactions to timeline nodes
+    const timelineNodes = timeline.querySelectorAll('.timeline-node');
+    timelineNodes.forEach((node, index) => {
+        node.addEventListener('click', () => {
+            // Scroll to corresponding story card
+            const targetId = index === 0 ? 'founding-discovery' : 
+                            index === 1 ? 'founding-purpose' : 'founding-early-days';
+            const targetElement = document.getElementById(targetId);
+            
+            if (targetElement) {
+                // Smooth scroll to the target element
+                targetElement.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'center'
+                });
+            }
+        });
+        
+        // Add keyboard accessibility
+        node.setAttribute('tabindex', '0');
+        node.setAttribute('role', 'button');
+        node.setAttribute('aria-label', `View ${node.getAttribute('data-year')} story`);
+        
+        node.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                node.click();
+            }
+        });
+    });
+}
+
+/**
+ * Initialize founding story cards with enhanced interactions and animations
+ */
+function initFoundingStoryCards() {
+    const storyCards = document.querySelectorAll('.founding-story-card');
+    
+    if (storyCards.length === 0) return;
+    
+    // Create intersection observer for story cards to trigger animations when visible
+    const cardsObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // Add visible class to trigger animation
+                entry.target.classList.add('visible');
+                
+                // Animate the icon
+                const icon = entry.target.querySelector('.founding-story-icon');
+                if (icon) {
+                    icon.classList.add('animated');
+                    setTimeout(() => {
+                        icon.classList.remove('animated');
+                    }, 1000);
+                }
+                
+                cardsObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.2, rootMargin: '0px 0px -50px 0px' });
+    
+    // Observe each story card
+    storyCards.forEach(card => {
+        cardsObserver.observe(card);
+        
+        // Add hover and focus states for keyboard accessibility
+        card.setAttribute('tabindex', '0');
+        
+        // Add animation class to apply styles
+        const cardStyle = document.createElement('style');
+        cardStyle.textContent = `
+            .founding-story-card {
+                opacity: 0;
+                transform: translateY(20px);
+                transition: opacity 0.6s ease, transform 0.6s ease, box-shadow 0.3s ease, border-top-color 0.3s ease;
+            }
+            
+            .founding-story-card.visible {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            
+            .founding-story-icon.animated {
+                animation: founding-icon-entrance 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            }
+            
+            @keyframes founding-icon-entrance {
+                0% { transform: scale(0.5); opacity: 0; }
+                40% { transform: scale(1.2) rotate(10deg); }
+                100% { transform: scale(1) rotate(0deg); opacity: 1; }
+            }
+            
+            @media (prefers-reduced-motion: reduce) {
+                .founding-story-card {
+                    transition: none;
+                    opacity: 1;
+                    transform: none;
+                }
+                
+                .founding-story-icon.animated {
+                    animation: none;
+                }
+            }
+        `;
+        document.head.appendChild(cardStyle);
+    });
+}
+
+/**
+ * Initialize the founding story connectors with animation
+ */
+function initFoundingConnectors() {
+    const connectors = document.querySelectorAll('.founding-connector');
+    
+    if (connectors.length === 0) return;
+    
+    // Create intersection observer for connectors to animate connecting lines
+    const connectorObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+                connectorObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.7 });
+    
+    // Observe each connector
+    connectors.forEach(connector => {
+        connectorObserver.observe(connector);
+    });
+    
+    // Add animation styles
+    const connectorStyles = document.createElement('style');
+    connectorStyles.textContent = `
+        .founding-connector {
+            opacity: 0;
+            transition: opacity 1s ease;
+        }
+        
+        .founding-connector.active {
+            opacity: 1;
+        }
+        
+        .founding-connector .connector-line {
+            height: 0;
+            transition: height 1s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+        
+        .founding-connector.active .connector-line {
+            height: 100%;
+        }
+        
+        .founding-connector .connector-dot {
+            transform: translate(-50%, -50%) scale(0);
+            opacity: 0;
+            transition: transform 0.5s ease 0.8s, opacity 0.5s ease 0.8s;
+        }
+        
+        .founding-connector.active .connector-dot {
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 1;
+        }
+        
+        @media (prefers-reduced-motion: reduce) {
+            .founding-connector,
+            .founding-connector .connector-line,
+            .founding-connector .connector-dot {
+                transition: none;
+                opacity: 1;
+            }
+            
+            .founding-connector .connector-line {
+                height: 100%;
+            }
+            
+            .founding-connector .connector-dot {
+                transform: translate(-50%, -50%) scale(1);
+            }
+        }
+    `;
+    document.head.appendChild(connectorStyles);
+}
+
+/**
+ * Initialize year badges with animation
+ */
+function initYearBadges() {
+    const yearBadges = document.querySelectorAll('.founding-story-year-badge');
+    
+    if (yearBadges.length === 0) return;
+    
+    // Create intersection observer for year badges
+    const badgeObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                badgeObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.9 });
+    
+    // Observe each badge
+    yearBadges.forEach(badge => {
+        badgeObserver.observe(badge);
+    });
+    
+    // Add animation styles
+    const badgeStyles = document.createElement('style');
+    badgeStyles.textContent = `
+        .founding-story-year-badge {
+            opacity: 0;
+            transform: translateX(-50%) translateY(10px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        
+        .founding-story-year-badge.visible {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+        
+        @media (max-width: 767.98px) {
+            .founding-story-year-badge {
+                transform: translateY(10px);
+            }
+            
+            .founding-story-year-badge.visible {
+                transform: translateY(0);
+            }
+        }
+        
+        @media (prefers-reduced-motion: reduce) {
+            .founding-story-year-badge {
+                transition: none;
+                opacity: 1;
+                transform: translateX(-50%) translateY(0);
+            }
+            
+            @media (max-width: 767.98px) {
+                .founding-story-year-badge {
+                    transform: translateY(0);
+                }
+            }
+        }
+    `;
+    document.head.appendChild(badgeStyles);
+}
+
+/**
+ * Setup scroll triggered animations for founding story elements
+ */
+function setupFoundingScrollAnimations() {
+    const animatedElements = document.querySelectorAll('.founding-story-section [data-animation]');
+    
+    if (animatedElements.length === 0) return;
+    
+    // Create intersection observer
+    const animationObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const element = entry.target;
+                const animation = element.getAttribute('data-animation');
+                const delay = element.getAttribute('data-delay') || 0;
+                
+                // Add animation class after the specified delay
+                setTimeout(() => {
+                    element.classList.add('animated', animation);
+                }, delay * 1000);
+                
+                animationObserver.unobserve(element);
+            }
+        });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+    
+    // Observe each element
+    animatedElements.forEach(element => {
+        animationObserver.observe(element);
+    });
+    
+    // Add animation styles
+    const animationStyles = document.createElement('style');
+    animationStyles.textContent = `
+        [data-animation] {
+            opacity: 0;
+        }
+        
+        .fade-up {
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .fade-left {
+            transform: translateX(-20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .fade-right {
+            transform: translateX(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .animated {
+            opacity: 1;
+        }
+        
+        .animated.fade-up {
+            transform: translateY(0);
+        }
+        
+        .animated.fade-left {
+            transform: translateX(0);
+        }
+        
+        .animated.fade-right {
+            transform: translateX(0);
+        }
+        
+        @media (prefers-reduced-motion: reduce) {
+            [data-animation] {
+                transition: none;
+                opacity: 1;
+                transform: none !important;
+            }
+        }
+    `;
+    document.head.appendChild(animationStyles);
+    
+    // Add special animation for the journey continue section
+    const journeyContinue = document.querySelector('.founding-journey-continue');
+    if (journeyContinue) {
+        const journeyObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    journeyObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.7 });
+        
+        journeyObserver.observe(journeyContinue);
+        
+        // Add pulse animation to button
+        const journeyStyles = document.createElement('style');
+        journeyStyles.textContent = `
+            .founding-journey-continue {
+                opacity: 0;
+                transform: translateY(20px);
+                transition: opacity 0.8s ease, transform 0.8s ease, background-color 0.3s ease;
+            }
+            
+            .founding-journey-continue.active {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            
+            .founding-journey-continue .btn {
+                transition: transform 0.3s ease, box-shadow 0.3s ease;
+            }
+            
+            .founding-journey-continue.active .btn {
+                animation: button-pulse 2s infinite;
+            }
+            
+            @keyframes button-pulse {
+                0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(14, 152, 241, 0.5); }
+                70% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(14, 152, 241, 0); }
+                100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(14, 152, 241, 0); }
+            }
+            
+            @media (prefers-reduced-motion: reduce) {
+                .founding-journey-continue {
+                    transition: none;
+                    opacity: 1;
+                    transform: none;
+                }
+                
+                .founding-journey-continue.active .btn {
+                    animation: none;
+                }
+            }
+        `;
+        document.head.appendChild(journeyStyles);
     }
 }
