@@ -37,7 +37,13 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize founding story section if it exists
     const foundingStorySection = document.querySelector('.founding-story-section');
     if (foundingStorySection) {
-        initFoundingStorySection();
+        initFoundingStory();
+    }
+    
+    // Initialize story timeline section if it exists
+    const storyTimelineSection = document.querySelector('.story-timeline-section');
+    if (storyTimelineSection) {
+        initStoryTimeline();
     }
 });
 
@@ -1245,205 +1251,158 @@ function enhanceValuesAccessibility() {
  * Enhanced Founding Story Section
  * Handles animations, interactions, and accessibility features
  */
-function initFoundingStorySection() {
+function initFoundingStory() {
     const section = document.querySelector('.founding-story-section');
     if (!section) return;
-
-    // Initialize intersection observer for animations
+    
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                startFoundingStoryAnimations(entry.target);
+                entry.target.querySelectorAll('[data-animation]').forEach(element => {
+                    const delay = parseFloat(element.dataset.delay || 0);
+                    setTimeout(() => element.classList.add('animated'), delay * 1000);
+                });
                 observer.unobserve(entry.target);
             }
         });
-    }, {
-        threshold: 0.2,
-        rootMargin: '0px 0px -10% 0px'
-    });
-
+    }, { threshold: 0.2, rootMargin: '0px 0px -10% 0px' });
+    
     observer.observe(section);
 
-    // Initialize components
-    initStoryImages();
-    initStoryStats();
-    initStoryTimeline();
-    initStoryQuotes();
-    setupAccessibility();
-}
-
-function startFoundingStoryAnimations(section) {
-    // Animate elements with staggered timing
-    const animatedElements = section.querySelectorAll('[data-animation]');
-    
-    animatedElements.forEach((element, index) => {
-        const delay = parseFloat(element.dataset.delay || 0);
-        const baseDelay = index * 0.1; // 100ms stagger
-        
-        setTimeout(() => {
-            element.classList.add('animated');
-        }, (baseDelay + delay) * 1000);
-    });
-}
-
-function initStoryImages() {
-    const imageWrappers = document.querySelectorAll('.founding-story-image-wrapper');
-    
-    imageWrappers.forEach(wrapper => {
-        // Add loading="lazy" to images dynamically
-        const img = wrapper.querySelector('img');
-        if (img && !img.hasAttribute('loading')) {
-            img.setAttribute('loading', 'lazy');
-        }
-
-        // Add intersection observer for image animations
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('in-view');
-                    
-                    // Show badges with delay
-                    const badge = entry.target.querySelector('.year-badge, .impact-badge');
-                    if (badge) {
-                        setTimeout(() => {
-                            badge.style.transform = 'translateY(0)';
-                            badge.style.opacity = '1';
-                        }, 500);
-                    }
-                    
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, {
-            threshold: 0.3,
-            rootMargin: '0px'
+    // Initialize image hover effects
+    section.querySelectorAll('.founding-story-image-wrapper').forEach(image => {
+        image.setAttribute('tabindex', '0');
+        ['mouseenter', 'focus'].forEach(event => {
+            image.addEventListener(event, () => image.setAttribute('data-hover', 'true'));
         });
-        
-        observer.observe(wrapper);
+        ['mouseleave', 'blur'].forEach(event => {
+            image.addEventListener(event, () => image.removeAttribute('data-hover'));
+        });
     });
+
+    // Smooth scroll for CTA
+    const ctaButton = section.querySelector('.story-cta .btn');
+    if (ctaButton) {
+        ctaButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            document.querySelector(ctaButton.getAttribute('href'))?.scrollIntoView({ behavior: 'smooth' });
+        });
+    }
 }
 
-function initStoryStats() {
-    const stats = document.querySelectorAll('.stat-number');
-    
-    stats.forEach(stat => {
-        const targetValue = parseInt(stat.dataset.count, 10);
-        let startValue = 0;
-        
-        const observer = new IntersectionObserver((entries) => {
-            if (entries[0].isIntersecting) {
-                animateValue(stat, startValue, targetValue, 2000);
-                observer.unobserve(entries[0].target);
-            }
-        }, { threshold: 0.5 });
-        
-        observer.observe(stat);
-    });
-}
-
-function animateValue(element, start, end, duration) {
-    const range = end - start;
-    const increment = end > start ? 1 : -1;
-    const stepTime = Math.abs(Math.floor(duration / range));
-    let current = start;
-    
-    const timer = setInterval(() => {
-        current += increment;
-        element.textContent = current;
-        
-        if (current === end) {
-            clearInterval(timer);
-        }
-    }, stepTime);
-}
-
+/**
+ * Initialize timeline section with animations and interactions
+ */
 function initStoryTimeline() {
-    const timeline = document.querySelector('.story-timeline');
-    if (!timeline) return;
+    const section = document.querySelector('.story-timeline-section');
+    if (!section) return;
 
+    const timeline = section.querySelector('.story-timeline');
     const markers = timeline.querySelectorAll('.timeline-marker');
+    const track = timeline.querySelector('.timeline-track');
+    const prevBtn = section.querySelector('[data-direction="prev"]');
+    const nextBtn = section.querySelector('[data-direction="next"]');
+    const indicator = section.querySelector('.timeline-indicator');
     
-    markers.forEach((marker, index) => {
-        // Add keyboard navigation
-        marker.setAttribute('tabindex', '0');
-        marker.setAttribute('role', 'button');
-        marker.setAttribute('aria-label', `Timeline event: ${marker.querySelector('.marker-label').textContent}`);
-        
-        // Handle click and keyboard events
-        marker.addEventListener('click', () => activateMarker(marker, markers));
-        marker.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                activateMarker(marker, markers);
-            } else if (e.key === 'ArrowRight' && index < markers.length - 1) {
-                markers[index + 1].focus();
-            } else if (e.key === 'ArrowLeft' && index > 0) {
-                markers[index - 1].focus();
-            }
-        });
-    });
+    let currentIndex = 0;
+    const totalMarkers = markers.length;
 
-    // Activate first marker by default
-    if (markers.length > 0) {
-        activateMarker(markers[0], markers);
-    }
-}
-
-function activateMarker(marker, allMarkers) {
-    allMarkers.forEach(m => m.classList.remove('active'));
-    marker.classList.add('active');
-    
-    // Announce for screen readers
-    const announcement = document.createElement('div');
-    announcement.setAttribute('aria-live', 'polite');
-    announcement.className = 'sr-only';
-    announcement.textContent = `Timeline point selected: ${marker.getAttribute('aria-label')}`;
-    document.body.appendChild(announcement);
-    
-    setTimeout(() => announcement.remove(), 3000);
-}
-
-function initStoryQuotes() {
-    const quotes = document.querySelectorAll('.story-quote');
-    
-    quotes.forEach(quote => {
-        quote.setAttribute('role', 'blockquote');
-        
-        // Add subtle parallax effect on scroll
-        window.addEventListener('scroll', () => {
-            if (!isReducedMotion()) {
-                const rect = quote.getBoundingClientRect();
-                const scrollPercent = rect.top / window.innerHeight;
-                quote.style.transform = `translateY(${scrollPercent * 10}px)`;
-            }
-        }, { passive: true });
-    });
-}
-
-function setupAccessibility() {
-    // Add skip link for keyboard users
-    const cta = document.querySelector('.story-cta .btn');
-    if (cta) {
-        cta.addEventListener('keyup', (e) => {
-            if (e.key === 'Enter') {
-                const target = document.querySelector(cta.getAttribute('href'));
-                if (target) {
-                    target.focus();
-                }
-            }
-        });
-    }
-
-    // Ensure all interactive elements are keyboard accessible
-    const interactiveElements = document.querySelectorAll('.founding-story-section button, .founding-story-section a, .founding-story-section [role="button"]');
-    
-    interactiveElements.forEach(element => {
-        if (!element.getAttribute('tabindex')) {
-            element.setAttribute('tabindex', '0');
+    // Animation observer
+    new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting) {
+            track.classList.add('animated');
+            markers.forEach((marker, i) => {
+                marker.style.opacity = '0';
+                marker.style.transform = 'translate(-50%, -30%)';
+                setTimeout(() => {
+                    marker.style.opacity = '1';
+                    marker.style.transform = 'translate(-50%, -50%)';
+                }, i * 200);
+            });
+            initStatsCounter();
+            this.unobserve(entries[0].target);
         }
-    });
-}
+    }, { threshold: 0.3 }).observe(timeline);
 
-function isReducedMotion() {
-    return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    // Marker interactions
+    markers.forEach((marker, index) => {
+        marker.addEventListener('click', () => activateMarker(index));
+        marker.addEventListener('keydown', (e) => {
+            switch (e.key) {
+                case 'Enter':
+                case ' ':
+                    e.preventDefault();
+                    activateMarker(index);
+                    break;
+                case 'ArrowRight':
+                case 'ArrowDown':
+                    e.preventDefault();
+                    index < totalMarkers - 1 && markers[index + 1].focus();
+                    break;
+                case 'ArrowLeft':
+                case 'ArrowUp':
+                    e.preventDefault();
+                    index > 0 && markers[index - 1].focus();
+                    break;
+                case 'Home':
+                    e.preventDefault();
+                    markers[0].focus();
+                    break;
+                case 'End':
+                    e.preventDefault();
+                    markers[totalMarkers - 1].focus();
+                    break;
+            }
+        });
+    });
+
+    // Navigation buttons
+    prevBtn?.addEventListener('click', () => currentIndex > 0 && activateMarker(currentIndex - 1));
+    nextBtn?.addEventListener('click', () => currentIndex < totalMarkers - 1 && activateMarker(currentIndex + 1));
+
+    function activateMarker(index) {
+        markers.forEach((m, i) => {
+            if (i === index) {
+                m.classList.add('active');
+                m.setAttribute('aria-current', 'true');
+            } else {
+                m.classList.remove('active');
+                m.removeAttribute('aria-current');
+            }
+        });
+
+        currentIndex = index;
+        indicator.textContent = `${currentIndex + 1} of ${totalMarkers}`;
+        
+        if (prevBtn) prevBtn.disabled = currentIndex === 0;
+        if (nextBtn) nextBtn.disabled = currentIndex === totalMarkers - 1;
+
+        // Mobile scroll handling
+        if (window.innerWidth < 992) {
+            const marker = markers[index];
+            const timelineRect = timeline.getBoundingClientRect();
+            const markerRect = marker.getBoundingClientRect();
+            timeline.scrollTo({
+                left: timeline.scrollLeft + (markerRect.left - timelineRect.left) - 
+                      (timelineRect.width / 2) + (markerRect.width / 2),
+                behavior: 'smooth'
+            });
+        }
+    }
+
+    function initStatsCounter() {
+        section.querySelectorAll('.stat-number').forEach(stat => {
+            const target = parseInt(stat.dataset.count, 10);
+            const start = performance.now();
+            
+            requestAnimationFrame(function animate(now) {
+                const progress = Math.min((now - start) / 2000, 1);
+                const easing = 1 - Math.pow(1 - progress, 4);
+                stat.textContent = Math.floor(target * easing);
+                progress < 1 && requestAnimationFrame(animate);
+            });
+        });
+    }
+
+    activateMarker(0);
 }

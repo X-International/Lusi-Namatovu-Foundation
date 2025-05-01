@@ -755,3 +755,282 @@
         color: #fff;
     }
 }
+
+/* Timeline Styles - Milestones Section
+-------------------------------------------------- */
+.story-timeline-section {
+    padding: clamp(4rem, 6vw, 6rem) 0;
+    background-color: #f8f9fa;
+    position: relative;
+    overflow: hidden;
+}
+
+.story-timeline {
+    position: relative;
+    max-width: 1000px;
+    margin: 4rem auto;
+    padding: 2rem 0;
+}
+
+.timeline-track {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background-color: rgba(30, 144, 255, 0.2);
+    transform: translateY(-50%);
+}
+
+.timeline-track::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background-color: var(--color-primary, #1E90FF);
+    transition: width 1s ease;
+}
+
+.timeline-track.animated::before {
+    width: 100%;
+}
+
+.timeline-marker {
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    min-width: 120px;
+}
+
+.timeline-marker:nth-child(2) { left: 0%; }
+.timeline-marker:nth-child(3) { left: 25%; }
+.timeline-marker:nth-child(4) { left: 50%; }
+.timeline-marker:nth-child(5) { left: 75%; }
+.timeline-marker:nth-child(6) { left: 100%; }
+
+.marker-dot {
+    width: 16px;
+    height: 16px;
+    background-color: #fff;
+    border: 2px solid var(--color-primary, #1E90FF);
+    border-radius: 50%;
+    display: block;
+    margin: 0 auto 8px;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.timeline-marker:hover .marker-dot,
+.timeline-marker.active .marker-dot {
+    transform: scale(1.2);
+    background-color: var(--color-primary, #1E90FF);
+}
+
+.marker-label {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--color-text, #4A5568);
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.timeline-marker:hover .marker-label,
+.timeline-marker.active .marker-label {
+    opacity: 1;
+    color: var(--color-primary, #1E90FF);
+}
+
+.marker-content {
+    position: absolute;
+    top: calc(100% + 20px);
+    left: 50%;
+    transform: translateX(-50%);
+    width: 280px;
+    background-color: #fff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+}
+
+.timeline-marker.active .marker-content {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, 0);
+}
+
+.marker-content h3 {
+    font-size: 18px;
+    margin-bottom: 8px;
+    color: var(--color-heading, #2D3748);
+}
+
+.marker-content p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--color-text, #4A5568);
+    margin: 0;
+}
+
+.timeline-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.timeline-btn {
+    background: none;
+    border: none;
+    padding: 8px;
+    cursor: pointer;
+    color: var(--color-text, #4A5568);
+    transition: color 0.3s ease;
+}
+
+.timeline-btn:hover,
+.timeline-btn:focus {
+    color: var(--color-primary, #1E90FF);
+}
+
+.timeline-indicator {
+    font-size: 14px;
+    color: var(--color-text, #4A5568);
+    min-width: 60px;
+    text-align: center;
+}
+
+/* Impact Stats */
+.impact-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-top: 4rem;
+    padding: 0 1rem;
+}
+
+.stat-item {
+    text-align: center;
+    padding: 2rem;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease;
+}
+
+.stat-item:hover {
+    transform: translateY(-5px);
+}
+
+.stat-number {
+    font-size: clamp(2rem, 3vw, 2.5rem);
+    font-weight: 700;
+    color: var(--color-primary, #1E90FF);
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.stat-label {
+    font-size: 0.875rem;
+    color: var(--color-text, #4A5568);
+}
+
+@media (max-width: 991.98px) {
+    .story-timeline {
+        padding: 1rem 2rem;
+        margin: 2rem 0;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    .timeline-track {
+        min-width: 800px;
+    }
+    
+    .marker-content {
+        position: fixed;
+        bottom: 20px;
+        top: auto;
+        left: 50%;
+        transform: translateX(-50%) translateY(100%);
+        z-index: 100;
+    }
+    
+    .timeline-marker.active .marker-content {
+        transform: translateX(-50%) translateY(0);
+    }
+}
+
+@media (max-width: 767.98px) {
+    .impact-stats {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 1rem;
+    }
+    
+    .stat-item {
+        padding: 1.5rem;
+    }
+    
+    .stat-number {
+        font-size: 1.75rem;
+    }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+    .story-timeline-section {
+        background-color: #1a1a1a;
+    }
+    
+    .stat-item,
+    .marker-content {
+        background-color: #2d2d2d;
+    }
+    
+    .marker-content h3,
+    .marker-label,
+    .timeline-btn,
+    .timeline-indicator {
+        color: #fff;
+    }
+    
+    .marker-content p {
+        color: rgba(255, 255, 255, 0.8);
+    }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+    .timeline-track::before,
+    .timeline-marker,
+    .marker-content,
+    .stat-item {
+        transition: none;
+    }
+    
+    .timeline-marker:hover,
+    .stat-item:hover {
+        transform: none;
+    }
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: more) {
+    .timeline-track,
+    .marker-dot {
+        border-width: 2px;
+    }
+    
+    .stat-item {
+        border: 2px solid currentColor;
+    }
+}
