@@ -220,222 +220,133 @@
     </section>
     <!-- End Modern Page Header Section -->
 
-    <!-- Founding Story Section - Updated with fixes for text visibility and alignment -->
-    <section class="founding-story-section position-relative ptb-110" id="founding-story">
-        <!-- Decorative background elements (matching homepage style) -->
-        <div class="position-absolute top-0 start-0 d-none d-lg-block" style="z-index: 0; opacity: 0.05">
-            <i class="hqc hqc-shape-4 text-primary" style="font-size: 250px;"></i>
-        </div>
-        <div class="position-absolute bottom-0 end-0 d-none d-lg-block" style="z-index: 0; opacity: 0.07">
-            <i class="hqc hqc-shape-3 text-secondary" style="font-size: 300px;"></i>
-        </div>
-        
-        <div class="container position-relative" style="z-index: 1;">
-            <!-- Section Header (matching homepage style) -->
-            <div class="section-heading text-center mb-5 hq-text-animation-wrap">
-                <h3 class="sub-heading hq-text-anim" data-effect="fade-in"><span class="hq-bd-anim sh-left-line"></span>Our Beginning</h3>
-                <h2 class="heading hq-fade-effect">The Spark That Started It All</h2>
-                <p class="section-desc mt-4 hq-fade-effect" data-delay="0.1">A journey of compassion that began with one elderly woman's struggle and grew into a mission to transform lives across Rakai District.</p>
-            </div>
-            
-            <!-- Timeline Bar (Updated styling with better visibility) -->
-            <div class="founding-timeline mb-5 d-none d-lg-block">
-                <div class="timeline-bar">
-                    <div class="timeline-progress"></div>
-                    <div class="timeline-node active" data-year="2016" tabindex="0" role="button" aria-label="View 2016 story">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-year">2016</div>
-                        <div class="timeline-label">First Visit</div>
-                    </div>
-                    <div class="timeline-node active" data-year="2017" tabindex="0" role="button" aria-label="View 2017 story">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-year">2017</div>
-                        <div class="timeline-label">Foundation Registered</div>
-                    </div>
-                    <div class="timeline-node" data-year="Present" tabindex="0" role="button" aria-label="View current impact">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-year">Today</div>
-                        <div class="timeline-label">Growing Impact</div>
-                    </div>
+    <!-- Founding Story Section -->
+    <section class="founding-story-section" aria-labelledby="founding-story-title">
+        <div class="container">
+            <!-- Section Header with Enhanced Animation -->
+            <div class="section-header text-center" data-animation="fade-up">
+                <span class="section-badge" aria-hidden="true">Our Roots</span>
+                <h2 id="founding-story-title" class="section-title">
+                    <span class="highlight">The Spark</span> That Started It All
+                </h2>
+                <div class="section-divider">
+                    <span class="divider-dot"></span>
+                    <span class="divider-line"></span>
+                    <span class="divider-dot"></span>
                 </div>
             </div>
-            
-            <!-- Founding Story Content - Fixed Card Layout for Proper Text Visibility -->
-            <div class="founding-cards-container">
-                <!-- First Card/Stage -->
-                <div class="row founding-story-card-row mb-5" id="founding-discovery">
-                    <div class="col-lg-6 founding-story-image-col mb-4 mb-lg-0">
-                        <div class="founding-story-year-badge" aria-hidden="true">
-                            <span>2016</span>
-                        </div>
-                        <!-- Image wrapper with fixed visibility on hover -->
-                        <div class="mission-image-wrap hq-fade-effect" data-fade-from="left">
-                            <div class="mission-image founding-story-image">
-                                <img src="images/lnf/Gallery/Lusi-Namatovu-Foundation_12.jpg" class="img-fluid" alt="Samuel Ssebandeke standing with elderly individuals in Rakai, 2016" loading="lazy">
-                                <div class="mission-caption">
-                                    <h5>Founder Samuel Ssebandeke during an early visit to Rakai.</h5>
-                                </div>
+
+            <!-- Main Content Grid -->
+            <div class="row gy-4">
+                <!-- Left Column - Images with Progressive Loading -->
+                <div class="col-lg-5">
+                    <!-- Top Image -->
+                    <figure class="founding-story-image-wrapper mb-4" data-animation="fade-right">
+                        <div class="image-container">
+                            <img src="images/lnf/founder/samuel-ssebandeke-rakai.jpg" 
+                                 alt="Samuel Ssebandeke standing with elderly individuals in Rakai, 2016" 
+                                 class="img-fluid"
+                                 loading="lazy"
+                                 decoding="async"
+                                 width="600"
+                                 height="400">
+                            <div class="image-overlay">
+                                <span class="year-badge">2016</span>
                             </div>
                         </div>
-                    </div>
+                        <figcaption class="image-caption">
+                            Founder Samuel Ssebandeke during an early visit to Rakai
+                        </figcaption>
+                    </figure>
                     
-                    <div class="col-lg-6">
-                        <!-- Card with fixed text visibility on hover -->
-                        <div class="promo-card founding-story-content-card h-100 hq-fade-effect" data-fade-from="right">
-                            <div class="promo-card-icon founding-story-icon">
-                                <i class="fa-regular fa-eye-low-vision"></i>
+                    <!-- Bottom Image -->
+                    <figure class="founding-story-image-wrapper" data-animation="fade-right" data-delay="0.2">
+                        <div class="image-container">
+                            <img src="images/lnf/history/first-distribution-2016.jpg" 
+                                 alt="Volunteers distributing rice and clothing to elderly beneficiaries in Rakai, 2016" 
+                                 class="img-fluid"
+                                 loading="lazy"
+                                 decoding="async"
+                                 width="600"
+                                 height="400">
+                            <div class="image-overlay">
+                                <span class="impact-badge">First Aid Distribution</span>
                             </div>
-                            <div class="promo-card-content">
-                                <h4 class="text-dark">A Heartfelt Discovery</h4>
-                                <p class="lead text-dark">
-                                    The Lusi Namatovu Foundation was founded in <strong>2016</strong> by <strong>Samuel Ssebandeke</strong>, a compassionate individual deeply moved by the challenges faced by elderly people in Rakai District. During a visit from the UK to his old auntie, <strong>Christina Namazzi</strong>, Samuel found her in a heartbreaking state—neglected by family and struggling to meet her basic needs.
-                                </p>
-                                <p class="text-dark">
-                                    Witnessing her hardship, he realized that many other elders in the region were likely facing the same plight, with no government assistance available for retirees who hadn't worked for the state.
-                                </p>
-                                
-                                <!-- Quote with guaranteed visibility -->
-                                <div class="founding-story-quote impact-story-quote mt-4">
-                                    <i class="fa-solid fa-quote-left"></i>
-                                    <blockquote class="text-dark">
-                                        "I couldn't bear to see my auntie living in such conditions. It was at that moment I knew something had to be done."
-                                    </blockquote>
+                        </div>
+                        <figcaption class="image-caption">
+                            The first distribution of food to elders in Rakai, 2016
+                        </figcaption>
+                    </figure>
+                </div>
+
+                <!-- Right Column - Story Content -->
+                <div class="col-lg-7">
+                    <div class="founding-story-content" data-animation="fade-left">
+                        <!-- Story Sections -->
+                        <div class="story-section" data-section="discovery">
+                            <h3 class="story-subtitle">A Heartfelt Discovery</h3>
+                            <p class="lead story-text">The Lusi Namatovu Foundation was founded in 2016 by <strong>Samuel Ssebandeke</strong>, a compassionate individual deeply moved by the challenges faced by elderly people in Rakai District. During a visit from the UK, Samuel found his elderly aunt, <strong>Christina Namazzi</strong>, in a dire situation—neglected by family, with no access to basic care or support.</p>
+                            <p class="story-text">Her struggle, coupled with the harsh reality that many elders in Uganda lack government assistance after retirement, ignited a fire in Samuel to take action and bring change to his community.</p>
+                        </div>
+
+                        <div class="story-section" data-section="purpose">
+                            <h3 class="story-subtitle">Turning Pain into Purpose</h3>
+                            <blockquote class="story-quote">
+                                <p>We must ensure no elder in Rakai feels abandoned or forgotten. Each one deserves dignity, care, and respect in their golden years.</p>
+                                <footer>
+                                    <cite>— Samuel Ssebandeke, Founder</cite>
+                                </footer>
+                            </blockquote>
+                            <p class="story-text">Driven by a vision of a community where elderly individuals are valued and cared for, Samuel took the first steps to establish an organization that would provide essential support and advocate for their well-being. In 2017, he registered the foundation as a Community Based Organization in memory of his late mother, <strong>Lusi Namatovu</strong>.</p>
+                        </div>
+
+                        <div class="story-section" data-section="early-days">
+                            <h3 class="story-subtitle">The Early Days</h3>
+                            <p class="story-text">Initially, the foundation focused on elderly care, providing shelter, food, clothing, and medical care to a small group of vulnerable elders in Rakai District. A dedicated team, led by Samuel, went door-to-door, delivering essentials like rice and sugar to those who had once begged for survival.</p>
+                            
+                            <!-- Impact Stats -->
+                            <div class="impact-stats" aria-label="Early Impact Statistics">
+                                <div class="stat-item">
+                                    <span class="stat-number" data-count="25">0</span>
+                                    <span class="stat-label">Elders Supported</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-number" data-count="12">0</span>
+                                    <span class="stat-label">Volunteers</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-number" data-count="3">0</span>
+                                    <span class="stat-label">Communities Reached</span>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                
-                <!-- Connector Element - Fixed vertical alignment -->
-                <div class="founding-connector d-none d-lg-block">
-                    <div class="connector-line"></div>
-                    <div class="connector-dot"></div>
-                </div>
-                
-                <!-- Second Card/Stage - Reversed layout with fixed text visibility -->
-                <div class="row founding-story-card-row mb-5 flex-lg-row-reverse" id="founding-purpose">
-                    <div class="col-lg-6 founding-story-image-col mb-4 mb-lg-0">
-                        <div class="founding-story-year-badge" aria-hidden="true">
-                            <span>2017</span>
-                        </div>
-                        <!-- Image wrapper with fixed visibility on hover -->
-                        <div class="mission-image-wrap hq-fade-effect" data-fade-from="right">
-                            <div class="mission-image founding-story-image">
-                                <img src="images/lnf/Gallery/Lusi-Namatovu-Foundation_19.jpg" class="img-fluid" alt="Volunteers distributing rice and clothing to elderly beneficiaries in Rakai, 2016" loading="lazy">
-                                <div class="mission-caption">
-                                    <h5>The first distribution of food to elders in Rakai, 2017.</h5>
+
+                        <!-- Interactive Timeline -->
+                        <div class="story-timeline" aria-label="Foundation Timeline">
+                            <div class="timeline-track">
+                                <div class="timeline-marker" data-year="2016">
+                                    <span class="marker-dot"></span>
+                                    <span class="marker-label">Founded</span>
+                                </div>
+                                <div class="timeline-marker" data-year="2017">
+                                    <span class="marker-dot"></span>
+                                    <span class="marker-label">Registered</span>
+                                </div>
+                                <div class="timeline-marker" data-year="2018">
+                                    <span class="marker-dot"></span>
+                                    <span class="marker-label">Expanded</span>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    
-                    <div class="col-lg-6">
-                        <!-- Card with fixed text visibility on hover -->
-                        <div class="promo-card founding-story-content-card h-100 hq-fade-effect" data-fade-from="left">
-                            <div class="promo-card-icon founding-story-icon">
-                                <i class="fa-regular fa-heart-pulse"></i>
-                            </div>
-                            <div class="promo-card-content">
-                                <h4 class="text-dark">Turning Pain into Purpose</h4>
-                                <p class="lead text-dark">
-                                    Driven by a vision of a community where elderly individuals are valued and cared for, Samuel took the first steps to establish an organization that would provide essential support and advocate for their well-being.
-                                </p>
-                                <p class="text-dark">
-                                    In <strong>2017</strong>, he registered the foundation as a Community Based Organization in memory of his late mother, <strong>Lusi Namatovu</strong>, vowing to work hand-in-hand with the community to improve the lives of senior citizens. Samuel's mission was clear: to ensure no elder in Rakai would feel abandoned or forgotten.
-                                </p>
-                                
-                                <!-- Milestone with guaranteed visibility -->
-                                <div class="founding-key-milestone impact-stat-card mt-4">
-                                    <div class="impact-stat-icon">
-                                        <i class="fa-regular fa-file-certificate"></i>
-                                    </div>
-                                    <div class="milestone-content text-center">
-                                        <h4 class="impact-stat-title mb-0 text-dark">Foundation Officially Registered</h4>
-                                        <p class="text-muted">May 2017 as "Lusi Namatovu Foundation"</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Connector Element - Fixed vertical alignment -->
-                <div class="founding-connector d-none d-lg-block">
-                    <div class="connector-line"></div>
-                    <div class="connector-dot"></div>
-                </div>
-                
-                <!-- Third Card/Stage with fixed text visibility -->
-                <div class="row founding-story-card-row mb-5" id="founding-early-days">
-                    <div class="col-lg-6 founding-story-image-col mb-4 mb-lg-0">
-                        <div class="founding-story-year-badge" aria-hidden="true">
-                            <span>2018</span>
-                        </div>
-                        <!-- Image wrapper with fixed visibility on hover -->
-                        <div class="mission-image-wrap hq-fade-effect" data-fade-from="left">
-                            <div class="mission-image founding-story-image">
-                                <img src="images/lnf/Gallery/Lusi-Namatovu-Foundation_28.jpg" class="img-fluid" alt="Early community outreach in Rakai District" loading="lazy">
-                                <div class="mission-caption">
-                                    <h5>Early outreach efforts in local communities of Rakai.</h5>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="col-lg-6">
-                        <!-- Card with fixed text visibility on hover -->
-                        <div class="promo-card founding-story-content-card h-100 hq-fade-effect" data-fade-from="right">
-                            <div class="promo-card-icon founding-story-icon">
-                                <i class="fa-regular fa-seedling"></i>
-                            </div>
-                            <div class="promo-card-content">
-                                <h4 class="text-dark">The Early Days</h4>
-                                <p class="lead text-dark">
-                                    Initially, the foundation focused on providing shelter, food, clothing, and medical care to a small group of vulnerable elders in Rakai District. A dedicated team, led by Samuel, went door-to-door, delivering rice, sugar, and other essentials to those who had once begged for survival.
-                                </p>
-                                <p class="text-dark">
-                                    These early efforts laid the groundwork for a growing movement to bring dignity and hope to the region's neglected seniors, setting the stage for the foundation's expanded mission to also support people with disabilities.
-                                </p>
-                                
-                                <!-- Stats with guaranteed visibility -->
-                                <div class="impact-statistics-wrapper mt-4">
-                                    <div class="row">
-                                        <div class="col-6">
-                                            <div class="impact-stat-card mini-stat-card">
-                                                <div class="impact-stat-number">
-                                                    <h2 class="text-primary">12</h2>
-                                                </div>
-                                                <h4 class="impact-stat-title text-dark">Elders supported in first year</h4>
-                                            </div>
-                                        </div>
-                                        <div class="col-6">
-                                            <div class="impact-stat-card mini-stat-card">
-                                                <div class="impact-stat-number">
-                                                    <h2 class="text-primary">3</h2>
-                                                </div>
-                                                <h4 class="impact-stat-title text-dark">Villages reached initially</h4>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Connector Element - Fixed vertical alignment -->
-                <div class="founding-connector d-none d-lg-block">
-                    <div class="connector-line"></div>
-                    <div class="connector-dot"></div>
-                </div>
-                
-                <!-- Growth Journey - CTA with improved visibility -->
-                <div class="row">
-                    <div class="col-12">
-                        <div class="d-flex flex-column align-items-center justify-content-center text-center pt-4 hq-fade-effect" data-animation="fade-up" data-delay="0.4s">
-                            <h3 class="h5 mb-4 text-dark">Our journey continues to this day...</h3>
-                            <a href="#timeline" class="hq-btn hq-btn-effect" role="button" aria-label="Learn how Lusi Namatovu Foundation has grown since 2016">
-                                <span>Learn How We've Grown <i class="fa-regular fa-arrow-up-right ms-2"></i></span>
+
+                        <!-- Call to Action -->
+                        <div class="story-cta">
+                            <a href="#timeline-section" 
+                               class="btn btn-primary btn-lg"
+                               data-smooth-scroll
+                               aria-label="Learn how Lusi Namatovu Foundation has grown since 2016">
+                                Learn How We've Grown 
+                                <i class="fa-regular fa-arrow-right" aria-hidden="true"></i>
                             </a>
                         </div>
                     </div>
@@ -443,8 +354,6 @@
             </div>
         </div>
     </section>
-
-    
 
     <!-- Our Mission Section -->
     <section class="mission-section position-relative ptb-110">
