@@ -738,14 +738,18 @@
     <!-- End Our Vision Section -->
 
     <!-- Our Values Section -->
-    <section class="values-section py-md-110 py-5">
+    <section class="values-section py-md-110 py-5" aria-labelledby="values-heading">
         <div class="container">
+            <!-- Background decorative elements -->
+            <div class="values-decoration-circle d-none d-lg-block"></div>
+            <div class="values-decoration-dots d-none d-lg-block"></div>
+            
             <div class="row justify-content-center">
                 <div class="col-lg-8 col-md-10">
                     <div class="section-heading text-center mb-5 hq-text-animation-wrap">
-                        <h3 class="sub-heading hq-text-anim" data-effect="fade-in"><span class="hq-bd-anim sh-left-line"></span>Our Guiding Beliefs</h3>
-                        <h2 class="heading hq-fade-effect">Our Values</h2>
-                        <p class="section-desc mt-4 hq-fade-effect" data-delay="0.1">Our values shape every step we take in Rakai, ensuring our work uplifts elders and people with disabilities with care and respect.</p>
+                        <span class="section-pre-title hq-fade-effect" data-delay="0.1">Our Guiding Beliefs</span>
+                        <h2 id="values-heading" class="heading hq-fade-effect">Our Values</h2>
+                        <p class="section-desc mt-4 hq-fade-effect" data-delay="0.2">Our values shape every step we take in Rakai, ensuring our work uplifts elders and people with disabilities with care and respect.</p>
                     </div><!-- /.section-heading -->
                 </div>
             </div>
@@ -753,12 +757,12 @@
             <div class="row g-4 justify-content-center">
                 <!-- Value Card 1: Compassion -->
                 <div class="col-lg-4 col-md-6">
-                    <div class="value-card h-100 hq-fade-effect" data-delay="0.1">
+                    <div class="value-card h-100 hq-fade-effect" data-delay="0.1" tabindex="0" role="region" aria-labelledby="value-title-1">
                         <div class="value-icon">
-                            <i class="fa-regular fa-heart-pulse"></i>
+                            <i class="fa-regular fa-heart-pulse" aria-hidden="true"></i>
                         </div>
                         <div class="value-content">
-                            <h3>Compassion in Action</h3>
+                            <h3 id="value-title-1">Compassion in Action</h3>
                             <p>We meet every elder and person with a disability in Rakai with empathy, ensuring they feel seen and supported.</p>
                         </div>
                     </div>
@@ -766,12 +770,12 @@
 
                 <!-- Value Card 2: Respect -->
                 <div class="col-lg-4 col-md-6">
-                    <div class="value-card h-100 hq-fade-effect" data-delay="0.2">
+                    <div class="value-card h-100 hq-fade-effect" data-delay="0.2" tabindex="0" role="region" aria-labelledby="value-title-2">
                         <div class="value-icon">
-                            <i class="fa-regular fa-hands-holding"></i>
+                            <i class="fa-regular fa-hands-holding" aria-hidden="true"></i>
                         </div>
                         <div class="value-content">
-                            <h3>Respect for All</h3>
+                            <h3 id="value-title-2">Respect for All</h3>
                             <p>We honor the dignity of Rakai's elders and people with disabilities, valuing their voices and choices.</p>
                         </div>
                     </div>
@@ -779,12 +783,12 @@
 
                 <!-- Value Card 3: Inclusion -->
                 <div class="col-lg-4 col-md-6">
-                    <div class="value-card h-100 hq-fade-effect" data-delay="0.3">
+                    <div class="value-card h-100 hq-fade-effect" data-delay="0.3" tabindex="0" role="region" aria-labelledby="value-title-3">
                         <div class="value-icon">
-                            <i class="fa-regular fa-people-group"></i>
+                            <i class="fa-regular fa-people-group" aria-hidden="true"></i>
                         </div>
                         <div class="value-content">
-                            <h3>Inclusion for Everyone</h3>
+                            <h3 id="value-title-3">Inclusion for Everyone</h3>
                             <p>We create a Rakai where all belong, building spaces for connection and equal participation in community life.</p>
                         </div>
                     </div>
@@ -792,12 +796,12 @@
 
                 <!-- Value Card 4: Empowerment -->
                 <div class="col-lg-4 col-md-6">
-                    <div class="value-card h-100 hq-fade-effect" data-delay="0.4">
+                    <div class="value-card h-100 hq-fade-effect" data-delay="0.4" tabindex="0" role="region" aria-labelledby="value-title-4">
                         <div class="value-icon">
-                            <i class="fa-regular fa-hand-fist"></i>
+                            <i class="fa-regular fa-hand-fist" aria-hidden="true"></i>
                         </div>
                         <div class="value-content">
-                            <h3>Empowering Lives</h3>
+                            <h3 id="value-title-4">Empowering Lives</h3>
                             <p>We equip Rakai's people with wheelchairs, crutches, and skills to live independently and thrive.</p>
                         </div>
                     </div>
@@ -805,12 +809,12 @@
 
                 <!-- Value Card 5: Integrity -->
                 <div class="col-lg-4 col-md-6">
-                    <div class="value-card h-100 hq-fade-effect" data-delay="0.5">
+                    <div class="value-card h-100 hq-fade-effect" data-delay="0.5" tabindex="0" role="region" aria-labelledby="value-title-5">
                         <div class="value-icon">
-                            <i class="fa-regular fa-shield-check"></i>
+                            <i class="fa-regular fa-shield-check" aria-hidden="true"></i>
                         </div>
                         <div class="value-content">
-                            <h3>Integrity at Heart</h3>
+                            <h3 id="value-title-5">Integrity at Heart</h3>
                             <p>We work in Rakai with honesty and transparency, ensuring every resource entrusted to us supports elders and people with disabilities responsibly.</p>
                         </div>
                     </div>
@@ -818,24 +822,18 @@
 
                 <!-- Value Card 6: Community-Led -->
                 <div class="col-lg-4 col-md-6">
-                    <div class="value-card h-100 hq-fade-effect" data-delay="0.6">
+                    <div class="value-card h-100 hq-fade-effect" data-delay="0.6" tabindex="0" role="region" aria-labelledby="value-title-6">
                         <div class="value-icon">
-                            <i class="fa-regular fa-hands-holding-circle"></i>
+                            <i class="fa-regular fa-hands-holding-circle" aria-hidden="true"></i>
                         </div>
                         <div class="value-content">
-                            <h3>Community Driven</h3>
+                            <h3 id="value-title-6">Community Driven</h3>
                             <p>We partner with Rakai's people to create solutions, honoring their knowledge and traditions in every program we build together.</p>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Call to Action -->
-            <div class="text-center mt-5 pt-4 hq-fade-effect" data-delay="0.7">
-                <a href="#" class="hq-btn hq-btn-effect">
-                    <span>See Our Work in Action <i class="fa-regular fa-arrow-up-right"></i></span>
-                </a>
-            </div>
         </div>
     </section>
     <!-- End Our Values Section -->

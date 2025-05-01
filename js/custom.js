@@ -27,6 +27,12 @@ document.addEventListener('DOMContentLoaded', function() {
     if (modernTimeline) {
         initModernTimeline();
     }
+    
+    // Initialize values section if it exists
+    const valuesSection = document.querySelector('.values-section');
+    if (valuesSection) {
+        initValuesSection();
+    }
 });
 
 function initModernPageHeader() {
@@ -843,5 +849,339 @@ function initModernTimeline() {
     const currentDateElement = timelineElem.querySelector('.timeline-current-date');
     if (currentDateElement) {
         currentDateElement.textContent = new Date().getFullYear();
+    }
+}
+
+/**
+ * Values Section Initialization
+ * Handles animations and interactions for the Values section
+ */
+function initValuesSection() {
+    // Initialize value cards with enhanced interactivity
+    initValueCards();
+    
+    // Initialize the values progress indicator
+    initValuesProgress();
+    
+    // Add ARIA accessibility enhancements
+    enhanceValuesAccessibility();
+}
+
+/**
+ * Initialize value cards with interactive features
+ * Adds hover/focus effects and animated interactions
+ */
+function initValueCards() {
+    const valueCards = document.querySelectorAll('.value-card');
+    
+    if (valueCards.length === 0) return;
+    
+    valueCards.forEach((card, index) => {
+        // Add staggered animations when cards come into view
+        const observer = new IntersectionObserver((entries) => {
+            if (entries[0].isIntersecting) {
+                // Add a small delay based on card index for staggered effect
+                setTimeout(() => {
+                    card.classList.add('value-card-visible');
+                    
+                    // Animate the icon with a slight delay
+                    const icon = card.querySelector('.value-icon');
+                    if (icon) {
+                        setTimeout(() => {
+                            icon.classList.add('value-icon-animated');
+                        }, 300);
+                    }
+                }, index * 150);
+                
+                observer.unobserve(card);
+            }
+        }, { threshold: 0.2 });
+        
+        observer.observe(card);
+        
+        // Add keyboard navigation between cards
+        card.addEventListener('keydown', (e) => {
+            let targetCard = null;
+            
+            // Handle arrow key navigation between cards
+            switch (e.key) {
+                case 'ArrowRight':
+                    targetCard = findNextCard(card, 'next');
+                    break;
+                case 'ArrowLeft':
+                    targetCard = findNextCard(card, 'prev');
+                    break;
+                case 'ArrowDown':
+                    targetCard = findNextCard(card, 'below');
+                    break;
+                case 'ArrowUp':
+                    targetCard = findNextCard(card, 'above');
+                    break;
+            }
+            
+            if (targetCard) {
+                e.preventDefault();
+                targetCard.focus();
+            }
+        });
+        
+        // Add touch/click interaction to show overlay
+        card.addEventListener('click', () => {
+            // Toggle the overlay to be permanently visible
+            const overlay = card.querySelector('.value-card-overlay');
+            if (overlay) {
+                // Remove active class from all other cards
+                document.querySelectorAll('.value-card-overlay-active').forEach(el => {
+                    if (el !== overlay) {
+                        el.classList.remove('value-card-overlay-active');
+                    }
+                });
+                
+                // Toggle for this card
+                overlay.classList.toggle('value-card-overlay-active');
+                
+                // Make the card's icon pulse when overlay is active
+                const icon = card.querySelector('.value-icon');
+                if (icon) {
+                    if (overlay.classList.contains('value-card-overlay-active')) {
+                        icon.classList.add('value-icon-pulse');
+                    } else {
+                        icon.classList.remove('value-icon-pulse');
+                    }
+                }
+            }
+        });
+    });
+    
+    // Add CSS for dynamic classes created here
+    addValueCardStyles();
+}
+
+/**
+ * Find the next value card in a specified direction
+ * Enables keyboard navigation between cards in a grid
+ */
+function findNextCard(currentCard, direction) {
+    const cards = Array.from(document.querySelectorAll('.value-card'));
+    const currentIndex = cards.indexOf(currentCard);
+    
+    // Get the cards per row (depends on responsive layout)
+    const cardsPerRow = window.innerWidth >= 992 ? 3 : 
+                        window.innerWidth >= 768 ? 2 : 1;
+    
+    let targetIndex = currentIndex;
+    
+    switch (direction) {
+        case 'next':
+            targetIndex = (currentIndex + 1) % cards.length;
+            break;
+        case 'prev':
+            targetIndex = (currentIndex - 1 + cards.length) % cards.length;
+            break;
+        case 'below':
+            targetIndex = currentIndex + cardsPerRow;
+            if (targetIndex >= cards.length) targetIndex = currentIndex;
+            break;
+        case 'above':
+            targetIndex = currentIndex - cardsPerRow;
+            if (targetIndex < 0) targetIndex = currentIndex;
+            break;
+    }
+    
+    return cards[targetIndex] || null;
+}
+
+/**
+ * Add dynamic CSS styles for value cards
+ * These styles are added at runtime to avoid modifying the CSS file
+ */
+function addValueCardStyles() {
+    // Create style element if it doesn't exist
+    let styleEl = document.getElementById('value-card-dynamic-styles');
+    if (!styleEl) {
+        styleEl = document.createElement('style');
+        styleEl.id = 'value-card-dynamic-styles';
+        document.head.appendChild(styleEl);
+    }
+    
+    // Add CSS rules for dynamic classes
+    styleEl.textContent = `
+        .value-card {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .value-card-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .value-icon-animated {
+            animation: value-icon-entrance 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .value-icon-pulse {
+            animation: value-icon-pulse 1.5s infinite !important;
+        }
+        
+        .value-card-overlay-active {
+            opacity: 1 !important;
+            transform: translateY(0) !important;
+        }
+        
+        @keyframes value-icon-entrance {
+            0% { transform: scale(0.5); opacity: 0; }
+            40% { transform: scale(1.2); }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        
+        @media (prefers-reduced-motion: reduce) {
+            .value-card {
+                transition: none;
+            }
+            
+            .value-card-visible {
+                opacity: 1;
+                transform: none;
+            }
+            
+            .value-icon-animated,
+            .value-icon-pulse {
+                animation: none !important;
+            }
+        }
+    `;
+}
+
+/**
+ * Initialize the values progress indicator
+ * Creates an animated progress bar with step indicators
+ */
+function initValuesProgress() {
+    const progressIndicator = document.querySelector('.values-progress-indicator');
+    if (!progressIndicator) return;
+    
+    const steps = document.querySelectorAll('.values-steps span');
+    if (steps.length === 0) return;
+    
+    // Set up click/touch interactions for the steps
+    steps.forEach((step, index) => {
+        step.addEventListener('click', () => {
+            // Update steps active state
+            steps.forEach(s => s.classList.remove('active'));
+            step.classList.add('active');
+            
+            // Update progress bar width
+            const progressPercent = (index / (steps.length - 1)) * 100;
+            progressIndicator.style.width = `${progressPercent}%`;
+            
+            // Save the current step to session storage
+            if (window.sessionStorage) {
+                sessionStorage.setItem('valuesStep', index.toString());
+            }
+        });
+        
+        // Make steps keyboard navigable
+        step.setAttribute('tabindex', '0');
+        step.setAttribute('role', 'button');
+        step.setAttribute('aria-label', `Select step: ${step.textContent}`);
+        
+        // Add keyboard support
+        step.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                step.click();
+            }
+        });
+    });
+    
+    // Check for saved step in session storage
+    if (window.sessionStorage) {
+        const savedStep = sessionStorage.getItem('valuesStep');
+        if (savedStep !== null) {
+            const stepIndex = parseInt(savedStep, 10);
+            if (stepIndex >= 0 && stepIndex < steps.length) {
+                steps[stepIndex].click();
+            }
+        }
+    }
+    
+    // Add intersection observer to animate the progress on scroll
+    const progressContainer = document.querySelector('.values-cta-container');
+    if (progressContainer) {
+        const observer = new IntersectionObserver((entries) => {
+            if (entries[0].isIntersecting) {
+                // If no step is active, activate the first one
+                if (!document.querySelector('.values-steps span.active')) {
+                    steps[0].classList.add('active');
+                    progressIndicator.style.width = '33%';
+                }
+                
+                observer.unobserve(progressContainer);
+            }
+        }, { threshold: 0.3 });
+        
+        observer.observe(progressContainer);
+    }
+}
+
+/**
+ * Enhance accessibility for the Values section
+ * Adds ARIA attributes and improves keyboard navigation
+ */
+function enhanceValuesAccessibility() {
+    // Add region role to the values section
+    const valuesSection = document.querySelector('.values-section');
+    if (!valuesSection) return;
+    
+    valuesSection.setAttribute('role', 'region');
+    
+    // Add announcement for screen readers when a card is focused
+    const valueCards = document.querySelectorAll('.value-card');
+    valueCards.forEach(card => {
+        card.addEventListener('focus', () => {
+            // Find the title of the card to announce it
+            const title = card.querySelector('[id^="value-title-"]');
+            if (title) {
+                // Create or update the live region
+                let liveRegion = document.getElementById('values-a11y-announce');
+                if (!liveRegion) {
+                    liveRegion = document.createElement('div');
+                    liveRegion.id = 'values-a11y-announce';
+                    liveRegion.setAttribute('aria-live', 'polite');
+                    liveRegion.className = 'visually-hidden';
+                    document.body.appendChild(liveRegion);
+                }
+                
+                // Announce the card title
+                liveRegion.textContent = `Selected value: ${title.textContent}`;
+                
+                // Clear after announcement
+                setTimeout(() => {
+                    liveRegion.textContent = '';
+                }, 3000);
+            }
+        });
+    });
+    
+    // Add CSS for visually hidden elements
+    let styleEl = document.getElementById('values-a11y-styles');
+    if (!styleEl) {
+        styleEl = document.createElement('style');
+        styleEl.id = 'values-a11y-styles';
+        styleEl.textContent = `
+            .visually-hidden {
+                position: absolute;
+                width: 1px;
+                height: 1px;
+                margin: -1px;
+                padding: 0;
+                overflow: hidden;
+                clip: rect(0, 0, 0, 0);
+                border: 0;
+            }
+        `;
+        document.head.appendChild(styleEl);
     }
 }
