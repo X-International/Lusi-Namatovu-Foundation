@@ -109,20 +109,26 @@ function initModernPageHeader() {
  * and scroll-based animations in the vision section
  */
 function initVisionSection() {
-    // Initialize progress bars
+    // Initialize progress bars with improved accessibility
     initProgressBars();
     
-    // Initialize vision counters
+    // Initialize vision counters with improved animation
     initVisionCounters();
     
-    // Initialize timeline functionality
+    // Initialize timeline functionality with keyboard navigation
     initTimeline();
     
-    // Setup scroll triggered animations
+    // Setup scroll triggered animations with better performance
     setupScrollAnimations();
+    
+    // Initialize the pillar cards with interaction effects
+    initVisionPillars();
+    
+    // Initialize the vision impact section
+    initVisionImpact();
 }
 
-// Initialize progress bar animations
+// Initialize progress bar animations with improved accessibility
 function initProgressBars() {
     const progressBars = document.querySelectorAll('.animate-progress');
     
@@ -135,20 +141,25 @@ function initProgressBars() {
                 const targetValue = entry.target.getAttribute('data-target');
                 const percentageDisplay = entry.target.closest('.pillar-progress').querySelector('.progress-percentage');
                 
+                // Add ARIA live region for screen readers
+                if (percentageDisplay && !percentageDisplay.hasAttribute('aria-live')) {
+                    percentageDisplay.setAttribute('aria-live', 'polite');
+                }
+                
                 // Animate the progress bar
                 entry.target.style.width = `${targetValue}%`;
                 entry.target.setAttribute('aria-valuenow', targetValue);
                 
-                // Animate the percentage text
+                // Animate the percentage text with easing
                 if (percentageDisplay) {
-                    animateCounter(percentageDisplay, 0, targetValue, 1500, value => `${value}%`);
+                    animateCounter(percentageDisplay, 0, targetValue, 1500, value => `${value}%`, 'easeOutQuart');
                 }
                 
                 // Unobserve after triggering
                 progressObserver.unobserve(entry.target);
             }
         });
-    }, { threshold: 0.1 });
+    }, { threshold: 0.2, rootMargin: '0px 0px -50px 0px' });
     
     // Observe each progress bar
     progressBars.forEach(bar => {
@@ -156,26 +167,31 @@ function initProgressBars() {
     });
 }
 
-// Initialize vision counter animations
+// Initialize vision counter animations with improved easing
 function initVisionCounters() {
     const counters = document.querySelectorAll('.vision-counter');
     
     if (counters.length === 0) return;
     
-    // Create intersection observer to trigger counter animation when in view
+    // Create intersection observer with better threshold
     const counterObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 const targetValue = parseInt(entry.target.getAttribute('data-count'), 10);
                 
-                // Animate the counter
-                animateCounter(entry.target, 0, targetValue, 2000, value => `${value}<span>+</span>`);
+                // Add ARIA live region for screen readers
+                if (!entry.target.hasAttribute('aria-live')) {
+                    entry.target.setAttribute('aria-live', 'polite');
+                }
+                
+                // Animate the counter with improved easing
+                animateCounter(entry.target, 0, targetValue, 2000, value => `${value}<span>+</span>`, 'easeOutQuart');
                 
                 // Unobserve after triggering
                 counterObserver.unobserve(entry.target);
             }
         });
-    }, { threshold: 0.1 });
+    }, { threshold: 0.2, rootMargin: '0px 0px -50px 0px' });
     
     // Observe each counter
     counters.forEach(counter => {
@@ -183,12 +199,12 @@ function initVisionCounters() {
     });
 }
 
-// Timeline functionality
+// Enhanced timeline functionality with keyboard navigation and mobile optimization
 function initTimeline() {
     const timelineContainer = document.querySelector('.timeline-container');
     if (!timelineContainer) return;
     
-    // Timeline progress animation
+    // Timeline progress animation with improved timing
     const timelineProgress = document.querySelector('.timeline-line-progress');
     if (timelineProgress) {
         const progressObserver = new IntersectionObserver((entries) => {
@@ -198,30 +214,36 @@ function initTimeline() {
                 }, 500);
                 progressObserver.unobserve(entries[0].target);
             }
-        }, { threshold: 0.2 });
+        }, { threshold: 0.3 });
         
         progressObserver.observe(timelineContainer);
     }
     
-    // Mobile timeline navigation
+    // Timeline navigation enhancement - especially for mobile
     const timelineNav = document.querySelector('.timeline-nav');
     if (!timelineNav) return;
     
     const timelineItems = document.querySelectorAll('.timeline-item');
-    if (timelineItems.length === 0) return;
+    const timelineScroller = document.querySelector('.timeline-scroll-container');
+    
+    if (timelineItems.length === 0 || !timelineScroller) return;
     
     let currentIndex = 0;
     const totalItems = timelineItems.length;
     
-    // Update timeline indicator
+    // Update timeline indicator text
     function updateIndicator() {
         const indicator = timelineNav.querySelector('.timeline-indicator');
         if (indicator) {
             indicator.textContent = `${currentIndex + 1} of ${totalItems}`;
+            
+            // Update ARIA attributes for screen readers
+            indicator.setAttribute('aria-live', 'polite');
+            timelineScroller.setAttribute('aria-activedescendant', `timeline-item-${currentIndex}`);
         }
     }
     
-    // Scroll to specific timeline item
+    // Scroll to specific timeline item with smooth animation
     function scrollToItem(index) {
         if (index < 0) index = 0;
         if (index >= totalItems) index = totalItems - 1;
@@ -229,14 +251,29 @@ function initTimeline() {
         currentIndex = index;
         updateIndicator();
         
-        timelineItems[index].scrollIntoView({
-            behavior: 'smooth',
-            block: 'nearest',
-            inline: 'center'
+        // Get the target item's position for smoother scrolling
+        const targetItem = timelineItems[index];
+        const scrollPosition = targetItem.offsetLeft - (timelineScroller.offsetWidth / 2) + (targetItem.offsetWidth / 2);
+        
+        // Add active class for visual indication
+        timelineItems.forEach((item, i) => {
+            if (i === index) {
+                item.classList.add('active');
+                item.setAttribute('aria-current', 'true');
+            } else {
+                item.classList.remove('active');
+                item.removeAttribute('aria-current');
+            }
+        });
+        
+        // Smooth scroll with better animation options
+        timelineScroller.scrollTo({
+            left: scrollPosition,
+            behavior: 'smooth'
         });
     }
     
-    // Set up navigation buttons
+    // Set up navigation buttons with improved interaction
     const prevButton = timelineNav.querySelector('[data-direction="prev"]');
     const nextButton = timelineNav.querySelector('[data-direction="next"]');
     
@@ -244,35 +281,139 @@ function initTimeline() {
         prevButton.addEventListener('click', () => {
             scrollToItem(currentIndex - 1);
         });
+        
+        // Add extra keyboard accessibility
+        prevButton.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                scrollToItem(currentIndex - 1);
+            }
+        });
     }
     
     if (nextButton) {
         nextButton.addEventListener('click', () => {
             scrollToItem(currentIndex + 1);
         });
+        
+        // Add extra keyboard accessibility
+        nextButton.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                scrollToItem(currentIndex + 1);
+            }
+        });
     }
     
     // Initialize indicator
-    updateIndicator();
-    
-    // Make timeline items keyboard navigable
-    timelineItems.forEach((item, index) => {
+    timelineItems.forEach((item, i) => {
+        // Assign IDs for ARIA relationships
+        item.id = `timeline-item-${i}`;
+        
+        // Make items keyboard navigable
         item.setAttribute('tabindex', '0');
+        item.setAttribute('role', 'tabpanel');
+        item.setAttribute('aria-label', `Timeline milestone: ${item.querySelector('.timeline-year').textContent}`);
+        
+        // Add keyboard navigation for each item
         item.addEventListener('keydown', (e) => {
             if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
                 e.preventDefault();
-                scrollToItem(index + 1);
+                scrollToItem(i + 1);
             } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
                 e.preventDefault();
-                scrollToItem(index - 1);
+                scrollToItem(i - 1);
+            } else if (e.key === 'Home') {
+                e.preventDefault();
+                scrollToItem(0);
+            } else if (e.key === 'End') {
+                e.preventDefault();
+                scrollToItem(totalItems - 1);
             }
         });
+        
+        // Add click events
+        item.addEventListener('click', () => {
+            scrollToItem(i);
+        });
     });
+    
+    // Add scroll snap functionality for touch devices
+    if ('ontouchstart' in window) {
+        timelineScroller.addEventListener('scroll', debounce(() => {
+            const scrollLeft = timelineScroller.scrollLeft;
+            const containerWidth = timelineScroller.offsetWidth;
+            
+            // Find the closest timeline item to the center of the view
+            let closestIndex = 0;
+            let closestDistance = Number.MAX_VALUE;
+            
+            timelineItems.forEach((item, index) => {
+                const itemLeft = item.offsetLeft;
+                const itemCenter = itemLeft + (item.offsetWidth / 2);
+                const screenCenter = scrollLeft + (containerWidth / 2);
+                const distance = Math.abs(screenCenter - itemCenter);
+                
+                if (distance < closestDistance) {
+                    closestDistance = distance;
+                    closestIndex = index;
+                }
+            });
+            
+            // Update if the closest item has changed
+            if (closestIndex !== currentIndex) {
+                currentIndex = closestIndex;
+                updateIndicator();
+                
+                // Update active class
+                timelineItems.forEach((item, i) => {
+                    if (i === currentIndex) {
+                        item.classList.add('active');
+                        item.setAttribute('aria-current', 'true');
+                    } else {
+                        item.classList.remove('active');
+                        item.removeAttribute('aria-current');
+                    }
+                });
+            }
+        }, 100));
+    }
+    
+    // Initialize the first item as active
+    updateIndicator();
+    scrollToItem(0);
+    
+    // Adjust timeline dots with animation
+    animateTimelineDots();
 }
 
-// Setup scroll-triggered animations
+// Animate timeline dots sequentially
+function animateTimelineDots() {
+    const timelineDots = document.querySelectorAll('.timeline-dot');
+    
+    if (timelineDots.length === 0) return;
+    
+    const dotObserver = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting) {
+            // Add pulse animation class to each dot with delay
+            timelineDots.forEach((dot, index) => {
+                setTimeout(() => {
+                    dot.classList.add('pulse-animation');
+                }, index * 300);
+            });
+            dotObserver.unobserve(entries[0].target);
+        }
+    }, { threshold: 0.5 });
+    
+    // Observe the first dot to trigger the sequence
+    if (timelineDots[0]) {
+        dotObserver.observe(timelineDots[0]);
+    }
+}
+
+// Setup scroll-triggered animations with improved performance
 function setupScrollAnimations() {
-    const elementsToAnimate = document.querySelectorAll('.vision-section .hq-fade-effect');
+    const elementsToAnimate = document.querySelectorAll('.vision-section .hq-fade-effect, .vision-section [data-fade-from]');
     
     if (elementsToAnimate.length === 0) return;
     
@@ -280,9 +421,39 @@ function setupScrollAnimations() {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 const delay = parseFloat(entry.target.getAttribute('data-delay') || 0);
+                const fadeDirection = entry.target.getAttribute('data-fade-from');
+                
+                // Apply initial transform based on fade direction
+                if (fadeDirection) {
+                    let initialTransform = '';
+                    
+                    switch(fadeDirection) {
+                        case 'left':
+                            initialTransform = 'translateX(-30px)';
+                            break;
+                        case 'right':
+                            initialTransform = 'translateX(30px)';
+                            break;
+                        case 'top':
+                            initialTransform = 'translateY(-30px)';
+                            break;
+                        case 'bottom':
+                            initialTransform = 'translateY(30px)';
+                            break;
+                    }
+                    
+                    entry.target.style.transform = initialTransform;
+                    entry.target.style.opacity = '0';
+                    entry.target.style.transition = 'transform 0.8s ease, opacity 0.8s ease';
+                }
                 
                 setTimeout(() => {
-                    entry.target.classList.add('animated');
+                    if (fadeDirection) {
+                        entry.target.style.transform = 'translate(0)';
+                        entry.target.style.opacity = '1';
+                    } else {
+                        entry.target.classList.add('animated');
+                    }
                 }, delay * 1000);
                 
                 animationObserver.unobserve(entry.target);
@@ -293,6 +464,161 @@ function setupScrollAnimations() {
     elementsToAnimate.forEach(element => {
         animationObserver.observe(element);
     });
+}
+
+// Initialize vision pillars with enhanced interactions
+function initVisionPillars() {
+    const visionPillars = document.querySelectorAll('.vision-pillar-card');
+    
+    if (visionPillars.length === 0) return;
+    
+    visionPillars.forEach((pillar, index) => {
+        // Add ARIA attributes for accessibility
+        pillar.setAttribute('role', 'region');
+        pillar.setAttribute('aria-label', `Vision Pillar: ${pillar.querySelector('h4').textContent}`);
+        
+        // Add focus handling for keyboard navigation
+        pillar.addEventListener('focus', () => {
+            pillar.classList.add('pillar-focused');
+        });
+        
+        pillar.addEventListener('blur', () => {
+            pillar.classList.remove('pillar-focused');
+        });
+        
+        // Add hover effects for the icons
+        const pillarIcon = pillar.querySelector('.vision-pillar-icon');
+        if (pillarIcon) {
+            pillar.addEventListener('mouseenter', () => {
+                pillarIcon.classList.add('icon-animated');
+            });
+            
+            pillar.addEventListener('mouseleave', () => {
+                pillarIcon.classList.remove('icon-animated');
+            });
+        }
+        
+        // Add click/tap interaction to show more details
+        pillar.addEventListener('click', () => {
+            // Toggle active state
+            const isActive = pillar.classList.contains('active-pillar');
+            
+            // Reset all pillars
+            document.querySelectorAll('.vision-pillar-card').forEach(p => {
+                p.classList.remove('active-pillar');
+            });
+            
+            // If this wasn't the active one before, make it active now
+            if (!isActive) {
+                pillar.classList.add('active-pillar');
+                
+                // Focus on the progress bar for better UX
+                const progressBar = pillar.querySelector('.progress-bar');
+                if (progressBar) {
+                    // Add a subtle pulse effect
+                    progressBar.classList.add('pulse-progress');
+                    setTimeout(() => {
+                        progressBar.classList.remove('pulse-progress');
+                    }, 1500);
+                }
+            }
+        });
+    });
+}
+
+// Initialize vision impact section with enhanced animations
+function initVisionImpact() {
+    const impactSection = document.querySelector('.vision-impact');
+    if (!impactSection) return;
+    
+    // Animate impact list items sequentially
+    const impactItems = impactSection.querySelectorAll('.vision-impact-list li');
+    
+    if (impactItems.length > 0) {
+        const impactObserver = new IntersectionObserver((entries) => {
+            if (entries[0].isIntersecting) {
+                impactItems.forEach((item, index) => {
+                    setTimeout(() => {
+                        item.classList.add('impact-item-animated');
+                    }, index * 200);
+                });
+                impactObserver.unobserve(entries[0].target);
+            }
+        }, { threshold: 0.3 });
+        
+        impactObserver.observe(impactSection);
+    }
+    
+    // Add hover effects to testimonial cards
+    const testimonialCards = impactSection.querySelectorAll('.vision-testimonial-card');
+    
+    testimonialCards.forEach(card => {
+        // Add accessible hover state
+        card.addEventListener('mouseenter', () => {
+            card.setAttribute('data-hover', 'true');
+        });
+        
+        card.addEventListener('mouseleave', () => {
+            card.removeAttribute('data-hover');
+        });
+        
+        // Make cards keyboard focusable
+        card.setAttribute('tabindex', '0');
+        
+        // Add focus styles
+        card.addEventListener('focus', () => {
+            card.classList.add('card-focused');
+        });
+        
+        card.addEventListener('blur', () => {
+            card.classList.remove('card-focused');
+        });
+    });
+}
+
+// Utility function for animating counters with custom formatting and easing
+function animateCounter(element, start, end, duration, formatter, easingName = 'linear') {
+    let startTimestamp = null;
+    
+    // Easing functions
+    const easings = {
+        linear: t => t,
+        easeInQuad: t => t * t,
+        easeOutQuad: t => t * (2 - t),
+        easeInOutQuad: t => t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t,
+        easeOutQuart: t => 1 - --t * t * t * t,
+        easeInOutQuart: t => t < 0.5 ? 8 * t * t * t * t : 1 - 8 * --t * t * t * t
+    };
+    
+    // Default to linear if the requested easing doesn't exist
+    const easing = easings[easingName] || easings.linear;
+    
+    const step = (timestamp) => {
+        if (!startTimestamp) startTimestamp = timestamp;
+        const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+        const easedProgress = easing(progress);
+        const value = Math.floor(easedProgress * (end - start) + start);
+        
+        element.innerHTML = formatter ? formatter(value) : value;
+        
+        if (progress < 1) {
+            window.requestAnimationFrame(step);
+        }
+    };
+    window.requestAnimationFrame(step);
+}
+
+// Utility function for debouncing events
+function debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+        const later = () => {
+            timeout = null;
+            func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+    };
 }
 
 /**
@@ -518,21 +844,4 @@ function initModernTimeline() {
     if (currentDateElement) {
         currentDateElement.textContent = new Date().getFullYear();
     }
-}
-
-// Utility function for animating counters with custom formatting
-function animateCounter(element, start, end, duration, formatter) {
-    let startTimestamp = null;
-    const step = (timestamp) => {
-        if (!startTimestamp) startTimestamp = timestamp;
-        const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-        const value = Math.floor(progress * (end - start) + start);
-        
-        element.innerHTML = formatter ? formatter(value) : value;
-        
-        if (progress < 1) {
-            window.requestAnimationFrame(step);
-        }
-    };
-    window.requestAnimationFrame(step);
 }
