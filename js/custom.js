@@ -134,18 +134,61 @@ function initVisionSection() {
     initVisionImpact();
 }
 
-// Initialize progress bar animations with improved accessibility
+// Initialize progress bar animations with improved accessibility and time-based calculation
 function initProgressBars() {
     const progressBars = document.querySelectorAll('.animate-progress');
     
     if (progressBars.length === 0) return;
     
+    // Time-based progress calculation (2024-2030 range)
+    const calculateTimeBasedProgress = (baseValue) => {
+        // Define start and end years
+        const startYear = 2024;
+        const endYear = 2030;
+        
+        // Get current date and calculate progress percentage
+        const currentDate = new Date();
+        const currentYear = currentDate.getFullYear();
+        const currentMonth = currentDate.getMonth();
+        
+        // Calculate progress based on time elapsed since 2024
+        let progress;
+        
+        if (currentYear < startYear) {
+            // If we're before the start year, use the base value
+            progress = baseValue;
+        } else if (currentYear > endYear) {
+            // If we're past the end year, we're at 100%
+            progress = 100;
+        } else {
+            // Calculate progress based on current time position between start and end years
+            const totalMonths = (endYear - startYear) * 12;
+            const elapsedMonths = ((currentYear - startYear) * 12) + currentMonth;
+            const timeProgress = elapsedMonths / totalMonths;
+            
+            // Calculate actual progress based on base value and time progress
+            progress = baseValue + ((100 - baseValue) * timeProgress);
+            
+            // Round to one decimal place for cleaner display
+            progress = Math.round(progress * 10) / 10;
+        }
+        
+        return progress;
+    };
+    
     // Create intersection observer to trigger progress animation when in view
     const progressObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                const targetValue = entry.target.getAttribute('data-target');
+                const progressBar = entry.target;
+                const baseValue = parseInt(progressBar.getAttribute('data-base-value') || progressBar.getAttribute('data-target'), 10);
+                // Calculate actual target value based on time progress
+                const targetValue = calculateTimeBasedProgress(baseValue);
+                
                 const percentageDisplay = entry.target.closest('.pillar-progress').querySelector('.progress-percentage');
+                
+                // Update the data attributes for the current calculated value
+                progressBar.setAttribute('data-target', targetValue);
                 
                 // Add ARIA live region for screen readers
                 if (percentageDisplay && !percentageDisplay.hasAttribute('aria-live')) {
@@ -153,8 +196,8 @@ function initProgressBars() {
                 }
                 
                 // Animate the progress bar
-                entry.target.style.width = `${targetValue}%`;
-                entry.target.setAttribute('aria-valuenow', targetValue);
+                progressBar.style.width = `${targetValue}%`;
+                progressBar.setAttribute('aria-valuenow', targetValue);
                 
                 // Animate the percentage text with easing
                 if (percentageDisplay) {
@@ -169,6 +212,12 @@ function initProgressBars() {
     
     // Observe each progress bar
     progressBars.forEach(bar => {
+        // Get the original base value and store it as a data attribute
+        const originalValue = parseInt(bar.getAttribute('data-target'), 10);
+        // Set base value attribute for reference
+        bar.setAttribute('data-base-value', originalValue);
+        
+        // Observe the progress bar
         progressObserver.observe(bar);
     });
 }
