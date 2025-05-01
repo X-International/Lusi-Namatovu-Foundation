@@ -1503,3 +1503,246 @@
         border: 2px solid currentColor;
     }
 }
+
+/* Program Intro Section Styles */
+.program-intro-section {
+    position: relative;
+}
+
+/* Program Goals Section Styles */
+.goal-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.goal-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1) !important;
+}
+
+.goal-icon {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background-color: var(--color-primary-rgb, rgba(30, 144, 255, 0.1));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+/* Program Activities Section Styles */
+.activity-card {
+    transition: transform 0.3s ease;
+}
+
+.activity-card:hover {
+    transform: translateY(-5px);
+}
+
+.activity-icon {
+    width: 60px;
+    height: 60px;
+    min-width: 60px;
+    border-radius: 50%;
+    background-color: var(--color-primary-rgb, rgba(30, 144, 255, 0.1));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.activity-content ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.activity-content ul li {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.activity-content ul li:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: var(--color-primary, #1E90FF);
+}
+
+/* Eligibility Section Styles */
+.eligibility-card {
+    transition: transform 0.3s ease;
+}
+
+.eligibility-card:hover {
+    transform: translateY(-5px);
+}
+
+.eligibility-icon {
+    width: 50px;
+    height: 50px;
+    min-width: 50px;
+    border-radius: 50%;
+    background-color: var(--color-primary-rgb, rgba(30, 144, 255, 0.1));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Access Section Styles */
+.step-card {
+    transition: transform 0.3s ease;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.step-card:hover {
+    transform: translateY(-5px);
+}
+
+.contact-method {
+    transition: transform 0.3s ease;
+}
+
+.contact-method:hover {
+    transform: translateY(-5px);
+}
+
+/* Impact Section Styles */
+.impact-stats-card, .impact-story-card, .impact-testimonial-card {
+    transition: transform 0.3s ease;
+}
+
+.impact-stats-card:hover, .impact-story-card:hover, .impact-testimonial-card:hover {
+    transform: translateY(-5px);
+}
+
+.impact-stat-item {
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.impact-stat-item:last-child {
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.story-image img {
+    transition: transform 0.3s ease;
+}
+
+.story-image:hover img {
+    transform: scale(1.05);
+}
+
+/* Call to Action Section Styles */
+.donation-impact {
+    transition: transform 0.3s ease;
+}
+
+.donation-impact:hover {
+    transform: translateY(-5px);
+}
+
+/* Related Programs Section Styles */
+.program-card {
+    transition: transform 0.3s ease;
+}
+
+.program-card:hover {
+    transform: translateY(-5px);
+}
+
+.program-image {
+    position: relative;
+    overflow: hidden;
+}
+
+.program-image img {
+    transition: transform 0.3s ease;
+}
+
+.program-card:hover .program-image img {
+    transform: scale(1.05);
+}
+
+.hq-btn-arrow {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    color: var(--color-primary, #1E90FF);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.hq-btn-arrow i {
+    margin-left: 0.5rem;
+    transition: transform 0.3s ease;
+}
+
+.hq-btn-arrow:hover {
+    color: var(--color-primary-dark, #1976D2);
+}
+
+.hq-btn-arrow:hover i {
+    transform: translateX(5px);
+}
+
+/* Responsive Styles */
+@media (max-width: 991.98px) {
+    .activity-card .d-flex {
+        flex-direction: column;
+    }
+    
+    .activity-icon {
+        margin-bottom: 1rem;
+    }
+    
+    .step-card {
+        margin-bottom: 1rem;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .goal-card, .activity-card, .eligibility-card, .step-card,
+    .impact-stats-card, .impact-story-card, .impact-testimonial-card,
+    .program-card {
+        margin-bottom: 1rem;
+    }
+    
+    .impact-story-card .row {
+        flex-direction: column;
+    }
+    
+    .story-image {
+        margin-bottom: 1.5rem;
+    }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+    .goal-card, .activity-card, .eligibility-card, .step-card,
+    .impact-stats-card, .impact-story-card, .impact-testimonial-card,
+    .program-card {
+        background-color: rgba(255, 255, 255, 0.05) !important;
+    }
+    
+    .activity-content ul li:before {
+        background-color: var(--color-primary-light, #64B5F6);
+    }
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: more) {
+    .activity-content ul li:before {
+        border: 1px solid currentColor;
+    }
+    
+    .goal-icon, .activity-icon, .eligibility-icon {
+        border: 2px solid currentColor;
+    }
+}

@@ -63,6 +63,12 @@ document.addEventListener('DOMContentLoaded', function() {
     if (currentFocusSection) {
         initCurrentFocus();
     }
+
+    // Initialize clothing program page functionality if elements exist
+    const clothingProgramElements = document.querySelector('.program-goals-section');
+    if (clothingProgramElements) {
+        initClothingProgramPage();
+    }
 });
 
 function initModernPageHeader() {
@@ -1636,4 +1642,116 @@ function initCurrentFocus() {
             element.style.transition = 'none';
         });
     }
+}
+
+/**
+ * Initialize animations and interactions for the clothing program page
+ */
+function initClothingProgramPage() {
+    // Initialize goal counter animations
+    initializeCounters();
+    
+    // Initialize scroll-based animations
+    setupScrollAnimations();
+    
+    // Initialize responsive image handling
+    setupResponsiveImages();
+    
+    // Initialize testimonial interactions
+    initializeTestimonials();
+}
+
+// Counter animation function for goal and impact numbers
+function initializeCounters() {
+    const counters = document.querySelectorAll('.counter-wrapper');
+    
+    // Setup intersection observer for counter animations
+    const counterObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const counter = entry.target;
+                const target = parseInt(counter.getAttribute('data-count')) || 0;
+                let count = 0;
+                const duration = 2000; // 2 seconds
+                const increment = target / (duration / 16); // 60fps
+
+                const updateCounter = () => {
+                    count += increment;
+                    if (count < target) {
+                        counter.textContent = Math.ceil(count);
+                        requestAnimationFrame(updateCounter);
+                    } else {
+                        counter.textContent = target;
+                    }
+                };
+
+                updateCounter();
+                counterObserver.unobserve(counter);
+            }
+        });
+    }, { threshold: 0.5 });
+
+    // Observe each counter element
+    counters.forEach(counter => counterObserver.observe(counter));
+}
+
+// Setup scroll-based animations for various sections
+function setupScrollAnimations() {
+    // Elements to animate on scroll
+    const elements = document.querySelectorAll('.hq-fade-effect');
+    
+    const scrollObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const delay = entry.target.getAttribute('data-delay') || 0;
+                setTimeout(() => {
+                    entry.target.classList.add('animated');
+                }, delay * 1000);
+                scrollObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.2 });
+
+    elements.forEach(element => scrollObserver.observe(element));
+}
+
+// Handle responsive images loading and transitions
+function setupResponsiveImages() {
+    const images = document.querySelectorAll('.story-image img, .program-image img');
+    
+    images.forEach(img => {
+        // Add loading animation
+        img.addEventListener('load', () => {
+            img.classList.add('loaded');
+        });
+
+        // Handle error cases
+        img.addEventListener('error', () => {
+            img.src = 'images/fallback-image.jpg'; // Fallback image
+        });
+    });
+}
+
+// Initialize testimonial interactions
+function initializeTestimonials() {
+    const testimonials = document.querySelectorAll('.impact-testimonial-card');
+    
+    testimonials.forEach(testimonial => {
+        testimonial.addEventListener('mouseenter', () => {
+            testimonial.classList.add('active');
+        });
+
+        testimonial.addEventListener('mouseleave', () => {
+            testimonial.classList.remove('active');
+        });
+
+        // Ensure accessibility
+        testimonial.addEventListener('focus', () => {
+            testimonial.classList.add('active');
+        });
+
+        testimonial.addEventListener('blur', () => {
+            testimonial.classList.remove('active');
+        });
+    });
 }
