@@ -45,6 +45,12 @@ document.addEventListener('DOMContentLoaded', function() {
     if (storyTimelineSection) {
         initStoryTimeline();
     }
+
+    // Initialize registration recognition section if it exists
+    const registrationSection = document.querySelector('.registration-recognition-section');
+    if (registrationSection) {
+        initRegistrationSection();
+    }
 });
 
 function initModernPageHeader() {
@@ -1402,4 +1408,40 @@ function initStoryTimeline() {
             scrollToMarker(markers[currentIndex]);
         }, 100);
     });
+}
+
+/**
+ * Initialize Registration and Recognition Section
+ * Handles animations and accessibility features for the registration milestone section
+ */
+function initRegistrationSection() {
+    const section = document.querySelector('.registration-recognition-section');
+    const wrapper = section.querySelector('.recognition-wrapper');
+    
+    // Create intersection observer for section elements
+    const observer = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting) {
+            // Animate each element with proper timing
+            const icon = wrapper.querySelector('.doc-icon');
+            const title = wrapper.querySelector('.recognition-title');
+            const content = wrapper.querySelector('.recognition-content');
+            
+            // Staggered animations
+            setTimeout(() => icon.classList.add('animated'), 100);
+            setTimeout(() => title.classList.add('animated'), 300);
+            setTimeout(() => content.classList.add('animated'), 500);
+            
+            // Unobserve after animation
+            observer.unobserve(section);
+        }
+    }, { threshold: 0.2 });
+    
+    observer.observe(section);
+    
+    // Add ARIA labels for accessibility
+    const docIcon = section.querySelector('.doc-icon');
+    if (docIcon) {
+        docIcon.setAttribute('role', 'img');
+        docIcon.setAttribute('aria-label', 'Document icon representing CBO registration');
+    }
 }
