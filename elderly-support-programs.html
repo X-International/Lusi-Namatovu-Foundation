@@ -30,6 +30,7 @@
     <link rel="stylesheet" href="css/mobile-menu.css">
     <link rel="stylesheet" href="css/modern-footer.css">
     <link rel="stylesheet" href="css/modern-footer.css">
+    <link rel="stylesheet" href="css/custom-styles.css">
 
 </head>
 
@@ -170,22 +171,45 @@
 
     
 
-    <section class="page-header hq-img-parallax" data-scale-start="1.4" data-scale-end="1.2">
-        <div class="container">
-            <h1 class="ph-content-title">Supporting Rakai's Elders</h1>
-            <ul class="hq-breadcrumb">
-                <li><a href="index.html">Home</a></li>
-                <li><i class="fa-regular fa-arrow-right"></i></li>
-                <li><a href="our-work.html">Our Work</a></li>
-                <li><i class="fa-regular fa-arrow-right"></i></li>
-                <li class="current">Elderly Support Programs</li>
-            </ul><!-- /.hq-breadcrumb -->
+    <!-- Modern Page Header Section -->
+    <section class="modern-page-header" role="banner" aria-labelledby="page-title">
+        <!-- Parallax Background Container -->
+        <div class="mph-background-container">
+            <img class="mph-background-image" src="images/lnf/Gallery/Lusi-Namatovu-Foundation_24.jpg" alt="Elderly woman smiling in Rakai District" loading="eager">
+            <div class="mph-overlay" aria-hidden="true"></div>
         </div>
-        <div class="ph-bg hq-img" data-img="images/lnf/Gallery/Lusi-Namatovu-Foundation_24.jpg"></div>
-        <div class="ph-overlay"></div>
-        <i class="hqc ph-shape left-shape hqc-shape-1"></i>
-        <i class="hqc ph-shape right-shape hqc-shape-2"></i>
-    </section><!-- /.page-header -->
+        
+        <!-- Content Container -->
+        <div class="container">
+            <div class="mph-content">
+                <!-- Animated Badge -->
+                <div class="mph-badge" data-animation="fade-up" data-delay="0.1s">
+                    <span>Our Programs in Rakai</span>
+                </div>
+                
+                <!-- Main Heading with Animation -->
+                <div class="mph-title-container">
+                    <h1 id="page-title" class="mph-title" data-animation="fade-up" data-delay="0.2s">
+                        <span class="mph-highlight">Supporting</span> Rakai’s Elders with <br>Lusi Namatovu Foundation
+                    </h1>
+                </div>
+                
+                <!-- Optional Subheading -->
+                <p class="mph-subtitle" data-animation="fade-up" data-delay="0.3s">
+                    Providing Care, Shelter & Dignity for the Elderly
+                </p>
+                
+                <!-- Breadcrumb Navigation -->
+                <nav aria-label="Breadcrumb" class="mph-breadcrumb-container" data-animation="fade-up" data-delay="0.4s">
+                    <ol class="mph-breadcrumb">
+                        <li><a href="index.html">Home</a></li>
+                        <li aria-hidden="true"><i class="fa-regular fa-arrow-right"></i></li>
+                        <li aria-current="page" class="current">About Us</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </section>
 
     <section class="intro-section py-80" style="background: linear-gradient(to bottom, #f0f8ff, #ffffff);">
         <div class="container">
@@ -591,6 +615,7 @@
     <script src="lib/bootstrap/bootstrap.min.js"></script>
     <script src="lib/odometer/odometer.min.js"></script>
     <script src="lib/venobox/venobox.min.js"></script>
+    <script src="lib/swiper/js/swiper.min.js"></script>
     <script src="lib/slick/slick.min.js"></script>
     <script src="lib/countdown.min.js"></script>
     <script src="lib/gsap/gsap.min.js"></script>
@@ -599,8 +624,12 @@
     <script src="lib/gsap/lenis.min.js"></script>
     <script src="lib/jquery.meanmenu.min.js"></script>
     <script src="lib/sharer/sharer.min.js"></script>
+    <script src="js/slider.js"></script>
     <script src="js/mailchimp.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/mobile-menu.js"></script>
+    <script src="js/support-animations.js"></script>
+    <script src="js/custom.js"></script>
     
 </body>
 
