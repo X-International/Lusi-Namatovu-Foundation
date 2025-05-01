@@ -1291,7 +1291,7 @@ function initFoundingStory() {
 }
 
 /**
- * Initialize timeline section with animations and interactions
+ * Initialize timeline section with improved mobile handling
  */
 function initStoryTimeline() {
     const section = document.querySelector('.story-timeline-section');
@@ -1305,66 +1305,66 @@ function initStoryTimeline() {
     const indicator = section.querySelector('.timeline-indicator');
     
     let currentIndex = 0;
+    let touchStartX = 0;
+    let scrollLeft = 0;
     const totalMarkers = markers.length;
 
-    // Animation observer
-    new IntersectionObserver((entries) => {
-        if (entries[0].isIntersecting) {
-            track.classList.add('animated');
-            markers.forEach((marker, i) => {
-                marker.style.opacity = '0';
-                marker.style.transform = 'translate(-50%, -30%)';
-                setTimeout(() => {
-                    marker.style.opacity = '1';
-                    marker.style.transform = 'translate(-50%, -50%)';
-                }, i * 200);
-            });
-            initStatsCounter();
-            this.unobserve(entries[0].target);
-        }
-    }, { threshold: 0.3 }).observe(timeline);
+    // Smooth scroll to active marker
+    function scrollToMarker(marker) {
+        if (window.innerWidth >= 992) return;
+        
+        const timelineRect = timeline.getBoundingClientRect();
+        const markerRect = marker.getBoundingClientRect();
+        const scrollTo = timeline.scrollLeft + (markerRect.left - timelineRect.left) - 
+                      (timelineRect.width / 2) + (markerRect.width / 2);
+                      
+        timeline.scrollTo({
+            left: scrollTo,
+            behavior: 'smooth'
+        });
+    }
 
-    // Marker interactions
-    markers.forEach((marker, index) => {
-        marker.addEventListener('click', () => activateMarker(index));
-        marker.addEventListener('keydown', (e) => {
-            switch (e.key) {
-                case 'Enter':
-                case ' ':
-                    e.preventDefault();
-                    activateMarker(index);
-                    break;
-                case 'ArrowRight':
-                case 'ArrowDown':
-                    e.preventDefault();
-                    index < totalMarkers - 1 && markers[index + 1].focus();
-                    break;
-                case 'ArrowLeft':
-                case 'ArrowUp':
-                    e.preventDefault();
-                    index > 0 && markers[index - 1].focus();
-                    break;
-                case 'Home':
-                    e.preventDefault();
-                    markers[0].focus();
-                    break;
-                case 'End':
-                    e.preventDefault();
-                    markers[totalMarkers - 1].focus();
-                    break;
+    // Handle touch events for smooth mobile scrolling
+    timeline.addEventListener('touchstart', (e) => {
+        touchStartX = e.touches[0].clientX;
+        scrollLeft = timeline.scrollLeft;
+        timeline.style.scrollBehavior = 'auto';
+    }, { passive: true });
+
+    timeline.addEventListener('touchmove', (e) => {
+        if (!touchStartX) return;
+        const touchDiff = touchStartX - e.touches[0].clientX;
+        timeline.scrollLeft = scrollLeft + touchDiff;
+    }, { passive: true });
+
+    timeline.addEventListener('touchend', () => {
+        touchStartX = null;
+        timeline.style.scrollBehavior = 'smooth';
+        
+        // Snap to nearest marker
+        const timelineRect = timeline.getBoundingClientRect();
+        let closestMarker = markers[0];
+        let minDistance = Infinity;
+        
+        markers.forEach(marker => {
+            const markerRect = marker.getBoundingClientRect();
+            const distance = Math.abs(markerRect.left - timelineRect.left - timelineRect.width / 2);
+            if (distance < minDistance) {
+                minDistance = distance;
+                closestMarker = marker;
             }
         });
+        
+        const markerIndex = Array.from(markers).indexOf(closestMarker);
+        activateMarker(markerIndex);
     });
-
-    // Navigation buttons
-    prevBtn?.addEventListener('click', () => currentIndex > 0 && activateMarker(currentIndex - 1));
-    nextBtn?.addEventListener('click', () => currentIndex < totalMarkers - 1 && activateMarker(currentIndex + 1));
 
     function activateMarker(index) {
         markers.forEach((m, i) => {
             if (i === index) {
                 m.classList.add('active');
                 m.setAttribute('aria-current', 'true');
+                scrollToMarker(m);
             } else {
                 m.classList.remove('active');
                 m.removeAttribute('aria-current');
@@ -1376,33 +1376,30 @@ function initStoryTimeline() {
         
         if (prevBtn) prevBtn.disabled = currentIndex === 0;
         if (nextBtn) nextBtn.disabled = currentIndex === totalMarkers - 1;
+    }
 
-        // Mobile scroll handling
-        if (window.innerWidth < 992) {
-            const marker = markers[index];
-            const timelineRect = timeline.getBoundingClientRect();
-            const markerRect = marker.getBoundingClientRect();
-            timeline.scrollTo({
-                left: timeline.scrollLeft + (markerRect.left - timelineRect.left) - 
-                      (timelineRect.width / 2) + (markerRect.width / 2),
-                behavior: 'smooth'
-            });
+    // Navigation buttons
+    prevBtn?.addEventListener('click', () => {
+        if (currentIndex > 0) {
+            activateMarker(currentIndex - 1);
         }
-    }
+    });
+    
+    nextBtn?.addEventListener('click', () => {
+        if (currentIndex < totalMarkers - 1) {
+            activateMarker(currentIndex + 1);
+        }
+    });
 
-    function initStatsCounter() {
-        section.querySelectorAll('.stat-number').forEach(stat => {
-            const target = parseInt(stat.dataset.count, 10);
-            const start = performance.now();
-            
-            requestAnimationFrame(function animate(now) {
-                const progress = Math.min((now - start) / 2000, 1);
-                const easing = 1 - Math.pow(1 - progress, 4);
-                stat.textContent = Math.floor(target * easing);
-                progress < 1 && requestAnimationFrame(animate);
-            });
-        });
-    }
-
+    // Initialize with first marker active
     activateMarker(0);
+
+    // Handle resize events
+    let resizeTimeout;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => {
+            scrollToMarker(markers[currentIndex]);
+        }, 100);
+    });
 }
