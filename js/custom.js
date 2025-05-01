@@ -57,6 +57,12 @@ document.addEventListener('DOMContentLoaded', function() {
     if (growthSection) {
         initGrowthExpansion();
     }
+
+    // Initialize current focus section if it exists
+    const currentFocusSection = document.querySelector('.current-focus-section');
+    if (currentFocusSection) {
+        initCurrentFocus();
+    }
 });
 
 function initModernPageHeader() {
@@ -1566,6 +1572,68 @@ function initGrowthExpansion() {
 
         impactCards.forEach(card => {
             card.style.transition = 'none';
+        });
+    }
+}
+
+/**
+ * Initialize Current Focus Section
+ * Handles animations and accessibility features for the current focus section
+ */
+function initCurrentFocus() {
+    const section = document.querySelector('.current-focus-section');
+    if (!section) return;
+
+    // Create intersection observer for section elements
+    const observer = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting) {
+            // Animate content with proper timing
+            const content = section.querySelector('.current-focus-content');
+            const title = section.querySelector('.section-title');
+            const cta = section.querySelector('.cta-wrapper');
+            
+            // Add animations with staggered timing
+            if (title) title.classList.add('animated');
+            
+            if (content) {
+                setTimeout(() => {
+                    content.classList.add('animated');
+                }, 200);
+            }
+            
+            if (cta) {
+                setTimeout(() => {
+                    cta.classList.add('animated');
+                }, 400);
+            }
+            
+            // Unobserve after animation
+            observer.unobserve(section);
+        }
+    }, { threshold: 0.2 });
+    
+    // Start observing the section
+    observer.observe(section);
+
+    // Add ARIA labels for accessibility
+    const button = section.querySelector('.btn-primary');
+    if (button) {
+        button.setAttribute('role', 'button');
+        
+        // Add keyboard interaction
+        button.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                button.click();
+            }
+        });
+    }
+
+    // Handle reduced motion preference
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        const animatedElements = section.querySelectorAll('.animated, [data-animation]');
+        animatedElements.forEach(element => {
+            element.style.transition = 'none';
         });
     }
 }

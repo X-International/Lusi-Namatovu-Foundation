@@ -1243,3 +1243,125 @@
         border: 2px solid currentColor;
     }
 }
+
+/* Current Focus Section Styles
+-------------------------------------------------- */
+.current-focus-section {
+    position: relative;
+    padding: clamp(3rem, 5vw, 5rem) 0;
+    background-color: #F5F5DC; /* Light beige background */
+    border-radius: 10px;
+    margin: 2rem 0;
+}
+
+.current-focus-wrapper {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.current-focus-content {
+    text-align: center;
+    transform: translateY(20px);
+    opacity: 0;
+    transition: transform 0.6s ease, opacity 0.6s ease;
+}
+
+.current-focus-content.animated {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.current-focus-content .lead {
+    font-size: clamp(1rem, 1.2vw, 1.125rem);
+    line-height: 1.8;
+    color: var(--color-text, #4A5568);
+    margin-bottom: 15px;
+}
+
+.current-focus-content p {
+    margin-bottom: 20px;
+}
+
+.cta-wrapper {
+    margin-top: 20px;
+}
+
+.current-focus-section .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    padding: 12px 24px;
+    background-color: var(--color-primary, #1E90FF);
+    color: #fff;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.current-focus-section .btn-primary:hover,
+.current-focus-section .btn-primary:focus {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(30, 144, 255, 0.2);
+}
+
+/* Ensure the section is accessible with proper focus states */
+.current-focus-section .btn-primary:focus-visible {
+    outline: 2px solid var(--color-primary, #1E90FF);
+    outline-offset: 2px;
+}
+
+/* Mobile Optimizations */
+@media (max-width: 767.98px) {
+    .current-focus-section {
+        margin: 1rem 0;
+        padding: 2rem 0;
+    }
+
+    .current-focus-wrapper {
+        padding: 15px;
+    }
+
+    .current-focus-content .lead {
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+    .current-focus-section {
+        background-color: rgba(245, 245, 220, 0.1);
+    }
+
+    .current-focus-content .lead,
+    .current-focus-content p {
+        color: rgba(255, 255, 255, 0.9);
+    }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+    .current-focus-content {
+        transition: none;
+    }
+
+    .current-focus-section .btn-primary {
+        transition: none;
+    }
+
+    .current-focus-section .btn-primary:hover {
+        transform: none;
+    }
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: more) {
+    .current-focus-section {
+        border: 2px solid currentColor;
+    }
+
+    .current-focus-section .btn-primary {
+        border: 2px solid currentColor;
+    }
+}
