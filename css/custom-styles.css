@@ -1022,3 +1022,224 @@
         opacity: 0.2;
     }
 }
+
+/* Growth and Expansion Section Styles
+-------------------------------------------------- */
+.growth-expansion-section {
+    position: relative;
+    padding: clamp(3rem, 5vw, 5rem) 0;
+    background-color: #f8f9fa;
+    overflow: hidden;
+}
+
+/* Timeline Styles */
+.vertical-timeline {
+    position: relative;
+    max-width: 1000px;
+    margin: 4rem auto;
+    padding: 2rem 0;
+}
+
+.vertical-timeline::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    height: 100%;
+    width: 2px;
+    background-color: var(--color-primary, #1E90FF);
+    opacity: 0.2;
+    transform: translateX(-50%);
+}
+
+.timeline-entry {
+    position: relative;
+    margin: 3rem 0;
+    width: 100%;
+    display: flex;
+}
+
+.timeline-entry-left {
+    justify-content: flex-start;
+    padding-right: 50%;
+}
+
+.timeline-entry-right {
+    justify-content: flex-end;
+    padding-left: 50%;
+}
+
+.timeline-dot {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    width: 40px;
+    height: 40px;
+    background-color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translate(-50%, 0);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 2;
+}
+
+.timeline-dot i {
+    color: var(--color-primary, #1E90FF);
+    font-size: 1.25rem;
+}
+
+.timeline-content {
+    background-color: #fff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+    width: calc(100% - 50px);
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.timeline-entry-left .timeline-content {
+    margin-right: 50px;
+}
+
+.timeline-entry-right .timeline-content {
+    margin-left: 50px;
+}
+
+.timeline-entry:hover .timeline-content {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.1);
+}
+
+.timeline-title {
+    font-size: 1.25rem;
+    color: var(--color-heading, #2D3748);
+    margin-bottom: 0.75rem;
+    font-weight: 600;
+}
+
+.timeline-text {
+    color: var(--color-text, #4A5568);
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Impact Grid Styles */
+.impact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+    margin-top: 4rem;
+}
+
+.impact-card {
+    background-color: #fff;
+    padding: 2rem 1.5rem;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.impact-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.1);
+}
+
+.impact-icon {
+    width: 60px;
+    height: 60px;
+    background-color: rgba(30, 144, 255, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+}
+
+.impact-icon i {
+    color: var(--color-primary, #1E90FF);
+    font-size: 1.75rem;
+}
+
+.impact-number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--color-heading, #2D3748);
+    margin-bottom: 0.5rem;
+    line-height: 1;
+}
+
+.impact-label {
+    color: var(--color-text, #4A5568);
+    font-size: 1rem;
+    line-height: 1.4;
+}
+
+/* Mobile Responsive Styles */
+@media (max-width: 991.98px) {
+    .vertical-timeline::before {
+        left: 40px;
+    }
+
+    .timeline-entry {
+        padding: 0 0 0 80px;
+        margin: 2rem 0;
+    }
+
+    .timeline-entry-left,
+    .timeline-entry-right {
+        justify-content: flex-start;
+        padding-right: 0;
+        padding-left: 80px;
+    }
+
+    .timeline-dot {
+        left: 40px;
+    }
+
+    .timeline-content {
+        width: 100%;
+    }
+
+    .timeline-entry-left .timeline-content,
+    .timeline-entry-right .timeline-content {
+        margin: 0;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .impact-grid {
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 1rem;
+    }
+
+    .impact-card {
+        padding: 1.5rem 1rem;
+    }
+
+    .impact-number {
+        font-size: 2rem;
+    }
+}
+
+/* Accessibility Styles */
+@media (prefers-reduced-motion: reduce) {
+    .timeline-content,
+    .impact-card {
+        transition: none;
+    }
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: more) {
+    .vertical-timeline::before {
+        opacity: 0.5;
+    }
+
+    .timeline-dot {
+        border: 2px solid currentColor;
+    }
+}

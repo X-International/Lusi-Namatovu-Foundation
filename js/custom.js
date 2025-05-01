@@ -51,6 +51,12 @@ document.addEventListener('DOMContentLoaded', function() {
     if (registrationSection) {
         initRegistrationSection();
     }
+
+    // Initialize growth and expansion section if it exists
+    const growthSection = document.querySelector('.growth-expansion-section');
+    if (growthSection) {
+        initGrowthExpansion();
+    }
 });
 
 function initModernPageHeader() {
@@ -1443,5 +1449,123 @@ function initRegistrationSection() {
     if (docIcon) {
         docIcon.setAttribute('role', 'img');
         docIcon.setAttribute('aria-label', 'Document icon representing CBO registration');
+    }
+}
+
+/**
+ * Growth and Expansion Section Initialization
+ * Handles animations, counters, and accessibility for the Growth and Expansion section
+ */
+function initGrowthExpansion() {
+    const section = document.querySelector('.growth-expansion-section');
+    if (!section) return;
+
+    // Initialize timeline animations
+    const timelineEntries = document.querySelectorAll('.timeline-entry');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+                
+                // Animate the timeline dot after the entry appears
+                const dot = entry.target.querySelector('.timeline-dot');
+                if (dot) {
+                    setTimeout(() => {
+                        dot.style.transform = 'translate(-50%, 0) scale(1)';
+                        dot.style.opacity = '1';
+                    }, 300);
+                }
+                
+                // Remove observer after animation
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.2 });
+
+    // Set initial styles and observe timeline entries
+    timelineEntries.forEach(entry => {
+        entry.style.opacity = '0';
+        entry.style.transform = 'translateY(30px)';
+        entry.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        
+        const dot = entry.querySelector('.timeline-dot');
+        if (dot) {
+            dot.style.opacity = '0';
+            dot.style.transform = 'translate(-50%, 0) scale(0.5)';
+            dot.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        }
+        
+        observer.observe(entry);
+    });
+
+    // Initialize impact counters
+    const impactCards = document.querySelectorAll('.impact-card');
+    const impactObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const counter = entry.target.querySelector('.impact-number');
+                const targetValue = parseInt(counter.getAttribute('data-count'), 10);
+                
+                // Animate counter with easing
+                animateCounter(counter, 0, targetValue, 2000, value => 
+                    value === targetValue ? `${value}+` : value, 'easeOutQuart');
+                
+                // Add appear animation
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+                
+                // Remove observer after animation
+                impactObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.2 });
+
+    // Set initial styles and observe impact cards
+    impactCards.forEach((card, index) => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(30px)';
+        card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        card.style.transitionDelay = `${index * 0.2}s`;
+        impactObserver.observe(card);
+    });
+
+    // Add keyboard navigation for timeline entries
+    timelineEntries.forEach(entry => {
+        entry.setAttribute('tabindex', '0');
+        entry.setAttribute('role', 'article');
+        
+        entry.addEventListener('keydown', e => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                entry.click();
+            }
+        });
+
+        // Add hover state management
+        entry.addEventListener('mouseenter', () => {
+            entry.setAttribute('data-hover', 'true');
+            const content = entry.querySelector('.timeline-content');
+            if (content) content.style.transform = 'translateY(-5px)';
+        });
+
+        entry.addEventListener('mouseleave', () => {
+            entry.removeAttribute('data-hover');
+            const content = entry.querySelector('.timeline-content');
+            if (content) content.style.transform = '';
+        });
+    });
+
+    // Handle reduced motion preference
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        timelineEntries.forEach(entry => {
+            entry.style.transition = 'none';
+            const dot = entry.querySelector('.timeline-dot');
+            if (dot) dot.style.transition = 'none';
+        });
+
+        impactCards.forEach(card => {
+            card.style.transition = 'none';
+        });
     }
 }
