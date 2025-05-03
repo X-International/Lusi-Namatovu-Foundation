@@ -891,25 +891,28 @@
     window.addEventListener("resize", handleResize);
 
     // Timeline Animation
-    const timelineElements = document.querySelectorAll('.timeline-animated');
-    
+    const timelineElements = document.querySelectorAll(".timeline-animated");
+
     if (timelineElements.length > 0) {
-        const timelineObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('animate-timeline');
-                    // Once animation played, no need to observe anymore
-                    timelineObserver.unobserve(entry.target);
-                }
-            });
-        }, {
-            rootMargin: '0px 0px -100px 0px',
-            threshold: 0.2
-        });
-        
-        timelineElements.forEach(element => {
-            timelineObserver.observe(element);
-        });
+      const timelineObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("animate-timeline");
+              // Once animation played, no need to observe anymore
+              timelineObserver.unobserve(entry.target);
+            }
+          });
+        },
+        {
+          rootMargin: "0px 0px -100px 0px",
+          threshold: 0.2,
+        }
+      );
+
+      timelineElements.forEach((element) => {
+        timelineObserver.observe(element);
+      });
     }
   });
 
@@ -917,388 +920,412 @@
   // This was duplicating functionality handled by mobile-menu.js
 
   // Timeline animation using Intersection Observer
-  document.addEventListener('DOMContentLoaded', function() {
-    const timelineElement = document.querySelector('.timeline-animated');
-    
+  document.addEventListener("DOMContentLoaded", function () {
+    const timelineElement = document.querySelector(".timeline-animated");
+
     if (timelineElement) {
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                // When timeline enters viewport
-                if (entry.isIntersecting) {
-                    // Add the animation trigger class
-                    timelineElement.classList.add('animate-timeline');
-                    // Once animated, no need to observe anymore
-                    observer.unobserve(timelineElement);
-                }
-            });
-        }, {
-            threshold: 0.2 // Trigger when 20% of the element is visible
-        });
-        
-        // Start observing the timeline element
-        observer.observe(timelineElement);
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            // When timeline enters viewport
+            if (entry.isIntersecting) {
+              // Add the animation trigger class
+              timelineElement.classList.add("animate-timeline");
+              // Once animated, no need to observe anymore
+              observer.unobserve(timelineElement);
+            }
+          });
+        },
+        {
+          threshold: 0.2, // Trigger when 20% of the element is visible
+        }
+      );
+
+      // Start observing the timeline element
+      observer.observe(timelineElement);
     }
   });
 
   // Impact Section Animations
-  document.addEventListener('DOMContentLoaded', function() {
+  document.addEventListener("DOMContentLoaded", function () {
     // Intersection Observer for fade-in animations
-    const fadeElements = document.querySelectorAll('.hq-section-fade');
-    
-    const fadeObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('fade-in');
-                fadeObserver.unobserve(entry.target);
-            }
+    const fadeElements = document.querySelectorAll(".hq-section-fade");
+
+    const fadeObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("fade-in");
+            fadeObserver.unobserve(entry.target);
+          }
         });
-    }, { threshold: 0.2 });
-    
-    fadeElements.forEach(el => {
-        fadeObserver.observe(el);
+      },
+      { threshold: 0.2 }
+    );
+
+    fadeElements.forEach((el) => {
+      fadeObserver.observe(el);
     });
-    
+
     // Timeline animation
-    const timelineElements = document.querySelectorAll('.timeline-animated');
-    
-    const timelineObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('animate-timeline');
-                
-                // Add the animated class to dots after timeline appears
-                setTimeout(() => {
-                    const dots = entry.target.querySelectorAll('.timeline-dot');
-                    dots.forEach(dot => {
-                        dot.classList.add('animated');
-                    });
-                }, 1500);
-                
-                timelineObserver.unobserve(entry.target);
-            }
+    const timelineElements = document.querySelectorAll(".timeline-animated");
+
+    const timelineObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("animate-timeline");
+
+            // Add the animated class to dots after timeline appears
+            setTimeout(() => {
+              const dots = entry.target.querySelectorAll(".timeline-dot");
+              dots.forEach((dot) => {
+                dot.classList.add("animated");
+              });
+            }, 1500);
+
+            timelineObserver.unobserve(entry.target);
+          }
         });
-    }, { threshold: 0.5 });
-    
-    timelineElements.forEach(el => {
-        timelineObserver.observe(el);
+      },
+      { threshold: 0.5 }
+    );
+
+    timelineElements.forEach((el) => {
+      timelineObserver.observe(el);
     });
 
     // Number counter animation (works with odometer)
-    const counterElements = document.querySelectorAll('.counter-item');
-    
-    const counterObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const odometerElement = entry.target.querySelector('.odometer');
-                
-                if (odometerElement) {
-                    const finalValue = odometerElement.getAttribute('data-count');
-                    
-                    setTimeout(() => {
-                        odometerElement.innerHTML = finalValue;
-                    }, 500);
-                }
-                
-                counterObserver.unobserve(entry.target);
+    const counterElements = document.querySelectorAll(".counter-item");
+
+    const counterObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const odometerElement = entry.target.querySelector(".odometer");
+
+            if (odometerElement) {
+              const finalValue = odometerElement.getAttribute("data-count");
+
+              setTimeout(() => {
+                odometerElement.innerHTML = finalValue;
+              }, 500);
             }
+
+            counterObserver.unobserve(entry.target);
+          }
         });
-    }, { threshold: 0.5 });
-    
-    counterElements.forEach(el => {
-        counterObserver.observe(el);
+      },
+      { threshold: 0.5 }
+    );
+
+    counterElements.forEach((el) => {
+      counterObserver.observe(el);
     });
   });
 })(jQuery);
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener("DOMContentLoaded", function () {
   // Initialize Masonry layout for desktop gallery
-  var masonryGrid = document.querySelector('.gallery-grid');
+  var masonryGrid = document.querySelector(".gallery-grid");
   if (masonryGrid) {
-      var masonry = new Masonry(masonryGrid, {
-          itemSelector: '.gallery-item',
-          columnWidth: '.gallery-item',
-          percentPosition: true,
-          gutter: 20
-      });
+    var masonry = new Masonry(masonryGrid, {
+      itemSelector: ".gallery-item",
+      columnWidth: ".gallery-item",
+      percentPosition: true,
+      gutter: 20,
+    });
   }
-  
+
   // Initialize mobile gallery carousel with keyboard navigation
-  var mobileGallerySwiper = new Swiper('.mobile-gallery-carousel', {
-      slidesPerView: 1.2,
-      spaceBetween: 15,
-      centeredSlides: true,
-      loop: true,
-      a11y: {
-          enabled: true,
-          prevSlideMessage: 'Previous slide',
-          nextSlideMessage: 'Next slide',
-          firstSlideMessage: 'This is the first slide',
-          lastSlideMessage: 'This is the last slide'
+  var mobileGallerySwiper = new Swiper(".mobile-gallery-carousel", {
+    slidesPerView: 1.2,
+    spaceBetween: 15,
+    centeredSlides: true,
+    loop: true,
+    a11y: {
+      enabled: true,
+      prevSlideMessage: "Previous slide",
+      nextSlideMessage: "Next slide",
+      firstSlideMessage: "This is the first slide",
+      lastSlideMessage: "This is the last slide",
+    },
+    keyboard: {
+      enabled: true,
+      onlyInViewport: true,
+    },
+    pagination: {
+      el: ".mobile-gallery-pagination",
+      clickable: true,
+    },
+    navigation: {
+      nextEl: ".mobile-gallery-next",
+      prevEl: ".mobile-gallery-prev",
+    },
+    breakpoints: {
+      480: {
+        slidesPerView: 1.5,
+        spaceBetween: 20,
       },
-      keyboard: {
-          enabled: true,
-          onlyInViewport: true
-      },
-      pagination: {
-          el: '.mobile-gallery-pagination',
-          clickable: true
-      },
-      navigation: {
-          nextEl: '.mobile-gallery-next',
-          prevEl: '.mobile-gallery-prev',
-      },
-      breakpoints: {
-          480: {
-              slidesPerView: 1.5,
-              spaceBetween: 20
-          }
-      }
+    },
   });
-  
+
   // Add keyboard navigation event listener for mobile gallery
-  document.addEventListener('keydown', function(e) {
-      // Only apply keyboard navigation when carousel is in viewport
-      var carousel = document.querySelector('.mobile-gallery-carousel');
-      if (!carousel) return;
-      
-      var rect = carousel.getBoundingClientRect();
-      var isInViewport = (
-          rect.top >= 0 &&
-          rect.left >= 0 &&
-          rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-          rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-      );
-      
-      if (isInViewport && mobileGallerySwiper) {
-          if (e.key === 'ArrowLeft') {
-              mobileGallerySwiper.slidePrev();
-              e.preventDefault();
-          } else if (e.key === 'ArrowRight') {
-              mobileGallerySwiper.slideNext();
-              e.preventDefault();
-          }
+  document.addEventListener("keydown", function (e) {
+    // Only apply keyboard navigation when carousel is in viewport
+    var carousel = document.querySelector(".mobile-gallery-carousel");
+    if (!carousel) return;
+
+    var rect = carousel.getBoundingClientRect();
+    var isInViewport =
+      rect.top >= 0 &&
+      rect.left >= 0 &&
+      rect.bottom <=
+        (window.innerHeight || document.documentElement.clientHeight) &&
+      rect.right <= (window.innerWidth || document.documentElement.clientWidth);
+
+    if (isInViewport && mobileGallerySwiper) {
+      if (e.key === "ArrowLeft") {
+        mobileGallerySwiper.slidePrev();
+        e.preventDefault();
+      } else if (e.key === "ArrowRight") {
+        mobileGallerySwiper.slideNext();
+        e.preventDefault();
       }
+    }
   });
-  
+
   // Initialize VenoBox with keyboard navigation
-  if (typeof VenoBox !== 'undefined') {
-      new VenoBox({
-          selector: '.venobox',
-          numeration: true,
-          infinigall: true,
-          spinner: 'rotating-plane',
-          spinColor: '#0e98f1',
-          navigation: true,
-          navKeyboard: true, // Enable keyboard navigation in lightbox
-          navTouch: true,    // Enable touch navigation in lightbox
-          share: false,      // Disable share buttons
-          titlePosition: 'bottom', // Place titles at the bottom
-          titleattr: 'data-title', // Use data-title for image titles
-          focusable: true    // Improve keyboard focus support
-      });
+  if (typeof VenoBox !== "undefined") {
+    new VenoBox({
+      selector: ".venobox",
+      numeration: true,
+      infinigall: true,
+      spinner: "rotating-plane",
+      spinColor: "#0e98f1",
+      navigation: true,
+      navKeyboard: true, // Enable keyboard navigation in lightbox
+      navTouch: true, // Enable touch navigation in lightbox
+      share: false, // Disable share buttons
+      titlePosition: "bottom", // Place titles at the bottom
+      titleattr: "data-title", // Use data-title for image titles
+      focusable: true, // Improve keyboard focus support
+    });
   }
-  
+
   // Category filtering functionality with dynamic counter update
-  var filterButtons = document.querySelectorAll('.filter-btn');
-  
+  var filterButtons = document.querySelectorAll(".filter-btn");
+
   // Initial counter setup
   function updateGalleryCounter() {
-      // Get total number of gallery items
-      var totalItems = document.querySelectorAll('.gallery-item').length;
-      var totalCountElement = document.querySelector('.total-count');
-      if (totalCountElement) {
-          // Update total count (keep the "+" if it exists)
-          var currentText = totalCountElement.textContent;
-          var hasPlus = currentText.includes('+');
-          totalCountElement.textContent = totalItems + (hasPlus ? '+' : '');
-      }
-      
-      // Count visible items and update shown count
-      var visibleItems = document.querySelectorAll('.gallery-item[style="display: block"]').length;
-      // If no items have style attribute yet, count all items
-      if (visibleItems === 0) {
-          visibleItems = totalItems;
-      }
-      
-      var shownCountElement = document.querySelector('.shown-count');
-      if (shownCountElement) {
-          shownCountElement.textContent = visibleItems;
-      }
+    // Get total number of gallery items
+    var totalItems = document.querySelectorAll(".gallery-item").length;
+    var totalCountElement = document.querySelector(".total-count");
+    if (totalCountElement) {
+      // Update total count (keep the "+" if it exists)
+      var currentText = totalCountElement.textContent;
+      var hasPlus = currentText.includes("+");
+      totalCountElement.textContent = totalItems + (hasPlus ? "+" : "");
+    }
+
+    // Count visible items and update shown count
+    var visibleItems = document.querySelectorAll(
+      '.gallery-item[style="display: block"]'
+    ).length;
+    // If no items have style attribute yet, count all items
+    if (visibleItems === 0) {
+      visibleItems = totalItems;
+    }
+
+    var shownCountElement = document.querySelector(".shown-count");
+    if (shownCountElement) {
+      shownCountElement.textContent = visibleItems;
+    }
   }
-  
+
   // Run counter update on page load
   updateGalleryCounter();
-  
-  filterButtons.forEach(function(button) {
-      button.addEventListener('click', function() {
-          // Remove active class from all buttons
-          filterButtons.forEach(function(btn) {
-              btn.classList.remove('active');
-          });
-          
-          // Add active class to clicked button
-          this.classList.add('active');
-          
-          var filterValue = this.getAttribute('data-filter');
-          
-          // Filter desktop gallery items
-          var galleryItems = document.querySelectorAll('.gallery-item');
-          var visibleCount = 0;
-          
-          galleryItems.forEach(function(item) {
-              var itemCategory = item.getAttribute('data-category');
-              
-              if (filterValue === 'all' || filterValue === itemCategory) {
-                  item.style.display = 'block';
-                  visibleCount++;
-              } else {
-                  item.style.display = 'none';
-              }
-          });
-          
-          // Update counter with new visible count
-          var shownCountElement = document.querySelector('.shown-count');
-          if (shownCountElement) {
-              shownCountElement.textContent = visibleCount;
-          }
-          
-          // Relayout masonry after filtering
-          if (typeof Masonry !== 'undefined' && masonry) {
-              setTimeout(function() {
-                  masonry.layout();
-              }, 100);
-          }
-          
-          // MOBILE CAROUSEL FILTERING - IMPROVED VERSION
-          // First, get the swiper container and all slides
-          var swiperContainer = document.querySelector('.mobile-gallery-carousel');
-          if (!swiperContainer) return;
-          
-          var allSlides = swiperContainer.querySelectorAll('.swiper-slide:not(.swiper-slide-duplicate)');
-          
-          // Step 1: Hide/show slides based on filter and track which ones are visible
-          var visibleSlides = [];
-          allSlides.forEach(function(slide) {
-              var slideCategory = slide.getAttribute('data-category');
-              
-              if (filterValue === 'all' || filterValue === slideCategory) {
-                  // Make the slide visible
-                  slide.classList.remove('filtered-out');
-                  visibleSlides.push(slide);
-              } else {
-                  // Hide the slide
-                  slide.classList.add('filtered-out');
-              }
-          });
-          
-          // Count visible slides - used to create exact number of pagination dots
-          var visibleSlideCount = visibleSlides.length;
-          
-          // Step 2: Destroy the current Swiper instance
-          if (mobileGallerySwiper) {
-              mobileGallerySwiper.destroy(true, true);
-          }
-          
-          // Step 3: Re-initialize the Swiper instance with custom pagination
-          setTimeout(function() {
-              // Remove Swiper's own duplicate slides if they exist
-              document.querySelectorAll('.swiper-wrapper .swiper-slide-duplicate').forEach(function(el) {
-                  el.remove();
-              });
-              
-              // Hide filtered slides completely
-              document.querySelectorAll('.filtered-out').forEach(function(slide) {
-                  slide.style.display = 'none';
-              });
-              
-              // Re-initialize Swiper with exact pagination bullet count
-              mobileGallerySwiper = new Swiper('.mobile-gallery-carousel', {
-                  slidesPerView: 1.2,
-                  spaceBetween: 15,
-                  centeredSlides: true,
-                  loop: visibleSlideCount > 1, // Only enable loop if more than one slide
-                  a11y: {
-                      enabled: true,
-                      prevSlideMessage: 'Previous slide',
-                      nextSlideMessage: 'Next slide',
-                      firstSlideMessage: 'This is the first slide',
-                      lastSlideMessage: 'This is the last slide'
-                  },
-                  keyboard: {
-                      enabled: true,
-                      onlyInViewport: true
-                  },
-                  pagination: {
-                      el: '.mobile-gallery-pagination',
-                      clickable: true,
-                      // Set exact number of bullets based on visible slides
-                      dynamicBullets: false,
-                      renderBullet: function (index, className) {
-                          // Only render bullets for visible slides
-                          if (index < visibleSlideCount) {
-                              return '<span class="' + className + '"></span>';
-                          }
-                          return '';
-                      }
-                  },
-                  navigation: {
-                      nextEl: '.mobile-gallery-next',
-                      prevEl: '.mobile-gallery-prev',
-                  },
-                  breakpoints: {
-                      480: {
-                          slidesPerView: 1.5,
-                          spaceBetween: 20
-                      }
-                  },
-                  on: {
-                      init: function() {
-                          // Update the pagination to show only bullets for visible slides
-                          var paginationEl = document.querySelector('.mobile-gallery-pagination');
-                          if (paginationEl) {
-                              // Ensure we only have the exact number of bullets
-                              var bullets = paginationEl.querySelectorAll('.swiper-pagination-bullet');
-                              
-                              // Hide any extra bullets
-                              for (var i = visibleSlideCount; i < bullets.length; i++) {
-                                  bullets[i].style.display = 'none';
-                              }
-                          }
-                          
-                          // Update Swiper to reflect new state
-                          this.update();
-                      }
-                  }
-              });
-              
-              // Go to first slide and update
-              mobileGallerySwiper.slideTo(0, 0);
-              mobileGallerySwiper.update();
-          }, 50);
+
+  filterButtons.forEach(function (button) {
+    button.addEventListener("click", function () {
+      // Remove active class from all buttons
+      filterButtons.forEach(function (btn) {
+        btn.classList.remove("active");
       });
-      
-      // Add keyboard support for filter buttons
-      button.addEventListener('keydown', function(e) {
-          if (e.key === 'Enter' || e.key === ' ') {
-              e.preventDefault();
-              button.click();
-          }
+
+      // Add active class to clicked button
+      this.classList.add("active");
+
+      var filterValue = this.getAttribute("data-filter");
+
+      // Filter desktop gallery items
+      var galleryItems = document.querySelectorAll(".gallery-item");
+      var visibleCount = 0;
+
+      galleryItems.forEach(function (item) {
+        var itemCategory = item.getAttribute("data-category");
+
+        if (filterValue === "all" || filterValue === itemCategory) {
+          item.style.display = "block";
+          visibleCount++;
+        } else {
+          item.style.display = "none";
+        }
       });
+
+      // Update counter with new visible count
+      var shownCountElement = document.querySelector(".shown-count");
+      if (shownCountElement) {
+        shownCountElement.textContent = visibleCount;
+      }
+
+      // Relayout masonry after filtering
+      if (typeof Masonry !== "undefined" && masonry) {
+        setTimeout(function () {
+          masonry.layout();
+        }, 100);
+      }
+
+      // MOBILE CAROUSEL FILTERING - IMPROVED VERSION
+      // First, get the swiper container and all slides
+      var swiperContainer = document.querySelector(".mobile-gallery-carousel");
+      if (!swiperContainer) return;
+
+      var allSlides = swiperContainer.querySelectorAll(
+        ".swiper-slide:not(.swiper-slide-duplicate)"
+      );
+
+      // Step 1: Hide/show slides based on filter and track which ones are visible
+      var visibleSlides = [];
+      allSlides.forEach(function (slide) {
+        var slideCategory = slide.getAttribute("data-category");
+
+        if (filterValue === "all" || filterValue === slideCategory) {
+          // Make the slide visible
+          slide.classList.remove("filtered-out");
+          visibleSlides.push(slide);
+        } else {
+          // Hide the slide
+          slide.classList.add("filtered-out");
+        }
+      });
+
+      // Count visible slides - used to create exact number of pagination dots
+      var visibleSlideCount = visibleSlides.length;
+
+      // Step 2: Destroy the current Swiper instance
+      if (mobileGallerySwiper) {
+        mobileGallerySwiper.destroy(true, true);
+      }
+
+      // Step 3: Re-initialize the Swiper instance with custom pagination
+      setTimeout(function () {
+        // Remove Swiper's own duplicate slides if they exist
+        document
+          .querySelectorAll(".swiper-wrapper .swiper-slide-duplicate")
+          .forEach(function (el) {
+            el.remove();
+          });
+
+        // Hide filtered slides completely
+        document.querySelectorAll(".filtered-out").forEach(function (slide) {
+          slide.style.display = "none";
+        });
+
+        // Re-initialize Swiper with exact pagination bullet count
+        mobileGallerySwiper = new Swiper(".mobile-gallery-carousel", {
+          slidesPerView: 1.2,
+          spaceBetween: 15,
+          centeredSlides: true,
+          loop: visibleSlideCount > 1, // Only enable loop if more than one slide
+          a11y: {
+            enabled: true,
+            prevSlideMessage: "Previous slide",
+            nextSlideMessage: "Next slide",
+            firstSlideMessage: "This is the first slide",
+            lastSlideMessage: "This is the last slide",
+          },
+          keyboard: {
+            enabled: true,
+            onlyInViewport: true,
+          },
+          pagination: {
+            el: ".mobile-gallery-pagination",
+            clickable: true,
+            // Set exact number of bullets based on visible slides
+            dynamicBullets: false,
+            renderBullet: function (index, className) {
+              // Only render bullets for visible slides
+              if (index < visibleSlideCount) {
+                return '<span class="' + className + '"></span>';
+              }
+              return "";
+            },
+          },
+          navigation: {
+            nextEl: ".mobile-gallery-next",
+            prevEl: ".mobile-gallery-prev",
+          },
+          breakpoints: {
+            480: {
+              slidesPerView: 1.5,
+              spaceBetween: 20,
+            },
+          },
+          on: {
+            init: function () {
+              // Update the pagination to show only bullets for visible slides
+              var paginationEl = document.querySelector(
+                ".mobile-gallery-pagination"
+              );
+              if (paginationEl) {
+                // Ensure we only have the exact number of bullets
+                var bullets = paginationEl.querySelectorAll(
+                  ".swiper-pagination-bullet"
+                );
+
+                // Hide any extra bullets
+                for (var i = visibleSlideCount; i < bullets.length; i++) {
+                  bullets[i].style.display = "none";
+                }
+              }
+
+              // Update Swiper to reflect new state
+              this.update();
+            },
+          },
+        });
+
+        // Go to first slide and update
+        mobileGallerySwiper.slideTo(0, 0);
+        mobileGallerySwiper.update();
+      }, 50);
+    });
+
+    // Add keyboard support for filter buttons
+    button.addEventListener("keydown", function (e) {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        button.click();
+      }
+    });
   });
-  
+
   // Add focus styles to enhance keyboard navigation
-  document.querySelectorAll('.venobox, .filter-btn').forEach(function(element) {
-      element.addEventListener('focus', function() {
-          this.classList.add('keyboard-focus');
+  document
+    .querySelectorAll(".venobox, .filter-btn")
+    .forEach(function (element) {
+      element.addEventListener("focus", function () {
+        this.classList.add("keyboard-focus");
       });
-      
-      element.addEventListener('blur', function() {
-          this.classList.remove('keyboard-focus');
+
+      element.addEventListener("blur", function () {
+        this.classList.remove("keyboard-focus");
       });
-  });
-  
+    });
+
   // Handle window resize events to update the counter
-  window.addEventListener('resize', function() {
-      setTimeout(updateGalleryCounter, 200);
+  window.addEventListener("resize", function () {
+    setTimeout(updateGalleryCounter, 200);
   });
 });

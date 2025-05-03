@@ -83,10 +83,12 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(0deg, 
-    rgba(0, 0, 0, 0.3) 0%, /* Increased opacity for better text visibility */
-    rgba(0, 0, 0, 0.2) 30%, 
-    rgba(0, 0, 0, 0.1) 100%);
+  background: linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.3) 0%,
+    /* Increased opacity for better text visibility */ rgba(0, 0, 0, 0.2) 30%,
+    rgba(0, 0, 0, 0.1) 100%
+  );
   z-index: 2;
 }
 
@@ -187,7 +189,7 @@
   .highlight::before {
     height: 30%;
   }
-  
+
   @keyframes highlightAnimate {
     0% {
       height: 0;
@@ -244,7 +246,8 @@
   border: none;
 }
 
-.btn-primary:hover, .btn-primary:focus {
+.btn-primary:hover,
+.btn-primary:focus {
   background-color: #0d8ad8;
   transform: translateY(-2px);
   box-shadow: 0 4px 10px rgba(14, 152, 241, 0.3);
@@ -257,7 +260,8 @@
   transition: all 0.3s ease;
 }
 
-.btn-outline:hover, .btn-outline:focus {
+.btn-outline:hover,
+.btn-outline:focus {
   background-color: #0e98f1;
   color: white;
   border-color: #0e98f1;
@@ -318,7 +322,8 @@
   transition: all 0.3s ease;
 }
 
-.nav-button:hover, .nav-button:focus {
+.nav-button:hover,
+.nav-button:focus {
   background-color: rgba(14, 152, 241, 0.2);
   transform: scale(1.05);
 }
@@ -363,22 +368,23 @@
 
 /* Add styles for pause/play button */
 .pause-play-button {
-    transition: all 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .pause-play-button:hover {
-    transform: scale(1.1);
+  transform: scale(1.1);
 }
 
 .pause-play-button:focus {
-    outline: 2px solid rgba(14, 152, 241, 0.5);
-    outline-offset: 2px;
+  outline: 2px solid rgba(14, 152, 241, 0.5);
+  outline-offset: 2px;
 }
 
-.pause-icon, .play-icon {
-    width: 16px;
-    height: 16px;
-    transition: opacity 0.3s ease;
+.pause-icon,
+.play-icon {
+  width: 16px;
+  height: 16px;
+  transition: opacity 0.3s ease;
 }
 
 /* Tablet Styles (576px and up) */
@@ -386,46 +392,46 @@
   .hero-slider {
     min-height: 100vh;
   }
-  
+
   .image-column {
     height: 340px; /* Increased from 320px */
   }
-  
+
   .slide-title h1 {
     font-size: 36px; /* Increased from 34px */
   }
-  
+
   .content-column {
     padding: 40px 25px 60px;
   }
-  
+
   .content-wrapper {
     max-width: 520px;
   }
-  
+
   .tag-line {
     padding: 7px 18px;
     margin-bottom: 20px;
   }
-  
+
   .tag-line span {
     font-size: 15px;
   }
-  
+
   .btn {
     padding: 14px 28px;
     font-size: 15px;
   }
-  
+
   .slider-controls {
     bottom: 20px;
   }
-  
+
   .nav-button {
     width: 40px; /* Increased from 38px */
     height: 40px; /* Increased from 38px */
   }
-  
+
   .nav-button svg {
     width: 18px;
     height: 18px;
@@ -437,33 +443,33 @@
   .hero-slider {
     min-height: 600px;
   }
-  
+
   .image-column {
     height: 400px; /* Increased from 380px */
   }
-  
+
   .slide-title h1 {
     font-size: 42px; /* Increased from 40px */
     line-height: 1.1;
   }
-  
+
   .slide-text p {
     font-size: 17px;
     line-height: 1.6;
   }
-  
+
   .slide-actions {
     flex-direction: row;
     justify-content: center;
     gap: 16px; /* Increased for better button spacing */
   }
-  
+
   .btn {
     width: auto;
     padding: 14px 28px;
     min-width: 160px; /* Added min-width for consistency */
   }
-  
+
   .slider-scroll-indicator {
     opacity: 0.8; /* Make visible on tablet */
   }
@@ -476,11 +482,11 @@
     min-height: 600px;
     max-height: 800px;
   }
-  
+
   .slider-frame {
     flex-direction: row;
   }
-  
+
   .content-column {
     width: 50%;
     height: 100%;
@@ -488,7 +494,7 @@
     text-align: left;
     justify-content: flex-end;
   }
-  
+
   .content-wrapper {
     max-width: 540px; /* Increased from 520px */
     margin-right: 0;
@@ -497,16 +503,16 @@
     padding-right: 30px;
     padding-left: 0;
   }
-  
+
   .image-column {
     width: 50%;
     height: 100%;
   }
-  
+
   .slide-actions {
     justify-content: flex-start;
   }
-  
+
   .slider-controls {
     left: 30px;
     right: auto;
@@ -516,25 +522,27 @@
     justify-content: flex-start;
     padding: 0;
   }
-  
+
   .slide-text p {
     margin: 0;
     max-width: 90%;
   }
-  
+
   .image-overlay {
-    background: linear-gradient(90deg, 
-      rgba(0, 0, 0, 0.4) 0%, /* Increased opacity for better text visibility */
-      rgba(0, 0, 0, 0.2) 30%, 
-      rgba(0, 0, 0, 0.1) 100%);
+    background: linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.4) 0%,
+      /* Increased opacity for better text visibility */ rgba(0, 0, 0, 0.2) 30%,
+      rgba(0, 0, 0, 0.1) 100%
+    );
   }
-  
+
   /* Show decorative shapes on larger screens */
   .decorative-shape {
     display: block;
     position: absolute;
   }
-  
+
   .shape-1 {
     width: 150px;
     height: 150px;
@@ -545,7 +553,7 @@
     z-index: 1;
     animation: float 6s ease-in-out infinite;
   }
-  
+
   .shape-2 {
     width: 80px;
     height: 80px;
@@ -556,16 +564,17 @@
     z-index: 1;
     animation: float 8s ease-in-out infinite reverse;
   }
-  
+
   @keyframes float {
-    0%, 100% {
+    0%,
+    100% {
       transform: translateY(0) rotate(0deg);
     }
     50% {
       transform: translateY(-20px) rotate(5deg);
     }
   }
-  
+
   .slider-scroll-indicator {
     display: flex;
     position: absolute;
@@ -579,7 +588,7 @@
     cursor: pointer;
     opacity: 1;
   }
-  
+
   .scroll-icon {
     width: 30px;
     height: 30px;
@@ -588,7 +597,7 @@
     justify-content: center;
     animation: bounce 1.5s infinite;
   }
-  
+
   .scroll-icon svg {
     width: 20px;
     height: 20px;
@@ -601,22 +610,22 @@
   .content-wrapper {
     max-width: 580px;
   }
-  
+
   .slide-title h1 {
     font-size: 52px; /* Adjusted from 48px */
   }
-  
+
   .content-column {
     width: 50%;
     padding: 0 5%; /* Increased padding for better balance */
   }
-  
+
   /* Enhanced decorative shapes */
   .shape-1 {
     width: 180px;
     height: 180px;
   }
-  
+
   .shape-2 {
     width: 100px;
     height: 100px;
@@ -628,15 +637,15 @@
   .slide-title h1 {
     font-size: 58px; /* Adjusted from 56px */
   }
-  
+
   .slide-text p {
     font-size: 18px;
   }
-  
+
   .content-wrapper {
     max-width: 650px; /* Increased for larger screens */
   }
-  
+
   .btn {
     padding: 16px 32px; /* Larger buttons for larger screens */
     font-size: 16px;
@@ -670,7 +679,8 @@
 
 /* Animation keyframes */
 @keyframes bounce {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0);
   }
   50% {
