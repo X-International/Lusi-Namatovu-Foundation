@@ -34,6 +34,12 @@ document.addEventListener("DOMContentLoaded", function () {
     initValuesSection();
   }
 
+  // Initialize needs section if it exists
+  const needsSection = document.querySelector(".needs-section");
+  if (needsSection) {
+    initNeedsSection();
+  }
+
   // Initialize founding story section if it exists
   const foundingStorySection = document.querySelector(
     ".founding-story-section"
@@ -393,7 +399,7 @@ function initTimeline() {
     // Get the target item's position for smoother scrolling
     const targetItem = timelineItems[index];
     const scrollPosition =
-      targetItem.offsetLeft -
+      targetItem.offsetLeft - 
       timelineScroller.offsetWidth / 2 +
       targetItem.offsetWidth / 2;
 
@@ -1382,6 +1388,96 @@ function enhanceValuesAccessibility() {
 }
 
 /**
+ * Initialize Needs Section
+ * Handles animations and interactions for "The Need in Rakai" section
+ */
+function initNeedsSection() {
+  const section = document.querySelector(".needs-section");
+  if (!section) return;
+
+  // Initialize card animations with intersection observer
+  const cards = section.querySelectorAll(".promo-card");
+  
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          // Get any delay attribute
+          const delay = parseFloat(entry.target.getAttribute("data-wow-delay") || 0);
+          
+          // Add a staggered animation effect
+          setTimeout(() => {
+            entry.target.classList.add("animated");
+            entry.target.style.opacity = "1";
+            entry.target.style.transform = "translateY(0)";
+          }, delay * 1000);
+          
+          // Unobserve once animated
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.1, rootMargin: "0px 0px -50px 0px" }
+  );
+  
+  // Set initial state for cards and observe them
+  cards.forEach((card) => {
+    card.style.opacity = "0";
+    card.style.transform = "translateY(30px)";
+    card.style.transition = "opacity 0.8s ease, transform 0.8s ease";
+    observer.observe(card);
+  });
+  
+  // Add interaction effects
+  cards.forEach((card) => {
+    // Add hover effects for image overlay
+    card.addEventListener("mouseenter", () => {
+      const image = card.querySelector(".promo-card-image");
+      if (image) {
+        image.style.opacity = "1";
+      }
+    });
+    
+    card.addEventListener("mouseleave", () => {
+      // Don't reset opacity for cards that have the active class
+      if (!card.classList.contains("promo-card-active")) {
+        const image = card.querySelector(".promo-card-image");
+        if (image) {
+          image.style.opacity = "";
+        }
+      }
+    });
+    
+    // Add keyboard accessibility
+    card.setAttribute("tabindex", "0");
+    
+    card.addEventListener("focus", () => {
+      const image = card.querySelector(".promo-card-image");
+      if (image) {
+        image.style.opacity = "1";
+      }
+    });
+    
+    card.addEventListener("blur", () => {
+      // Don't reset opacity for cards that have the active class
+      if (!card.classList.contains("promo-card-active")) {
+        const image = card.querySelector(".promo-card-image");
+        if (image) {
+          image.style.opacity = "";
+        }
+      }
+    });
+  });
+  
+  // Support for reduced motion preferences
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    cards.forEach(card => {
+      card.style.transition = "none";
+    });
+  }
+}
+
+/**
  * Enhanced Founding Story Section
  * Handles animations, interactions, and accessibility features
  */
@@ -1460,7 +1556,7 @@ function initStoryTimeline() {
     const markerRect = marker.getBoundingClientRect();
     const scrollTo =
       timeline.scrollLeft +
-      (markerRect.left - timelineRect.left) -
+      (markerRect.left - timelineRect.left) - 
       timelineRect.width / 2 +
       markerRect.width / 2;
 

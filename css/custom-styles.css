@@ -431,7 +431,7 @@
   border-radius: 1rem;
   overflow: hidden;
   box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1);
-  transition: transform 0.6s ease, box-shadow 0.6s ease;
+  transition: none; /* Removed transition for transform and box-shadow */
   margin-bottom: 2rem; /* Add spacing to prevent overlap */
   height: auto; /* Allow natural height */
   max-height: 500px; /* Limit maximum height */
@@ -449,30 +449,11 @@
   height: 100%;
   object-fit: cover;
   transform: scale(1);
-  transition: transform 0.6s ease;
+  transition: none; /* Removed transition */
 }
 
 .founding-story-image-wrapper:hover img {
-  transform: scale(1.05);
-}
-
-.image-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0.2),
-    rgba(0, 0, 0, 0.6)
-  );
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.founding-story-image-wrapper:hover .image-overlay {
-  opacity: 1;
+  transform: none; /* Removed transform */
 }
 
 .year-badge,
@@ -565,7 +546,7 @@
   background-color: #fff;
   border-radius: 0.75rem;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: none; /* Removed transition for transform and box-shadow */
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -755,7 +736,7 @@
   padding: 8px;
   cursor: pointer;
   color: var(--color-text, #4a5568);
-  transition: color 0.3s ease;
+  transition: color 0.3s ease; /* Kept transition for color change */
 }
 
 .timeline-btn:hover,
@@ -1119,7 +1100,7 @@
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
   width: calc(100% - 50px);
   position: relative;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: none; /* Removed transition for transform and box-shadow */
 }
 
 .timeline-entry-left .timeline-content {
@@ -1131,8 +1112,8 @@
 }
 
 .timeline-entry:hover .timeline-content {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.1);
+  transform: none; /* Removed transform */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06); /* Kept the same box-shadow */
 }
 
 .timeline-title {
@@ -1162,12 +1143,12 @@
   border-radius: 12px;
   text-align: center;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: none; /* Removed transition for transform and box-shadow */
 }
 
 .impact-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.1);
+  transform: none; /* Removed transform */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06); /* Kept the same box-shadow */
 }
 
 .impact-icon {
@@ -1318,7 +1299,7 @@
   border-radius: 30px;
   text-decoration: none;
   font-weight: 500;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Kept transition for buttons */
 }
 
 .current-focus-section .btn-primary:hover,
@@ -1430,7 +1411,7 @@
   padding: 12px 24px;
   border-radius: 8px;
   font-weight: 500;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Kept transition for buttons */
   min-width: 160px;
 }
 
@@ -1442,7 +1423,7 @@
   border-radius: 8px;
   font-weight: 500;
   transition: transform 0.3s ease, box-shadow 0.3s ease,
-    background-color 0.3s ease;
+    background-color 0.3s ease; /* Kept transition for buttons */
   min-width: 160px;
 }
 
@@ -1534,32 +1515,21 @@
 
 /* Program Goals Section Styles */
 .goal-card {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: none; /* Removed transition */
 }
 
 .goal-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1) !important;
-}
-
-.goal-icon {
-  width: 70px;
-  height: 70px;
-  border-radius: 50%;
-  background-color: var(--color-primary-rgb, rgba(30, 144, 255, 0.1));
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto;
+  transform: none; /* Removed transform */
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1) !important; /* Kept same box-shadow */
 }
 
 /* Program Activities Section Styles */
 .activity-card {
-  transition: transform 0.3s ease;
+  transition: none; /* Removed transition */
 }
 
 .activity-card:hover {
-  transform: translateY(-5px);
+  transform: none; /* Removed transform */
 }
 
 .activity-icon {
@@ -1598,11 +1568,11 @@
 
 /* Eligibility Section Styles */
 .eligibility-card {
-  transition: transform 0.3s ease;
+  transition: none; /* Removed transition */
 }
 
 .eligibility-card:hover {
-  transform: translateY(-5px);
+  transform: none; /* Removed transform */
 }
 
 .eligibility-icon {
@@ -1618,33 +1588,33 @@
 
 /* Access Section Styles */
 .step-card {
-  transition: transform 0.3s ease;
+  transition: none; /* Removed transition */
   border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .step-card:hover {
-  transform: translateY(-5px);
+  transform: none; /* Removed transform */
 }
 
 .contact-method {
-  transition: transform 0.3s ease;
+  transition: none; /* Removed transition */
 }
 
 .contact-method:hover {
-  transform: translateY(-5px);
+  transform: none; /* Removed transform */
 }
 
 /* Impact Section Styles */
 .impact-stats-card,
 .impact-story-card,
 .impact-testimonial-card {
-  transition: transform 0.3s ease;
+  transition: none; /* Removed transition */
 }
 
 .impact-stats-card:hover,
 .impact-story-card:hover,
 .impact-testimonial-card:hover {
-  transform: translateY(-5px);
+  transform: none; /* Removed transform */
 }
 
 .impact-stat-item {
@@ -1658,29 +1628,29 @@
 }
 
 .story-image img {
-  transition: transform 0.3s ease;
+  transition: none; /* Removed transition */
 }
 
 .story-image:hover img {
-  transform: scale(1.05);
+  transform: none; /* Removed transform */
 }
 
 /* Call to Action Section Styles */
 .donation-impact {
-  transition: transform 0.3s ease;
+  transition: none; /* Removed transition */
 }
 
 .donation-impact:hover {
-  transform: translateY(-5px);
+  transform: none; /* Removed transform */
 }
 
 /* Related Programs Section Styles */
 .program-card {
-  transition: transform 0.3s ease;
+  transition: none; /* Removed transition */
 }
 
 .program-card:hover {
-  transform: translateY(-5px);
+  transform: none; /* Removed transform */
 }
 
 .program-image {
@@ -1689,11 +1659,11 @@
 }
 
 .program-image img {
-  transition: transform 0.3s ease;
+  transition: none; /* Removed transition */
 }
 
 .program-card:hover .program-image img {
-  transform: scale(1.05);
+  transform: none; /* Removed transform */
 }
 
 .hq-btn-arrow {
@@ -1804,12 +1774,12 @@
   height: auto;
   object-fit: cover;
   display: block;
-  transition: transform 0.6s ease;
+  transition: none; /* Removed transition */
 }
 
-/* Hover animation */
+/* Removed hover animation */
 .featured-image-wrapper:hover .featured-image {
-  transform: scale(1.03);
+  transform: none;
 }
 
 /* Responsive adjustments */
