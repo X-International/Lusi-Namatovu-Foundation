@@ -22,6 +22,12 @@ document.addEventListener("DOMContentLoaded", function () {
     initAboutStorySection();
   }
 
+  // Initialize Our Story section if it exists
+  const storySection = document.querySelector(".story-section");
+  if (storySection) {
+    initStorySection();
+  }
+
   // Initialize modern timeline if it exists
   const modernTimeline = document.querySelector(".modern-timeline");
   if (modernTimeline) {
@@ -399,7 +405,7 @@ function initTimeline() {
     // Get the target item's position for smoother scrolling
     const targetItem = timelineItems[index];
     const scrollPosition =
-      targetItem.offsetLeft - 
+      targetItem.offsetLeft -
       timelineScroller.offsetWidth / 2 +
       targetItem.offsetWidth / 2;
 
@@ -2013,4 +2019,181 @@ function initializeTestimonials() {
       testimonial.classList.remove("active");
     });
   });
+}
+
+/**
+ * Initialize Our Story section functionality
+ * Handles animations, image hover effects, and stat card interactions
+ */
+function initStorySection() {
+  // Animate elements when they come into view
+  const observerOptions = {
+    threshold: 0.15,
+    rootMargin: "0px 0px -50px 0px"
+  };
+
+  // Create intersection observer for text content animation
+  const textObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        // Get any explicit delay attribute or use default delays
+        const paragraphs = entry.target.querySelectorAll('.story-text');
+        
+        paragraphs.forEach((paragraph, index) => {
+          const delay = paragraph.getAttribute('data-delay') || (index * 0.1 + 0.1);
+          
+          setTimeout(() => {
+            paragraph.style.opacity = '1';
+            paragraph.style.transform = 'translateY(0)';
+          }, delay * 1000);
+        });
+        
+        // Handle quote animations if present
+        const quoteElement = entry.target.querySelector('.story-quote');
+        if (quoteElement) {
+          setTimeout(() => {
+            quoteElement.style.opacity = '1';
+            quoteElement.style.transform = 'translateY(0)';
+          }, 0.4 * 1000);
+        }
+        
+        // Unobserve once animated
+        textObserver.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  // Create intersection observer for image and stat cards animation
+  const mediaObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        // Handle founder image container animation
+        const imageContainer = entry.target.querySelector('.founder-image-container');
+        if (imageContainer) {
+          setTimeout(() => {
+            imageContainer.style.opacity = '1';
+            imageContainer.style.transform = 'translateY(0)';
+          }, 200);
+        }
+        
+        // Handle year badge animation
+        const yearBadge = entry.target.querySelector('.year-badge');
+        if (yearBadge) {
+          setTimeout(() => {
+            yearBadge.style.opacity = '1';
+            yearBadge.style.transform = 'translateY(0)';
+          }, 400);
+        }
+        
+        // Handle impact stat cards animation
+        const statCards = entry.target.querySelectorAll('.impact-stat-card');
+        statCards.forEach((card, index) => {
+          setTimeout(() => {
+            card.style.opacity = '1';
+            card.style.transform = 'translateY(0)';
+          }, (index * 150 + 600));
+        });
+        
+        // Unobserve once animated
+        mediaObserver.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  // Set initial states and observe elements
+  const storyContentWrap = document.querySelector('.story-content-wrap');
+  if (storyContentWrap) {
+    // Set initial state for text elements
+    const textElements = storyContentWrap.querySelectorAll('.story-text');
+    textElements.forEach(element => {
+      element.style.opacity = '0';
+      element.style.transform = 'translateY(20px)';
+      element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    });
+    
+    // Set initial state for quote
+    const quoteElement = storyContentWrap.querySelector('.story-quote');
+    if (quoteElement) {
+      quoteElement.style.opacity = '0';
+      quoteElement.style.transform = 'translateY(20px)';
+      quoteElement.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    }
+    
+    // Start observing
+    textObserver.observe(storyContentWrap);
+  }
+  
+  const founderImageWrapper = document.querySelector('.founder-image-wrapper');
+  if (founderImageWrapper) {
+    // Set initial state for image container
+    const imageContainer = founderImageWrapper.querySelector('.founder-image-container');
+    if (imageContainer) {
+      imageContainer.style.opacity = '0';
+      imageContainer.style.transform = 'translateY(20px)';
+      imageContainer.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    }
+    
+    // Set initial state for year badge
+    const yearBadge = founderImageWrapper.querySelector('.year-badge');
+    if (yearBadge) {
+      yearBadge.style.opacity = '0';
+      yearBadge.style.transform = 'translateY(20px)';
+      yearBadge.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    }
+    
+    // Set initial state for stat cards
+    const statCards = founderImageWrapper.querySelectorAll('.impact-stat-card');
+    statCards.forEach(card => {
+      card.style.opacity = '0';
+      card.style.transform = 'translateY(20px)';
+      card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    });
+    
+    // Start observing
+    mediaObserver.observe(founderImageWrapper);
+  }
+
+  // Add hover effects for impact stat cards with improved performance
+  const statCards = document.querySelectorAll('.impact-stat-card');
+  if (statCards.length > 0) {
+    statCards.forEach(card => {
+      // Add hover effect only if not using reduced motion
+      if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        card.addEventListener('mouseenter', () => {
+          card.style.transform = 'translateY(-5px)';
+          card.style.boxShadow = '0 10px 20px rgba(0, 0, 0, 0.1)';
+        });
+        
+        card.addEventListener('mouseleave', () => {
+          card.style.transform = 'translateY(0)';
+          card.style.boxShadow = '';
+        });
+      }
+      
+      // Add focus accessibility
+      card.addEventListener('focus', () => {
+        card.style.outline = '2px solid var(--color-primary, #1e90ff)';
+        card.style.outlineOffset = '2px';
+      });
+      
+      card.addEventListener('blur', () => {
+        card.style.outline = '';
+        card.style.outlineOffset = '';
+      });
+    });
+  }
+
+  // Enhanced image hover effect with improved performance
+  const founderImage = document.querySelector('.founder-image-container img');
+  if (founderImage && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const imageContainer = founderImage.parentElement;
+    
+    imageContainer.addEventListener('mouseenter', () => {
+      founderImage.style.transform = 'scale(1.03)';
+    });
+    
+    imageContainer.addEventListener('mouseleave', () => {
+      founderImage.style.transform = 'scale(1)';
+    });
+  }
 }

@@ -1951,3 +1951,244 @@
     margin-top: 0.5rem;
   }
 }
+
+/* Story Section Styles 
+-------------------------------------------------- */
+.story-section {
+  position: relative;
+  background-color: #fff;
+  overflow: hidden;
+}
+
+.story-content-wrap {
+  position: relative;
+  padding: 0 0.5rem;
+}
+
+@media (min-width: 992px) {
+  .story-content-wrap {
+    padding-right: 1.5rem;
+  }
+}
+
+.story-text {
+  color: var(--color-text, #4a5568);
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+}
+
+.story-text.lead {
+  font-size: clamp(1rem, 1.2vw, 1.125rem);
+  font-weight: 400;
+}
+
+.story-text strong {
+  color: var(--color-heading, #2d3748);
+}
+
+/* Quote styling */
+.story-quote {
+  position: relative;
+  padding: 1.5rem;
+  margin: 2rem 0;
+  background-color: rgba(30, 144, 255, 0.05);
+  border-left: 4px solid var(--color-primary, #1e90ff);
+  border-radius: 0.5rem;
+}
+
+.story-quote p {
+  font-style: italic;
+  color: var(--color-heading, #2d3748);
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.story-quote footer {
+  color: var(--color-text, #4a5568);
+}
+
+.story-quote footer cite {
+  font-style: normal;
+  font-weight: 500;
+}
+
+/* Founder image styling */
+.founder-image-wrapper {
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+.founder-image-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.founder-image-container img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.founder-image-container:hover img {
+  transform: scale(1.03);
+}
+
+.image-caption {
+  padding: 1rem;
+  background-color: #fff;
+  color: var(--color-text, #4a5568);
+  text-align: center;
+}
+
+.image-caption h5 {
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: 0;
+}
+
+/* Year badge */
+.year-badge {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: var(--color-primary, #1e90ff);
+  color: #fff;
+  border-radius: 2rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  z-index: 2;
+}
+
+/* Impact stat cards */
+.story-impact-stats {
+  position: relative;
+  z-index: 1;
+}
+
+.impact-stat-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.impact-stat-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1) !important;
+}
+
+.stat-icon {
+  font-size: 1.5rem;
+  color: var(--color-primary, #1e90ff);
+}
+
+.impact-stat-card h4 {
+  font-size: 1.25rem;
+  color: var(--color-heading, #2d3748);
+  font-weight: 600;
+}
+
+.impact-stat-card p.small {
+  color: var(--color-text, #4a5568);
+  font-size: 0.875rem;
+  line-height: 1.4;
+}
+
+/* Responsive styling */
+@media (max-width: 991.98px) {
+  .founder-image-wrapper {
+    margin-top: 1rem;
+  }
+  
+  .story-text {
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+  
+  .story-quote {
+    padding: 1.25rem;
+    margin: 1.5rem 0;
+  }
+  
+  .story-quote p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .founder-image-container {
+    max-height: 400px;
+  }
+  
+  .story-impact-stats .row {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 400px;
+  }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .story-text {
+    color: rgba(255, 255, 255, 0.9);
+  }
+  
+  .story-text strong {
+    color: #fff;
+  }
+  
+  .story-quote {
+    background-color: rgba(30, 144, 255, 0.1);
+  }
+  
+  .story-quote p {
+    color: rgba(255, 255, 255, 0.9);
+  }
+  
+  .image-caption {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.9);
+  }
+  
+  .impact-stat-card {
+    background-color: rgba(255, 255, 255, 0.05) !important;
+  }
+  
+  .impact-stat-card h4 {
+    color: rgba(255, 255, 255, 0.9);
+  }
+  
+  .impact-stat-card p.small {
+    color: rgba(255, 255, 255, 0.7);
+  }
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+  .founder-image-container img,
+  .impact-stat-card {
+    transition: none;
+  }
+  
+  .founder-image-container:hover img {
+    transform: none;
+  }
+  
+  .impact-stat-card:hover {
+    transform: none;
+  }
+}
+
+@media (prefers-contrast: more) {
+  .story-quote {
+    border-width: 6px;
+  }
+  
+  .story-text strong {
+    font-weight: 700;
+  }
+  
+  .year-badge {
+    border: 1px solid #fff;
+  }
+}
