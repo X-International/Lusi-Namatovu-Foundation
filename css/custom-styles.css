@@ -1831,3 +1831,153 @@
   display: flex;
   align-items: flex-start;
 }
+
+/* About Section Enhancements - Mobile First Approach
+-------------------------------------------------- */
+.about-section {
+  position: relative;
+  padding: 2rem 0 3rem; /* Smaller padding on mobile */
+  overflow: hidden;
+}
+
+/* Ensure proper vertical spacing on mobile */
+.about-section .section-heading {
+  margin-bottom: 1.5rem;
+}
+
+.about-section .section-heading .sub-heading {
+  margin-bottom: 0.75rem;
+  font-size: 0.9rem;
+}
+
+.about-section .section-heading .heading {
+  font-size: 1.75rem;
+  line-height: 1.3;
+  margin-bottom: 1.25rem;
+}
+
+.about-section p {
+  margin-bottom: 1.25rem;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* Image container styling */
+.about-section .mission-image-wrap {
+  margin-top: 1.5rem;
+  height: 100%;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.about-section .mission-image {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+}
+
+.about-section .mission-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.6s ease;
+}
+
+.about-section .mission-image:hover img {
+  transform: scale(1.03);
+}
+
+.about-section .mission-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
+  padding: 2rem 1.5rem 1rem;
+}
+
+.about-section .mission-caption h5 {
+  color: #fff;
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 500;
+  line-height: 1.4;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+/* Responsive scaling for larger screens */
+@media (min-width: 576px) {
+  .about-section {
+    padding: 3rem 0 4rem;
+  }
+  
+  .about-section .section-heading .sub-heading {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .about-section .section-heading .heading {
+    font-size: 2rem;
+  }
+  
+  .about-section p {
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+  
+  .about-section .mission-caption h5 {
+    font-size: 1rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .about-section {
+    padding: 3.5rem 0 4.5rem;
+  }
+  
+  .about-section .section-heading .heading {
+    font-size: 2.25rem;
+  }
+  
+  .about-section p {
+    font-size: 1.05rem;
+  }
+  
+  .about-section .mission-caption h5 {
+    font-size: 1.05rem;
+  }
+}
+
+@media (min-width: 992px) {
+  .about-section {
+    padding: 4rem 0 5rem;
+  }
+  
+  .about-section .section-heading {
+    margin-bottom: 2rem;
+  }
+  
+  .about-section .section-heading .heading {
+    font-size: 2.5rem;
+  }
+  
+  .about-section p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+  }
+  
+  /* Remove the top margin on larger screens for proper alignment */
+  .about-section .mission-image-wrap {
+    margin-top: 0;
+  }
+  
+  .about-section .mission-caption h5 {
+    font-size: 1.1rem;
+  }
+  
+  /* Improved spacing for the learn more button */
+  .about-section .hq-btn {
+    margin-top: 0.5rem;
+  }
+}
