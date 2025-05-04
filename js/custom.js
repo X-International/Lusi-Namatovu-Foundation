@@ -89,6 +89,12 @@ document.addEventListener("DOMContentLoaded", function () {
   if (clothingProgramElements) {
     initClothingProgramPage();
   }
+
+  // Initialize vertical timeline if it exists
+  const timeline = document.querySelector(".vertical-timeline");
+  if (timeline) {
+    initializeVerticalTimeline();
+  }
 });
 
 function initModernPageHeader() {
@@ -2194,6 +2200,64 @@ function initStorySection() {
     
     imageContainer.addEventListener('mouseleave', () => {
       founderImage.style.transform = 'scale(1)';
+    });
+  }
+}
+
+/**
+ * Initialize the vertical timeline animations and interactions
+ */
+function initializeVerticalTimeline() {
+  // Set up intersection observer for timeline animation
+  const timelineObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      // When timeline enters viewport
+      if (entry.isIntersecting) {
+        // Animate the timeline line first
+        setTimeout(() => {
+          entry.target.classList.add('animated');
+        }, 200);
+        
+        // Then animate each milestone with increasing delay
+        const milestones = entry.target.querySelectorAll('.timeline-milestone');
+        milestones.forEach((milestone, index) => {
+          // Set custom property for milestone index (used in CSS for transition-delay)
+          milestone.style.setProperty('--milestone-index', index);
+          
+          // Add animation class after a delay
+          setTimeout(() => {
+            milestone.classList.add('animated');
+          }, 500 + (index * 300)); // Base delay + staggered delay per milestone
+        });
+        
+        // Stop observing after animation
+        timelineObserver.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.2, // Trigger when 20% of the timeline is visible
+    rootMargin: '0px 0px -100px 0px' // Adjust based on when you want the animation to trigger
+  });
+  
+  // Start observing the timeline
+  const timeline = document.querySelector('.vertical-timeline');
+  if (timeline) {
+    timelineObserver.observe(timeline);
+  }
+  
+  // Add hover effects to milestone icons if not in reduced motion mode
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const milestoneIcons = document.querySelectorAll('.milestone-icon');
+    milestoneIcons.forEach(icon => {
+      icon.addEventListener('mouseenter', () => {
+        icon.style.transform = 'translateX(-50%) scale(1.1)';
+        icon.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.15)';
+      });
+      
+      icon.addEventListener('mouseleave', () => {
+        icon.style.transform = 'translateX(-50%)';
+        icon.style.boxShadow = '0 2px 5px rgba(0, 0, 0, 0.1)';
+      });
     });
   }
 }
