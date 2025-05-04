@@ -1785,3 +1785,49 @@
     border: 2px solid currentColor;
   }
 }
+
+/* Featured Image Styles 
+-------------------------------------------------- */
+.featured-image-wrapper {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  height: 100%;
+  display: flex;
+  align-items: flex-start; /* Ensures image starts at the top */
+  margin-top: 0; /* Removes any top margin */
+}
+
+.featured-image {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s ease;
+}
+
+/* Hover animation */
+.featured-image-wrapper:hover .featured-image {
+  transform: scale(1.03);
+}
+
+/* Responsive adjustments */
+@media (max-width: 991.98px) {
+  .featured-image-wrapper {
+    max-height: 500px;
+    margin-top: 2rem;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .featured-image-wrapper {
+    max-height: 400px;
+  }
+}
+
+/* Ensuring the image container allows proper flex alignment */
+.about-section .col-lg-5 {
+  display: flex;
+  align-items: flex-start;
+}
