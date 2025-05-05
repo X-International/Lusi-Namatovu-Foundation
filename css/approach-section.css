@@ -3,7 +3,7 @@
 
 /* General Section Styling - Mobile First */
 .approach-section {
-  padding: 3rem 0;
+  padding: 3.5rem 0;
   position: relative;
   overflow: hidden;
   background-color: #f8f9fa;
@@ -17,18 +17,18 @@
 
 @media (min-width: 992px) {
   .approach-section {
-    padding: 6rem 0;
+    padding: 6.5rem 0;
   }
 }
 
 /* Section Header Styling */
 .approach-section .section-heading {
-  margin-bottom: 2.5rem;
+  margin-bottom: 2rem;
 }
 
 .approach-section .intro-text {
   max-width: 800px;
-  margin: 0 auto 3rem;
+  margin: 0 auto 2.5rem;
   text-align: center;
   font-size: 1.125rem;
   color: #555;
@@ -148,7 +148,7 @@
   align-items: center;
   color: var(--primary-color, #0e98f1);
   font-weight: 500;
-  padding-top: 0.5rem;
+  padding-top: 0.75rem;
   text-decoration: none;
   transition: all 0.3s ease;
   margin-top: auto;
@@ -201,12 +201,31 @@
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
 }
 
-.approach-section .card-row:nth-child(even) .approach-card {
-  animation-delay: 0.2s;
+/* Row Spacing */
+.approach-row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: -1.5rem; /* Offset the bottom margin of cards */
+}
+
+.approach-row > [class*='col-'] {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.5rem; /* Consistent card spacing */
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
 }
 
 /* Media Queries for Responsive Design */
 @media (min-width: 768px) {
+  .approach-section .section-heading {
+    margin-bottom: 2.5rem;
+  }
+  
+  .approach-section .intro-text {
+    margin-bottom: 3rem;
+  }
+  
   .approach-card-icon {
     width: 90px;
     height: 90px;
@@ -224,11 +243,21 @@
   .approach-card-body {
     padding: 2rem;
   }
+  
+  .approach-row > [class*='col-'] {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
 }
 
 @media (min-width: 992px) {
+  .approach-section .section-heading {
+    margin-bottom: 3rem;
+  }
+  
   .approach-section .intro-text {
     margin-bottom: 4rem;
+    font-size: 1.2rem;
   }
   
   .approach-card-icon {
@@ -275,13 +304,23 @@
   outline-offset: 3px;
 }
 
-/* Equal height cards in grid */
-.approach-row {
-  display: flex;
-  flex-wrap: wrap;
+/* Card Animation Classes */
+.approach-card.hidden {
+  opacity: 0;
+  transform: translateY(30px);
 }
 
-.approach-row > [class*='col-'] {
-  display: flex;
-  flex-direction: column;
+.approach-card.show {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .approach-card.hidden,
+  .approach-card.show {
+    transition: none;
+    transform: none;
+    opacity: 1;
+  }
 }
