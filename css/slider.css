@@ -101,7 +101,7 @@
 .tag-line {
   display: inline-block;
   background-color: rgba(14, 152, 241, 0.1);
-  border-radius: 30px;
+  border-radius: 5px;
   padding: 6px 15px;
   margin-bottom: 15px;
   transform: translateY(30px);
@@ -224,7 +224,7 @@
   padding: 14px 24px; /* Increased padding for better touch targets */
   font-size: 14px; /* Increased font size for better readability */
   font-weight: 600;
-  border-radius: 50px;
+  border-radius: 5px;
   text-transform: uppercase;
   letter-spacing: 0.5px;
   transition: all 0.3s ease;
@@ -248,9 +248,9 @@
 
 .btn-primary:hover,
 .btn-primary:focus {
-  background-color: #0d8ad8;
+  background-color: #0e98f1;
   transform: translateY(-2px);
-  box-shadow: 0 4px 10px rgba(14, 152, 241, 0.3);
+  /* box-shadow: 0 4px 10px rgba(14, 152, 241, 0.3); */
 }
 
 .btn-outline {
@@ -264,9 +264,9 @@
 .btn-outline:focus {
   background-color: #0e98f1;
   color: white;
-  border-color: #0e98f1;
+  border-color: #000;
   transform: translateY(-2px);
-  box-shadow: 0 4px 10px rgba(14, 152, 241, 0.2);
+  /* box-shadow: 0 4px 10px rgba(14, 152, 241, 0.2); */
 }
 
 /* Slider Controls - Mobile First */
@@ -312,7 +312,7 @@
 .nav-button {
   width: 36px; /* Increased from 32px for better touch targets */
   height: 36px; /* Increased from 32px for better touch targets */
-  border-radius: 50%;
+  border-radius: 5px;
   display: flex;
   align-items: center;
   justify-content: center;
