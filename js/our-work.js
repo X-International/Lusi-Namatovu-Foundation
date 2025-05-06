@@ -3,8 +3,8 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize animations for the intro section
     initIntroSectionAnimations();
     
-    // Add hover effects to stats bar
-    initStatsBarEffects();
+    // Add observation for statistics items
+    initStatisticsAnimation();
     
     // Check viewport size and adjust elements
     handleResponsiveLayouts();
@@ -30,6 +30,9 @@ function initIntroSectionAnimations() {
                         if (delay === "0.1") entry.target.classList.add('intro-animation-delay-1');
                         if (delay === "0.2") entry.target.classList.add('intro-animation-delay-2');
                         if (delay === "0.3") entry.target.classList.add('intro-animation-delay-3');
+                        if (delay === "0.35") entry.target.classList.add('intro-animation-delay-3');
+                        if (delay === "0.15") entry.target.classList.add('intro-animation-delay-1');
+                        if (delay === "0.25") entry.target.classList.add('intro-animation-delay-2');
                     }
                     
                     observer.unobserve(entry.target);
@@ -52,6 +55,9 @@ function initIntroSectionAnimations() {
                 if (delay === "0.1") el.classList.add('intro-animation-delay-1');
                 if (delay === "0.2") el.classList.add('intro-animation-delay-2');
                 if (delay === "0.3") el.classList.add('intro-animation-delay-3');
+                if (delay === "0.35") el.classList.add('intro-animation-delay-3');
+                if (delay === "0.15") el.classList.add('intro-animation-delay-1');
+                if (delay === "0.25") el.classList.add('intro-animation-delay-2');
             }
         });
     }
@@ -78,61 +84,46 @@ function addDecorativeShapes() {
     }
 }
 
-function initStatsBarEffects() {
-    const statsBar = document.querySelector('.stats-bar');
-    if (!statsBar) return;
+// New function to handle statistics animations
+function initStatisticsAnimation() {
+    const statItems = document.querySelectorAll('.stat-item');
     
-    // Add hover effects and transitions
-    statsBar.addEventListener('mouseenter', function() {
-        const statItems = this.querySelectorAll('.stat-item');
-        statItems.forEach((item, index) => {
-            // Stagger animation for each stat item
-            setTimeout(() => {
-                item.style.transform = 'translateY(-3px)';
-                item.style.color = '#0e98f1';
-            }, index * 100);
+    if ("IntersectionObserver" in window && statItems.length > 0) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('in-view');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { 
+            threshold: 0.5,
+            rootMargin: '0px 0px -10% 0px'
         });
-    });
-    
-    statsBar.addEventListener('mouseleave', function() {
-        const statItems = this.querySelectorAll('.stat-item');
-        statItems.forEach(item => {
-            item.style.transform = '';
-            item.style.color = '';
-        });
-    });
+        
+        statItems.forEach(item => observer.observe(item));
+    } else {
+        // Fallback - add the class immediately
+        statItems.forEach(item => item.classList.add('in-view'));
+    }
 }
 
 function handleResponsiveLayouts() {
-    // Adjust stats bar depending on screen size
-    const statsBar = document.querySelector('.stats-bar');
-    const statsContent = document.querySelector('.stats-content');
+    // Adjust stats grid layout depending on screen size
+    const statsGrid = document.querySelector('.stats-grid');
     
-    if (!statsBar || !statsContent) return;
+    if (!statsGrid) return;
     
-    // For very small screens, ensure the stats are vertically stacked
-    if (window.innerWidth <= 360) {
-        statsContent.style.flexDirection = 'column';
-        
-        // Hide dividers on small screens
-        const statDividers = document.querySelectorAll('.stat-divider');
-        statDividers.forEach(divider => {
-            divider.style.display = 'none';
-        });
+    // Adjust grid columns based on screen width
+    if (window.innerWidth <= 575) {
+        // For very small screens
+        statsGrid.style.gridTemplateColumns = 'repeat(1, 1fr)';
+    } else if (window.innerWidth <= 767) {
+        // For small screens
+        statsGrid.style.gridTemplateColumns = 'repeat(1, 1fr)';
     } else {
-        statsContent.style.flexDirection = '';
-        
-        // Show dividers on larger screens
-        const statDividers = document.querySelectorAll('.stat-divider');
-        if (window.innerWidth >= 768) {
-            statDividers.forEach(divider => {
-                divider.style.display = 'inline';
-            });
-        } else {
-            statDividers.forEach(divider => {
-                divider.style.display = 'none';
-            });
-        }
+        // For larger screens
+        statsGrid.style.gridTemplateColumns = 'repeat(3, 1fr)';
     }
 }
 
