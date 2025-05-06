@@ -3,6 +3,7 @@
     position: relative;
     overflow: hidden;
     background: linear-gradient(135deg, #f0f8ff 0%, #ffffff 100%);
+    padding: 50px 0;
 }
 
 .intro-section::before {
@@ -12,7 +13,7 @@
     right: 0;
     width: 45%;
     height: 100%;
-    background: url('../images/lnf/events/Lusi-Namatovu-Foundation_50.jpg') no-repeat;
+    background: url('../images/lnf/events/Lusi-Namatovu-Foundation_47.jpg') no-repeat;
     background-size: cover;
     background-position: center;
     opacity: 0.07;
@@ -24,11 +25,13 @@
 .intro-content {
     position: relative;
     z-index: 1;
+    padding: 15px 0;
 }
 
 .intro-text-wrapper {
-    max-width: 800px;
+    max-width: 850px;
     margin: 0 auto;
+    padding: 0 15px;
 }
 
 .intro-text-wrapper p {
@@ -39,11 +42,24 @@
     opacity: 0.93;
 }
 
+.intro-text-wrapper p:last-child {
+    margin-bottom: 0;
+}
+
+/* Section heading refinements */
+.intro-section .section-heading {
+    margin-bottom: 2rem;
+}
+
+.intro-section .section-heading .heading {
+    margin-bottom: 1.5rem;
+}
+
 /* Stats bar styling */
 .stats-bar {
     background: #ffffff;
     border-radius: 8px;
-    padding: 20px;
+    padding: 18px 15px;
     margin: 35px auto 0;
     display: inline-block;
     text-align: center;
@@ -51,6 +67,7 @@
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
     border-bottom: 3px solid #0e98f1;
     transition: all 0.3s ease;
+    width: auto;
 }
 
 .stats-bar:hover {
@@ -63,15 +80,17 @@
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 8px 25px;
+    gap: 12px 10px;
 }
 
 .stat-item {
     font-weight: 600;
-    font-size: 18px;
+    font-size: 16px;
     color: #1a2526;
     position: relative;
     padding: 0 5px;
+    line-height: 1.4;
+    transition: all 0.3s ease;
 }
 
 .stat-divider {
@@ -94,25 +113,19 @@
 
 .intro-animation {
     animation: fadeUp 0.8s ease forwards;
+    opacity: 0;
 }
 
-/* Responsive adjustments */
-@media (min-width: 768px) {
-    .stats-content {
-        flex-wrap: nowrap;
-    }
-    
-    .stat-divider {
-        display: inline;
-    }
-    
-    .stats-bar {
-        padding: 25px 40px;
-    }
-    
-    .stat-item {
-        font-size: 20px;
-    }
+.intro-animation-delay-1 {
+    animation-delay: 0.1s;
+}
+
+.intro-animation-delay-2 {
+    animation-delay: 0.2s;
+}
+
+.intro-animation-delay-3 {
+    animation-delay: 0.3s;
 }
 
 /* Background decorative elements */
@@ -140,4 +153,102 @@
     background: linear-gradient(135deg, rgba(252, 185, 39, 0.05) 0%, rgba(252, 185, 39, 0.01) 100%);
     border-radius: 50%;
     filter: blur(40px);
+}
+
+/* Responsive adjustments - Mobile First Approach */
+@media (min-width: 576px) {
+    .intro-section {
+        padding: 60px 0;
+    }
+    
+    .intro-content {
+        padding: 20px 0;
+    }
+    
+    .stats-bar {
+        padding: 20px;
+    }
+    
+    .stat-item {
+        font-size: 17px;
+    }
+    
+    .stats-content {
+        gap: 12px 15px;
+    }
+}
+
+@media (min-width: 768px) {
+    .intro-section {
+        padding: 70px 0;
+    }
+    
+    .intro-content {
+        padding: 25px 0;
+    }
+    
+    .stats-content {
+        flex-wrap: nowrap;
+        gap: 8px 25px;
+    }
+    
+    .stat-divider {
+        display: inline;
+    }
+    
+    .stats-bar {
+        padding: 22px 35px;
+    }
+    
+    .stat-item {
+        font-size: 18px;
+    }
+    
+    .intro-text-wrapper {
+        padding: 0;
+    }
+}
+
+@media (min-width: 992px) {
+    .intro-section {
+        padding: 80px 0;
+    }
+    
+    .intro-text-wrapper p {
+        font-size: 17px;
+        line-height: 1.85;
+    }
+    
+    .stats-bar {
+        padding: 25px 40px;
+    }
+    
+    .stat-item {
+        font-size: 20px;
+    }
+}
+
+/* Ensure shapes don't cause overflow on small screens */
+@media (max-width: 767px) {
+    .intro-shape-1 {
+        width: 150px;
+        height: 150px;
+    }
+    
+    .intro-shape-2 {
+        width: 100px;
+        height: 100px;
+    }
+}
+
+/* Fix for very small mobile screens */
+@media (max-width: 360px) {
+    .stats-content {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .stat-divider {
+        display: none;
+    }
 }
