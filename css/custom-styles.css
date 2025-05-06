@@ -1342,3 +1342,178 @@
     transform: none;
   }
 }
+
+/* Core Values Section Styles */
+.mission-vision-section {
+    position: relative;
+    background-color: #f8f9fa;
+    overflow: hidden;
+    padding: 3rem 0;
+}
+
+/* Adding subtle background pattern */
+.mission-vision-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: radial-gradient(circle at 50% 50%, rgba(14, 152, 241, 0.08) 0%, transparent 25%);
+    background-size: 50px 50px;
+    opacity: 0.4;
+    z-index: 0;
+}
+
+/* Container padding fixes */
+.mission-vision-section .container {
+    padding: 0 1rem;
+}
+
+/* Value Cards */
+.value-card {
+    background-color: #ffffff;
+    border-color: rgba(14, 152, 241, 0.1) !important;
+    transition: all 0.35s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.value-card:hover, 
+.value-card:focus {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 25px rgba(14, 152, 241, 0.15) !important;
+    border-color: rgba(14, 152, 241, 0.3) !important;
+}
+
+/* Equal height row fix */
+.mission-vision-section .row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
+.mission-vision-section [class*="col-"] {
+    display: flex;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-bottom: 1.5rem;
+}
+
+/* Value Icon styling */
+.value-icon .rounded-circle {
+    width: 65px;
+    height: 65px;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.value-card:hover .value-icon .rounded-circle {
+    background-color: rgba(14, 152, 241, 0.2) !important;
+    transform: scale(1.1);
+}
+
+.value-title {
+    position: relative;
+    font-weight: 600;
+    color: #333;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.value-title::after {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 2px;
+    background-color: #0e98f1;
+    margin: 8px auto;
+}
+
+.value-description {
+    color: #666;
+    line-height: 1.6;
+    text-align: center;
+}
+
+/* Improved Section Heading Spacing */
+.mission-vision-section .section-heading {
+    margin-bottom: 2rem;
+    padding: 0 1rem;
+}
+
+.mission-vision-section .section-heading .heading {
+    margin-bottom: 1rem;
+}
+
+.mission-vision-section .section-heading .lead {
+    margin-bottom: 0;
+}
+
+/* Hover lift utility class */
+.hover-lift {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-lift:hover,
+.hover-lift:focus {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Responsive adjustments - Mobile First */
+@media (min-width: 576px) {
+    .mission-vision-section {
+        padding: 4rem 0;
+    }
+    
+    .mission-vision-section .container {
+        padding: 0 1.5rem;
+    }
+    
+    .value-icon .rounded-circle {
+        width: 70px;
+        height: 70px;
+    }
+}
+
+@media (min-width: 768px) {
+    .mission-vision-section {
+        padding: 5rem 0;
+    }
+    
+    .mission-vision-section .section-heading {
+        margin-bottom: 3rem;
+    }
+    
+    .value-icon .rounded-circle {
+        width: 75px;
+        height: 75px;
+    }
+    
+    .value-card {
+        padding: 2rem !important;
+    }
+}
+
+@media (min-width: 992px) {
+    .mission-vision-section {
+        padding: 6rem 0;
+    }
+    
+    .value-icon .rounded-circle {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .mission-vision-section [class*="col-"] {
+        margin-bottom: 0;
+    }
+}
+
