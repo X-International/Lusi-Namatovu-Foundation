@@ -84,26 +84,20 @@ Table of Contents
   /* Keep or adjust slightly */
   --hq-transition: all 0.3s cubic-bezier(0.5, 0.05, 1, 1);
   /* Keep */
-  --hq-slider-gradient: linear-gradient(
-    90deg,
-    rgba(51, 51, 51, 1) 0%,
-    rgba(51, 51, 51, 0.83) 51%,
-    rgba(51, 51, 51, 0) 78%,
-    rgba(51, 51, 51, 1) 100%
-  );
-  --hq-hero-gradient: linear-gradient(
-    90deg,
-    rgba(0, 0, 0, 1) 0%,
-    rgba(0, 0, 0, 0.8) 53%,
-    rgba(0, 0, 0, 0.95) 100%
-  );
-  --hq-hero-2-gradient: linear-gradient(
-    90deg,
-    rgba(51, 51, 51, 1) 0%,
-    rgba(51, 51, 51, 0.9) 48%,
-    rgba(51, 51, 51, 0) 74%,
-    rgba(51, 51, 51, 1) 100%
-  );
+  --hq-slider-gradient: linear-gradient(90deg,
+      rgba(51, 51, 51, 1) 0%,
+      rgba(51, 51, 51, 0.83) 51%,
+      rgba(51, 51, 51, 0) 78%,
+      rgba(51, 51, 51, 1) 100%);
+  --hq-hero-gradient: linear-gradient(90deg,
+      rgba(0, 0, 0, 1) 0%,
+      rgba(0, 0, 0, 0.8) 53%,
+      rgba(0, 0, 0, 0.95) 100%);
+  --hq-hero-2-gradient: linear-gradient(90deg,
+      rgba(51, 51, 51, 1) 0%,
+      rgba(51, 51, 51, 0.9) 48%,
+      rgba(51, 51, 51, 0) 74%,
+      rgba(51, 51, 51, 1) 100%);
 }
 
 /* ==== 3. Smooth Scroll ==== */
@@ -360,6 +354,7 @@ section {
 }
 
 @media (max-width: 992px) {
+
   .hq-lg-heading .heading,
   .heading {
     font-size: 36px;
@@ -367,6 +362,7 @@ section {
 }
 
 @media (max-width: 992px) {
+
   .hq-lg-heading .heading,
   .heading {
     font-size: 28px;
@@ -618,6 +614,7 @@ section {
 }
 
 @media (max-width: 992px) {
+
   .ptb-120,
   .ptb-110,
   .ptb-100 {
@@ -638,6 +635,7 @@ section {
 }
 
 @media (max-width: 767px) {
+
   .ptb-110,
   .ptb-100 {
     padding: 60px 0;
@@ -1447,11 +1445,9 @@ input[type="checkbox"]:checked:before {
 .timeline-line {
   flex: 1;
   height: 3px;
-  background: linear-gradient(
-    to right,
-    var(--hq-primary-color),
-    rgba(14, 152, 241, 0.3)
-  );
+  background: linear-gradient(to right,
+      var(--hq-primary-color),
+      rgba(14, 152, 241, 0.3));
   border-radius: 3px;
   position: relative;
 }
@@ -1723,11 +1719,9 @@ input[type="checkbox"]:checked:before {
 }
 
 .flipped-timeline .timeline-line {
-  background: linear-gradient(
-    to left,
-    var(--hq-primary-color),
-    rgba(14, 152, 241, 0.3)
-  );
+  background: linear-gradient(to left,
+      var(--hq-primary-color),
+      rgba(14, 152, 241, 0.3));
 }
 
 .flipped-dates {
@@ -1755,11 +1749,9 @@ input[type="checkbox"]:checked:before {
 }
 
 .timeline-animated .timeline-line {
-  background: linear-gradient(
-    to left,
-    var(--hq-primary-color),
-    rgba(14, 152, 241, 0.3)
-  );
+  background: linear-gradient(to left,
+      var(--hq-primary-color),
+      rgba(14, 152, 241, 0.3));
   width: 0;
   transition: width 1.5s ease-out;
   transform-origin: left;
@@ -1830,6 +1822,7 @@ input[type="checkbox"]:checked:before {
 
 /* Accessibility - respect user preferences for reduced motion */
 @media (prefers-reduced-motion: reduce) {
+
   .timeline-animated,
   .timeline-animated .timeline-line,
   .timeline-animated .start-dot,

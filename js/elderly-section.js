@@ -2,13 +2,13 @@
  * Elderly Support Programs JS - Interactive elements and animations
  */
 
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     // Initialize animations for program cards
     initProgramCards();
-    
+
     // Set up scroll animations
     initScrollAnimations();
-    
+
     // Initialize any interactive elements
     initInteractiveElements();
 });
@@ -18,16 +18,16 @@ document.addEventListener("DOMContentLoaded", function() {
  */
 function initProgramCards() {
     const programCards = document.querySelectorAll('.elderly-program-card');
-    
+
     if (programCards.length) {
         programCards.forEach(card => {
             // Add hover class for touch devices
-            card.addEventListener('touchstart', function() {
+            card.addEventListener('touchstart', function () {
                 this.classList.add('hover-active');
-            }, {passive: true});
-            
+            }, { passive: true });
+
             // Remove hover class
-            card.addEventListener('mouseleave', function() {
+            card.addEventListener('mouseleave', function () {
                 this.classList.remove('hover-active');
             });
         });
@@ -101,17 +101,17 @@ function initScrollAnimations() {
 function initInteractiveElements() {
     // Program card click handlers for mobile
     const programCards = document.querySelectorAll('.elderly-program-card');
-    
+
     if (programCards.length && window.innerWidth < 768) {
         programCards.forEach(card => {
-            card.addEventListener('click', function() {
+            card.addEventListener('click', function () {
                 // Toggle active class
                 const isActive = this.classList.contains('mobile-active');
-                
+
                 // Remove active class from all cards
                 document.querySelectorAll('.elderly-program-card.mobile-active')
                     .forEach(activeCard => activeCard.classList.remove('mobile-active'));
-                
+
                 // If this wasn't active before, make it active
                 if (!isActive) {
                     this.classList.add('mobile-active');
@@ -119,13 +119,13 @@ function initInteractiveElements() {
             });
         });
     }
-    
+
     // Initialize counter animations for impact numbers
     if (typeof Odometer !== 'undefined') {
         const counterElements = document.querySelectorAll('.elderly-counter');
-        
+
         if (counterElements.length) {
-            const initializeCounter = function(element) {
+            const initializeCounter = function (element) {
                 const target = parseInt(element.getAttribute('data-count') || '0', 10);
                 const od = new Odometer({
                     el: element,
@@ -133,7 +133,7 @@ function initInteractiveElements() {
                     format: '(,ddd)',
                     theme: 'minimal'
                 });
-                
+
                 // Set up ScrollTrigger for the counter
                 ScrollTrigger.create({
                     trigger: element,
@@ -141,7 +141,7 @@ function initInteractiveElements() {
                     onEnter: () => { od.update(target); }
                 });
             };
-            
+
             counterElements.forEach(initializeCounter);
         }
     }
@@ -150,7 +150,7 @@ function initInteractiveElements() {
 /**
  * Window resize handler for responsive adjustments
  */
-window.addEventListener('resize', function() {
+window.addEventListener('resize', function () {
     // Re-initialize any size-dependent interactions
     if (window.innerWidth >= 768) {
         document.querySelectorAll('.elderly-program-card.mobile-active')

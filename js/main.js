@@ -55,7 +55,7 @@
     touchMultiplier: 2,
   });
 
-  lenis.on("scroll", (e) => {});
+  lenis.on("scroll", (e) => { });
   function raf(time) {
     lenis.raf(time);
     requestAnimationFrame(raf);
@@ -1081,7 +1081,7 @@ document.addEventListener("DOMContentLoaded", function () {
       rect.top >= 0 &&
       rect.left >= 0 &&
       rect.bottom <=
-        (window.innerHeight || document.documentElement.clientHeight) &&
+      (window.innerHeight || document.documentElement.clientHeight) &&
       rect.right <= (window.innerWidth || document.documentElement.clientWidth);
 
     if (isInViewport && mobileGallerySwiper) {

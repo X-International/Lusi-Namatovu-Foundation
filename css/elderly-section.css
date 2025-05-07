@@ -296,6 +296,7 @@ img.fade-in {
         opacity: 0;
         transform: scale(0.95);
     }
+
     to {
         opacity: 1;
         transform: scale(1);
@@ -310,6 +311,7 @@ img.fade-in {
 
 /* Responsive Styles */
 @media (max-width: 1199.98px) {
+
     .elderly-needs-section,
     .elderly-programs-section,
     .elderly-impact-section {
@@ -323,6 +325,7 @@ img.fade-in {
 }
 
 @media (max-width: 991.98px) {
+
     .elderly-needs-section,
     .elderly-programs-section,
     .elderly-impact-section {
@@ -344,6 +347,7 @@ img.fade-in {
 }
 
 @media (max-width: 767.98px) {
+
     .elderly-needs-section,
     .elderly-programs-section,
     .elderly-impact-section {
@@ -393,12 +397,12 @@ img.fade-in {
     .elderly-program-card {
         min-height: 15rem;
     }
-    
+
     .program-card-icon {
         min-width: 3.125rem;
         min-height: 3.125rem;
     }
-    
+
     .impact-story-badge,
     .elderly-needs-caption {
         min-height: 4rem;
@@ -406,6 +410,7 @@ img.fade-in {
 }
 
 @media (max-width: 575.98px) {
+
     .elderly-needs-section,
     .elderly-programs-section,
     .elderly-impact-section {

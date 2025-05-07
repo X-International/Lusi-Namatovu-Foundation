@@ -248,7 +248,7 @@ function initProgressBars() {
           const progressBar = entry.target;
           const baseValue = parseInt(
             progressBar.getAttribute("data-base-value") ||
-              progressBar.getAttribute("data-target"),
+            progressBar.getAttribute("data-target"),
             10
           );
           // Calculate actual target value based on time progress
@@ -1409,21 +1409,21 @@ function initNeedsSection() {
 
   // Initialize card animations with intersection observer
   const cards = section.querySelectorAll(".promo-card");
-  
+
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           // Get any delay attribute
           const delay = parseFloat(entry.target.getAttribute("data-wow-delay") || 0);
-          
+
           // Add a staggered animation effect
           setTimeout(() => {
             entry.target.classList.add("animated");
             entry.target.style.opacity = "1";
             entry.target.style.transform = "translateY(0)";
           }, delay * 1000);
-          
+
           // Unobserve once animated
           observer.unobserve(entry.target);
         }
@@ -1431,7 +1431,7 @@ function initNeedsSection() {
     },
     { threshold: 0.1, rootMargin: "0px 0px -50px 0px" }
   );
-  
+
   // Set initial state for cards and observe them
   cards.forEach((card) => {
     card.style.opacity = "0";
@@ -1439,7 +1439,7 @@ function initNeedsSection() {
     card.style.transition = "opacity 0.8s ease, transform 0.8s ease";
     observer.observe(card);
   });
-  
+
   // Add interaction effects
   cards.forEach((card) => {
     // Add hover effects for image overlay
@@ -1449,7 +1449,7 @@ function initNeedsSection() {
         image.style.opacity = "1";
       }
     });
-    
+
     card.addEventListener("mouseleave", () => {
       // Don't reset opacity for cards that have the active class
       if (!card.classList.contains("promo-card-active")) {
@@ -1459,17 +1459,17 @@ function initNeedsSection() {
         }
       }
     });
-    
+
     // Add keyboard accessibility
     card.setAttribute("tabindex", "0");
-    
+
     card.addEventListener("focus", () => {
       const image = card.querySelector(".promo-card-image");
       if (image) {
         image.style.opacity = "1";
       }
     });
-    
+
     card.addEventListener("blur", () => {
       // Don't reset opacity for cards that have the active class
       if (!card.classList.contains("promo-card-active")) {
@@ -1480,7 +1480,7 @@ function initNeedsSection() {
       }
     });
   });
-  
+
   // Support for reduced motion preferences
   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
     cards.forEach(card => {
@@ -1568,7 +1568,7 @@ function initStoryTimeline() {
     const markerRect = marker.getBoundingClientRect();
     const scrollTo =
       timeline.scrollLeft +
-      (markerRect.left - timelineRect.left) - 
+      (markerRect.left - timelineRect.left) -
       timelineRect.width / 2 +
       markerRect.width / 2;
 
@@ -2044,16 +2044,16 @@ function initStorySection() {
       if (entry.isIntersecting) {
         // Get any explicit delay attribute or use default delays
         const paragraphs = entry.target.querySelectorAll('.story-text');
-        
+
         paragraphs.forEach((paragraph, index) => {
           const delay = paragraph.getAttribute('data-delay') || (index * 0.1 + 0.1);
-          
+
           setTimeout(() => {
             paragraph.style.opacity = '1';
             paragraph.style.transform = 'translateY(0)';
           }, delay * 1000);
         });
-        
+
         // Handle quote animations if present
         const quoteElement = entry.target.querySelector('.story-quote');
         if (quoteElement) {
@@ -2062,7 +2062,7 @@ function initStorySection() {
             quoteElement.style.transform = 'translateY(0)';
           }, 0.4 * 1000);
         }
-        
+
         // Unobserve once animated
         textObserver.unobserve(entry.target);
       }
@@ -2081,7 +2081,7 @@ function initStorySection() {
             imageContainer.style.transform = 'translateY(0)';
           }, 200);
         }
-        
+
         // Handle year badge animation
         const yearBadge = entry.target.querySelector('.year-badge');
         if (yearBadge) {
@@ -2090,7 +2090,7 @@ function initStorySection() {
             yearBadge.style.transform = 'translateY(0)';
           }, 400);
         }
-        
+
         // Handle impact stat cards animation
         const statCards = entry.target.querySelectorAll('.impact-stat-card');
         statCards.forEach((card, index) => {
@@ -2099,7 +2099,7 @@ function initStorySection() {
             card.style.transform = 'translateY(0)';
           }, (index * 150 + 600));
         });
-        
+
         // Unobserve once animated
         mediaObserver.unobserve(entry.target);
       }
@@ -2116,7 +2116,7 @@ function initStorySection() {
       element.style.transform = 'translateY(20px)';
       element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
     });
-    
+
     // Set initial state for quote
     const quoteElement = storyContentWrap.querySelector('.story-quote');
     if (quoteElement) {
@@ -2124,11 +2124,11 @@ function initStorySection() {
       quoteElement.style.transform = 'translateY(20px)';
       quoteElement.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
     }
-    
+
     // Start observing
     textObserver.observe(storyContentWrap);
   }
-  
+
   const founderImageWrapper = document.querySelector('.founder-image-wrapper');
   if (founderImageWrapper) {
     // Set initial state for image container
@@ -2138,7 +2138,7 @@ function initStorySection() {
       imageContainer.style.transform = 'translateY(20px)';
       imageContainer.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
     }
-    
+
     // Set initial state for year badge
     const yearBadge = founderImageWrapper.querySelector('.year-badge');
     if (yearBadge) {
@@ -2146,7 +2146,7 @@ function initStorySection() {
       yearBadge.style.transform = 'translateY(20px)';
       yearBadge.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
     }
-    
+
     // Set initial state for stat cards
     const statCards = founderImageWrapper.querySelectorAll('.impact-stat-card');
     statCards.forEach(card => {
@@ -2154,7 +2154,7 @@ function initStorySection() {
       card.style.transform = 'translateY(20px)';
       card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
     });
-    
+
     // Start observing
     mediaObserver.observe(founderImageWrapper);
   }
@@ -2169,19 +2169,19 @@ function initStorySection() {
           card.style.transform = 'translateY(-5px)';
           card.style.boxShadow = '0 10px 20px rgba(0, 0, 0, 0.1)';
         });
-        
+
         card.addEventListener('mouseleave', () => {
           card.style.transform = 'translateY(0)';
           card.style.boxShadow = '';
         });
       }
-      
+
       // Add focus accessibility
       card.addEventListener('focus', () => {
         card.style.outline = '2px solid var(--color-primary, #1e90ff)';
         card.style.outlineOffset = '2px';
       });
-      
+
       card.addEventListener('blur', () => {
         card.style.outline = '';
         card.style.outlineOffset = '';
@@ -2193,11 +2193,11 @@ function initStorySection() {
   const founderImage = document.querySelector('.founder-image-container img');
   if (founderImage && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     const imageContainer = founderImage.parentElement;
-    
+
     imageContainer.addEventListener('mouseenter', () => {
       founderImage.style.transform = 'scale(1.03)';
     });
-    
+
     imageContainer.addEventListener('mouseleave', () => {
       founderImage.style.transform = 'scale(1)';
     });
@@ -2217,19 +2217,19 @@ function initializeVerticalTimeline() {
         setTimeout(() => {
           entry.target.classList.add('animated');
         }, 200);
-        
+
         // Then animate each milestone with increasing delay
         const milestones = entry.target.querySelectorAll('.timeline-milestone');
         milestones.forEach((milestone, index) => {
           // Set custom property for milestone index (used in CSS for transition-delay)
           milestone.style.setProperty('--milestone-index', index);
-          
+
           // Add animation class after a delay
           setTimeout(() => {
             milestone.classList.add('animated');
           }, 500 + (index * 300)); // Base delay + staggered delay per milestone
         });
-        
+
         // Stop observing after animation
         timelineObserver.unobserve(entry.target);
       }
@@ -2238,13 +2238,13 @@ function initializeVerticalTimeline() {
     threshold: 0.2, // Trigger when 20% of the timeline is visible
     rootMargin: '0px 0px -100px 0px' // Adjust based on when you want the animation to trigger
   });
-  
+
   // Start observing the timeline
   const timeline = document.querySelector('.vertical-timeline');
   if (timeline) {
     timelineObserver.observe(timeline);
   }
-  
+
   // Add hover effects to milestone icons if not in reduced motion mode
   if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     const milestoneIcons = document.querySelectorAll('.milestone-icon');
@@ -2253,7 +2253,7 @@ function initializeVerticalTimeline() {
         icon.style.transform = 'translateX(-50%) scale(1.1)';
         icon.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.15)';
       });
-      
+
       icon.addEventListener('mouseleave', () => {
         icon.style.transform = 'translateX(-50%)';
         icon.style.boxShadow = '0 2px 5px rgba(0, 0, 0, 0.1)';

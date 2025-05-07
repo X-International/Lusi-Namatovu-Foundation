@@ -23,83 +23,81 @@ The redesigned website reflects this crucial expansion, serving as a platform fo
 
 The redesigned website aims to:
 
-* **Clearly communicate the dual mission:** Effectively present programs and support for both elderly individuals and people with disabilities.
-* **Enhance Engagement:** Provide clear pathways for donations, volunteering, and partnerships.
-* **Showcase Impact:** Feature stories, testimonials, and (eventually) statistics to demonstrate the foundation's positive impact.
-* **Build Trust & Credibility:** Offer transparency about the foundation's work, team, and values.
-* **Improve Accessibility:** Ensure the website is usable by people of all abilities, aligning with WCAG guidelines.
-* **Modernize the Platform:** Implement a fully responsive, mobile-friendly design with improved aesthetics and functionality.
-* **Facilitate Support:** Integrate features like secure online donation processing.
+- **Clearly communicate the dual mission:** Effectively present programs and support for both elderly individuals and people with disabilities.
+- **Enhance Engagement:** Provide clear pathways for donations, volunteering, and partnerships.
+- **Showcase Impact:** Feature stories, testimonials, and (eventually) statistics to demonstrate the foundation's positive impact.
+- **Build Trust & Credibility:** Offer transparency about the foundation's work, team, and values.
+- **Improve Accessibility:** Ensure the website is usable by people of all abilities, aligning with WCAG guidelines.
+- **Modernize the Platform:** Implement a fully responsive, mobile-friendly design with improved aesthetics and functionality.
+- **Facilitate Support:** Integrate features like secure online donation processing.
 
 ## 4. Key Features of the Redesigned Website
 
-* **Dual Program Focus:** Dedicated sections and content for both Elderly Support and Disability Support programs.
-* **Comprehensive Information:** Detailed pages for "About Us" (including founding story, mission, vision, values, team), "Our Work" (program details), "Our Impact," "Get Involved," and "Contact Us."
-* **Team Showcase:** Profiles for key leadership, including Founder Samuel Ssebandeke and Director Ssekitto Alex Kayanja, highlighting his role in the disability program expansion.
-* **Modern Design:** Responsive, mobile-friendly, and visually appealing.
-* **Accessibility Considerations:** Built with WCAG guidelines in mind.
-* **Engagement Tools:**
-    * Integrated Donation System
-    * Volunteer Information & Application (planned)
-    * Partnership Information
-    * Newsletter Signup (planned)
-* **Rich Content:**
-    * Professional photography and (planned) video testimonials.
-    * Detailed program descriptions.
-    * Impact stories and (planned) statistics/reports.
-* **SEO Optimization:** For improved online visibility.
-* **Fast Loading Times:** Optimized for users with varying internet bandwidth.
+- **Dual Program Focus:** Dedicated sections and content for both Elderly Support and Disability Support programs.
+- **Comprehensive Information:** Detailed pages for "About Us" (including founding story, mission, vision, values, team), "Our Work" (program details), "Our Impact," "Get Involved," and "Contact Us."
+- **Team Showcase:** Profiles for key leadership, including Founder Samuel Ssebandeke and Director Ssekitto Alex Kayanja, highlighting his role in the disability program expansion.
+- **Modern Design:** Responsive, mobile-friendly, and visually appealing.
+- **Accessibility Considerations:** Built with WCAG guidelines in mind.
+- **Engagement Tools:**
+  - Integrated Donation System
+  - Volunteer Information & Application (planned)
+  - Partnership Information
+  - Newsletter Signup (planned)
+- **Rich Content:**
+  - Professional photography and (planned) video testimonials.
+  - Detailed program descriptions.
+  - Impact stories and (planned) statistics/reports.
+- **SEO Optimization:** For improved online visibility.
+- **Fast Loading Times:** Optimized for users with varying internet bandwidth.
 
 ## 5. Target Beneficiaries
 
 The Lusi Namatovu Foundation serves:
 
 1.  **Elderly Individuals in Rakai District:**
-    * Those lacking government pensions or family support.
-    * Needing assistance with daily necessities, shelter, food, medication, and companionship.
+    - Those lacking government pensions or family support.
+    - Needing assistance with daily necessities, shelter, food, medication, and companionship.
 2.  **People with Disabilities in Rakai District:**
-    * Individuals with physical, sensory, intellectual, or developmental disabilities.
-    * Those requiring assistive devices, specialized healthcare, advocacy, and opportunities for independence.
+    - Individuals with physical, sensory, intellectual, or developmental disabilities.
+    - Those requiring assistive devices, specialized healthcare, advocacy, and opportunities for independence.
 
 ## 6. Technology Stack (General)
 
-* **Frontend:** HTML5, CSS3, JavaScript (Potentially with a framework like React, Vue, or a static site generator in future).
-* **Backend (if applicable for CMS/Donations):** [e.g., Node.js]
-* **Styling:** [e.g., Tailwind CSS, Bootstrap, Custom CSS]
+- **Frontend:** HTML5, CSS3, JavaScript (Potentially with a framework like React, Vue, or a static site generator in future).
+- **Backend (if applicable for CMS/Donations):** [e.g., Node.js]
+- **Styling:** [e.g., Tailwind CSS, Bootstrap, Custom CSS]
 
 ## 7. Old Website Limitations Addressed
 
 The redesign addresses limitations of the previous website, including:
 
-* Basic design and limited pages.
-* Outdated content (only focused on elderly).
-* Lack of detailed program information.
-* Limited visual assets and testimonials.
-* Absence of online donation processing.
-* Minimal social media integration.
-* Lack of impact reporting.
+- Basic design and limited pages.
+- Outdated content (only focused on elderly).
+- Lack of detailed program information.
+- Limited visual assets and testimonials.
+- Absence of online donation processing.
+- Minimal social media integration.
+- Lack of impact reporting.
 
 ## 8. Website Structure (Sitemap Overview)
 
-* Homepage
-* About Us
-    * Our Story
-    * Our Mission, Vision, Values
-    * Our Team
-    * Our Approach
-* Our Work
-    * Elderly Support Program
-    * Disability Support Program
-* Our Impact (Planned)
-* Get Involved
-    * Donate
-    * Volunteer
-    * Partner
-* News/Stories (Blog)
-* Contact Us
+- Homepage
+- About Us
+  - Our Story
+  - Our Mission, Vision, Values
+  - Our Team
+  - Our Approach
+- Our Work
+  - Elderly Support Program
+  - Disability Support Program
+- Our Impact (Planned)
+- Get Involved
+  - Donate
+  - Volunteer
+  - Partner
+- News/Stories (Blog)
+- Contact Us
 
 ## 9. How to View
 
-* **Live Site:** [Link to Deployed Website - e.g., https://www.lusinamatovufoundation.com] (To be updated)
-
-
+- **Live Site:** [Link to Deployed Website - e.g., https://www.lusinamatovufoundation.com] (To be updated)

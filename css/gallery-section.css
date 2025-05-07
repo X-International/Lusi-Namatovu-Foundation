@@ -73,7 +73,8 @@
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-  height: 100%; /* Ensure consistent height */
+  height: 100%;
+  /* Ensure consistent height */
 }
 
 .carousel-gallery-item img {
@@ -180,7 +181,8 @@
   border-radius: 12px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
-  height: 100%; /* Ensure equal height */
+  height: 100%;
+  /* Ensure equal height */
 }
 
 .gallery-item-inner:hover,
@@ -193,7 +195,8 @@
   position: relative;
   overflow: hidden;
   border-radius: 12px;
-  height: 100%; /* Fill container */
+  height: 100%;
+  /* Fill container */
 }
 
 .gallery-image img {
@@ -299,16 +302,16 @@
   .gallery-filter-container {
     margin-bottom: 2rem;
   }
-  
+
   .gallery-filter-buttons {
     gap: 0.75rem;
   }
-  
+
   .filter-btn {
     padding: 0.625rem 1.25rem;
     font-size: 0.9375rem;
   }
-  
+
   .carousel-gallery-item img {
     height: 300px;
   }
@@ -319,22 +322,22 @@
     font-size: 1rem;
     margin-bottom: 2rem;
   }
-  
+
   .gallery-image img {
     height: 240px;
   }
-  
+
   .gallery-caption {
     font-size: 0.9375rem;
   }
-  
+
   /* Fix for row spacing */
   .gallery-wrapper .row {
     margin-right: -1rem;
     margin-left: -1rem;
   }
-  
-  .gallery-wrapper .col-md-6, 
+
+  .gallery-wrapper .col-md-6,
   .gallery-wrapper .col-lg-4 {
     padding-right: 1rem;
     padding-left: 1rem;
@@ -345,20 +348,20 @@
   .gallery-filter-buttons {
     gap: 1rem;
   }
-  
+
   .filter-btn {
     padding: 0.75rem 1.5rem;
     font-size: 1rem;
   }
-  
+
   .gallery-image img {
     height: 260px;
   }
-  
+
   .gallery-item {
     margin-bottom: 2rem;
   }
-  
+
   .gallery-counter {
     font-size: 1rem;
   }

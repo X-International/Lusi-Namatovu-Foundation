@@ -74,7 +74,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: radial-gradient(circle at center, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 70%);
+  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 70%);
   z-index: -1;
 }
 
@@ -111,10 +111,12 @@
     transform: scale(1);
     opacity: 0.8;
   }
+
   70% {
     transform: scale(1.15);
     opacity: 0;
   }
+
   100% {
     transform: scale(1.15);
     opacity: 0;
@@ -205,13 +207,15 @@
 .approach-row {
   display: flex;
   flex-wrap: wrap;
-  margin-bottom: -1.5rem; /* Offset the bottom margin of cards */
+  margin-bottom: -1.5rem;
+  /* Offset the bottom margin of cards */
 }
 
-.approach-row > [class*='col-'] {
+.approach-row>[class*='col-'] {
   display: flex;
   flex-direction: column;
-  margin-bottom: 1.5rem; /* Consistent card spacing */
+  margin-bottom: 1.5rem;
+  /* Consistent card spacing */
   padding-left: 0.75rem;
   padding-right: 0.75rem;
 }
@@ -221,30 +225,30 @@
   .approach-section .section-heading {
     margin-bottom: 2.5rem;
   }
-  
+
   .approach-section .intro-text {
     margin-bottom: 3rem;
   }
-  
+
   .approach-card-icon {
     width: 90px;
     height: 90px;
     font-size: 2.5rem;
   }
-  
+
   .approach-card-title {
     font-size: 1.45rem;
   }
-  
+
   .approach-card-header {
     padding: 2.25rem 1.75rem;
   }
-  
+
   .approach-card-body {
     padding: 2rem;
   }
-  
-  .approach-row > [class*='col-'] {
+
+  .approach-row>[class*='col-'] {
     padding-left: 1rem;
     padding-right: 1rem;
   }
@@ -254,27 +258,27 @@
   .approach-section .section-heading {
     margin-bottom: 3rem;
   }
-  
+
   .approach-section .intro-text {
     margin-bottom: 4rem;
     font-size: 1.2rem;
   }
-  
+
   .approach-card-icon {
     width: 100px;
     height: 100px;
     font-size: 2.75rem;
   }
-  
+
   .approach-card-header {
     padding: 2.5rem 2rem;
   }
-  
+
   .approach-bg-shape-1 {
     width: 400px;
     height: 400px;
   }
-  
+
   .approach-bg-shape-2 {
     width: 450px;
     height: 450px;
@@ -283,6 +287,7 @@
 
 /* Accessibility Enhancement */
 @media (prefers-reduced-motion: reduce) {
+
   .approach-card:hover,
   .approach-card:hover .approach-card-icon,
   .approach-card-icon::after,
@@ -317,6 +322,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+
   .approach-card.hidden,
   .approach-card.show {
     transition: none;

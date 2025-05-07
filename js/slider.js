@@ -197,7 +197,7 @@
         rect.left >= 0 &&
         rect.bottom <= window.innerHeight + 200 && // Allow partial visibility
         rect.right <=
-          (window.innerWidth || document.documentElement.clientWidth);
+        (window.innerWidth || document.documentElement.clientWidth);
 
       if (!isInViewport) return;
 
