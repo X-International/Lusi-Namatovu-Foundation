@@ -42,7 +42,7 @@
 
 .elderly-needs-caption .caption-tag {
     display: inline-block;
-    background-color: var(--primary-color, #d94f59);
+    background-color: var(--primary-color, #0e98f1);
     color: white;
     padding: 4px 12px;
     border-radius: 20px;
@@ -83,13 +83,13 @@
     width: 60px;
     height: 60px;
     border-radius: 50%;
-    background-color: var(--primary-color, #d94f59);
+    background-color: var(--primary-color, #0e98f1);
     color: #fff;
     display: flex;
     align-items: center;
     justify-content: center;
     z-index: 2;
-    box-shadow: 0 5px 15px rgba(217, 79, 89, 0.3);
+    /* box-shadow: 0 5px 15px rgba(217, 79, 89, 0.3); */
 }
 
 .program-card-icon i {
@@ -175,7 +175,7 @@
     bottom: 20px;
     left: 20px;
     padding: 15px 25px;
-    background-color: var(--primary-color, #d94f59);
+    background-color: var(--primary-color, #0e98f1);
     color: #fff;
     border-radius: 10px;
     max-width: 80%;
@@ -217,7 +217,7 @@
 }
 
 .impact-story-quote i {
-    color: var(--primary-color, #d94f59);
+    color: var(--primary-color, #0e98f1);
     font-size: 24px;
     margin-bottom: 15px;
     opacity: 0.5;
