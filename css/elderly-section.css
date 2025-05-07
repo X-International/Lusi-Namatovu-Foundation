@@ -1,0 +1,313 @@
+/* Elderly Support Programs CSS - For elderly-support-programs.html */
+
+/* ==== Elderly Needs Section Styles ==== */
+.elderly-needs-section {
+    position: relative;
+    overflow: hidden;
+}
+
+.elderly-needs-image-wrap {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.elderly-needs-image {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.elderly-needs-image img {
+    border-radius: 20px;
+    width: 100%;
+    height: auto;
+    transition: transform 0.5s ease;
+}
+
+.elderly-needs-image:hover img {
+    transform: scale(1.05);
+}
+
+.elderly-needs-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+    color: #fff;
+}
+
+.elderly-needs-caption .caption-tag {
+    display: inline-block;
+    background-color: var(--primary-color, #d94f59);
+    color: white;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+.elderly-needs-caption h4 {
+    font-size: 18px;
+    margin: 0;
+    color: white;
+}
+
+/* ==== Elderly Programs Section Styles ==== */
+.elderly-programs-section {
+    position: relative;
+}
+
+.elderly-program-card {
+    position: relative;
+    border-radius: 15px;
+    background-color: #fff;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    overflow: hidden;
+    height: 100%;
+}
+
+.elderly-program-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+}
+
+.program-card-icon {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: var(--primary-color, #d94f59);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    box-shadow: 0 5px 15px rgba(217, 79, 89, 0.3);
+}
+
+.program-card-icon i {
+    font-size: 24px;
+}
+
+.program-card-content {
+    padding: 20px;
+    padding-top: 100px;
+    position: relative;
+    z-index: 1;
+}
+
+.program-card-content h4 {
+    font-size: 20px;
+    margin-bottom: 15px;
+    color: var(--heading-color, #222);
+    font-weight: 600;
+}
+
+.program-card-content p {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--text-color, #555);
+    margin-bottom: 0;
+}
+
+.program-card-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.program-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.program-active-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.5));
+}
+
+.elderly-program-card:hover .program-card-image {
+    opacity: 1;
+}
+
+.elderly-program-card:hover .program-card-content h4,
+.elderly-program-card:hover .program-card-content p {
+    color: #fff;
+}
+
+/* ==== Elderly Impact Section Styles ==== */
+.elderly-impact-section {
+    position: relative;
+}
+
+.impact-story-image {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.impact-story-image img {
+    border-radius: 20px;
+    width: 100%;
+    height: auto;
+}
+
+.impact-story-badge {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    padding: 15px 25px;
+    background-color: var(--primary-color, #d94f59);
+    color: #fff;
+    border-radius: 10px;
+    max-width: 80%;
+}
+
+.impact-story-badge span {
+    display: block;
+    font-size: 14px;
+    opacity: 0.9;
+    margin-bottom: 5px;
+}
+
+.impact-story-badge h4 {
+    font-size: 18px;
+    margin: 0;
+    color: white;
+}
+
+.impact-story-content {
+    padding: 20px;
+}
+
+.impact-story-quote {
+    position: relative;
+    padding: 30px;
+    background-color: #f8f9fa;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+}
+
+.impact-story-quote blockquote {
+    font-size: 16px;
+    line-height: 1.8;
+    font-style: italic;
+    color: #444;
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
+.impact-story-quote i {
+    color: var(--primary-color, #d94f59);
+    font-size: 24px;
+    margin-bottom: 15px;
+    opacity: 0.5;
+}
+
+.impact-story-quote .blockquote-footer {
+    margin-top: 15px;
+    color: #777;
+}
+
+.impact-story-quote .blockquote-footer cite {
+    font-weight: 600;
+}
+
+/* Responsive Styles */
+@media (max-width: 991.98px) {
+    .elderly-needs-image-wrap {
+        margin-top: 30px;
+    }
+    
+    .program-card-content {
+        padding-top: 90px;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .elderly-needs-section .section-heading h2,
+    .elderly-programs-section .section-heading h2 {
+        font-size: 28px;
+    }
+    
+    .elderly-needs-image-wrap {
+        margin-top: 25px;
+    }
+    
+    .program-card-icon {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .program-card-icon i {
+        font-size: 20px;
+    }
+    
+    .program-card-content {
+        padding-top: 80px;
+    }
+    
+    .program-card-content h4 {
+        font-size: 18px;
+    }
+    
+    .impact-story-badge {
+        padding: 12px 20px;
+    }
+    
+    .impact-story-badge h4 {
+        font-size: 16px;
+    }
+    
+    .impact-story-quote {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .elderly-needs-section .section-heading h2,
+    .elderly-programs-section .section-heading h2 {
+        font-size: 24px;
+    }
+    
+    .program-card-content {
+        padding: 75px 15px 15px;
+    }
+    
+    .impact-story-badge {
+        left: 15px;
+        bottom: 15px;
+        padding: 10px 15px;
+    }
+    
+    .impact-story-badge span {
+        font-size: 12px;
+    }
+    
+    .impact-story-badge h4 {
+        font-size: 14px;
+    }
+    
+    .impact-story-quote blockquote {
+        font-size: 15px;
+    }
+}
