@@ -1,0 +1,279 @@
+/* Introduction Section Styles */
+.intro-section {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, #f0f8ff 0%, #ffffff 100%);
+    padding: 50px 0;
+}
+
+.intro-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 45%;
+    height: 100%;
+    background: url('../images/lnf/events/Lusi-Namatovu-Foundation_50.jpg') no-repeat;
+    background-size: cover;
+    background-position: center;
+    opacity: 0.07;
+    z-index: 0;
+    pointer-events: none;
+    clip-path: polygon(100% 0, 100% 100%, 0 100%, 30% 0);
+}
+
+.intro-content {
+    position: relative;
+    z-index: 1;
+    padding: 15px 0;
+}
+
+.intro-text-wrapper {
+    max-width: 850px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.intro-text-wrapper p {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #555;
+    margin-bottom: 20px;
+    opacity: 0.93;
+}
+
+.intro-text-wrapper p:last-child {
+    margin-bottom: 0;
+}
+
+/* Section heading refinements */
+.intro-section .section-heading {
+    margin-bottom: 2rem;
+}
+
+.intro-section .section-heading .heading {
+    margin-bottom: 1.5rem;
+}
+
+/* Modern Stats Bar Styling - UPDATED */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 25px;
+    margin-top: 40px;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.stat-item {
+    background: #ffffff;
+    border-radius: 10px;
+    padding: 25px 20px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.04);
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.stat-item::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: #0e98f1;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.6s ease;
+}
+
+.stat-item.in-view::after {
+    transform: scaleX(1);
+}
+
+.stat-icon {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: rgba(14, 152, 241, 0.1);
+    margin-bottom: 18px;
+}
+
+.stat-icon i {
+    font-size: 24px;
+    color: #0e98f1;
+}
+
+.stat-number {
+    font-size: 36px;
+    font-weight: 700;
+    color: #1a2526;
+    line-height: 1.2;
+    margin-bottom: 10px;
+    transition: transform 0.5s ease;
+}
+
+.stat-item.in-view .stat-number {
+    animation: countUp 1.5s ease forwards;
+}
+
+.stat-label {
+    font-size: 15px;
+    color: #666;
+    margin-bottom: 0;
+    font-weight: 400;
+}
+
+/* Animation for stats */
+@keyframes countUp {
+    0% {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.intro-animation {
+    animation: fadeUp 0.8s ease forwards;
+    opacity: 0;
+}
+
+.intro-animation-delay-1 {
+    animation-delay: 0.1s;
+}
+
+.intro-animation-delay-2 {
+    animation-delay: 0.2s;
+}
+
+.intro-animation-delay-3 {
+    animation-delay: 0.3s;
+}
+
+/* Background decorative elements */
+.intro-decorative-shape {
+    position: absolute;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.intro-shape-1 {
+    left: -5%;
+    top: 20%;
+    width: 200px;
+    height: 200px;
+    background: linear-gradient(135deg, rgba(14, 152, 241, 0.05) 0%, rgba(14, 152, 241, 0.01) 100%);
+    border-radius: 50%;
+    filter: blur(50px);
+}
+
+.intro-shape-2 {
+    right: 5%;
+    bottom: 10%;
+    width: 150px;
+    height: 150px;
+    background: linear-gradient(135deg, rgba(252, 185, 39, 0.05) 0%, rgba(252, 185, 39, 0.01) 100%);
+    border-radius: 50%;
+    filter: blur(40px);
+}
+
+/* Responsive adjustments - Mobile First Approach */
+@media (min-width: 576px) {
+    .intro-section {
+        padding: 60px 0;
+    }
+
+    .intro-content {
+        padding: 20px 0;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .stat-item {
+        padding: 25px;
+    }
+}
+
+@media (min-width: 768px) {
+    .intro-section {
+        padding: 70px 0;
+    }
+
+    .intro-content {
+        padding: 25px 0;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+    }
+
+    .intro-text-wrapper {
+        padding: 0;
+    }
+
+    .stat-number {
+        font-size: 32px;
+    }
+}
+
+@media (min-width: 992px) {
+    .intro-section {
+        padding: 80px 0;
+    }
+
+    .intro-text-wrapper p {
+        font-size: 17px;
+        line-height: 1.85;
+    }
+
+    .stats-grid {
+        gap: 30px;
+    }
+
+    .stat-item {
+        padding: 30px 20px;
+    }
+
+    .stat-number {
+        font-size: 36px;
+    }
+}
+
+/* Ensure shapes don't cause overflow on small screens */
+@media (max-width: 767px) {
+    .intro-shape-1 {
+        width: 150px;
+        height: 150px;
+    }
+
+    .intro-shape-2 {
+        width: 100px;
+        height: 100px;
+    }
+}

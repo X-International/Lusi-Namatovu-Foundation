@@ -1,0 +1,462 @@
+/* Elderly Support Programs CSS - For elderly-support-programs.html */
+
+/* Base section spacing */
+.elderly-needs-section,
+.elderly-programs-section,
+.elderly-impact-section {
+    position: relative;
+    overflow: hidden;
+    padding-top: var(--section-padding, 6rem);
+    padding-bottom: var(--section-padding, 6rem);
+}
+
+/* Section headings consistent spacing */
+.section-heading {
+    margin-bottom: 3rem;
+}
+
+.section-heading .sub-heading {
+    margin-bottom: 1rem;
+}
+
+.section-heading .heading {
+    margin-bottom: 1.5rem;
+}
+
+/* Elderly Needs Section */
+.elderly-needs-section .row {
+    --bs-gutter-x: 2rem;
+    --bs-gutter-y: 2rem;
+}
+
+.elderly-needs-image-wrap {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    height: 100%;
+}
+
+.elderly-needs-image {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    height: 100%;
+}
+
+.elderly-needs-image img {
+    border-radius: 20px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.elderly-needs-image:hover img {
+    transform: scale(1.05);
+}
+
+.elderly-needs-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 2rem;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+    color: #fff;
+}
+
+.elderly-needs-caption .caption-tag {
+    display: inline-block;
+    background-color: var(--primary-color, #0e98f1);
+    color: white;
+    padding: 0.25rem 1rem;
+    border-radius: 20px;
+    font-size: 0.875rem;
+    margin-bottom: 0.5rem;
+}
+
+.elderly-needs-caption h4 {
+    font-size: 1.25rem;
+    margin: 0;
+    color: white;
+    font-weight: 600;
+}
+
+/* Programs Section Styles */
+.elderly-programs-section .row {
+    --bs-gutter-x: 1.5rem;
+    --bs-gutter-y: 2rem;
+}
+
+.elderly-program-card {
+    position: relative;
+    border-radius: 15px;
+    background-color: #fff;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    overflow: hidden;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.elderly-program-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+}
+
+.program-card-icon {
+    position: absolute;
+    top: 1.25rem;
+    left: 1.25rem;
+    width: 3.75rem;
+    height: 3.75rem;
+    border-radius: 50%;
+    background-color: var(--primary-color, #0e98f1);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    /* box-shadow: 0 5px 15px rgba(217, 79, 89, 0.3); */
+}
+
+.program-card-icon i {
+    font-size: 1.5rem;
+}
+
+.program-card-content {
+    padding: 1.25rem;
+    padding-top: 6.25rem;
+    position: relative;
+    z-index: 1;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.program-card-content h4 {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+    color: var(--heading-color, #222);
+    font-weight: 600;
+}
+
+.program-card-content p {
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    color: var(--text-color, #555);
+    margin-bottom: 1.25rem;
+    flex: 1;
+}
+
+.program-card-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.program-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.program-active-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.85));
+}
+
+.elderly-program-card:hover .program-card-image {
+    opacity: 1;
+}
+
+.elderly-program-card:hover .program-card-content h4,
+.elderly-program-card:hover .program-card-content p {
+    color: #fff;
+}
+
+/* Impact Stories Section */
+.elderly-impact-section .row {
+    --bs-gutter-x: 2rem;
+    --bs-gutter-y: 2rem;
+}
+
+.impact-story-image {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    aspect-ratio: 4/3;
+}
+
+.impact-story-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+}
+
+.impact-story-badge {
+    position: absolute;
+    bottom: 1.25rem;
+    left: 1.25rem;
+    padding: 1rem 1.5rem;
+    background-color: var(--primary-color, #0e98f1);
+    color: #fff;
+    border-radius: 10px;
+    max-width: 80%;
+}
+
+.impact-story-badge span {
+    display: block;
+    font-size: 0.875rem;
+    opacity: 0.9;
+    margin-bottom: 0.3125rem;
+}
+
+.impact-story-badge h4 {
+    font-size: 1.125rem;
+    margin: 0;
+    color: white;
+    font-weight: 600;
+}
+
+.impact-story-content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.impact-story-quote {
+    position: relative;
+    padding: 2rem;
+    background-color: #f8f9fa;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+}
+
+.impact-story-quote blockquote {
+    font-size: 1rem;
+    line-height: 1.8;
+    font-style: italic;
+    color: #444;
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
+.impact-story-quote i {
+    color: var(--primary-color, #0e98f1);
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    opacity: 0.5;
+    display: block;
+}
+
+.impact-story-quote .blockquote-footer {
+    margin-top: 1rem;
+    color: #777;
+    font-size: 0.875rem;
+}
+
+/* Touch feedback and focus styles */
+.keyboard-navigation .elderly-program-card:focus,
+.keyboard-navigation .elderly-program-card:focus-within {
+    outline: 3px solid var(--primary-color, #0e98f1);
+    outline-offset: 2px;
+}
+
+.elderly-program-card:focus {
+    outline: none;
+}
+
+.elderly-program-card.focus-within {
+    box-shadow: 0 0 0 3px rgba(217, 79, 89, 0.3), 0 15px 40px rgba(0, 0, 0, 0.1);
+}
+
+/* Image fade-in animation */
+img.fade-in {
+    animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Active state for touch devices */
+.elderly-program-card:active {
+    transform: scale(0.98);
+    transition: transform 0.2s ease;
+}
+
+/* Responsive Styles */
+@media (max-width: 1199.98px) {
+
+    .elderly-needs-section,
+    .elderly-programs-section,
+    .elderly-impact-section {
+        padding-top: 5rem;
+        padding-bottom: 5rem;
+    }
+
+    .program-card-content {
+        padding-top: 5.5rem;
+    }
+}
+
+@media (max-width: 991.98px) {
+
+    .elderly-needs-section,
+    .elderly-programs-section,
+    .elderly-impact-section {
+        padding-top: 4rem;
+        padding-bottom: 4rem;
+    }
+
+    .elderly-needs-image-wrap {
+        margin-top: 2rem;
+    }
+
+    .program-card-content h4 {
+        font-size: 1.125rem;
+    }
+
+    .impact-story-badge {
+        padding: 0.875rem 1.25rem;
+    }
+}
+
+@media (max-width: 767.98px) {
+
+    .elderly-needs-section,
+    .elderly-programs-section,
+    .elderly-impact-section {
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+    }
+
+    .section-heading .heading {
+        font-size: 1.75rem;
+    }
+
+    .elderly-needs-image-wrap {
+        margin-top: 1.5rem;
+    }
+
+    .program-card-icon {
+        width: 3.125rem;
+        height: 3.125rem;
+    }
+
+    .program-card-icon i {
+        font-size: 1.25rem;
+    }
+
+    .program-card-content {
+        padding-top: 5rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    .impact-story-badge {
+        padding: 0.75rem 1rem;
+    }
+
+    .impact-story-badge h4 {
+        font-size: 1rem;
+    }
+
+    .impact-story-quote {
+        padding: 1.5rem;
+    }
+
+    .impact-story-quote blockquote {
+        font-size: 0.9375rem;
+    }
+
+    .elderly-program-card {
+        min-height: 15rem;
+    }
+
+    .program-card-icon {
+        min-width: 3.125rem;
+        min-height: 3.125rem;
+    }
+
+    .impact-story-badge,
+    .elderly-needs-caption {
+        min-height: 4rem;
+    }
+}
+
+@media (max-width: 575.98px) {
+
+    .elderly-needs-section,
+    .elderly-programs-section,
+    .elderly-impact-section {
+        padding-top: 2.5rem;
+        padding-bottom: 2.5rem;
+    }
+
+    .section-heading .heading {
+        font-size: 1.5rem;
+    }
+
+    .program-card-content {
+        padding: 4.5rem 1rem 1rem;
+    }
+
+    .impact-story-badge {
+        left: 1rem;
+        bottom: 1rem;
+        padding: 0.625rem 0.875rem;
+    }
+
+    .impact-story-badge span {
+        font-size: 0.75rem;
+    }
+
+    .impact-story-badge h4 {
+        font-size: 0.875rem;
+    }
+
+    .impact-story-quote {
+        padding: 1.25rem;
+    }
+}
+
+/* Touch device optimizations */
+@media (hover: none) {
+    .elderly-program-card:hover {
+        transform: none;
+    }
+
+    .elderly-program-card.mobile-active .program-card-image {
+        opacity: 1;
+    }
+
+    .elderly-program-card.mobile-active .program-card-content h4,
+    .elderly-program-card.mobile-active .program-card-content p {
+        color: #fff;
+    }
+}

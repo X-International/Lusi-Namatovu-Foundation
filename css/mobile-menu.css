@@ -1,0 +1,244 @@
+/* Mobile Menu Styles */
+
+.mobile-menu-wrap {
+  margin: 20px 0;
+}
+
+.mobile-menu-wrap .mobile-nav {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.mobile-menu-wrap .mobile-nav li {
+  position: relative;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.mobile-menu-wrap .mobile-nav li a {
+  display: block;
+  padding: 12px 0;
+  color: var(--hq-heading-color);
+  font-size: 16px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.mobile-menu-wrap .mobile-nav li a:hover,
+.mobile-menu-wrap .mobile-nav li a.active {
+  color: var(--hq-primary-color);
+}
+
+/* Dropdown toggle indicator - completely removing any ::after pseudo-element */
+.mobile-menu-wrap .mobile-nav li.menu-item-has-children>a {
+  position: relative;
+  padding-right: 25px;
+  /* Make room for the toggle icon */
+}
+
+/* This is the only icon we need for the dropdown - removing any other icon styles */
+.mobile-menu-wrap .mobile-nav li.menu-item-has-children>a .dropdown-toggle {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: transform 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+}
+
+.mobile-menu-wrap .mobile-nav li.menu-open>a .dropdown-toggle {
+  transform: translateY(-50%) rotate(180deg);
+}
+
+/* Submenu styling */
+.mobile-menu-wrap .mobile-nav .sub-menu {
+  list-style: none;
+  padding: 0 0 0 15px;
+  margin: 0;
+}
+
+.mobile-menu-wrap .mobile-nav li.menu-open>.sub-menu {
+  display: block;
+}
+
+.mobile-menu-wrap .mobile-nav .sub-menu li {
+  border-bottom: none;
+  padding: 0;
+}
+
+.mobile-menu-wrap .mobile-nav .sub-menu li a {
+  font-size: 15px;
+  padding: 8px 0;
+  color: var(--hq-grey-color);
+  font-weight: 400;
+}
+
+.mobile-menu-wrap .mobile-nav .sub-menu li a:hover {
+  color: var(--hq-primary-color);
+}
+
+/* Mobile Menu Overlay */
+.mobile-menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 998;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.mobile-menu-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Offcanvas sidebar */
+#offcanvas-sidebar {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 300px;
+  max-width: 85%;
+  height: 100%;
+  background-color: #fff;
+  z-index: 999;
+  transition: right 0.4s cubic-bezier(0.77, 0.2, 0.05, 1);
+  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+#offcanvas-sidebar.active {
+  right: 0;
+}
+
+#hide-offcanvas-sidemenu {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: transparent;
+  border: none;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 2;
+  padding: 0;
+}
+
+#hide-offcanvas-sidemenu svg {
+  width: 12px;
+  height: 12px;
+  fill: var(--hq-heading-color);
+}
+
+.offcanvas-sidebar-inner {
+  height: 100%;
+  overflow-y: auto;
+  padding: 50px 25px 40px;
+  scrollbar-width: none;
+  /* For Firefox */
+  -ms-overflow-style: none;
+  /* For Internet Explorer and Edge */
+}
+
+.offcanvas-sidebar-inner::-webkit-scrollbar {
+  display: none;
+  /* For Chrome, Safari and Opera */
+}
+
+.offcanvas-about {
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+.offcanvas-about img {
+  max-width: 160px;
+  margin-bottom: 15px;
+}
+
+.offcanvas-about p {
+  font-size: 14px;
+  color: var(--hq-grey-color);
+}
+
+/* Remove border from last item */
+.mobile-menu-wrap .mobile-nav li:last-child {
+  border-bottom: none;
+}
+
+.offcanvas-contact {
+  margin: 30px 0;
+  padding: 0;
+  list-style: none;
+}
+
+.offcanvas-contact li {
+  display: flex;
+  margin-bottom: 15px;
+}
+
+.offcanvas-contact li i {
+  font-size: 16px;
+  margin-right: 12px;
+  color: var(--hq-primary-color);
+}
+
+.offcanvas-contact li p {
+  font-size: 14px;
+  margin: 0;
+  color: var(--hq-grey-color);
+}
+
+.offcanvas-contact li p span {
+  display: block;
+  margin-bottom: 3px;
+  color: var(--hq-heading-color);
+  font-weight: 500;
+}
+
+.offcanvas-contact li a {
+  color: var(--hq-grey-color);
+  transition: all 0.3s ease;
+}
+
+.offcanvas-contact li a:hover {
+  color: var(--hq-primary-color);
+}
+
+.offcanvas-socials {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.offcanvas-socials a {
+  width: 35px;
+  height: 35px;
+  background-color: rgba(var(--hq-primary-rgb), 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: var(--hq-primary-color);
+  transition: all 0.3s ease;
+}
+
+.offcanvas-socials a:hover {
+  background-color: var(--hq-primary-color);
+  color: #fff;
+}
+
+/* Mobile menu active state */
+body.mobile-menu-active {
+  overflow: hidden;
+}
