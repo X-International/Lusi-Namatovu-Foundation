@@ -2402,6 +2402,10 @@
   background-color: #ffffff;
 }
 
+.hover-cta:hover {
+  color: white;
+}
+
 .cta-section .hq-btn {
   background-color: #ffffff;
   color: #0e98f1;
@@ -2417,6 +2421,7 @@
   background-color: #f8f9fa;
   box-shadow: 0 7px 20px rgba(0, 0, 0, 0.25);
   transform: translateY(-3px);
+  color: white;
 }
 
 .cta-section .hq-btn i {
