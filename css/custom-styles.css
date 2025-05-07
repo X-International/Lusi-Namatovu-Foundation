@@ -28,35 +28,35 @@
 
 @media (max-width: 768px) {
   .intro-section {
-      padding: 40px 0;
+    padding: 40px 0;
   }
 
   .intro-section .container {
-      padding-left: 15px;
-      padding-right: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
   }
 
   .intro-content .heading {
-      font-size: 28px !important;
+    font-size: 28px !important;
   }
 
   .intro-text-wrapper p {
-      font-size: 14px !important;
+    font-size: 14px !important;
   }
 
   .stats-bar {
-      width: 100%;
-      padding: 10px !important;
+    width: 100%;
+    padding: 10px !important;
   }
 
   .stats-bar .stats-content {
-      flex-direction: column;
-      gap: 5px;
-      font-size: 14px;
+    flex-direction: column;
+    gap: 5px;
+    font-size: 14px;
   }
 
   .stat-divider {
-      display: none;
+    display: none;
   }
 }
 
@@ -1754,44 +1754,44 @@
 
 @media (max-width: 992px) {
   .program-card-img {
-      height: 200px;
+    height: 200px;
   }
 
   .program-card-content h3 {
-      font-size: 20px;
+    font-size: 20px;
   }
 
   .stat-number {
-      font-size: 22px;
+    font-size: 22px;
   }
 }
 
 @media (max-width: 768px) {
   .programs-section {
-      padding: 50px 0;
+    padding: 50px 0;
   }
 
   .program-card-content {
-      padding: 20px;
+    padding: 20px;
   }
 
   .program-card-content h3 {
-      font-size: 18px;
-      margin-bottom: 12px;
-      padding-bottom: 12px;
+    font-size: 18px;
+    margin-bottom: 12px;
+    padding-bottom: 12px;
   }
 
   .program-card-content p {
-      font-size: 14px;
-      margin-bottom: 15px;
+    font-size: 14px;
+    margin-bottom: 15px;
   }
 
   .stat-number {
-      font-size: 20px;
+    font-size: 20px;
   }
 
   .stat-label {
-      font-size: 12px;
+    font-size: 12px;
   }
 }
 
@@ -1803,7 +1803,7 @@
 
 .elder-program-card {
   position: relative;
-  background-color: #f8f9fa;
+  background-color: #fff;
   border-radius: 8px;
   overflow: hidden;
   padding: 30px 20px;
@@ -1951,96 +1951,96 @@
 
 @media (max-width: 1199px) {
   .elder-program-image-wrapper {
-      height: 380px;
+    height: 380px;
   }
 }
 
 @media (max-width: 991px) {
   .elder-program-image-wrapper {
-      height: 350px;
-      margin-top: 20px;
+    height: 350px;
+    margin-top: 20px;
   }
 
   .elder-program-card {
-      min-height: 180px;
+    min-height: 180px;
   }
 
   .program-card-icon i {
-      font-size: 32px;
+    font-size: 32px;
   }
 }
 
 @media (max-width: 767px) {
   .elderly-support-section.ptb-110 {
-      padding: 60px 0;
+    padding: 60px 0;
   }
 
   .elder-program-card {
-      min-height: 160px;
-      padding: 20px 15px;
+    min-height: 160px;
+    padding: 20px 15px;
   }
 
   .program-card-icon i {
-      font-size: 28px;
+    font-size: 28px;
   }
 
   .program-card-content h3 {
-      font-size: 16px;
+    font-size: 16px;
   }
 
   .program-card-content p {
-      font-size: 13px;
+    font-size: 13px;
   }
 
   .elder-program-image-wrapper {
-      height: 300px;
+    height: 300px;
   }
 
   .badge-icon {
-      width: 35px;
-      height: 35px;
+    width: 35px;
+    height: 35px;
   }
 
   .badge-text h4 {
-      font-size: 14px;
+    font-size: 14px;
   }
 
   .hq-btn {
-      width: 100%;
-      display: block;
-      text-align: center;
+    width: 100%;
+    display: block;
+    text-align: center;
   }
 }
 
 @media (max-width: 575px) {
   .elderly-support-section.ptb-110 {
-      padding: 50px 0;
+    padding: 50px 0;
   }
 
   .elder-program-image-wrapper {
-      height: 250px;
+    height: 250px;
   }
 
   .image-badge {
-      padding: 8px 12px;
+    padding: 8px 12px;
   }
 
   .badge-icon {
-      width: 30px;
-      height: 30px;
-      margin-right: 8px;
+    width: 30px;
+    height: 30px;
+    margin-right: 8px;
   }
 
   .badge-icon i {
-      font-size: 14px;
+    font-size: 14px;
   }
 
   .badge-text span {
-      font-size: 10px;
+    font-size: 10px;
   }
 
   .badge-text h4 {
-      font-size: 12px;
+    font-size: 12px;
   }
 }
 
@@ -2053,7 +2053,7 @@
 
 .disability-program-card {
   position: relative;
-  background-color: #f8f9fa;
+  background-color: #fff;
   border-radius: 8px;
   overflow: hidden;
   padding: 30px 20px;
@@ -2113,96 +2113,96 @@
 
 @media (max-width: 1199px) {
   .disability-program-image-wrapper {
-      height: 380px;
+    height: 380px;
   }
 }
 
 @media (max-width: 991px) {
   .disability-program-image-wrapper {
-      height: 350px;
-      margin-top: 20px;
+    height: 350px;
+    margin-top: 20px;
   }
 
   .disability-program-card {
-      min-height: 180px;
+    min-height: 180px;
   }
 
   .program-card-icon i {
-      font-size: 32px;
+    font-size: 32px;
   }
 }
 
 @media (max-width: 767px) {
   .disability-support-section.ptb-110 {
-      padding: 60px 0;
+    padding: 60px 0;
   }
 
   .disability-program-card {
-      min-height: 160px;
-      padding: 20px 15px;
+    min-height: 160px;
+    padding: 20px 15px;
   }
 
   .program-card-icon i {
-      font-size: 28px;
+    font-size: 28px;
   }
 
   .program-card-content h3 {
-      font-size: 16px;
+    font-size: 16px;
   }
 
   .program-card-content p {
-      font-size: 13px;
+    font-size: 13px;
   }
 
   .disability-program-image-wrapper {
-      height: 300px;
+    height: 300px;
   }
 
   .badge-icon {
-      width: 35px;
-      height: 35px;
+    width: 35px;
+    height: 35px;
   }
 
   .badge-text h4 {
-      font-size: 14px;
+    font-size: 14px;
   }
 
   .hq-btn {
-      width: 100%;
-      display: block;
-      text-align: center;
+    width: 100%;
+    display: block;
+    text-align: center;
   }
 }
 
 @media (max-width: 575px) {
   .disability-support-section.ptb-110 {
-      padding: 50px 0;
+    padding: 50px 0;
   }
 
   .disability-program-image-wrapper {
-      height: 250px;
+    height: 250px;
   }
 
   .image-badge {
-      padding: 8px 12px;
+    padding: 8px 12px;
   }
 
   .badge-icon {
-      width: 30px;
-      height: 30px;
-      margin-right: 8px;
+    width: 30px;
+    height: 30px;
+    margin-right: 8px;
   }
 
   .badge-icon i {
-      font-size: 14px;
+    font-size: 14px;
   }
 
   .badge-text span {
-      font-size: 10px;
+    font-size: 10px;
   }
 
   .badge-text h4 {
-      font-size: 12px;
+    font-size: 12px;
   }
 }
 
@@ -2317,67 +2317,67 @@
 
 @media (max-width: 991px) {
   .support-option-card {
-      min-height: 160px;
-      padding: 25px 15px;
+    min-height: 160px;
+    padding: 25px 15px;
   }
 
   .support-card-icon i {
-      font-size: 36px;
+    font-size: 36px;
   }
 
   .support-card-content h3 {
-      font-size: 18px;
+    font-size: 18px;
   }
 }
 
 @media (max-width: 767px) {
   .support-work-section.ptb-110 {
-      padding: 60px 0;
+    padding: 60px 0;
   }
 
   .support-option-card {
-      min-height: 140px;
-      padding: 20px 15px;
+    min-height: 140px;
+    padding: 20px 15px;
   }
 
   .support-card-icon i {
-      font-size: 32px;
+    font-size: 32px;
   }
 
   .support-card-content h3 {
-      font-size: 16px;
-      margin-bottom: 8px;
+    font-size: 16px;
+    margin-bottom: 8px;
   }
 
   .support-card-content p {
-      font-size: 13px;
+    font-size: 13px;
   }
 
   .hq-btn {
-      font-size: 14px;
-      padding: 10px 20px;
+    font-size: 14px;
+    padding: 10px 20px;
   }
 }
 
 @media (max-width: 575px) {
   .support-work-section.ptb-110 {
-      padding: 50px 0;
+    padding: 50px 0;
   }
 
   .support-option-card {
-      min-height: 120px;
+    min-height: 120px;
   }
 
   .support-card-icon i {
-      font-size: 28px;
-      margin-bottom: 10px;
+    font-size: 28px;
+    margin-bottom: 10px;
   }
 
   .card-arrow {
-      width: 25px;
-      height: 25px;
-      bottom: 10px;
-      right: 10px;
+    width: 25px;
+    height: 25px;
+    bottom: 10px;
+    right: 10px;
   }
 }
 
@@ -2479,58 +2479,58 @@
 /* Mobile Responsiveness */
 @media (max-width: 991px) {
   .cta-section {
-      padding: 3rem 0 4rem;
+    padding: 3rem 0 4rem;
   }
-  
+
   .cta-section .section-heading .heading {
-      font-size: 1.75rem;
+    font-size: 1.75rem;
   }
-  
+
   .cta-section .section-desc {
-      font-size: 0.95rem;
-      padding: 0 1rem;
+    font-size: 0.95rem;
+    padding: 0 1rem;
   }
 }
 
 @media (max-width: 767px) {
   .cta-section {
-      padding: 2.5rem 0 3.5rem;
+    padding: 2.5rem 0 3.5rem;
   }
-  
+
   .cta-section .section-heading .heading {
-      font-size: 1.5rem;
+    font-size: 1.5rem;
   }
-  
+
   .cta-section .section-desc {
-      font-size: 0.9rem;
-      padding: 0 0.75rem;
+    font-size: 0.9rem;
+    padding: 0 0.75rem;
   }
-  
+
   .cta-wave-pattern svg {
-      height: 25px;
+    height: 25px;
   }
-  
+
   .cta-section .hq-btn {
-      min-width: 180px;
-      padding: 10px 20px;
+    min-width: 180px;
+    padding: 10px 20px;
   }
 }
 
 @media (max-width: 575px) {
   .cta-section {
-      padding: 2rem 0 3rem;
+    padding: 2rem 0 3rem;
   }
-  
+
   .cta-section .section-heading .heading {
-      font-size: 1.35rem;
+    font-size: 1.35rem;
   }
-  
+
   .cta-section .section-desc {
-      font-size: 0.875rem;
-      line-height: 1.5;
+    font-size: 0.875rem;
+    line-height: 1.5;
   }
-  
+
   .cta-wave-pattern svg {
-      height: 20px;
+    height: 20px;
   }
 }
