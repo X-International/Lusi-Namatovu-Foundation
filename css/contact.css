@@ -226,8 +226,14 @@ textarea.form-control {
 }
 
 /* Submit Button */
+.contact-form .col-12:last-of-type {
+    display: flex;
+    justify-content: center;
+}
+
 .contact-form .hq-btn {
     width: 100%;
+    min-width: 200px;
     background-color: #0e98f1;
     color: #ffffff;
     padding: 12px 24px;
@@ -239,15 +245,9 @@ textarea.form-control {
     text-align: center;
     transition: none;
     margin-top: 5px;
-}
-
-.contact-form .hq-btn:hover {
-    background-color: #0776c0;
-}
-
-.contact-form .hq-btn:focus {
-    outline: 2px solid #0e98f1;
-    outline-offset: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /* Response Message */
