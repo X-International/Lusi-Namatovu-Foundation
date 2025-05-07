@@ -2387,7 +2387,8 @@
   background-color: #0e98f1;
   text-align: center;
   overflow: hidden;
-  margin-top: 20px;
+  padding: 3.5rem 0 4.5rem;
+  margin-top: 2rem;
 }
 
 .cta-section .section-heading .sub-heading,
@@ -2406,15 +2407,26 @@
   color: #0e98f1;
   font-weight: 600;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  margin-top: 1rem;
+  min-width: 200px;
+  padding: 12px 25px;
+  transition: all 0.35s ease;
 }
 
 .cta-section .hq-btn:hover {
   background-color: #f8f9fa;
   box-shadow: 0 7px 20px rgba(0, 0, 0, 0.25);
+  transform: translateY(-3px);
 }
 
 .cta-section .hq-btn i {
   color: #0e98f1;
+  margin-left: 6px;
+  transition: transform 0.3s ease;
+}
+
+.cta-section .hq-btn:hover i {
+  transform: translateX(3px);
 }
 
 .cta-wave-pattern {
@@ -2424,6 +2436,7 @@
   width: 100%;
   z-index: 1;
   transform: rotate(180deg);
+  line-height: 0;
 }
 
 .cta-wave-pattern svg {
@@ -2437,25 +2450,82 @@
   opacity: 0.2;
 }
 
+.cta-button-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cta-section .section-heading {
+  margin-bottom: 1.5rem;
+}
+
+.cta-section .section-heading .heading {
+  margin-bottom: 0.75rem;
+  font-size: 2rem;
+}
+
+.cta-section .section-desc {
+  margin: 0 auto;
+  max-width: 800px;
+  line-height: 1.6;
+}
+
 /* Mobile Responsiveness */
 @media (max-width: 991px) {
-  .cta-section.ptb-110 {
-      padding: 80px 0;
+  .cta-section {
+      padding: 3rem 0 4rem;
+  }
+  
+  .cta-section .section-heading .heading {
+      font-size: 1.75rem;
+  }
+  
+  .cta-section .section-desc {
+      font-size: 0.95rem;
+      padding: 0 1rem;
   }
 }
 
 @media (max-width: 767px) {
-  .cta-section.ptb-110 {
-      padding: 60px 0;
+  .cta-section {
+      padding: 2.5rem 0 3.5rem;
   }
-
+  
+  .cta-section .section-heading .heading {
+      font-size: 1.5rem;
+  }
+  
+  .cta-section .section-desc {
+      font-size: 0.9rem;
+      padding: 0 0.75rem;
+  }
+  
   .cta-wave-pattern svg {
-      height: 30px;
+      height: 25px;
+  }
+  
+  .cta-section .hq-btn {
+      min-width: 180px;
+      padding: 10px 20px;
   }
 }
 
 @media (max-width: 575px) {
-  .cta-section.ptb-110 {
-      padding: 50px 0;
+  .cta-section {
+      padding: 2rem 0 3rem;
+  }
+  
+  .cta-section .section-heading .heading {
+      font-size: 1.35rem;
+  }
+  
+  .cta-section .section-desc {
+      font-size: 0.875rem;
+      line-height: 1.5;
+  }
+  
+  .cta-wave-pattern svg {
+      height: 20px;
   }
 }
