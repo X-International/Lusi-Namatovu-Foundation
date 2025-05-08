@@ -1,4 +1,4 @@
-// Our Work Page JavaScript
+// Our Programs Page JavaScript
 document.addEventListener('DOMContentLoaded', function () {
     // Initialize animations for the intro section
     initIntroSectionAnimations();

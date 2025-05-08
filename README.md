@@ -34,7 +34,7 @@ The redesigned website aims to:
 ## 4. Key Features of the Redesigned Website
 
 - **Dual Program Focus:** Dedicated sections and content for both Elderly Support and Disability Support programs.
-- **Comprehensive Information:** Detailed pages for "About Us" (including founding story, mission, vision, values, team), "Our Work" (program details), "Our Impact," "Get Involved," and "Contact Us."
+- **Comprehensive Information:** Detailed pages for "About Us" (including founding story, mission, vision, values, team), "Our Programs" (program details), "Our Impact," "Get Involved," and "Contact Us."
 - **Team Showcase:** Profiles for key leadership, including Founder Samuel Ssebandeke and Director Ssekitto Alex Kayanja, highlighting his role in the disability program expansion.
 - **Modern Design:** Responsive, mobile-friendly, and visually appealing.
 - **Accessibility Considerations:** Built with WCAG guidelines in mind.
@@ -87,7 +87,7 @@ The redesign addresses limitations of the previous website, including:
   - Our Mission, Vision, Values
   - Our Team
   - Our Approach
-- Our Work
+- Our Programs
   - Elderly Support Program
   - Disability Support Program
 - Our Impact (Planned)
