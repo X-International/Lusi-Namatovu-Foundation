@@ -10,6 +10,12 @@ document.addEventListener("DOMContentLoaded", function () {
     initModernPageHeader();
   }
 
+  // Initialize intro section if it exists
+  const introSection = document.querySelector(".intro-section");
+  if (introSection) {
+    initIntroSection();
+  }
+
   // Initialize vision section animations and interactions if it exists
   const visionSection = document.querySelector(".vision-section");
   if (visionSection) {

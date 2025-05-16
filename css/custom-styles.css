@@ -14,6 +14,36 @@
 
 .intro-section {
   padding: 60px 0;
+  background: #f5f5f5;
+  position: relative;
+}
+
+/* Enhanced intro section for team page */
+.intro-section .intro-content {
+  position: relative;
+  z-index: 1;
+}
+
+.intro-section .intro-text-wrapper {
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.intro-section .section-desc {
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 0;
+}
+
+/* Add subtle divider under intro text */
+.intro-section .intro-text-wrapper::after {
+  content: "";
+  display: block;
+  width: 80px;
+  height: 2px;
+  background-color: #1e90ff; /* Match your site's accent color */
+  margin: 25px auto 0;
 }
 
 .stats-bar .stats-content {
@@ -36,12 +66,21 @@
     padding-right: 15px;
   }
 
+  .intro-section .section-heading .sub-heading {
+    font-size: 22px;
+  }
+
   .intro-content .heading {
     font-size: 28px !important;
   }
 
   .intro-text-wrapper p {
     font-size: 14px !important;
+  }
+  
+  .intro-section .intro-text-wrapper::after {
+    margin: 20px auto 0;
+    width: 60px;
   }
 
   .stats-bar {
