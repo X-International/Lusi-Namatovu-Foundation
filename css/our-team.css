@@ -3,7 +3,6 @@
 .team-members-section {
     padding: 40px 0 60px; /* Mobile-first padding */
     margin-top: 20px;
-    background-color: #f8f9fa;
     position: relative;
     overflow: hidden;
 }
