@@ -1,4 +1,194 @@
 
+/* Team Profile Section - Individual Team Member Page */
+.team-profile-section {
+    padding: 60px 0;
+    position: relative;
+    background-color: #F5F5F5;
+    margin-bottom: 40px;
+}
+
+/* Background pattern for profile section */
+.team-profile-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: radial-gradient(#3A5A40 1px, transparent 1px);
+    background-size: 40px 40px;
+    opacity: 0.03;
+    z-index: 0;
+}
+
+.team-profile-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+    border-radius: 15px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    padding: 40px;
+}
+
+/* Profile image styling */
+.profile-image-container {
+    position: relative;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.profile-image {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    border-radius: 10px;
+    border: 2px solid #0e98f1;
+    box-shadow: 0 6px 15px rgba(14, 152, 241, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profile-image:hover {
+    transform: scale(1.02);
+    box-shadow: 0 8px 20px rgba(14, 152, 241, 0.2);
+}
+
+/* Profile content styling */
+.profile-content {
+    padding: 0 15px;
+}
+
+.profile-heading {
+    color: #10365a;
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 25px;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.profile-heading::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 80px;
+    height: 3px;
+    background-color: #0e98f1;
+}
+
+.subsection-heading {
+    color: #0e98f1;
+    font-size: 20px;
+    font-weight: 600;
+    margin: 20px 0 15px;
+}
+
+.profile-text {
+    color: #333333;
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    max-width: 100%;
+}
+
+.profile-subsection {
+    margin-bottom: 25px;
+}
+
+/* CTA Button area */
+.profile-cta {
+    margin-top: 30px;
+}
+
+.profile-cta .btn {
+    padding: 10px 25px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+/* Responsive styles */
+@media (max-width: 991px) {
+    .team-profile-container {
+        padding: 30px;
+    }
+    
+    .profile-heading {
+        font-size: 24px;
+    }
+    
+    .subsection-heading {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 767px) {
+    .team-profile-section {
+        padding: 40px 0;
+    }
+    
+    .team-profile-container {
+        padding: 25px 20px;
+    }
+    
+    .profile-image {
+        max-width: 250px;
+    }
+    
+    .profile-heading {
+        font-size: 22px;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    
+    .profile-heading::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    
+    .subsection-heading {
+        text-align: center;
+    }
+    
+    .profile-cta {
+        text-align: center;
+    }
+}
+
+/* Animation for profile section */
+@media (prefers-reduced-motion: no-preference) {
+    .profile-image-container {
+        animation: fadeInLeft 0.8s ease forwards;
+    }
+    
+    .profile-content {
+        animation: fadeInRight 0.8s ease forwards;
+    }
+    
+    @keyframes fadeInLeft {
+        0% {
+            opacity: 0;
+            transform: translateX(-20px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+    
+    @keyframes fadeInRight {
+        0% {
+            opacity: 0;
+            transform: translateX(20px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+}
+
 /* Team Members Section - Matching about-us.html style */
 .team-members-section {
     padding: 40px 0 60px; /* Mobile-first padding */

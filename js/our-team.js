@@ -11,13 +11,51 @@
             teamCards.addClass('animated');
         }
         
-        // Initialize GSAP animations if available
+        // Profile page animations
+        function animateProfileSection() {
+            $('.profile-image').addClass('animated-in');
+            $('.profile-content').addClass('animated-in');
+        }
+          // Initialize GSAP animations if available
         if (typeof gsap !== 'undefined') {
             // Animate the heading section immediately
             gsap.from('.team-members-section .sub-heading', {
                 opacity: 0,
                 y: 20,
                 duration: 0.8
+            });
+            
+            // Team profile page animations
+            gsap.from('.profile-image', {
+                opacity: 0,
+                x: -30,
+                duration: 0.8,
+                ease: 'power2.out'
+            });
+            
+            gsap.from('.profile-heading', {
+                opacity: 0,
+                y: 20,
+                duration: 0.8,
+                delay: 0.2,
+                ease: 'power2.out'
+            });
+            
+            gsap.from('.profile-subsection', {
+                opacity: 0,
+                y: 30,
+                duration: 0.8,
+                stagger: 0.2,
+                delay: 0.4,
+                ease: 'power2.out'
+            });
+            
+            gsap.from('.profile-cta', {
+                opacity: 0,
+                y: 20,
+                duration: 0.8,
+                delay: 0.8,
+                ease: 'power2.out'
             });
             
             gsap.from('.team-members-section .heading', {
@@ -44,9 +82,13 @@
         } else {
             // Fallback for browsers without GSAP
             animateTeamMembers();
-        }
-          // Apply animated class immediately to all team cards
+        }        // Apply animated class immediately to all team cards
         animateTeamMembers();
+        
+        // Initialize profile section animation if it exists
+        if ($('.team-profile-section').length) {
+            animateProfileSection();
+        }
         
         // Enhanced hover effects for social icons
         $('.team-member-card').hover(function() {
@@ -58,7 +100,12 @@
         });
         
         // Initialize animation on page load
-        setTimeout(animateTeamMembers, 300);
+        setTimeout(function() {
+            animateTeamMembers();
+            if ($('.team-profile-section').length) {
+                animateProfileSection();
+            }
+        }, 300);
     });
 
 })(jQuery);
