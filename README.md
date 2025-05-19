@@ -8,7 +8,7 @@ The primary goal of this project is to transform the foundation's existing basic
 
 **Client:** Lusi Namatovu Foundation
 **Location:** Rakai District, Uganda
-**Founded:** 2016 by Samuel Ssebandeke
+**Founded:** 2016 by Samuel Ssebandeke Kayanja
 **Registered as CBO:** 2017
 
 ## 2. Background & Expanded Mission
@@ -35,7 +35,7 @@ The redesigned website aims to:
 
 - **Dual Program Focus:** Dedicated sections and content for both Elderly Support and Disability Support programs.
 - **Comprehensive Information:** Detailed pages for "About Us" (including founding story, mission, vision, values, team), "Our Programs" (program details), "Our Impact," "Get Involved," and "Contact Us."
-- **Team Showcase:** Profiles for key leadership, including Founder Samuel Ssebandeke and Director Ssekitto Alex Kayanja, highlighting his role in the disability program expansion.
+- **Team Showcase:** Profiles for key leadership, including Founder Samuel Ssebandeke Kayanja and Director Ssekitto Alex Kayanja, highlighting his role in the disability program expansion.
 - **Modern Design:** Responsive, mobile-friendly, and visually appealing.
 - **Accessibility Considerations:** Built with WCAG guidelines in mind.
 - **Engagement Tools:**
