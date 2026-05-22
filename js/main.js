@@ -9,41 +9,6 @@
     nullTargetWarn: false,
   });
 
-  // Preloader
-  gsap.set("body", {
-    overflow: "hidden",
-  });
-
-  window.addEventListener("load", function () {
-    var loaderTl = gsap.timeline();
-
-    loaderTl.to(".preloader-logo", {
-      delay: 1.5,
-      y: -70,
-      opacity: 0,
-    });
-
-    loaderTl.to(".hq-preloader-bg span", {
-      height: 0,
-      duration: 1,
-      stagger: {
-        amount: 0.5,
-      },
-      ease: "power4.inOut",
-    });
-
-    loaderTl.set("body", {
-      overflow: "visible",
-    });
-
-    loaderTl.to("#hq-preloader", {
-      y: -1500,
-    });
-
-    setTimeout(function () {
-      $("#hq-preloader").remove();
-    }, 10000);
-  });
 
   // Smooth Scroll
   const lenis = new Lenis({
@@ -366,33 +331,6 @@
       endMessage: "Event is expired or completed.",
     });
 
-    // Scroll to Top
-    function scrollTop() {
-      const scrollTop = () => {
-        const scrollTopPos = document.documentElement.scrollTop;
-        const scrollElementWrap = $("#hq-back-to-top");
-
-        if (scrollTopPos > 100) {
-          scrollElementWrap.addClass("active");
-        } else {
-          scrollElementWrap.removeClass("active");
-        }
-      };
-      window.onscroll = scrollTop;
-      window.onload = scrollTop;
-
-      // Back to Top
-      function scrollToTop() {
-        document.documentElement.scrollTo({
-          top: 0,
-          behavior: "smooth",
-        });
-      }
-
-      $("#hq-back-to-top").on("click", scrollToTop);
-    }
-
-    scrollTop();
 
     // Donation Amount
     const amountInput = document.querySelector(".text-input");

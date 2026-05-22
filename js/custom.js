@@ -1,4 +1,17 @@
 /**
+ * Utility: Debounce function for performance
+ */
+function debounce(func, wait = 100) {
+  let timeout;
+  return function(...args) {
+    clearTimeout(timeout);
+    timeout = setTimeout(() => {
+      func.apply(this, args);
+    }, wait);
+  };
+}
+
+/**
  * Modern Page Header functionality
  * Controls animations and scroll behavior
  * With improved performance and accessibility
