@@ -4,17 +4,11 @@
   $(document).ready(function () {
     // Initialize Hero Slider
     const heroSlider = new Swiper(".hero-slider .slider-container", {
-      speed: 1000,
+      speed: 300,
       slidesPerView: 1,
-      loop: true,
-      autoplay: {
-        delay: 6000, // Increased delay for better readability
-        disableOnInteraction: false,
-      },
-      effect: "fade",
-      fadeEffect: {
-        crossFade: true,
-      },
+      loop: false,
+      autoplay: false,
+      effect: "slide",
       pagination: {
         el: ".slider-pagination",
         clickable: true,
@@ -45,14 +39,7 @@
       },
       on: {
         init: function () {
-          startSlideAnimations(this);
           checkMobileView();
-        },
-        slideChangeTransitionStart: function () {
-          resetSlideAnimations(this);
-        },
-        slideChangeTransitionEnd: function () {
-          startSlideAnimations(this);
         },
         resize: function () {
           // Check for mobile view on resize
@@ -60,34 +47,6 @@
         },
       },
     });
-
-    // Handle Slide Animations
-    function startSlideAnimations(slider) {
-      const activeSlide = slider.slides[slider.activeIndex];
-
-      // Trigger animations on active slide
-      const elements = activeSlide.querySelectorAll("[data-animation]");
-      elements.forEach((element) => {
-        const delay = element.getAttribute("data-delay") || 0;
-
-        setTimeout(() => {
-          element.style.opacity = "1";
-          element.style.transform = "translateY(0)";
-        }, delay * 1000);
-      });
-    }
-
-    function resetSlideAnimations(slider) {
-      const slides = slider.slides;
-
-      slides.forEach((slide) => {
-        const elements = slide.querySelectorAll("[data-animation]");
-        elements.forEach((element) => {
-          element.style.opacity = "0";
-          element.style.transform = "translateY(30px)";
-        });
-      });
-    }
 
     // Check if we're in mobile view and adjust accordingly
     function checkMobileView() {
@@ -146,7 +105,7 @@
         pauseIcon.hide();
         playIcon.show();
         $(this).attr("aria-label", "Play slideshow");
-      } else {
+      } else if (heroSlider.autoplay) {
         // Resume the slider
         heroSlider.autoplay.start();
         playIcon.hide();

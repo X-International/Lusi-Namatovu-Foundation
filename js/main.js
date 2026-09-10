@@ -99,23 +99,13 @@
     }
     popupSearchBox();
 
-    // Counter
+    // Counter: render final values immediately
     let counterItems = document.querySelectorAll(".counter-item .odometer");
-    let observer = new IntersectionObserver(
-      (entries, observer) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            let countNumber = entry.target.getAttribute("data-count");
-            entry.target.innerHTML = countNumber;
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.2 }
-    );
-
     counterItems.forEach((item) => {
-      observer.observe(item);
+      let countNumber = item.getAttribute("data-count");
+      if (countNumber) {
+        item.innerHTML = countNumber;
+      }
     });
 
     // Hover Effect
@@ -712,45 +702,11 @@
     });
   }
 
-  // Fade Animation
+  // Fade Animation: keep elements static for restrained motion
   const fadeItems = document.querySelectorAll(".hq-fade-effect");
   fadeItems.forEach((item) => {
-    const fadeOffset = parseFloat(item.dataset.fadeOffset ?? 50);
-    const duration = parseFloat(item.dataset.duration ?? 1.15);
-    const fadeFrom = item.dataset.fadeFrom ?? "bottom";
-    const delay = parseFloat(item.dataset.delay ?? 0.15);
-    const ease = item.dataset.ease ?? "power2.out";
-
-    const animationSettings = {
-      opacity: 0,
-      ease,
-      duration,
-      delay,
-    };
-
-    // Set animation direction
-    switch (fadeFrom) {
-      case "top":
-        animationSettings.y = -fadeOffset;
-        break;
-      case "left":
-        animationSettings.x = -fadeOffset;
-        break;
-      case "bottom":
-        animationSettings.y = fadeOffset;
-        break;
-      case "right":
-        animationSettings.x = fadeOffset;
-        break;
-    }
-
-    animationSettings.scrollTrigger = {
-      trigger: item,
-      start: "top 85%",
-      toggleActions: "play none none none",
-    };
-
-    gsap.from(item, animationSettings);
+    item.style.opacity = "1";
+    item.style.transform = "none";
   });
 
   // Call the functions when the DOM is ready
@@ -933,32 +889,13 @@
       timelineObserver.observe(el);
     });
 
-    // Number counter animation (works with odometer)
-    const counterElements = document.querySelectorAll(".counter-item");
-
-    const counterObserver = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const odometerElement = entry.target.querySelector(".odometer");
-
-            if (odometerElement) {
-              const finalValue = odometerElement.getAttribute("data-count");
-
-              setTimeout(() => {
-                odometerElement.innerHTML = finalValue;
-              }, 500);
-            }
-
-            counterObserver.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.5 }
-    );
-
-    counterElements.forEach((el) => {
-      counterObserver.observe(el);
+    // Number counters remain static at final values
+    const counterElements = document.querySelectorAll(".counter-item .odometer");
+    counterElements.forEach((odometerElement) => {
+      const finalValue = odometerElement.getAttribute("data-count");
+      if (finalValue) {
+        odometerElement.innerHTML = finalValue;
+      }
     });
   });
 })(jQuery);

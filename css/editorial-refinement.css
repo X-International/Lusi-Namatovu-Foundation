@@ -1,0 +1,470 @@
+/* Editorial visual refinement pass */
+:root {
+  --lnf-soft-border: rgba(16, 54, 90, 0.12);
+  --lnf-soft-shadow: 0 6px 20px rgba(15, 45, 70, 0.05);
+}
+
+/* Global restraint */
+.hq-fade-effect,
+.hq-text-anim,
+.wow,
+[data-animation] {
+  opacity: 1 !important;
+  transform: none !important;
+  animation: none !important;
+  transition: opacity 0.18s ease, color 0.18s ease, background-color 0.18s ease, border-color 0.18s ease !important;
+}
+
+.hq-btn,
+.btn,
+button,
+.filter-btn,
+input,
+textarea,
+select {
+  border-radius: 5px !important;
+}
+
+.hq-btn,
+.btn,
+.filter-btn {
+  box-shadow: none !important;
+  transform: none !important;
+}
+
+.hq-btn:hover,
+.btn:hover,
+.filter-btn:hover {
+  transform: none !important;
+}
+
+.get-involved-card {
+  opacity: 1 !important;
+}
+
+/* Eyebrow cleanup */
+.sub-heading {
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.sub-heading .sh-right-line,
+.sub-heading .hq-bd-anim.sh-right-line,
+.sub-heading .hq-bd-anim.sh-left-line,
+.sub-heading .sh-left-line {
+  border-radius: 0 !important;
+  height: 2px;
+  width: 26px;
+}
+
+/* Home hero: single static-first presentation */
+.hero-slider .slider-controls,
+.hero-slider .slider-pagination,
+.hero-slider .slider-navigation,
+.hero-slider .pause-play-button,
+.hero-slider .slider-scroll-indicator {
+  display: none !important;
+}
+
+.hero-slider .swiper-slide:not(:first-child) {
+  display: none !important;
+}
+
+.hero-slider .decorative-shape {
+  display: none !important;
+}
+
+/* Left-align editorial sections */
+.promo-section .section-heading,
+.about-section .section-heading,
+.needs-section .section-heading,
+.impact-section .section-heading,
+.intro-section .section-heading,
+.elderly-needs-section .section-heading,
+.elderly-programs-section .section-heading,
+.story-section .section-heading,
+.approach-section .section-heading,
+.contact-section .section-heading,
+.team-members-section .section-heading {
+  text-align: left !important;
+}
+
+/* Home what-we-do and challenges */
+.promo-card,
+.needs-section .promo-card,
+.approach-card,
+.value-card,
+.home-care-card,
+.elder-program-card,
+.disability-program-card,
+.elderly-program-card,
+.get-involved-card,
+.team-member-card,
+.team-profile-container,
+.contact-card,
+.contact-form-wrapper,
+.impact-story-content,
+.impact-story-quote,
+.gallery-item-inner,
+.carousel-gallery-item,
+.field-assessment-box {
+  border-radius: 10px !important;
+  box-shadow: none !important;
+  border: 1px solid var(--lnf-soft-border);
+}
+
+.promo-card:hover,
+.approach-card:hover,
+.value-card:hover,
+.home-care-card:hover,
+.elder-program-card:hover,
+.disability-program-card:hover,
+.elderly-program-card:hover,
+.get-involved-card:hover,
+.team-member-card:hover,
+.gallery-item-inner:hover,
+.carousel-gallery-item:hover,
+.hover-lift:hover,
+.impact-stat-card:hover {
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+.promo-card:before,
+.promo-card:after,
+.promo-active-overlay,
+.promo-active-icon,
+.program-card-overlay,
+.program-active-overlay,
+.image-decoration,
+.image-badge,
+.badge-icon,
+.impact-story-badge,
+.value-icon,
+.approach-card-icon,
+.program-card-icon,
+.home-care-icon,
+.get-involved-icon,
+.impact-stat-icon,
+.impact-icon {
+  display: none !important;
+}
+
+.promo-card {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+.promo-card-image {
+  position: relative !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  z-index: 0 !important;
+  min-height: 220px;
+  border-radius: 10px !important;
+  overflow: hidden;
+}
+
+.promo-card-image img {
+  border-radius: 10px !important;
+}
+
+/* Key challenges -> numbered editorial list */
+.needs-section .row {
+  counter-reset: homeChallenge;
+}
+
+.needs-section .promo-card {
+  padding: 24px 0 0;
+  border: 0;
+  border-radius: 0 !important;
+  border-top: 1px solid var(--lnf-soft-border);
+  background: transparent;
+}
+
+.needs-section .promo-card-content h4 {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.needs-section .promo-card-content h4::before {
+  counter-increment: homeChallenge;
+  content: counter(homeChallenge, decimal-leading-zero);
+  color: #0e98f1;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+/* Home impact stats */
+.impact-stat-card {
+  border-radius: 0 !important;
+  border: 0;
+  border-bottom: 1px solid var(--lnf-soft-border);
+  background: transparent;
+  padding: 0 0 16px;
+}
+
+.impact-stat-title {
+  font-size: 0.92rem;
+  font-weight: 500;
+}
+
+.impact-stat-number h2,
+.impact-stat-number span {
+  color: #10365a;
+}
+
+/* Home who-we-are + testimonials */
+.mission-caption,
+.elderly-needs-caption,
+.gallery-caption,
+.carousel-gallery-caption {
+  position: static !important;
+  background: none !important;
+  color: inherit !important;
+  padding: 12px 0 0 !important;
+}
+
+.mission-caption h5,
+.elderly-needs-caption h4,
+.gallery-caption p,
+.carousel-gallery-caption p {
+  color: #475467 !important;
+  font-size: 0.92rem;
+  margin: 0;
+}
+
+.caption-tag {
+  background: none !important;
+  color: #0e98f1 !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  font-size: 0.75rem !important;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* Program/service grids flatten with numbering */
+.home-care-process-section .row,
+.elderly-programs-section .container,
+.elderly-support-section .row,
+.disability-support-section .row,
+.support-work-section .row,
+.approach-row,
+.mission-vision-section .row {
+  counter-reset: sectionItem;
+}
+
+.home-care-card,
+.elderly-program-card,
+.elder-program-card,
+.disability-program-card,
+.support-option-card,
+.approach-card,
+.value-card {
+  padding: 18px 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  border-bottom: 1px solid var(--lnf-soft-border) !important;
+  min-height: 0 !important;
+  text-align: left !important;
+  align-items: flex-start !important;
+}
+
+.home-care-content h3::before,
+.elderly-program-card .program-card-content h4::before,
+.elder-program-card .program-card-content h3::before,
+.disability-program-card .program-card-content h3::before,
+.support-option-card .support-card-content h3::before,
+.approach-card-title::before,
+.value-title::before {
+  counter-increment: sectionItem;
+  content: counter(sectionItem, decimal-leading-zero) " ";
+  color: #0e98f1;
+  font-weight: 700;
+  margin-right: 8px;
+}
+
+/* Team and profile cleanup */
+.member-social,
+.image-frame::before,
+.image-frame::after {
+  display: none !important;
+}
+
+.team-member-info,
+.profile-content {
+  text-align: left !important;
+  align-items: flex-start !important;
+}
+
+.team-member-photo {
+  padding-top: 120%;
+}
+
+.team-profile-section {
+  background: #fff !important;
+  margin-bottom: 1rem;
+}
+
+.team-profile-section::before,
+.team-profile-section::after,
+.team-members-section::before {
+  display: none !important;
+}
+
+.image-frame,
+.profile-image,
+.mission-image-wrap,
+.impact-story-image img,
+.elderly-needs-image-wrap,
+.elderly-needs-image,
+.gallery-image,
+.gallery-image img,
+.carousel-gallery-item img,
+.team-member-photo img {
+  border-radius: 10px !important;
+  box-shadow: none !important;
+  object-fit: cover;
+}
+
+/* Gallery */
+.gallery-filter-buttons {
+  gap: 22px;
+  border-bottom: 1px solid var(--lnf-soft-border);
+  padding-bottom: 8px;
+}
+
+.filter-btn {
+  border: 0 !important;
+  padding: 6px 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  color: #475467 !important;
+  border-bottom: 2px solid transparent !important;
+}
+
+.filter-btn.active {
+  color: #0e98f1 !important;
+  border-bottom-color: #0e98f1 !important;
+}
+
+.gallery-image img,
+.carousel-gallery-item img {
+  transform: none !important;
+}
+
+.gallery-overlay,
+.carousel-gallery-overlay {
+  opacity: 1 !important;
+  background: none !important;
+  align-items: flex-start;
+  justify-content: flex-end;
+  padding: 10px;
+}
+
+.gallery-overlay a,
+.carousel-gallery-overlay a {
+  width: 34px !important;
+  height: 34px !important;
+  border-radius: 4px !important;
+  transform: none !important;
+}
+
+/* Contact page */
+.contact-card-icon {
+  width: 30px;
+  min-width: 30px;
+  height: 30px;
+  border-radius: 4px;
+  background: transparent;
+}
+
+.contact-form .col-12:last-of-type {
+  justify-content: flex-start;
+}
+
+/* CTA/footer wave removal + compactness */
+.cta-wave-pattern,
+.footer-wave-shape {
+  display: none !important;
+}
+
+.cta-section {
+  padding: 56px 0 !important;
+  margin-top: 0 !important;
+}
+
+.cta-section .section-heading {
+  margin-bottom: 1rem !important;
+}
+
+.modern-footer {
+  padding-top: 56px !important;
+  background: #071d33 !important;
+}
+
+.footer-impact-numbers {
+  gap: 10px;
+}
+
+.impact-item {
+  background: transparent !important;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  animation: none !important;
+  box-shadow: none !important;
+}
+
+.impact-item:hover,
+.footer-socials a:hover,
+.footer-contact-list li:hover {
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+.footer-menu-col a:before,
+.footer-socials a:before {
+  display: none !important;
+}
+
+.contact-icon {
+  border-radius: 4px !important;
+  min-width: 30px;
+  width: 30px;
+  height: 30px;
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .needs-section .promo-card,
+  .home-care-card,
+  .elderly-program-card,
+  .elder-program-card,
+  .disability-program-card,
+  .support-option-card,
+  .approach-card,
+  .value-card {
+    padding: 16px 0 !important;
+  }
+
+  .gallery-filter-buttons {
+    gap: 14px;
+  }
+}
