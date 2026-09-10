@@ -10,6 +10,58 @@
     padding-bottom: var(--section-padding, 6rem);
 }
 
+.home-care-process-section {
+    position: relative;
+    overflow: hidden;
+    padding-top: var(--section-padding, 6rem);
+    padding-bottom: var(--section-padding, 6rem);
+    background-color: #f5fbff;
+}
+
+.home-care-card {
+    position: relative;
+    border-radius: 15px;
+    background-color: #fff;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    padding: 2rem 1.5rem 1.5rem;
+}
+
+.home-care-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+}
+
+.home-care-icon {
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 50%;
+    background-color: var(--primary-color, #0e98f1);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.home-care-icon i {
+    font-size: 1.3rem;
+}
+
+.home-care-content h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.75rem;
+    color: var(--heading-color, #222);
+    font-weight: 600;
+}
+
+.home-care-content p {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--text-color, #555);
+    margin-bottom: 0;
+}
+
 /* Section headings consistent spacing */
 .section-heading {
     margin-bottom: 3rem;
@@ -314,7 +366,8 @@ img.fade-in {
 
     .elderly-needs-section,
     .elderly-programs-section,
-    .elderly-impact-section {
+    .elderly-impact-section,
+    .home-care-process-section {
         padding-top: 5rem;
         padding-bottom: 5rem;
     }
@@ -328,7 +381,8 @@ img.fade-in {
 
     .elderly-needs-section,
     .elderly-programs-section,
-    .elderly-impact-section {
+    .elderly-impact-section,
+    .home-care-process-section {
         padding-top: 4rem;
         padding-bottom: 4rem;
     }
@@ -350,9 +404,14 @@ img.fade-in {
 
     .elderly-needs-section,
     .elderly-programs-section,
-    .elderly-impact-section {
+    .elderly-impact-section,
+    .home-care-process-section {
         padding-top: 3rem;
         padding-bottom: 3rem;
+    }
+
+    .home-care-card {
+        padding: 1.5rem 1.25rem;
     }
 
     .section-heading .heading {
